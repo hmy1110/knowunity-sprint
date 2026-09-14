@@ -18,7 +18,12 @@
 /out/
 
 # production
-/build
+/build/*
+# ...but the generated design tokens are tracked on purpose, so a fresh
+# clone builds without having to run `npm run tokens` first.
+!/build/css
+/build/css/*
+!/build/css/tokens.css
 
 # misc
 .DS_Store

@@ -1,6 +1,6 @@
 # Design System Rules
 
-This file is behavior, not values. For every color, size, type, or spacing value, look in `tokens.json`. If a value you need isn't there, that's a gap to flag, not a number to guess.
+This file is behavior, not values. For every color, size, type, or spacing value, look in `tokens/tokens.json`. If a value you need isn't there, that's a gap to flag, not a number to guess.
 
 Source: live audit of the Figma file "Yummy__Knowie Design System" (fileKey `Km4r5Waxhm1bysmCcFNYiB`), the 16 component sets on the 🎨  Mascot & components page (10 general-purpose components in Section 1; 6 built specifically for the voice active-recall loop, covered in Section 5: audioScrubber, inlineAlert, micButton, speechBubble, statusIndicator, tag), real usage across ✨  Example Screens and the built 📱  Screen & flow recall loop, and the Design Brief and Platform Constraints docs.
 

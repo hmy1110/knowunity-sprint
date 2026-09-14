@@ -10,7 +10,7 @@ Mocked iOS prototype of a voice-in / text-out active-recall step, built in Next.
 - Knowie replies in text and never speaks. Voice is input only.
 - Mobile only. 390px, dark mode only.
 - Build from the components that already exist. A gap gets named and flagged, not filled.
-- Every value comes from `docs/tokens.json`, every behavior and naming rule from `docs/design-system.md`. Figma wins when they disagree.
+- Every value comes from `tokens/tokens.json`, every behavior and naming rule from `docs/design-system.md`. Figma wins when they disagree.
 - Sentence case on every label, button, and heading.
 - Design a distinct visual for each of `idle → recording → processing → result`.
 
@@ -30,10 +30,10 @@ Mocked iOS prototype of a voice-in / text-out active-recall step, built in Next.
 - `docs/sprint-context.md` — committed concept, logged decisions, out of scope. Before proposing or reopening anything.
 - `docs/design-system.md` — components, scaffold slots, naming, the six recall-loop components. Before touching UI.
 - `docs/voice-ux-reference.md` — voice traps, state triage table. When designing a loop screen.
-- `docs/tokens.json` — every color, size, type, and spacing value.
+- `tokens/tokens.json` — every color, size, type, and spacing value. `npm run tokens` builds it into `build/css/tokens.css` (generated, tracked, never hand-edited).
 - `reference/*.PNG` — 30 screenshots of the real flow, explain-out-loud is 20-28. When matching real behavior or copy.
 - `public/images/*.svg` — Knowie expressions. When a screen needs a mascot state.
 - `src/app/` — `page.tsx` root screen, `layout.tsx` shell and fonts, `globals.css` Tailwind entry and theme vars.
 - `.claude/skills/` — `ux-designer` flows, `ui-designer` visual craft, `ux-motion` transitions, `interactive-prototype` clickable build.
-- `package.json` — `npm run dev | build | start | lint`. `tsconfig.json` — `@/*` maps to `./src/*`.
+- `package.json` — `npm run dev | build | start | lint | tokens`. `style-dictionary.config.mjs` — token build config. `tsconfig.json` — `@/*` maps to `./src/*`.
 - Remaining root files are scaffold config. `README.md` is not project documentation.
