@@ -11,6 +11,7 @@ Mocked iOS prototype of a voice-in / text-out active-recall step, built in Next.
 - Mobile only. 390px, dark mode only.
 - Build from the components that already exist. A gap gets named and flagged, not filled.
 - Every value comes from `tokens/tokens.json`, every behavior and naming rule from `docs/design-system.md`. Figma wins when they disagree.
+- `build/css/tokens.css` is generated. Never edit it. Edit `tokens/tokens.json` and run `npm run tokens`.
 - Sentence case on every label, button, and heading.
 - Design a distinct visual for each of `idle → recording → processing → result`.
 
@@ -30,7 +31,7 @@ Mocked iOS prototype of a voice-in / text-out active-recall step, built in Next.
 - `docs/sprint-context.md` — committed concept, logged decisions, out of scope. Before proposing or reopening anything.
 - `docs/design-system.md` — components, scaffold slots, naming, the six recall-loop components. Before touching UI.
 - `docs/voice-ux-reference.md` — voice traps, state triage table. When designing a loop screen.
-- `tokens/tokens.json` — every color, size, type, and spacing value. `npm run tokens` builds it into `build/css/tokens.css` (generated, tracked, never hand-edited).
+- `tokens/tokens.json` — every color, size, type, and spacing value. `npm run tokens` builds it into `build/css/tokens.css`, imported by `globals.css`.
 - `reference/*.PNG` — 30 screenshots of the real flow, explain-out-loud is 20-28. When matching real behavior or copy.
 - `public/images/*.svg` — Knowie expressions. When a screen needs a mascot state.
 - `src/app/` — `page.tsx` root screen, `layout.tsx` shell and fonts, `globals.css` Tailwind entry and theme vars.

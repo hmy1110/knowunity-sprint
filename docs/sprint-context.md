@@ -14,6 +14,7 @@ Voice-based active-recall feature for Knowunity. A student speaks a term out lou
 - Keep the XP/lightning badge separate from the chips component.
 - Build tag as its own new component for the summary's per-term status labels (Recalled/Hinted/Revealed/Skipped), because chips can't take that shape without forcing it.
 - Name stroke tokens semantically (stroke/Border, stroke/Heavy-Border) instead of a numbered step.
+- Use the Standard width (wdth 100) of Greed VF-TRIAL everywhere, pinned as `font-stretch: normal` in `globals.css`, because the font ships five widths and its own default is Condensed (wdth 75). `tokens.json` carries no width token, so this sits in CSS until Figma exports one.
 - Both processing screens (Learning-processing, Learning-typeProcessing) cover the wait with button/Disabled plus speechBubble/Loading, not button/Loading, because that pairing already has real instances on the text path while button/Loading has none, and Disabled keeps the button's label readable so the wait doesn't erase what the student just did.
 
 ## Explicitly not building
