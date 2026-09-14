@@ -14,6 +14,7 @@ Voice-based active-recall feature for Knowunity. A student speaks a term out lou
 - Keep the XP/lightning badge separate from the chips component.
 - Build tag as its own new component for the summary's per-term status labels (Recalled/Hinted/Revealed/Skipped), because chips can't take that shape without forcing it.
 - Name stroke tokens semantically (stroke/Border, stroke/Heavy-Border) instead of a numbered step.
+- Both processing screens (Learning-processing, Learning-typeProcessing) cover the wait with button/Disabled plus speechBubble/Loading, not button/Loading, because that pairing already has real instances on the text path while button/Loading has none, and Disabled keeps the button's label readable so the wait doesn't erase what the student just did.
 
 ## Explicitly not building
 
@@ -24,3 +25,4 @@ Voice-based active-recall feature for Knowunity. A student speaks a term out lou
 - No native permission sheets, haptics, or nav transitions. This is a web app built to look like iOS, so anything native gets rebuilt by hand.
 - No mic-busy handling, no mid-answer language switching, no pause/resume into one take. Flagged out of scope in Voice UX Reference.
 - No Android, web, tablet, or light mode. iPhone at 390px, dark mode only.
+- No button/Loading. All 9 Loading variants still sit in the button component set, but nothing uses them and nothing will this sprint. Treat the state as unavailable.
