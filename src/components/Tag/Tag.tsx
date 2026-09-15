@@ -46,7 +46,11 @@ import type { CSSProperties } from 'react'
  * Figma from an earlier subtle-fill/bold-text pairing
  * (`feedback/error/subtle` + `feedback/error/bold`) to match the bold-
  * fill pattern the other three statuses already use. Skipped binds
- * `background/stacking` + `text/disabled`.
+ * `background/stacking` + `text/secondary` — also updated in Figma,
+ * from an earlier `text/disabled` pairing that failed WCAG AA contrast
+ * (3.69:1 against the required 4.5:1, caught by an axe-core sweep of
+ * every story; `text/secondary`'s higher opacity, 0.68 vs 0.4, clears
+ * it).
  *
  * **Every dimension and the label's own type style are unbound
  * literals — confirmed by `get_variable_defs` returning only the 8
@@ -92,7 +96,7 @@ const COLOR_CONFIG: Record<TagStatus, { fillVar: string; textVar: string }> = {
   Recalled: { fillVar: '--semantic-color-accent-green-bold', textVar: '--semantic-color-accent-green-on-bold' },
   Hinted: { fillVar: '--semantic-color-pro-bold', textVar: '--semantic-color-pro-on-bold' },
   Revealed: { fillVar: '--semantic-color-feedback-error-bold', textVar: '--semantic-color-feedback-error-on-bold' },
-  Skipped: { fillVar: '--semantic-color-background-stacking', textVar: '--semantic-color-text-disabled' },
+  Skipped: { fillVar: '--semantic-color-background-stacking', textVar: '--semantic-color-text-secondary' },
 }
 
 export function Tag({ status = 'Recalled', className, style }: TagProps) {
