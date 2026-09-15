@@ -60,10 +60,20 @@ const preview: Preview = {
     // Overridden here with the same page-background token as manager.ts,
     // so every surface — component, card, and the Storybook chrome
     // around it — agrees on what "dark" means.
+    //
+    // appContentBg (the Docs page canvas behind each story's box) is
+    // also overridden here. Storybook's own dark-theme default for it,
+    // #222325, sits almost on top of background.surface (navy.800,
+    // #22242f) — the fill components like SpeechBubble use for their
+    // own card. Left at the default, a surface-colored component reads
+    // as invisible against the page. Bound to background.page instead,
+    // so the canvas matches the rest of the app and the component's
+    // own surface still contrasts against it.
     docs: {
       theme: {
         ...themes.dark,
         appPreviewBg: pageBackground,
+        appContentBg: pageBackground,
       },
     },
   },
