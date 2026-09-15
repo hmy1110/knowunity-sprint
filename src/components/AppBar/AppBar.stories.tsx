@@ -144,14 +144,13 @@ export const RealUsagePrimerLearningSummary: Story = {
   },
 }
 
-// Real usage: leftAndRightIconButton (back arrow + kebab menu), the
-// study plan screen's row.
+// Real usage: rightIconButtonOnly (kebab menu, no left icon), the study
+// plan screen's row — updated 2026-09-15, live Figma moved this off
+// leftAndRightIconButton (back arrow + kebab menu), which it used to be.
 export const RealUsageStudyPlan: Story = {
   tags: ['ai-generated'],
   args: {
-    variant: 'leftAndRightIconButton',
-    leftIcon: backIcon,
-    leftLabel: 'Back',
+    variant: 'rightIconButtonOnly',
     rightIcon: menuIcon,
     rightLabel: 'More options',
   },
