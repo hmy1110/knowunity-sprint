@@ -2,7 +2,7 @@
 
 This file is behavior, not values. For every color, size, type, or spacing value, look in `tokens/tokens.json`. If a value you need isn't there, that's a gap to flag, not a number to guess.
 
-Source: live audit of the Figma file "Yummy__Knowie Design System" (fileKey `Km4r5Waxhm1bysmCcFNYiB`), the 16 component sets on the 🎨  Mascot & components page (10 general-purpose components in Section 1; 6 built specifically for the voice active-recall loop, covered in Section 5: audioScrubber, inlineAlert, micButton, speechBubble, statusIndicator, tag), real usage across ✨  Example Screens and the built 📱  Screen & flow recall loop, and the Design Brief and Platform Constraints docs.
+Source: live audit of the Figma file "Yummy__Knowie Design System" (fileKey `Km4r5Waxhm1bysmCcFNYiB`), the 17 component sets on the 🎨  Mascot & components page (10 general-purpose components in Section 1; 7 built specifically for the voice active-recall loop, covered in Section 5: audioScrubber, inlineAlert, micButton, speechBubble, statusIndicator, tag, textField), real usage across ✨  Example Screens and the built 📱  Screen & flow recall loop, and the Design Brief and Platform Constraints docs.
 
 ---
 
@@ -65,7 +65,7 @@ Second open item, found 2026-09-11: Primer-intro and Summary are not built insid
 
 **Typography tokens**: `font/category/token`, e.g. `font/size/md`, `font/weight/semibold`, `font/tracking/loose`, `font/family/default`. Text styles compose these into named styles like "Headline XS Bold", represented in tokens.json under camelCase keys like `headline.xsBold`.
 
-**Component naming**: camelCase, e.g. `appBar`, `buttonIcon`, `buttonGroup`, `iconSlot`, `mascotSlot`, `progressIndicator`, and, from the voice active-recall sprint, `audioScrubber`, `inlineAlert`, `micButton`, `speechBubble`, `statusIndicator`, `tag`. Match this pattern for anything new.
+**Component naming**: camelCase, e.g. `appBar`, `buttonIcon`, `buttonGroup`, `iconSlot`, `mascotSlot`, `progressIndicator`, and, from the voice active-recall sprint, `audioScrubber`, `inlineAlert`, `micButton`, `speechBubble`, `statusIndicator`, `tag`, `textField`. Match this pattern for anything new.
 
 **Internal layer naming**: descriptive Title Case for structural layers inside a component, e.g. "Label", "Icon Container", "Left Icon Container", "Content". Slots inside the scaffold are prefixed `Slot - `, e.g. "Slot - Top navigation". The voice active-recall components added more real examples of this same pattern: "Bubble", "Tail", "Header", "Title Row", "Title", "Message", "Waveform", "Caption", "Status Row" (now removed from micButton, see Section 5), "Dot". Reuse a layer name across components when it means the same thing structurally, e.g. "Icon Container" is used identically in button and inlineAlert. Note the one unresolved mismatch: speechBubble's optional secondary text is named "Subtitle" while inlineAlert's equivalent is "Descriptor," left different because reconciling them means deciding whether speechBubble should embed inlineAlert (see Section 5's speechBubble entry).
 
@@ -105,7 +105,7 @@ Follow whichever pattern the thing you're naming already belongs to. Don't mix, 
 
 ## 5. Recall loop components
 
-Six component sets built specifically for the voice-based active-recall feature, reviewed against real hand-built precedent wherever one existed. Each one's full description below is reproduced verbatim from its Figma component-set description (What it is / When to use it / One thing to do); read those descriptions in Figma directly if this file and the file ever disagree, since Figma is the source of truth.
+Seven component sets built specifically for the voice-based active-recall feature, reviewed against real hand-built precedent wherever one existed. Each one's full description below is reproduced verbatim from its Figma component-set description (What it is / When to use it / One thing to do); read those descriptions in Figma directly if this file and the file ever disagree, since Figma is the source of truth. The exception is textField, added 2026-09-16: its Figma component-set description is empty, so its entry below is written from structure and real usage instead of a verbatim quote.
 
 **audioScrubber** — states (`state`): Default, Playing. No other properties.
 
@@ -154,3 +154,11 @@ What it is: 4-variant status pill (Recalled/Hinted/Revealed/Skipped), a single t
 When to use it: The per-term result label on the summary screen after a recall session. It's a standalone component, not an extension of chips: chips is a 16-variant primitive (size XXS-M, color Primary/pro, mandatory dual icon slots, fontSize8) built for a different job, tags and tool pickers, and is structurally too different to bend into this shape.
 
 One thing to do: Hinted uses pro/bold + pro/onBold, not a warning token, because the system has no feedback/warning/bold+onBold family, only a lone text/warning scalar. That's a real gap worth filling. Revealed has real instances on the Summary screen (both the mixed and all-recalled variants), matching the Learning-result-Revealed and Learning-result-I don't know screens' own speechBubble Error state.
+
+**textField** — states (`Variant`): Default, Error, Placeholder. Other properties: `showTitle` (boolean, default true), `showCaption` (boolean, default false), `showLeadingIcon` (boolean, default true), `showTrailingIcon` (boolean, default false).
+
+What it is: Figma's own component-set description is empty. Structurally: a 3-variant text-entry field with a title label above, an optional caption below, and an optional leading/trailing icon inside the pill itself.
+
+When to use it: The text-entry field this file previously had no component for — see the now-resolved `typeInput` gap this same doc used to flag. Real usage confirmed on Learning-typeInput: `Variant="Placeholder"`, `showTitle=false`, `showCaption=true`, both icons off, `Placeholder="Type a short answer..."`.
+
+One thing to do: Two binding bugs found building this in code, confirmed via the Desktop Bridge plugin's variable-alias chains, not by matching rendered colors — the field's fill and the Error variant's border/caption color are each bound to a stray duplicate variable sharing a name with a real, correctly-named one (`background/input` and `feedback/error` respectively), not the canonical variable tokens.json actually exports. The leading icon sits inside an undocumented wrapper component named "Icon Slot" (Title Case, sizes XXS–M) and the trailing icon inside one named "Button icon" (Title Case, `Variant=Subtle/Primary/Neutral`) — both distinct from this file's own camelCase `iconSlot`/`buttonIcon`. No text in the component is bound to a text style at all (raw "Inter Variable" at sizes matching no step in the type scale). None of these block using the component — see `src/components/TextField/TextField.tsx`'s own doc comment for how each is worked around in code — but all four are Figma-side cleanup worth doing before this component gets more real usage.

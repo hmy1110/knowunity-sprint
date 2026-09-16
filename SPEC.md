@@ -78,14 +78,14 @@ One route, content driven by the 4 resolved term outcomes rather than distinct i
 
 ## 4. Session (the recall loop) — `/session`
 
-One route. Internal state = `{ termIndex: 0-3, mode: "voice" | "text", subState }`. The 4 terms are scripted by index, not by content: term 1 resolves Recalled, term 2 Hinted, term 3 Revealed, term 4 Skipped, regardless of what's actually said or typed. Navigating between `subState` values never changes the URL.
+One route. Internal state = `{ termIndex: 0-3, mode: "voice" | "text", subState }`. The 4 terms are scripted by index, not by content: term 1 resolves Recalled, term 2 Hinted, term 3 Revealed, term 4 Skipped, regardless of what's actually said or typed. Term 4's script is not a cold skip from `idle` — it attempts once, lands on the hint-shown state, then skips from there (see the `result` sub-state below), so `AudioScrubber` has a real recording to play back on the skip screen. Navigating between `subState` values never changes the URL.
 
 ### Shared across every sub-state
 - `AppBar` `variant="leftIconButtonOnly"` — X close, `ProgressIndicator` `progress="25"|"50"|"75"|"100"` (one step per resolved term), plus a plain text element next to the bar reading "Term X of 4" (design-system.md: this count is separate text, not a ProgressIndicator prop — `showText` stays `false`).
 
 ### `idle` (Learning-idle)
 - **Components**: `MascotSlot` `size="3XL"` `pose="standby"`, `SpeechBubble` `state="Prompt"` (the term's prompt), `MicButton` `state="Idle"` `showLabel`, `Button` `variant="Tertiary"` `cta="I don't know"` (always visible — skip), `Button` `variant="Tertiary"` `cta="Type instead"`.
-- **Actions**: tap `MicButton` → `recording`. Tap "I don't know" → `result` (Skipped). Tap "Type instead" → `typeInput` (same term).
+- **Actions**: tap `MicButton` → `recording`. Tap "I don't know" → `result` (Skipped, no `AudioScrubber` — nothing's been recorded yet; this cold-skip path is only reachable on terms other than the scripted term 4, since term 4 always attempts once first). Tap "Type instead" → `typeInput` (same term).
 
 ### `recording` (Learning-recording)
 - **Components**: `MicButton` `state="Recording"` (embeds its own `StatusIndicator` + "Tap to stop" caption — no separate `StatusIndicator` instance needed here), `SpeechBubble` `state="Prompt"` stays visible.
@@ -101,15 +101,15 @@ One route. Internal state = `{ termIndex: 0-3, mode: "voice" | "text", subState 
 
 ### `result` (branches by this term's scripted outcome)
 - **Recalled** (Learning-result-Recalled): `SpeechBubble` `state="Success"` (`title="Nice!"`, `subtitle="Unaided"`), `AudioScrubber` `state="Default"`, `Button` `variant="Primary"` `cta="Continue"`.
-- **Hinted, hint shown** (Learning-result-Hinted1): `SpeechBubble` `state="Warning"`, `MicButton` `state="Idle"` (real precedent for a re-attempt entry point here), `Button` `variant="Tertiary"` `cta="I don't know"` still available. Re-attempt loops back through `recording` → `readyToSend` → `processing`, then resolves to the Hinted-success result below (scripted, not judged). No second hint screen (Learning-result-Hinted2) — cut per the sprint's already-logged 1-hint-plus-reveal decision.
-- **Hinted, success on re-attempt**: no confirmed Figma screen name exists for this — see Open. Spec's assumption: reuse the Success `speechBubble` content, tag this term `"Hinted"` (not `"Recalled"`) on Summary.
+- **Hinted, hint shown** (Learning-result-Hinted1): `SpeechBubble` `state="Warning"`, `MicButton` `state="Idle"` (real precedent for a re-attempt entry point here), `Button` `variant="Tertiary"` `cta="I don't know"` still available. Re-attempt loops back through `recording` → `readyToSend` → `processing`, then resolves to the Hinted-success result below (scripted, not judged). Tapping "I don't know" here instead of re-attempting is term 4's actual route to `Skipped` (below) — it's what keeps that one real attempt's recording around for `AudioScrubber` to play back there. No second hint screen (Learning-result-Hinted2) — cut per the sprint's already-logged 1-hint-plus-reveal decision.
+- **Hinted, success on re-attempt** (Learning-result-Hinted2-succeed): now a real, confirmed screen (previously an assumed gap — see Open). Keeps the full history on screen: the prompt, the first attempt's `AudioScrubber`, the Hint 1 header collapsed to plain text (same treatment Hinted2 gives it), the second attempt's `AudioScrubber`, then the full mascot plus `SpeechBubble` `state="Success"`. Terminal, single "Continue," no further retry. Whether this term tags `"Hinted"` or `"Recalled"` on Summary still isn't decided by anything on the screen itself — see Open.
 - **Revealed** (Learning-result-Revealed): `SpeechBubble` `state="Error"`, showing the correct term. `Button` `variant="Primary"` `cta="Continue"`.
-- **Skipped** (Learning-result-I don't know): `SpeechBubble` `state="Error"`, same treatment as Revealed. `AudioScrubber` has a real instance on this screen per design-system.md despite there being no recording for a skipped term — see Open.
+- **Skipped** (Learning-result-I don't know): `SpeechBubble` `state="Error"`, same treatment as Revealed. `AudioScrubber` `state="Default"` plays back the one real recording from term 4's single attempt (see above) — this screen is only reached after that one try and a hint, never cold from `idle`, which is why a real instance of `AudioScrubber` makes sense here despite a "skip" outcome.
 - **All result states**: advance only on an explicit tap of "Continue" — no auto-advance. Last term's "Continue" → `/summary` instead of the next term.
 
 ### `typeInput` (Learning-typeInput) — text fallback entry
-- **Component gap, flagged not filled**: there is no component in this library for an editable text-entry field. `SpeechBubble`'s `Input` state only echoes back what was already typed (a result view), it isn't the field itself. Nothing in Section 5 of design-system.md documents one. This needs a decision from Mia before this sub-state can be built for real; until then, treat it as a known gap the same way `docs/design-system.md` asks gaps to be treated, not a raw unstyled `<textarea>` invented to paper over it.
-- **Components (everything except the field itself)**: `SpeechBubble` `state="Prompt"`, `Button` `variant="Primary"` `cta="Submit"`, `Button` `variant="Tertiary"` `cta="Switch to voice"` (confirmed real label).
+- **Components**: `SpeechBubble` `state="Prompt"`, `TextField` (`TextField/TextField.tsx`) — the field itself, previously a flagged gap (no component in this library for an editable text-entry field), now resolved: built and confirmed with real usage on this exact screen — `variant="Placeholder"` `showTitle={false}` `showCaption` `placeholder="Type a short answer..."`, both icons off. `Button` `variant="Primary"` `cta="Submit"`, `Button` `variant="Tertiary"` `cta="Switch to voice"` (confirmed real label).
+- **`TextField` has no `value`/`onChange`** — its `Default` variant's displayed text is a hardcoded literal ("User input..."), not a prop, so it can't reflect real keystrokes on its own. This screen needs its own plain native input/textarea as the actual typing surface, held in local component state, positioned over/alongside `TextField`'s visual field. Whatever's captured there is what feeds `SpeechBubble`'s `Input` state downstream at `typeProcessing`/`typeResult` — `TextField` supplies the chrome, not the capture.
 - **Actions**: tap "Submit" → `typeProcessing`. Tap "Switch to voice" → `idle` (voice mode, same term).
 
 ### `typeProcessing` (Learning-typeProcessing)
@@ -162,8 +162,6 @@ Things this interview left undecided — flagged rather than picked:
 - What "Redo" on a `finish`-state study-plan card does relative to Summary's "Try again" — a fresh full 4-term session, or the same "retry only what wasn't recalled" behavior.
 - Where Summary's "Continue" leads. The brief itself calls this "the least designed part of the whole thing," and this interview didn't resolve it.
 - Where Summary's AppBar "X" leads.
-- There's no documented Figma screen for "hinted, then succeeded on the re-attempt." `Learning-result-Hinted1`/`Hinted2` are the hint-shown (still-wrong) states, not a success-after-hint state. This spec assumes it reuses the Success `speechBubble` content and tags the term `"Hinted"`, but that's this document's assumption, not a confirmed design.
-- `AudioScrubber` is documented as having a real instance on `Learning-result-I don't know` despite a skipped term never producing a recording — unclear what it plays back or displays there.
-- **The text-entry field itself has no backing component anywhere in the library.** This blocks a real build of `typeInput` until Mia decides what fills it.
+- Whether "hinted, then succeeded on the re-attempt" tags the term `"Hinted"` or `"Recalled"` on Summary. `Learning-result-Hinted2-succeed` is now a real, confirmed screen (see §4's `result` sub-state), but that screen alone doesn't decide the Summary tag — still this document's assumption (`"Hinted"`), not a confirmed design.
 - All copy is placeholder: the primer's explanation text, the CTA "Let's start," and the summary's 4 headline tiers haven't been written for real.
 - Whether `MicButton`'s `Pressed` state (tap-down, before recording starts) needs to render as its own visible beat, or whether tapping goes straight from `Idle` to `Recording` with `Pressed` never actually shown.
