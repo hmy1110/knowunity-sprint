@@ -36,6 +36,7 @@ When working on UI, use the storybook tools to read the component library before
 - `docs/design-system.md` — components, scaffold slots, naming, the six recall-loop components. Before touching UI.
 - `docs/voice-ux-reference.md` — voice traps, state triage table. When designing a loop screen.
 - `tokens/tokens.json` — every color, size, type, and spacing value. `npm run tokens` builds it into `build/css/tokens.css`, imported by `globals.css`.
+- `component-gaps.md` — running list of things built inline during a screen build because Storybook had no component for them. Read before building a new screen.
 - `reference/*.PNG` — 30 screenshots of the real flow, explain-out-loud is 20-28. When matching real behavior or copy.
 - `public/images/*.svg` — Knowie expressions. When a screen needs a mascot state.
 - `src/app/` — `page.tsx` root screen, `layout.tsx` shell and fonts, `globals.css` Tailwind entry and theme vars.
