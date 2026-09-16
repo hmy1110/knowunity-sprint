@@ -4,7 +4,7 @@ This prototype is the Next.js app in this repo (`src/app/`). Every screen listed
 
 ## What we're building
 
-A mocked, voice-in/text-out active-recall loop: a student explains 4 biology terms out loud (or types, if they can't speak), Knowie replies in text with a hardcoded verdict per term, and a summary shows how each one was answered. No real speech-to-text, no real judging, no voice output.
+A mocked, voice-in/text-out active-recall loop: a student explains 4 art&design terms out loud (or types, if they can't speak), Knowie replies in text with a hardcoded verdict per term, and a summary shows how each one was answered. No real speech-to-text, no real judging, no voice output.
 
 ## Screen list, build order (easiest first)
 
@@ -31,8 +31,8 @@ Session is last and hardest: it's a single route that cycles through many intern
 
 **What the student can do / where it leads**
 - `notStarted`: tap "Speak" → `/primer`.
-- `inProgress`: tap "Redo" → `/session` (resumes at the next unresolved term — see Open, below, on whether this skips the primer).
-- `finish`: tap "Redo" → `/session` (see Open, below, on whether this restarts fresh or retries only missed terms).
+- `inProgress`: tap "Speak" → `/session` (resumes at the next unresolved term, skipping the Primer/permission screen — resolved: permission was already granted, so there's nothing left for Primer to gate).
+- `finish`: tap "Redo" → `/session`, scoped to only this session's previously unresolved (Hinted/Revealed/Skipped) terms — resolved: same retry-only-what-wasn't-recalled behavior as Summary's "Review what you missed" below, not a fresh 4-term run.
 
 ---
 
@@ -44,17 +44,18 @@ Session is last and hardest: it's a single route that cycles through many intern
 
 **Components**
 - `AppBar` `variant="leftIconButtonOnly"` — `leftIcon` = `IconSlot` wrapping an X/close icon, `leftLabel="Close"`. `children` = `ProgressIndicator` (`progress="0"`, untested value per design-system.md — flag before relying on it).
-- `MascotSlot` `size="3XL"` `pose="standby"` (`MascotSlot/MascotSlot.tsx`) — size/pose choice is inferred from the loop's own convention, not separately confirmed for Primer.
-- `TextBlock` `variant="L"` (`TextBlock/TextBlock.tsx`) — headline + caption explaining active recall. TextBlock has zero real Figma-screen usage anywhere; this is its first real placement, so screenshot it before trusting the sizing.
-- `Button` `variant="Primary"` `size="L"` `cta="Let's start"` (placeholder copy, not written yet — see Open) — triggers `getUserMedia`.
-- On `micDenied`: `InlineAlert` `variant="Error"` `showDescriptor` (`InlineAlert/InlineAlert.tsx`) — explains the mic was denied and how to re-enable it. `Button` `variant="Secondary"` `cta="Type instead"` (confirmed real label) as the way forward.
+- `MascotSlot` `size="2XL"` `pose="standby"` (`MascotSlot/MascotSlot.tsx`) — size/pose choice is inferred from the loop's own convention, not separately confirmed for Primer.
+- `TextBlock` `variant="L"` `showCaption={false}` (`TextBlock/TextBlock.tsx`) — real headline confirmed on the live Primer-intro instance: "Explain it to Knowie". Resolved: title only, no caption — the real instance's three extra caption-style lines ("Explain 4 topics from section 1", "Stuck? Knowie guides you", "Explain out loud helps you score up to 20% higher on exams") are not used.
+- `Button` `variant="Primary"` `size="L"` `cta="Start learning"` (real copy, confirmed on the live Primer-intro instance — replaces this doc's earlier placeholder "Let's start") — triggers `getUserMedia`. The same real instance also shows a second, `variant="Secondary"` button reading "I can't talk right now" sitting alongside it on `intro` itself — not previously in this doc, which only gave `micDenied` a way out. Real copy, real placement, listed here rather than folded into `micDenied` below since it's a proactive escape on `intro`, not a reaction to an actual permission denial.
+- On `micDenied`: `InlineAlert` `variant="Warning"` (`InlineAlert/InlineAlert.tsx`) — real title confirmed: "Microphone access is off". Correcting this doc's earlier assumed `variant="Error"` `showDescriptor`: the real instance is `Warning`, and `showDescriptor` is already `false` on it — its `Descriptor` layer does hold a leftover-looking value ("Hint 1 of 2"), but it's hidden (`visible: false`), matching `showDescriptor={false}`, so nothing is actually shown or needs fixing; my earlier flag of this as a visible content bug was wrong, caught by checking node visibility rather than just walking every text layer regardless of whether it renders. Two real buttons follow: `Button` `variant="Primary"` `cta="Turn on my microphone"` and `Button` `variant="Secondary"` `cta="Continue with text"` — both real, correcting this doc's earlier assumed single `cta="Type instead"` button, which matches nothing on the real instance.
 
 **What the student can do / where it leads**
 - Tap AppBar's X → `/` (study plan entry).
-- Tap "Let's start" → real `getUserMedia` call:
+- Tap "Start learning" → real `getUserMedia` call:
   - Granted → `/session` (term 1, voice mode).
   - Denied → same route, state flips to `micDenied`.
-- From `micDenied`, tap "Type instead" → `/session` (term 1, text mode).
+- Tap "I can't talk right now" (on `intro`, newly found — see Components above) → `/session` (term 1, text mode), bypassing the mic-permission prompt entirely.
+- From `micDenied`, tap "Continue with text" → `/session` (term 1, text mode). Tap "Turn on my microphone" → resolved: re-triggers `getUserMedia`.
 
 ---
 
@@ -64,15 +65,17 @@ One route, content driven by the 4 resolved term outcomes rather than distinct i
 
 **Components**
 - `AppBar` `variant="leftIconButtonOnly"` — X close + `ProgressIndicator` `progress="100"`.
-- `TextBlock` — reactive headline, one of 4 tiers keyed to the session's dominant outcome (mostly-recalled / mostly-hinted / mostly-revealed / mostly-skipped). Only the "mixed" case (this sprint's fixed script produces exactly one of each outcome) is ever exercised by a real run — the other 3 tiers ship unverified.
-- `Tag` × 4 (`Tag/Tag.tsx`) — `status="Recalled"`, `"Hinted"`, `"Revealed"`, `"Skipped"`, one per term.
-- The XP/lightning badge — the hand-built, non-componentized pattern design-system.md documents (not a real Figma component). Shown here as the session's final static tally; it already animated during Session, so it doesn't re-animate on Summary.
-- `ButtonGroup` `variant="Vertical"` (`ButtonGroup/ButtonGroup.tsx`) — `primary={{ cta: "Continue" }}`, `secondary={{ cta: "Try again" }}`. This exact pairing has no real Figma-screen precedent (design-system.md: "untested"), so screenshot it before treating it as final.
+- `TextBlock` — reactive headline, one of 4 tiers keyed to the session's dominant outcome (mostly-recalled / mostly-hinted / mostly-revealed / mostly-skipped). Only the "mixed" case (this sprint's fixed script produces exactly one of each outcome) is ever exercised by a real run — the other 3 tiers ship unverified. Real copy confirmed for the mixed case: "Good session, Mia." — resolved: hardcoded with the student's name, matching Figma exactly.
+- `ScoreBreakdown` (`ScoreBreakdown/ScoreBreakdown.tsx`) — not a Figma component (Figma's own layer names read "segbar (custom, no matching component)" and "legend (custom, no matching component)"); built 2026-09-16. The "X% recalled this session" headline, segmented bar, and per-status legend: `percent={50}` `counts={{ Recalled: 1, Hinted: 1, Revealed: 1, Skipped: 1 }}` (real values). `percent` is a plain prop here, not derived — see the component's own doc comment on the untested (Recalled+Hinted)/total formula the one real instance implies.
+- `Table` (`Table/Table.tsx`), one `TableCell` row per term (`TableCell/TableCell.tsx`) — `label` = the term's own name, `status="Recalled"|"Hinted"|"Revealed"|"Skipped"` per that term's outcome. Built 2026-09-16, replacing a bare `Tag` × 4 list: pairs each status with its term's label, which the per-term breakdown needs (design brief: "a per-term breakdown of unaided, hinted, revealed, and skipped"). `Table` always displays rows Recalled → Hinted → Revealed → Skipped regardless of input order, which matches this sprint's fixed script (below) exactly, so all 4 statuses are always present and Skipped is always last — the one open gap this pair still carries (a stray divider under the last row when no Skipped term exists, design-system.md §5) never actually triggers this sprint, since the script always produces one of each outcome. Row labels/statuses confirmed against the real Summary instance: Inspiration/Recalled, Divergent thinking/Hinted, Visual hierarchy/Revealed, Visual research/Skipped — exactly this component's own default `rows`, no change needed.
+- `TermResultList` (`TermResultList/TermResultList.tsx`) — not a Figma component; built 2026-09-16. The title + one-sentence explanation beneath the table, one per term, same order as `Table`'s own rows: real copy confirmed for all four (e.g. "Recalled on your own" / "**Inspiration**, personal experience and the world around you, in your own words, first try."). The title is derived from `status`, not passed as free text — see the component's own doc comment.
+- The XP/lightning badge — the hand-built, non-componentized pattern design-system.md documents (not a real Figma component). Shown here as the session's final static tally (real value confirmed: 4 XP); it already animated during Session, so it doesn't re-animate on Summary. The real instance also shows a fuller stat block alongside it (score, a streak/pace label, elapsed time) — Mia's call to pull it (2026-09-16), rebuilt and then removed again after review ("doesn't look right"); back to flagged-not-built for now, see Open below.
+- `ButtonGroup` `variant="Vertical"` (`ButtonGroup/ButtonGroup.tsx`) — real labels confirmed on the live Summary instance: `primary={{ cta: "Review what you missed" }}`, `secondary={{ cta: "Continue" }}` — corrected here against this doc's earlier assumed `primary="Continue"`/`secondary="Try again"`, which had both the labels and which slot was primary wrong. "Review what you missed" reads as a clearer real name for the retry-only-unresolved-terms behavior anyway. This exact Vertical-pair shape still has no other real Figma-screen precedent (design-system.md: "untested"), so screenshot it before treating it as final.
 
 **What the student can do / where it leads**
-- Tap "Try again" → `/session`, scoped to only this session's Hinted/Revealed/Skipped terms (not a fresh 4-term run).
-- Tap "Continue" → not decided (see Open).
-- Tap AppBar's X → not decided (see Open).
+- Tap "Review what you missed" (primary) → `/session`, scoped to only this session's Hinted/Revealed/Skipped terms (not a fresh 4-term run).
+- Tap "Continue" (secondary) → resolved: `/` (study plan entry).
+- Tap AppBar's X → resolved: `/` (study plan entry).
 
 ---
 
@@ -84,8 +87,8 @@ One route. Internal state = `{ termIndex: 0-3, mode: "voice" | "text", subState 
 - `AppBar` `variant="leftIconButtonOnly"` — X close, `ProgressIndicator` `progress="25"|"50"|"75"|"100"` (one step per resolved term), plus a plain text element next to the bar reading "Term X of 4" (design-system.md: this count is separate text, not a ProgressIndicator prop — `showText` stays `false`).
 
 ### `idle` (Learning-idle)
-- **Components**: `MascotSlot` `size="3XL"` `pose="standby"`, `SpeechBubble` `state="Prompt"` (the term's prompt), `MicButton` `state="Idle"` `showLabel`, `Button` `variant="Tertiary"` `cta="I don't know"` (always visible — skip), `Button` `variant="Tertiary"` `cta="Type instead"`.
-- **Actions**: tap `MicButton` → `recording`. Tap "I don't know" → `result` (Skipped, no `AudioScrubber` — nothing's been recorded yet; this cold-skip path is only reachable on terms other than the scripted term 4, since term 4 always attempts once first). Tap "Type instead" → `typeInput` (same term).
+- **Components**: `MascotSlot` `size="2XL"` `pose="standby"`, `SpeechBubble` `state="Prompt"` (the term's prompt), `MicButton` `state="Idle"` `showLabel`, `Button` `variant="Tertiary"` `cta="I don't know"` (always visible — skip), `Button` `variant="Tertiary"` `cta="Type instead"`.
+- **Actions**: tap `MicButton` → briefly renders `state="Pressed"` as its own visible beat (resolved: render the press feedback explicitly rather than skip straight from Idle to Recording) → `recording`. Tap "I don't know" → `result` (Skipped, no `AudioScrubber` — nothing's been recorded yet; this cold-skip path is only reachable on terms other than the scripted term 4, since term 4 always attempts once first). Tap "Type instead" → `typeInput` (same term).
 
 ### `recording` (Learning-recording)
 - **Components**: `MicButton` `state="Recording"` (embeds its own `StatusIndicator` + "Tap to stop" caption — no separate `StatusIndicator` instance needed here), `SpeechBubble` `state="Prompt"` stays visible.
@@ -102,7 +105,7 @@ One route. Internal state = `{ termIndex: 0-3, mode: "voice" | "text", subState 
 ### `result` (branches by this term's scripted outcome)
 - **Recalled** (Learning-result-Recalled): `SpeechBubble` `state="Success"` (`title="Nice!"`, `subtitle="Unaided"`), `AudioScrubber` `state="Default"`, `Button` `variant="Primary"` `cta="Continue"`.
 - **Hinted, hint shown** (Learning-result-Hinted1): `SpeechBubble` `state="Warning"`, `MicButton` `state="Idle"` (real precedent for a re-attempt entry point here), `Button` `variant="Tertiary"` `cta="I don't know"` still available. Re-attempt loops back through `recording` → `readyToSend` → `processing`, then resolves to the Hinted-success result below (scripted, not judged). Tapping "I don't know" here instead of re-attempting is term 4's actual route to `Skipped` (below) — it's what keeps that one real attempt's recording around for `AudioScrubber` to play back there. No second hint screen (Learning-result-Hinted2) — cut per the sprint's already-logged 1-hint-plus-reveal decision.
-- **Hinted, success on re-attempt** (Learning-result-Hinted2-succeed): now a real, confirmed screen (previously an assumed gap — see Open). Keeps the full history on screen: the prompt, the first attempt's `AudioScrubber`, the Hint 1 header collapsed to plain text (same treatment Hinted2 gives it), the second attempt's `AudioScrubber`, then the full mascot plus `SpeechBubble` `state="Success"`. Terminal, single "Continue," no further retry. Whether this term tags `"Hinted"` or `"Recalled"` on Summary still isn't decided by anything on the screen itself — see Open.
+- **Hinted, success on re-attempt** (Learning-result-Hinted2-succeed): now a real, confirmed screen (previously an assumed gap). Keeps the full history on screen: the prompt, the first attempt's `AudioScrubber`, the Hint 1 header collapsed to plain text (same treatment Hinted2 gives it), the second attempt's `AudioScrubber`, then the full mascot plus `SpeechBubble` `state="Success"`. Terminal, single "Continue," no further retry. This term tags `"Hinted"` on Summary — resolved.
 - **Revealed** (Learning-result-Revealed): `SpeechBubble` `state="Error"`, showing the correct term. `Button` `variant="Primary"` `cta="Continue"`.
 - **Skipped** (Learning-result-I don't know): `SpeechBubble` `state="Error"`, same treatment as Revealed. `AudioScrubber` `state="Default"` plays back the one real recording from term 4's single attempt (see above) — this screen is only reached after that one try and a hint, never cold from `idle`, which is why a real instance of `AudioScrubber` makes sense here despite a "skip" outcome.
 - **All result states**: advance only on an explicit tap of "Continue" — no auto-advance. Last term's "Continue" → `/summary` instead of the next term.
@@ -140,28 +143,23 @@ Restated from `CLAUDE.md`/`docs/sprint-context.md` because they bound this spec,
 - Outcome per term is scripted by position in the session (1st → Recalled, 2nd → Hinted, 3rd → Revealed, 4th → Skipped), never by what was actually said or typed. There is no minimum recording duration or content check — any length recording (including near-silent) advances.
 - The mic really requests OS permission via `getUserMedia` and really records; `AudioScrubber` plays back that real audio. There is no transcript shown anywhere in the loop — showing what was heard is explicitly cut for this build, since there's no real STT to transcribe.
 - Processing waits a real ~2-3s before resolving, to sell the "thinking" state rather than instant-advancing.
-- The 4-term subject content is biology cell structure (e.g. mitochondria, osmosis, photosynthesis, ribosome) — real short terms and definitions, not placeholder "Term 1/2/3/4" text.
+- The 4-term subject content is Art& design  (e.g. Inspiration, Divergent thinking, Visual hierarchy, Visual research) — real short terms and definitions, not placeholder "Term 1/2/3/4" text.
 
 ## Validation: how to check this is done and correct, end to end
 
 1. `npm run dev`, and walk the entire flow by clicking, starting at `/` — never jump screens by typing a URL, since that's not how a student reaches them.
 2. Confirm every token is bound through the semantic layer (`npm run tokens` after any `tokens/tokens.json` edit) and that no color/spacing/type value anywhere is hand-typed or a `var(--x, fallback)`.
 3. Cross-check every prop used against Storybook's own docs (`docs-show` per component) — nothing on these pages should use a prop that doesn't show up in a real story.
-4. Before treating any of these as done, screenshot them in isolation in Storybook, since they're explicitly flagged untested anywhere in the real file: `MicButton` Pressed, `AudioScrubber` Playing, `ButtonIcon` Primary/Pressed/Recording (if a mic-shaped `buttonIcon` size ends up needed), `mascotSlot` `pose="thinking"` as a bare instance, `ProgressIndicator` `progress="0"`, `ButtonGroup` Vertical.
-5. Exercise the real `getUserMedia` prompt both ways — actually click Allow and actually click Block (or revoke the permission in browser settings and reload) — and confirm the Deny path lands on `micDenied` with a working "Type instead" way out, not a dead end.
-6. Run a full session start-to-finish and confirm: the tag breakdown on Summary is exactly Recalled/Hinted/Revealed/Skipped in that order; the XP counter animated once per result and its final value matches Summary's static tally; reloading mid-session resumes at the same term with the same tally; the study-plan card at `/` shows `inProgress` mid-session and `finish` after Summary is reached.
+4. Before treating any of these as done, screenshot them in isolation in Storybook, since they're explicitly flagged untested anywhere in the real file: `MicButton` Pressed (now a real transitional beat in the tap-to-record flow, not just an untested variant — see `idle` above), `AudioScrubber` Playing, `ButtonIcon` Primary/Pressed/Recording (if a mic-shaped `buttonIcon` size ends up needed), `mascotSlot` `pose="thinking"` as a bare instance, `ProgressIndicator` `progress="0"`, `ButtonGroup` Vertical.
+5. Exercise the real `getUserMedia` prompt both ways — actually click Allow and actually click Block (or revoke the permission in browser settings and reload) — and confirm the Deny path lands on `micDenied` with a working "Continue with text" way out, not a dead end.
+6. Run a full session start-to-finish and confirm: the `Table` breakdown on Summary is exactly Recalled/Hinted/Revealed/Skipped in that order (Table's own sort, not just script order) with each row's label matching its real term, `TermResultList`'s four explanations line up with the same rows in the same order, and `ScoreBreakdown`'s numbers match Summary's static tally; the XP counter animated once per result during Session and its final value matches Summary's static badge; reloading mid-session resumes at the same term with the same tally; the study-plan card at `/` shows `inProgress` mid-session and `finish` after Summary is reached.
 7. Confirm per-term voice/text switching works both directions without losing the term's progress-bar position.
 8. Run `npm run lint`, and Storybook's `test-run` for every story touched.
 9. Re-check every label against sentence case (`docs/design-system.md` §4.3) — no title case, no invented capitals.
 
 ## Open
 
-Things this interview left undecided — flagged rather than picked:
+Both prior rounds of open questions (resuming into Primer, Redo/Try-again scope, Summary's Continue/X destinations, the Hinted2-succeed tag, placeholder copy, MicButton Pressed, the mic-retry behavior, Summary's hardcoded name, and building `ScoreBreakdown`/`TermResultList`) are now resolved — each decision is folded inline above, at its own screen. `TextBlock` on `Primer-intro` is also resolved: title only, caption hidden. What's left:
 
-- Whether resuming from `StudyPlan-inProgress` skips the Primer/permission screen (since permission may already be granted) or replays it.
-- What "Redo" on a `finish`-state study-plan card does relative to Summary's "Try again" — a fresh full 4-term session, or the same "retry only what wasn't recalled" behavior.
-- Where Summary's "Continue" leads. The brief itself calls this "the least designed part of the whole thing," and this interview didn't resolve it.
-- Where Summary's AppBar "X" leads.
-- Whether "hinted, then succeeded on the re-attempt" tags the term `"Hinted"` or `"Recalled"` on Summary. `Learning-result-Hinted2-succeed` is now a real, confirmed screen (see §4's `result` sub-state), but that screen alone doesn't decide the Summary tag — still this document's assumption (`"Hinted"`), not a confirmed design.
-- All copy is placeholder: the primer's explanation text, the CTA "Let's start," and the summary's 4 headline tiers haven't been written for real.
-- Whether `MicButton`'s `Pressed` state (tap-down, before recording starts) needs to render as its own visible beat, or whether tapping goes straight from `Idle` to `Recording` with `Pressed` never actually shown.
+- Whether the mocked prototype should compute `ScoreBreakdown`'s `percent` from the actual session outcome, or keep it as the one real example's hardcoded number (50%) — this sprint's script always produces the same 1-of-each-status outcome, so the real number may just be usable as-is; not decided here.
+- `SessionStats` (the XP/Score/time 3-box row) was built 2026-09-16, then removed the same day after Mia's review ("doesn't look right") — back to design-system.md §1's original flagged-not-built status. What specifically was wrong isn't captured here; worth a fresh look (spacing, the traced hand-drawn icons, the substituted fonts) before attempting it again, or reconsidering whether this stat row belongs on Summary at all.

@@ -2,7 +2,7 @@
 
 This file is behavior, not values. For every color, size, type, or spacing value, look in `tokens/tokens.json`. If a value you need isn't there, that's a gap to flag, not a number to guess.
 
-Source: live audit of the Figma file "Yummy__Knowie Design System" (fileKey `Km4r5Waxhm1bysmCcFNYiB`), the 17 component sets on the 🎨  Mascot & components page (10 general-purpose components in Section 1; 7 built specifically for the voice active-recall loop, covered in Section 5: audioScrubber, inlineAlert, micButton, speechBubble, statusIndicator, tag, textField), real usage across ✨  Example Screens and the built 📱  Screen & flow recall loop, and the Design Brief and Platform Constraints docs.
+Source: live audit of the Figma file "Yummy__Knowie Design System" (fileKey `Km4r5Waxhm1bysmCcFNYiB`), the 19 component sets on the 🎨  Mascot & components page (10 general-purpose components in Section 1; 9 built specifically for the voice active-recall loop, covered in Section 5: audioScrubber, inlineAlert, micButton, speechBubble, statusIndicator, table, tableCell, tag, textField), real usage across ✨  Example Screens and the built 📱  Screen & flow recall loop, and the Design Brief and Platform Constraints docs.
 
 ---
 
@@ -18,7 +18,7 @@ Use this to decide what to reach for. Each entry states what's confirmed by real
 
 **buttonGroup** — A fixed two-slot pairing, not a generic repeater. Vertical pairs button(Primary) + button(Secondary); Horizontal pairs buttonIcon(Secondary) + button(Primary). The one confirmed real example is Horizontal, in a quiz answer-feedback row. Vertical reads as the right shape for a stacked "Try again"/"Continue" pair on the recall summary screen but is untested. Don't stretch this to three or more actions, like a multi-step hint ladder; that's a new component question, not a reason to force this one.
 
-**chips** — Real screens use chips constantly: topic tags, tool pickers (Coach Me/Solve It/Lock In), status tags (PRO). Its color property only offers Primary/pro. The recall summary screen's per-term status labels (Recalled/Hinted/Revealed/Skipped) use a separate tag component instead (see Section 5), because chips' fixed dual-icon-slot, size-XXS-to-M shape doesn't fit a single-purpose status label. The Info/Success/Error gap in chips' color property stays open for any future screen that needs a genuinely semantic-colored chip rather than a status tag.
+**chips** — Real screens use chips constantly: topic tags, tool pickers (Coach Me/Solve It/Lock In), status tags (PRO). Its color property only offers Primary/pro. The recall summary screen's per-term status labels (Recalled/Hinted/Revealed/Skipped) use a separate tag component instead (see Section 5), laid out as a list via table/tableCell, because chips' fixed dual-icon-slot, size-XXS-to-M shape doesn't fit a single-purpose status label. The Info/Success/Error gap in chips' color property stays open for any future screen that needs a genuinely semantic-colored chip rather than a status tag.
 
 **badge (XP/lightning counter)** — not one of the file's real components. It's a hand-built frame that's internally misnamed "chips" in the layer tree, unrelated to the real chips component covered above (per Mia's call on 2026-09-11 not to force them together). It bundles a raw two-vector lightning icon, an iconSlot instance, and a numeral text layer, and it's rebuilt independently on every screen that has it rather than sharing one source (9 screens as of 2026-09-11: Primer-micDenied and every Learning-* screen). Its corner radius and spacing are already bound to real tokens (radius/Full, a space step), so it isn't a token violation, but it is a repeated hand-built pattern with no single source. Changing it means editing every screen by hand. This is section 4, item 7's case, something genuinely missing a real component, and worth a name and a component definition if it's going to keep appearing.
 
@@ -32,7 +32,7 @@ Use this to decide what to reach for. Each entry states what's confirmed by real
 
 **textBlock** — The simplest component in the file, one Header plus one Caption pair across 4 sizes. No real usage exists anywhere, so this is inferred purely from structure and the brief. It's a plausible fit for short static copy like the primer's headline or the summary's title, but check whether the beta's actual headline treatment (e.g. "Amazing job!") matches any of the 4 sizes before using it on your two highest-visibility screens.
 
-If none of the above fits what you're building, that's section 4, item 7: say what's missing and what you'd call it, and let Mia decide whether it gets built. Also check Section 5 below, the six components built for the voice active-recall sprint.
+If none of the above fits what you're building, that's section 4, item 7: say what's missing and what you'd call it, and let Mia decide whether it gets built. Also check Section 5 below, the nine components built for the voice active-recall sprint.
 
 ---
 
@@ -65,7 +65,7 @@ Second open item, found 2026-09-11: Primer-intro and Summary are not built insid
 
 **Typography tokens**: `font/category/token`, e.g. `font/size/md`, `font/weight/semibold`, `font/tracking/loose`, `font/family/default`. Text styles compose these into named styles like "Headline XS Bold", represented in tokens.json under camelCase keys like `headline.xsBold`.
 
-**Component naming**: camelCase, e.g. `appBar`, `buttonIcon`, `buttonGroup`, `iconSlot`, `mascotSlot`, `progressIndicator`, and, from the voice active-recall sprint, `audioScrubber`, `inlineAlert`, `micButton`, `speechBubble`, `statusIndicator`, `tag`, `textField`. Match this pattern for anything new.
+**Component naming**: camelCase, e.g. `appBar`, `buttonIcon`, `buttonGroup`, `iconSlot`, `mascotSlot`, `progressIndicator`, and, from the voice active-recall sprint, `audioScrubber`, `inlineAlert`, `micButton`, `speechBubble`, `statusIndicator`, `table`, `tableCell`, `tag`, `textField`. Match this pattern for anything new.
 
 **Internal layer naming**: descriptive Title Case for structural layers inside a component, e.g. "Label", "Icon Container", "Left Icon Container", "Content". Slots inside the scaffold are prefixed `Slot - `, e.g. "Slot - Top navigation". The voice active-recall components added more real examples of this same pattern: "Bubble", "Tail", "Header", "Title Row", "Title", "Message", "Waveform", "Caption", "Status Row" (now removed from micButton, see Section 5), "Dot". Reuse a layer name across components when it means the same thing structurally, e.g. "Icon Container" is used identically in button and inlineAlert. Note the one unresolved mismatch: speechBubble's optional secondary text is named "Subtitle" while inlineAlert's equivalent is "Descriptor," left different because reconciling them means deciding whether speechBubble should embed inlineAlert (see Section 5's speechBubble entry).
 
@@ -105,7 +105,7 @@ Follow whichever pattern the thing you're naming already belongs to. Don't mix, 
 
 ## 5. Recall loop components
 
-Seven component sets built specifically for the voice-based active-recall feature, reviewed against real hand-built precedent wherever one existed. Each one's full description below is reproduced verbatim from its Figma component-set description (What it is / When to use it / One thing to do); read those descriptions in Figma directly if this file and the file ever disagree, since Figma is the source of truth. The exception is textField, added 2026-09-16: its Figma component-set description is empty, so its entry below is written from structure and real usage instead of a verbatim quote.
+Nine component sets built specifically for the voice-based active-recall feature, reviewed against real hand-built precedent wherever one existed. Each one's full description below is reproduced verbatim from its Figma component-set description (What it is / When to use it / One thing to do); read those descriptions in Figma directly if this file and the file ever disagree, since Figma is the source of truth. The exceptions are textField, table, and tableCell, all added 2026-09-16: each one's Figma component-set description is empty, so their entries below are written from structure and real usage instead of a verbatim quote.
 
 **audioScrubber** — states (`state`): Default, Playing. No other properties.
 
@@ -147,11 +147,27 @@ When to use it: The single source for this pattern across the file. It's live in
 
 One thing to do: Only Recording and Ready have a real-screen precedent. The mic capture pipeline logically has a transitional step between "done recording" and "ready to send" (something is being transcribed or processed), but no real instance shows this pattern used for that step, so a third variant wasn't added speculatively. Confirm whether that in-between state should live here as a third variant or stay as the separate pagination-dot animation already documented in app-inventory.md.
 
+**table** — no variant states; a single component, not a set. Other properties: `rows` (code-only, not a Figma property — see below).
+
+What it is: Figma's own component description is empty. Structurally: a vertical stack of `tableCell` rows inside a rounded, `background/surface`-filled container, `clipsContent` on so the top/bottom rows' square corners don't poke past the rounded frame. The one real instance in this file has four rows.
+
+When to use it: The per-term result list on the recall summary screen — `tag`'s own documented job below, laid out as a list instead of a single pill. Built live 2026-09-16: Mia selected a hand-built frame and converted it to a component; no other real-screen instance exists yet.
+
+One thing to do: Figma only models the one fixed 4-row instance, not a repeater with a real row-count property, so there's no Figma-modeled bound on row count. In code (`src/components/Table/Table.tsx`), rows always display Recalled → Hinted → Revealed → Skipped (good to bad), Skipped always last, regardless of input order — Mia's explicit call, not a Figma property (see `docs/sprint-context.md`). This also covers most of tableCell's own divider gap below, since Skipped sorting last means its divider-less variant naturally lands on the true last row whenever a Skipped row exists; a row list with no Skipped entry at all will still show a stray trailing divider under the last (Revealed) row. The outer frame's 16px corner radius is an unbound literal in Figma, numerically matching `radius/400` but never bound — same "don't bind by matching value" discipline as every component since Button.
+
+**tableCell** — states (`status`): Recalled, Hinted, Revealed, Skipped. No other properties.
+
+What it is: Figma's own component-set description is empty. Structurally: a label next to a `tag` instance, laid out horizontally with space-between alignment and 16px/12px padding. Figma auto-named this "Component 1" with a variant property "Property 1" when Mia extracted it from table's own repeated row; both were renamed here (`tableCell` / `status`) to match this file's conventions.
+
+When to use it: The individual row inside `table` (above) — not meant to be placed standalone outside a list, though nothing in Figma enforces that. Wraps this codebase's own `Tag` component for the status pill rather than reimplementing it; `label` is a free-text override with no backing Figma property, the same class of gap as textField's own `titleText`.
+
+One thing to do: The bottom divider between rows has no real Figma property — it's baked per `status` instead of row position. Confirmed via a real stroke-weight audit on all four variants: Recalled, Hinted, and Revealed carry a 1px bottom divider; Skipped alone has none. On its own (outside table's sort order above), a bare tableCell placed mid-list, or a status swap, can show a divider in the wrong place. Worth a real position-based divider property in Figma (e.g. an `isLast` boolean) instead of one tied to status — flagged for Mia, not resolved here. The divider's own color (white at ~10% opacity) is an unbound literal, though it numerically matches `border/default`. The label binds a real named text style, "Greed/Body S Bold," though the live Figma style (14px/20px/1px) and tokens.json's exported values for that same style (15px/20px/0.01em) disagree — a tokens.json source-data issue, not fixed here.
+
 **tag** — states (`status`): Recalled, Hinted, Revealed, Skipped. No other properties.
 
 What it is: 4-variant status pill (Recalled/Hinted/Revealed/Skipped), a single text label with no icon.
 
-When to use it: The per-term result label on the summary screen after a recall session. It's a standalone component, not an extension of chips: chips is a 16-variant primitive (size XXS-M, color Primary/pro, mandatory dual icon slots, fontSize8) built for a different job, tags and tool pickers, and is structurally too different to bend into this shape.
+When to use it: The per-term result label on the summary screen after a recall session. It's a standalone component, not an extension of chips: chips is a 16-variant primitive (size XXS-M, color Primary/pro, mandatory dual icon slots, fontSize8) built for a different job, tags and tool pickers, and is structurally too different to bend into this shape. See table/tableCell above, added 2026-09-16, for the row-list composition of this pill (label + pill per term) that the summary screen actually needs.
 
 One thing to do: Hinted uses pro/bold + pro/onBold, not a warning token, because the system has no feedback/warning/bold+onBold family, only a lone text/warning scalar. That's a real gap worth filling. Revealed has real instances on the Summary screen (both the mixed and all-recalled variants), matching the Learning-result-Revealed and Learning-result-I don't know screens' own speechBubble Error state.
 
