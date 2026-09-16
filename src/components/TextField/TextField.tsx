@@ -46,12 +46,20 @@ import { ButtonIcon } from '../ButtonIcon/ButtonIcon'
  *   stray variable literally named `feedback/error`** (no role suffix,
  *   not exported to tokens.json at all, and not matching the
  *   `group/family/role` naming convention design-system.md §3
- *   documents) instead of a real token. `border/error` ("Invalid input
- *   edge. Used for text fields... that failed validation") and
- *   `text/error` ("Validation message text. Used for the line under a
- *   failed field.") exist and are described for exactly this — used
- *   here instead. Same value either way (`#ff6b6b`), different (wrong)
- *   binding in Figma.
+ *   documents) instead of a real token — both resolve to `#ff6b6b`.
+ *   The border's replacement is a straightforward value match:
+ *   `border/error` ("Invalid input edge...") is also `#ff6b6b`, used
+ *   here as-is. The caption is not — `text/error` ("Validation message
+ *   text...") reads as the obvious semantic match by name, but it
+ *   actually resolves to `#fca5a5`, a visibly lighter tint that doesn't
+ *   match Figma's real `#ff6b6b` (confirmed via the plugin, not by
+ *   eyeballing rendered colors — an earlier version of this file
+ *   assumed the two tokens matched and used `text/error`, which is
+ *   what made the caption render wrong in Storybook). `feedback/error/
+ *   bold` is the token that actually equals `#ff6b6b`, and it's the
+ *   same family speechBubble and inlineAlert already bind their own
+ *   error text to (design-system.md §3's "icon and the text next to it
+ *   share one token" rule) — used here instead.
  * - **No text in this component is bound to a Figma text style at
  *   all** — Title and the field's own text run "Inter Variable"
  *   SemiBold 14px, and the caption runs "Inter Variable" Regular 11px.
@@ -181,7 +189,7 @@ export function TextField({
   const fieldTextColorVar =
     variant === 'Placeholder' ? '--semantic-color-text-secondary' : '--semantic-color-text-primary'
   const captionColorVar =
-    variant === 'Error' ? '--semantic-color-text-error' : '--semantic-color-text-secondary'
+    variant === 'Error' ? '--semantic-color-feedback-error-bold' : '--semantic-color-text-secondary'
 
   return (
     <div
