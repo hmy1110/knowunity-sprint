@@ -42,6 +42,9 @@ const meta = {
     showLabel: {
       control: 'boolean',
     },
+    label: {
+      control: 'text',
+    },
   },
 } satisfies Meta<typeof MicButton>
 
@@ -78,4 +81,13 @@ export const IdleLabelHidden: Story = {
 export const ProcessingLabelHidden: Story = {
   tags: ['ai-generated'],
   args: { state: 'Processing', showLabel: false },
+}
+
+// Real instance: Learning-result-Hinted1's own Idle mic button reads
+// "Try again," not the default "Tap to speak" — a re-attempt entry
+// point, not a first attempt. `label` overrides the state's default
+// caption for exactly this case.
+export const IdleTryAgain: Story = {
+  tags: ['ai-generated'],
+  args: { state: 'Idle', label: 'Try again' },
 }

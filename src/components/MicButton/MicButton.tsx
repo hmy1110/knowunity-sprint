@@ -112,6 +112,13 @@ export interface MicButtonProps
    * comment.
    */
   showLabel?: boolean
+  /**
+   * Overrides the current state's default caption (and its aria-label).
+   * Added for Learning-result-Hinted1's real Idle instance, whose own
+   * caption reads "Try again" rather than "Tap to speak" — the same
+   * icon+state, a re-attempt entry point rather than a first attempt.
+   */
+  label?: string
 }
 
 // state=Idle,Pressed,Processing -> circle fill and icon color. Recording
@@ -184,16 +191,17 @@ const STATE_CAPTION: Record<MicButtonState, string> = {
   Recording: 'Tap to stop',
 }
 
-export function MicButton({ state = 'Idle', showLabel = true, className, style, ...rest }: MicButtonProps) {
+export function MicButton({ state = 'Idle', showLabel = true, label, className, style, ...rest }: MicButtonProps) {
   const isRecording = state === 'Recording'
   const isProcessing = state === 'Processing'
+  const caption = label ?? STATE_CAPTION[state]
 
   return (
     <button
       type="button"
       disabled={isProcessing}
       aria-busy={isProcessing}
-      aria-label={STATE_CAPTION[state]}
+      aria-label={caption}
       className={`inline-flex flex-col shrink-0 items-center ${className ?? ''}`}
       style={{
         gap: isRecording ? 16 : 8, // Not bound to a token in Figma — see doc comment above.
@@ -236,7 +244,7 @@ export function MicButton({ state = 'Idle', showLabel = true, className, style, 
                 letterSpacing: 'var(--type-scale-headline-xxs-bold-letter-spacing)',
               }}
             >
-              {STATE_CAPTION[state]}
+              {caption}
             </p>
           )}
         </>
