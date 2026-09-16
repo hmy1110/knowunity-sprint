@@ -17,6 +17,20 @@
   font-display: swap;
 }
 
+/* Not the design system font — TextField's own two text runs are the one
+   place in the file bound to "Inter Variable" instead of Greed VF-TRIAL,
+   an unbound literal in Figma with no matching typography token (see
+   TextField.tsx's doc comment). Declared here only so that component can
+   reference it as a literal, the same treatment its other unbound Figma
+   literals already get. */
+@font-face {
+  font-family: "Inter Variable";
+  src: url("/fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Bound to the semantic token layer, never to primitives. Dark mode only,
    so there is no light-mode branch: the tokens are already the dark values. */
 :root {

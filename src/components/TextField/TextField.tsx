@@ -57,10 +57,16 @@ import { ButtonIcon } from '../ButtonIcon/ButtonIcon'
  *   SemiBold 14px, and the caption runs "Inter Variable" Regular 11px.
  *   Neither the font family (every other text style in this file uses
  *   "Greed VF-TRIAL") nor either size (14px and 11px are not steps in
- *   the type scale) exists as a token. Per Mia's call, the closest
- *   existing named text styles are used as an approximation —
- *   `headline.xxsBold` (15px/600) for the title and field text,
- *   `caption.sRegular` (9px/400) for the caption — not a Figma match.
+ *   the type scale) exists as a token. Weight, family, and size now all
+ *   match Figma exactly: per Mia's call (2026-09-15), font family and
+ *   size are reproduced as literals below — same treatment as the
+ *   pill's unbound stroke weight and item spacing further down — now
+ *   that the variable font file is in `public/fonts/`. Weight,
+ *   line-height and tracking still come from the closest existing named
+ *   text styles, `headline.xxsBold` (600) for the title and field text
+ *   and `caption.sRegular` (400) for the caption, since those already
+ *   match Figma's own weights and neither line-height nor tracking was
+ *   flagged as a mismatch.
  * - **Figma models the field's own displayed text as a hardcoded
  *   literal, not a component property**, except in the Placeholder
  *   variant (where it's the real `Placeholder` property). Default and
@@ -133,22 +139,25 @@ function XCircleIcon() {
   )
 }
 
-// No bound type style exists for either text run in this component, and
-// CLAUDE.md forbids reading the font/* primitive layer directly — the
-// closest existing named text styles are used as an approximation per
-// Mia's call, not a Figma match. See doc comment above.
+// No bound type style exists for either text run in this component. Font
+// family and size are the literals "Inter Variable"/14px (title, field
+// text) and "Inter Variable"/11px (caption), matching Figma's own unbound
+// values exactly (see doc comment above) — not a token read, since Figma
+// itself never binds either to one. Weight, line-height and tracking
+// still come from the closest existing named text styles per Mia's call,
+// since those already match Figma's weights.
 const FIELD_TEXT_STYLE: CSSProperties = {
-  fontFamily: 'var(--type-scale-headline-xxs-bold-font-family)',
+  fontFamily: "'Inter Variable', sans-serif",
   fontWeight: 'var(--type-scale-headline-xxs-bold-font-weight)' as unknown as number,
-  fontSize: 'var(--type-scale-headline-xxs-bold-font-size)',
+  fontSize: '14px',
   lineHeight: 'var(--type-scale-headline-xxs-bold-line-height)',
   letterSpacing: 'var(--type-scale-headline-xxs-bold-letter-spacing)',
 }
 
 const CAPTION_TEXT_STYLE: CSSProperties = {
-  fontFamily: 'var(--type-scale-caption-s-regular-font-family)',
+  fontFamily: "'Inter Variable', sans-serif",
   fontWeight: 'var(--type-scale-caption-s-regular-font-weight)' as unknown as number,
-  fontSize: 'var(--type-scale-caption-s-regular-font-size)',
+  fontSize: '11px',
   lineHeight: 'var(--type-scale-caption-s-regular-line-height)',
   letterSpacing: 'var(--type-scale-caption-s-regular-letter-spacing)',
 }
