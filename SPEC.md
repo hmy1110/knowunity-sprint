@@ -115,7 +115,7 @@ One route. Internal state = `{ termIndex: 0-3, mode: "voice" | "text", subState 
 
 ### `processing` (Learning-topic 1-processing / Learning-topic 1-typeProcessing)
 - **Components**: `MascotSlot` `pose="thinking"` as a bare instance (not through the size+pose swap pattern the rest of the loop uses — design-system.md flags this as a real gap; build it exactly like the real screens do and screenshot it), `SpeechBubble` `state="Loading"`, `MicButton` `state="Processing"` (voice mode only), `AudioScrubber` `state="Default"` still visible, `Button` `state="Disabled"` on whichever CTAs are present ("Submit" and "Switch to voice" on the text path, per the already-logged decision pairing Disabled buttons with `speechBubble/Loading`).
-- **Timing**: a real ~2-3s delay, then auto-advances to `result`. No timeout/retry state — cut, see Out of scope.
+- **Timing**: a real delay, then auto-advances to `result`. **Changed 2026-09-17, per Mia's direct instruction ("feels a bit long"): 1.5s, down from the original ~2-3s.** No timeout/retry state — cut, see Out of scope.
 
 ### `result` (branches by this term's scripted outcome)
 - **Recalled** (Learning-result-Recalled): `SpeechBubble` `state="Success"` (`title="Nice!"`, `subtitle="Unaided"`), `AudioScrubber` `state="Default"`, `Button` `variant="Primary"` `cta="Continue"`.
@@ -159,7 +159,7 @@ Restated from `CLAUDE.md`/`docs/sprint-context.md` because they bound this spec,
 
 - Outcome per term is scripted by position in the session (1st → Recalled, 2nd → Hinted, 3rd → Revealed, 4th → Skipped), never by what was actually said or typed. There is no minimum recording duration or content check — any length recording (including near-silent) advances.
 - The mic really requests OS permission via `getUserMedia` and really records; `AudioScrubber` plays back that real audio. **Corrected 2026-09-17 — this doc previously said no transcript is ever shown; that's stale.** `Learning-topic 1-result`'s real `Success` `speechBubble` shows a fabricated transcript line ("You said: 'It's the spark that makes you want to create something'") — a direct conflict with this doc's own "no real STT, so no transcript" reasoning, flagged and asked rather than silently resolved (`component-gaps.md`'s `Learning-result-Recalled` entry). **Mia's call: build it exactly like Figma, transcript line included.** It's already built this way in code. The pattern is Recalled-outcome-only: term 1's main-script result and the new `Learning-topic 3-resume-result-Recalled` frame (above, unbuilt) both show a "You said: '...'" line; Hinted/Revealed/Skipped outcomes and the all-recalled-variant's `-result-unaided` frames (above) show the term's own definition instead, never an echoed "said"/"typed" line.
-- Processing waits a real ~2-3s before resolving, to sell the "thinking" state rather than instant-advancing.
+- Processing waits a real 1.5s before resolving (changed 2026-09-17 from ~2-3s, per Mia's call — see section 4's `processing` sub-state note), to sell the "thinking" state rather than instant-advancing.
 - The 4-term subject content is Art& design  (e.g. Inspiration, Divergent thinking, Visual hierarchy, Visual research) — real short terms and definitions, not placeholder "Term 1/2/3/4" text.
 
 ## Validation: how to check this is done and correct, end to end

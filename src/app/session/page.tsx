@@ -435,15 +435,15 @@ export default function Session() {
   useEffect(() => {
     if (subState === 'processing') {
       if (term.outcome === 'Skipped') {
-        const timer = setTimeout(() => router.push('/summary'), 2500)
+        const timer = setTimeout(() => router.push('/summary'), 1500)
         return () => clearTimeout(timer)
       }
       const nextSubState = term.outcome === 'Hinted' ? 'resultHinted1' : term.outcome === 'Revealed' ? 'resultRevealed' : 'resultRecalled'
-      const timer = setTimeout(() => setSubState(nextSubState), 2500)
+      const timer = setTimeout(() => setSubState(nextSubState), 1500)
       return () => clearTimeout(timer)
     }
     if (subState === 'hinted2Processing') {
-      const timer = setTimeout(() => setSubState('resultHinted1Recalled'), 2500)
+      const timer = setTimeout(() => setSubState('resultHinted1Recalled'), 1500)
       return () => clearTimeout(timer)
     }
     // Text path's own wait state. Only `term.outcome === 'Recalled'` has
@@ -453,7 +453,7 @@ export default function Session() {
     // those, same "don't advance into a screen that doesn't exist"
     // treatment as every other not-yet-built destination in this file.
     if (subState === 'typeProcessing' && term.outcome === 'Recalled') {
-      const timer = setTimeout(() => setSubState('typeResultRecalled'), 2500)
+      const timer = setTimeout(() => setSubState('typeResultRecalled'), 1500)
       return () => clearTimeout(timer)
     }
   }, [subState, term.outcome, router])
