@@ -1,16 +1,54 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { AppBar } from '@/components/AppBar/AppBar'
+import { Button } from '@/components/Button/Button'
 import { ButtonGroup } from '@/components/ButtonGroup/ButtonGroup'
 import { MascotSlot } from '@/components/MascotSlot/MascotSlot'
 import { ScoreBreakdown } from '@/components/ScoreBreakdown/ScoreBreakdown'
 import { ArrowLeftIcon } from '@/components/shared/icons'
 import { StatusBar } from '@/components/StatusBar/StatusBar'
 import { Table } from '@/components/Table/Table'
+import { TableCell } from '@/components/TableCell/TableCell'
 import { TermResultList, type TermResultRow } from '@/components/TermResultList/TermResultList'
 import type { TagStatus } from '@/components/Tag/Tag'
+
+// `Summary-all recalled` (node 13669:17569) — the second real Summary
+// instance, shown when all 4 terms resolve Recalled. Deliberately
+// unreachable, same reasoning as Session's `topic2ResultUnaided`/
+// `topic3ResultUnaided`: this sprint's fixed script always produces one
+// of each outcome, so this variant is never actually reached by a real
+// run. Built for visual completeness only, gated behind `?variant=
+// all-recalled` (nothing in the app sets this — reached only by typing
+// the URL directly) rather than a bare unconditional branch, so it's at
+// least previewable without editing code, unlike the Session variants.
+const ALL_RECALLED_RESULTS: TermResultRow[] = [
+  {
+    term: 'Inspiration',
+    status: 'Recalled',
+    reflection: 'personal experience and the world around you, in your own words, first try.',
+  },
+  {
+    term: 'Divergent thinking',
+    status: 'Recalled',
+    reflection: 'many possible ideas before narrowing to one, in your own words, first try.',
+  },
+  {
+    term: 'Visual hierarchy',
+    status: 'Recalled',
+    reflection: 'arranging elements to guide attention and show what matters most, in your own words, first try.',
+  },
+  {
+    term: 'Visual research',
+    status: 'Recalled',
+    reflection: 'uses visual media (images, video, diagrams) as data for research, in your own words, first try.',
+  },
+]
+
+const ALL_RECALLED_XP = '8'
+const ALL_RECALLED_SCORE = '4/4'
+const ALL_RECALLED_PACE = '2:09'
 
 // SPEC.md's fixed script: term 1 Recalled, term 2 Hinted, term 3
 // Revealed, term 4 Skipped, every session. Hardcoded here per SPEC.md's
@@ -212,8 +250,20 @@ function countByStatus(rows: TermResultRow[]): Record<TagStatus, number> {
   }
 }
 
+const HEADLINE_TEXT_STYLE = {
+  margin: 0,
+  color: 'var(--semantic-color-text-primary)',
+  fontFamily: 'var(--type-scale-headline-l-font-family)',
+  fontWeight: 'var(--type-scale-headline-l-font-weight)' as unknown as number,
+  fontSize: 'var(--type-scale-headline-l-font-size)',
+  lineHeight: 'var(--type-scale-headline-l-line-height)',
+  letterSpacing: 'var(--type-scale-headline-l-letter-spacing)',
+} as const
+
 export default function Summary() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const isAllRecalled = searchParams.get('variant') === 'all-recalled'
 
   return (
     <div className="flex min-h-screen justify-center" style={{ background: 'var(--semantic-color-background-page)' }}>
@@ -243,29 +293,24 @@ export default function Summary() {
               <MascotSlot size="2XL" pose="standby" />
             </div>
 
-            {/* Only the mixed-outcome copy is confirmed — SPEC.md flags the
-                other 3 dominant-outcome tiers as shipping unverified, with
-                no real copy anywhere to build them from. */}
-            <p
-              className="w-full text-center"
-              style={{
-                margin: 0,
-                color: 'var(--semantic-color-text-primary)',
-                fontFamily: 'var(--type-scale-headline-l-font-family)',
-                fontWeight: 'var(--type-scale-headline-l-font-weight)',
-                fontSize: 'var(--type-scale-headline-l-font-size)',
-                lineHeight: 'var(--type-scale-headline-l-line-height)',
-                letterSpacing: 'var(--type-scale-headline-l-letter-spacing)',
-              }}
-            >
-              Good session, Mia.
+            {/* Only the mixed-outcome and all-recalled headlines are
+                confirmed — SPEC.md flags the other 2 dominant-outcome
+                tiers (mostly-hinted/mostly-revealed/mostly-skipped) as
+                shipping unverified, with no real copy anywhere to build
+                them from. Real copy confirmed from the live
+                Summary-all recalled instance (node 13669:17569, 2026-09-17):
+                "Nice work, Mia!", not "Good session, Mia." — a genuinely
+                different headline per outcome, not a stale copy of the
+                mixed one. */}
+            <p className="w-full text-center" style={HEADLINE_TEXT_STYLE}>
+              {isAllRecalled ? 'Nice work, Mia!' : 'Good session, Mia.'}
             </p>
           </div>
 
           <div className="flex w-full items-start justify-center" style={{ gap: 16 }}>
             <StatBox
               label="XP"
-              value={SESSION_XP}
+              value={isAllRecalled ? ALL_RECALLED_XP : SESSION_XP}
               boldVar="--semantic-color-accent-blue-bold"
               onBoldVar="--semantic-color-accent-blue-on-bold"
               icon={<LightningIcon />}
@@ -274,7 +319,7 @@ export default function Summary() {
             />
             <StatBox
               label="SCORE"
-              value={SESSION_SCORE}
+              value={isAllRecalled ? ALL_RECALLED_SCORE : SESSION_SCORE}
               boldVar="--semantic-color-accent-green-bold"
               onBoldVar="--semantic-color-accent-green-on-bold"
               icon={<ScoreIcon />}
@@ -283,7 +328,7 @@ export default function Summary() {
             />
             <StatBox
               label="BLAZING"
-              value={SESSION_PACE}
+              value={isAllRecalled ? ALL_RECALLED_PACE : SESSION_PACE}
               boldVar="--semantic-color-accent-brand-bold"
               onBoldVar="--semantic-color-accent-brand-on-bold"
               icon={<BlazingIcon />}
@@ -292,20 +337,105 @@ export default function Summary() {
             />
           </div>
 
-          <ScoreBreakdown percent={50} counts={countByStatus(TERM_RESULTS)} style={{ width: '100%' }} />
+          {isAllRecalled ? (
+            <>
+              {/* The live frame's own segbar/legend literally reads "4
+                  Recalled, 1 Hinted, 0 Revealed, 0 Skipped" — 5 counted
+                  terms in a 4-term session, and directly contradicted by
+                  this same frame's own table (all 4 rows Recalled) and
+                  TermResultList (all 4 under "Recalled on your own").
+                  Reads as a leftover/copy-paste artifact from the mixed
+                  Summary's own real 1-1-1-1 data, not edited for this
+                  variant — built as the internally-consistent 4/0/0/0 +
+                  100% instead of reproducing the stray count, per
+                  component-gaps.md's own entry for this screen. */}
+              <ScoreBreakdown percent={100} counts={{ Recalled: 4, Hinted: 0, Revealed: 0, Skipped: 0 }} style={{ width: '100%' }} />
 
-          <Table style={{ width: '100%' }} />
+              {/* `Table`/`TableCell`'s own status-driven divider (see
+                  TableCell.tsx's doc comment: Skipped alone omits the
+                  bottom divider, a known status/position-coupling gap)
+                  would leave a stray divider under the true last row
+                  here, since none of these 4 rows is Skipped. The live
+                  frame's own last row (`Visual research`) explicitly has
+                  no divider — reproduced by rendering `TableCell`
+                  directly instead of the `Table` wrapper (which has no
+                  per-row style override), stripping just the last row's
+                  border. */}
+              <div
+                className="flex w-full flex-col overflow-hidden"
+                style={{ borderRadius: 16, background: 'var(--semantic-color-background-surface)' }}
+              >
+                {ALL_RECALLED_RESULTS.map((row, index) => (
+                  <TableCell
+                    key={row.term}
+                    label={row.term}
+                    status={row.status}
+                    style={index === ALL_RECALLED_RESULTS.length - 1 ? { borderBottom: 'none' } : undefined}
+                  />
+                ))}
+              </div>
 
-          <TermResultList rows={TERM_RESULTS} style={{ width: '100%' }} />
+              {/* The live frame shows one "Recalled on your own" title
+                  followed by all 4 reflection sentences, not 4 repeated
+                  identical titles the way `TermResultList` renders when
+                  every row shares one status — that component always
+                  pairs a title with each row (see its own doc comment),
+                  which is correct for the mixed case but wrong here.
+                  Built inline rather than adding an unrequested
+                  "collapse repeated titles" mode to a component that
+                  only has this one real caller for it so far. */}
+              <div className="flex w-full flex-col" style={{ gap: 'var(--size-space-100)' }}>
+                <p
+                  className="m-0"
+                  style={{
+                    fontFamily: 'var(--type-scale-headline-xxs-bold-font-family)',
+                    fontWeight: 'var(--type-scale-headline-xxs-bold-font-weight)' as unknown as number,
+                    fontSize: 'var(--type-scale-headline-xxs-bold-font-size)',
+                    lineHeight: 'var(--type-scale-headline-xxs-bold-line-height)',
+                    letterSpacing: 'var(--type-scale-headline-xxs-bold-letter-spacing)',
+                    color: 'var(--semantic-color-accent-green-bold)',
+                  }}
+                >
+                  Recalled on your own
+                </p>
+                {ALL_RECALLED_RESULTS.map((row) => (
+                  <p
+                    key={row.term}
+                    className="m-0"
+                    style={{ fontFamily: "'Greed VF-TRIAL', sans-serif", fontSize: 14, color: 'var(--semantic-color-text-primary)' }}
+                  >
+                    <span style={{ fontWeight: 600 }}>{row.term}</span>
+                    {`, ${row.reflection}`}
+                  </p>
+                ))}
+              </div>
+            </>
+          ) : (
+            <>
+              <ScoreBreakdown percent={50} counts={countByStatus(TERM_RESULTS)} style={{ width: '100%' }} />
+
+              <Table style={{ width: '100%' }} />
+
+              <TermResultList rows={TERM_RESULTS} style={{ width: '100%' }} />
+            </>
+          )}
         </main>
 
         <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-300)', padding: 'var(--size-space-700)' }}>
-          <ButtonGroup
-            variant="Vertical"
-            size="L"
-            primary={{ cta: 'Review what you missed', onClick: () => router.push('/session') }}
-            secondary={{ cta: 'Continue', onClick: () => router.push('/') }}
-          />
+          {isAllRecalled ? (
+            // Live frame's own bottomContent has only a single "Continue"
+            // — no "Review what you missed" pairing, since nothing was
+            // missed. Wired to the same destination as the mixed
+            // variant's own secondary button.
+            <Button variant="Primary" size="L" cta="Continue" className="w-full" onClick={() => router.push('/')} />
+          ) : (
+            <ButtonGroup
+              variant="Vertical"
+              size="L"
+              primary={{ cta: 'Review what you missed', onClick: () => router.push('/session') }}
+              secondary={{ cta: 'Continue', onClick: () => router.push('/') }}
+            />
+          )}
         </div>
       </div>
     </div>
