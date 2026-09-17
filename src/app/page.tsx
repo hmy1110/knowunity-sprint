@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { AppBar } from '@/components/AppBar/AppBar'
 import { Button } from '@/components/Button/Button'
 import { Chips } from '@/components/Chips/Chips'
+import { IconSlot } from '@/components/IconSlot/IconSlot'
 import { MascotSlot } from '@/components/MascotSlot/MascotSlot'
 import { StatusBar } from '@/components/StatusBar/StatusBar'
 import { TopicNode } from '@/components/TopicNode/TopicNode'
@@ -33,6 +34,21 @@ const ARROW_FORWARD_ICON = (
     <path
       d="M10.7834 8.6665H2.66675V7.33317H10.7834L7.05008 3.59984L8.00008 2.6665L13.3334 7.99984L8.00008 13.3332L7.05008 12.3998L10.7834 8.6665Z"
       fill="var(--semantic-color-interactive-on-primary)"
+    />
+  </svg>
+)
+
+// StudyPlan-finish's own real "redo" Material asset on its demoted Redo
+// button (Code Connect-mapped, exported directly via get_design_context's
+// raw asset URL this time rather than the Desktop Bridge plugin's
+// exportAsync ARROW_FORWARD_ICON needed). Fill is already the exact real
+// bound token value (#F4F2FF === --semantic-color-interactive-on-secondary
+// below), recolored onto that token rather than left as a hardcoded hex.
+const REDO_ICON = (
+  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+    <path
+      d="M6.6 12.6667C5.52222 12.6667 4.59722 12.3167 3.825 11.6167C3.05278 10.9167 2.66667 10.0444 2.66667 9C2.66667 7.95556 3.05278 7.08333 3.825 6.38333C4.59722 5.68333 5.52222 5.33333 6.6 5.33333H10.8L9.06667 3.6L10 2.66667L13.3333 6L10 9.33333L9.06667 8.4L10.8 6.66667H6.6C5.9 6.66667 5.29167 6.88889 4.775 7.33333C4.25833 7.77778 4 8.33333 4 9C4 9.66667 4.25833 10.2222 4.775 10.6667C5.29167 11.1111 5.9 11.3333 6.6 11.3333H11.3333V12.6667H6.6Z"
+      fill="var(--semantic-color-interactive-on-secondary)"
     />
   </svg>
 )
@@ -180,14 +196,16 @@ function SectionDivider({ label }: { label: string }) {
 // (it doesn't write anything to survive a route change), so there's
 // nothing real for "/" to read from today — the same order Summary's
 // own hardcoded sample result array followed before Session existed
-// to supply the real thing. Hardcoded here for the same reason;
-// flip to `true` (or wire it to a real record once Session writes
-// one) to reach `StudyPlan-inProgress` instead of `-notStarted`.
-const IS_IN_PROGRESS = false
+// to supply the real thing. Hardcoded here for the same reason; flip
+// to `'inProgress'` or `'finish'` (or wire it to a real record once
+// Session writes one) to reach the other two live frames instead of
+// `StudyPlan-notStarted`.
+const STUDY_PLAN_STATE: 'notStarted' | 'inProgress' | 'finish' = 'notStarted'
 
 export default function StudyPlanEntry() {
   const router = useRouter()
-  const isInProgress = IS_IN_PROGRESS
+  const isInProgress = STUDY_PLAN_STATE === 'inProgress'
+  const isFinished = STUDY_PLAN_STATE === 'finish'
 
   return (
     <div className="flex min-h-screen items-center justify-center" style={{ background: 'var(--semantic-color-background-page)' }}>
@@ -314,14 +332,58 @@ export default function StudyPlanEntry() {
                   >
                     Explain it to Knowie
                   </span>
-                  <Button
-                    variant="Primary"
-                    size="S"
-                    cta="Speak"
-                    showRightIcon
-                    rightIcon={ARROW_FORWARD_ICON}
-                    onClick={() => router.push(isInProgress ? '/session' : '/primer')}
-                  />
+                  {isFinished ? (
+                    // No `Button` variant produces this real instance's fill —
+                    // Primary binds interactive/primary+on-primary (the
+                    // Speak button above), Secondary binds
+                    // background/surface+text/primary (see
+                    // `shared/buttonVariants.ts`'s `getFill`) — but
+                    // StudyPlan-finish's own live Redo button is bound to
+                    // interactive/secondary+on-secondary, a pairing no
+                    // variant produces. Same gap shape as Learning-recording's
+                    // Redo `ButtonIcon` (component-gaps.md): built inline,
+                    // matching `Button`'s own S-size shape/shadow/type scale
+                    // with the real bound colors substituted in, rather than
+                    // forcing a mismatched variant or inventing a new one.
+                    <button
+                      type="button"
+                      className="inline-flex items-center justify-center"
+                      style={{
+                        height: 32,
+                        paddingInline: 'var(--size-space-300)',
+                        borderRadius: 'var(--size-radius-full)',
+                        background: 'var(--semantic-color-interactive-secondary)',
+                        boxShadow: 'inset 0 -2px 0 0 rgba(0,0,0,0.15)',
+                      }}
+                      onClick={() => router.push('/session')}
+                    >
+                      <span className="inline-flex items-center" style={{ gap: 'var(--size-space-150)', paddingBottom: 2 }}>
+                        <span
+                          style={{
+                            color: 'var(--semantic-color-interactive-on-secondary)',
+                            fontFamily: 'var(--type-scale-body-s-bold-font-family)',
+                            fontWeight: 'var(--type-scale-body-s-bold-font-weight)',
+                            fontSize: 'var(--type-scale-body-s-bold-font-size)',
+                            lineHeight: 'var(--type-scale-body-s-bold-line-height)',
+                            letterSpacing: 'var(--type-scale-body-s-bold-letter-spacing)',
+                            whiteSpace: 'nowrap',
+                          }}
+                        >
+                          Redo
+                        </span>
+                        <IconSlot size="200" icon={REDO_ICON} />
+                      </span>
+                    </button>
+                  ) : (
+                    <Button
+                      variant="Primary"
+                      size="S"
+                      cta="Speak"
+                      showRightIcon
+                      rightIcon={ARROW_FORWARD_ICON}
+                      onClick={() => router.push(isInProgress ? '/session' : '/primer')}
+                    />
+                  )}
                 </div>
 
                 {/* StudyPlan-inProgress's own live frame (node 13622:18080)
@@ -335,11 +397,16 @@ export default function StudyPlanEntry() {
                     inset) is shorter than both real thickness values (16/24)
                     that component supports, so it's hand-built here from the
                     same real tokens rather than forced into a mismatched
-                    preset; see component-gaps.md. The "2 OF 4" label is a
+                    preset; see component-gaps.md. The "X OF 4" label is a
                     separate text element next to the bar, not the
                     component's own `showText` mode — the same established
-                    pattern as the appBar's own "Topics X of 4" count. */}
-                {isInProgress && (
+                    pattern as the appBar's own "Topics X of 4" count.
+                    `StudyPlan-finish`'s own live frame (node 13674:14438)
+                    keeps this same row rather than a distinct "complete"
+                    treatment: full-width fill, recolored from
+                    accent/brand/bold to feedback/success/bold (its own real
+                    bound token), "4 OF 4". */}
+                {(isInProgress || isFinished) && (
                   <div className="flex w-full" style={{ gap: 'var(--size-space-400)', alignItems: 'flex-start' }}>
                     <div
                       className="flex-1"
@@ -352,10 +419,12 @@ export default function StudyPlanEntry() {
                     >
                       <div
                         style={{
-                          width: '50%',
+                          width: isFinished ? '100%' : '50%',
                           height: 'var(--size-space-200)',
                           borderRadius: 'var(--size-radius-full)',
-                          background: 'var(--semantic-color-accent-brand-bold)',
+                          background: isFinished
+                            ? 'var(--semantic-color-feedback-success-bold)'
+                            : 'var(--semantic-color-accent-brand-bold)',
                         }}
                       />
                     </div>
@@ -370,7 +439,7 @@ export default function StudyPlanEntry() {
                         whiteSpace: 'nowrap',
                       }}
                     >
-                      2 OF 4
+                      {isFinished ? '4 OF 4' : '2 OF 4'}
                     </span>
                   </div>
                 )}

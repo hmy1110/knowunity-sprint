@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { AppBar } from '@/components/AppBar/AppBar'
 import { AudioScrubber } from '@/components/AudioScrubber/AudioScrubber'
 import { Button } from '@/components/Button/Button'
@@ -14,18 +14,37 @@ import { ProgressIndicator, type ProgressIndicatorProgress } from '@/components/
 import { SpeechBubble } from '@/components/SpeechBubble/SpeechBubble'
 import { StatusBar } from '@/components/StatusBar/StatusBar'
 import { StatusIndicator } from '@/components/StatusIndicator/StatusIndicator'
+import { TextField } from '@/components/TextField/TextField'
 
 // `Learning-idle`, `Learning-recording`, `Learning-ready to send`,
 // `Learning-processing`, `Learning-result-Recalled`,
 // `Learning-result-Hinted1`, `Learning-result-Hinted2-recording`,
 // `Learning-result-Hinted2-ready to send`,
 // `Learning-result-Hinted2-processing`,
-// `Learning-result-Hinted2-succeed`, `Learning-result-Revealed`, and
-// `Learning-skipped` are built so far — Session is one route with many
-// internal sub-states per SPEC.md ({ termIndex, mode, subState }); the
-// rest of the loop (typeInput, etc.) isn't built yet. The `subState`
-// scaffold below only covers the real states that exist — Skip/"Type
-// instead" still aren't wired, since neither has a built target state.
+// `Learning-result-Hinted2-succeed`, `Learning-result-Revealed`,
+// `Learning-skipped`, `Learning-topic 1-typeInput`,
+// `Learning-topic 1-typeProcessing`, and
+// `Learning-topic 1-typeResult-Recalled` are built so far — Session is
+// one route with many internal sub-states per SPEC.md ({ termIndex,
+// mode, subState }); the Hinted/Revealed/Skipped `typeResult`
+// equivalents aren't built yet. `typeProcessing`'s own auto-advance
+// timer only branches on `term.outcome === 'Recalled'` for the same
+// reason — term 1 is the only outcome with a built `typeResult`
+// destination so far.
+//
+// `topic2ResultUnaided` (`Learning-topic 2-result-unaided`) is also
+// built below, but — per Mia's explicit call, 2026-09-17 — deliberately
+// left unreachable: nothing sets this subState anywhere. Its own live
+// Figma frame sits on a separate connector chain (`StudyPlan-inProgress
+// -> Learning-topic 2-result-unaided -> topic 3-unaided -> topic
+// 4-unaided -> Summary-all recalled`) that skips term 1 entirely and
+// ends at a different Summary variant — reads as a full alternate
+// "everything recalled" demo path, not a branch of this sprint's own
+// fixed script (term 2 always resolves `Hinted`, confirmed repeatedly
+// above and in SPEC.md). Wiring it into term 2's live flow would
+// contradict that script; building the other 3 screens plus a second
+// Summary would be a materially bigger feature (real session-entry-
+// source tracking) than "one screen." See component-gaps.md.
 type SubState =
   | 'idle'
   | 'recording'
@@ -38,6 +57,10 @@ type SubState =
   | 'hinted2Processing'
   | 'resultHinted2Succeed'
   | 'resultRevealed'
+  | 'typeInput'
+  | 'typeProcessing'
+  | 'typeResultRecalled'
+  | 'topic2ResultUnaided'
 
 // SPEC.md: "The 4 terms are scripted by index, not by content: term 1
 // resolves Recalled, term 2 Hinted, term 3 Revealed, term 4 Skipped."
@@ -173,7 +196,18 @@ function PlayPauseIcon() {
 
 export default function Session() {
   const router = useRouter()
-  const [subState, setSubState] = useState<SubState>('idle')
+  const searchParams = useSearchParams()
+  // SPEC.md: "Tap 'I can't talk right now' (on Primer-intro) → /session
+  // (term 1, text mode), bypassing the mic-permission prompt entirely."
+  // Same landing for micDenied's own "Continue with text." Primer links
+  // here with `?entry=text` (see its own two buttons) rather than a
+  // generic bare `/session`, now that `typeInput` is a real destination
+  // to land on instead of the voice-mode `idle` both buttons used to
+  // fall back to (previously flagged in component-gaps.md as "SPEC.md's
+  // own voice/text distinction isn't wired").
+  const [subState, setSubState] = useState<SubState>(() =>
+    searchParams.get('entry') === 'text' ? 'typeInput' : 'idle',
+  )
   const [termIndex, setTermIndex] = useState(0)
   const term = TERMS[termIndex]
   const hasNextTerm = termIndex + 1 < TERMS.length
@@ -188,6 +222,14 @@ export default function Session() {
   // `processing` timer to resolve to `resultHinted2Succeed` instead of
   // looping back to `resultHinted1`.
   const [isRetry, setIsRetry] = useState(false)
+  // `typeInput`'s own real captured keystrokes — SPEC.md: "TextField has
+  // no value/onChange... this screen needs its own plain native
+  // input/textarea as the actual typing surface, held in local component
+  // state... TextField supplies the chrome, not the capture." Not yet
+  // consumed anywhere (SpeechBubble's `Input` state at `typeProcessing`/
+  // `typeResult` isn't built), but captured now so it's ready once those
+  // screens exist.
+  const [typedAnswer, setTypedAnswer] = useState('')
   const streamRef = useRef<MediaStream | null>(null)
   const recorderRef = useRef<MediaRecorder | null>(null)
   const chunksRef = useRef<Blob[]>([])
@@ -261,6 +303,22 @@ export default function Session() {
     recorder.stop()
   }
 
+  // SPEC.md: tap "Switch to voice" → `idle` (voice mode, same term).
+  // Clears whatever was typed so far, since going back to `idle` re-offers
+  // both entry points fresh rather than leaving a stale draft behind.
+  function handleSwitchToVoice() {
+    setTypedAnswer('')
+    setSubState('idle')
+  }
+
+  // SPEC.md: tap "Submit" (on `typeInput`) → `typeProcessing`. No
+  // minimum-length or content check, same as the voice path's own
+  // recording — the outcome is scripted by term position, not by what
+  // was actually typed.
+  function handleSubmitTyped() {
+    setSubState('typeProcessing')
+  }
+
   function handleTogglePlayback() {
     const audioEl = audioElRef.current
     if (!audioEl) return
@@ -322,6 +380,7 @@ export default function Session() {
     setIsPlaying(false)
     setIsPlayingFirstAttempt(false)
     setIsRetry(false)
+    setTypedAnswer('')
     setTermIndex((i) => i + 1)
     setSubState('idle')
   }
@@ -375,6 +434,16 @@ export default function Session() {
     }
     if (subState === 'hinted2Processing') {
       const timer = setTimeout(() => setSubState('resultHinted2Succeed'), 2500)
+      return () => clearTimeout(timer)
+    }
+    // Text path's own wait state. Only `term.outcome === 'Recalled'` has
+    // a built `typeResult` destination so far (`typeResultRecalled`) —
+    // the Hinted/Revealed/Skipped equivalents aren't built yet, so this
+    // intentionally no-ops (stays on `typeProcessing` indefinitely) for
+    // those, same "don't advance into a screen that doesn't exist"
+    // treatment as every other not-yet-built destination in this file.
+    if (subState === 'typeProcessing' && term.outcome === 'Recalled') {
+      const timer = setTimeout(() => setSubState('typeResultRecalled'), 2500)
       return () => clearTimeout(timer)
     }
   }, [subState, term.outcome, router])
@@ -727,6 +796,269 @@ export default function Session() {
                   hintedWarningRow
                 )}
               </div>
+            ) : subState === 'typeInput' ? (
+              // `Learning-topic 1-typeInput` (node 13622:18322): the same
+              // mascot+tailed `Prompt` bubble row `idle` uses, plus the
+              // real `TextField` chrome below it. SPEC.md: "TextField has
+              // no value/onChange... its Default variant's displayed text
+              // is a hardcoded literal, not a prop" — `showCaption={false}`
+              // here rather than SPEC.md's literal `showCaption` prop
+              // value, since the real caption on this live frame binds
+              // `text/tertiary`, not the muted `text/secondary`
+              // `TextField`'s own caption slot always uses (confirmed via
+              // `get_design_context`, not assumed) — hand-built as its own
+              // paragraph below instead of forcing the wrong color through
+              // the real prop. A real native `<input>` is layered exactly
+              // over `TextField`'s own field box (same background/border/
+              // radius/type scale, so it reads as one continuous pill) to
+              // actually capture keystrokes, per SPEC.md's own note that
+              // `TextField` "supplies the chrome, not the capture."
+              <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-400)' }}>
+                <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
+                  <MascotSlot size="XL" pose="approving" />
+                  <SpeechBubble state="Prompt" message={term.prompt} className="flex-1" />
+                </div>
+
+                <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-050)' }}>
+                  <div className="relative w-full">
+                    <TextField variant="Placeholder" showTitle={false} showCaption={false} showLeadingIcon={false} placeholder="Type a short answer..." />
+                    <input
+                      type="text"
+                      value={typedAnswer}
+                      onChange={(event) => setTypedAnswer(event.target.value)}
+                      placeholder="Type a short answer..."
+                      aria-label="Type a short answer"
+                      className="absolute inset-0 w-full placeholder:text-(--semantic-color-text-secondary)"
+                      style={{
+                        boxSizing: 'border-box',
+                        padding: 'var(--size-space-300)',
+                        borderRadius: 'var(--size-radius-400)',
+                        background: 'var(--semantic-color-background-input)',
+                        border: '1px solid var(--semantic-color-border-default)',
+                        outline: 'none',
+                        fontFamily: "'Inter Variable', sans-serif",
+                        fontWeight: 'var(--type-scale-headline-xxs-bold-font-weight)' as unknown as number,
+                        fontSize: 14,
+                        lineHeight: 'var(--type-scale-headline-xxs-bold-line-height)',
+                        letterSpacing: 'var(--type-scale-headline-xxs-bold-letter-spacing)',
+                        color: 'var(--semantic-color-text-primary)',
+                      }}
+                    />
+                  </div>
+                  <p
+                    className="w-full"
+                    style={{
+                      margin: 0,
+                      fontFamily: 'var(--type-scale-caption-m-regular-font-family)',
+                      fontWeight: 'var(--type-scale-caption-m-regular-font-weight)',
+                      fontSize: 'var(--type-scale-caption-m-regular-font-size)',
+                      lineHeight: 'var(--type-scale-caption-m-regular-line-height)',
+                      letterSpacing: 'var(--type-scale-caption-m-regular-letter-spacing)',
+                      color: 'var(--semantic-color-text-tertiary)',
+                    }}
+                  >
+                    A couple of sentences is enough, you don&apos;t need to retype the full explanation.
+                  </p>
+                </div>
+              </div>
+            ) : subState === 'typeProcessing' ? (
+              // `Learning-topic 1-typeProcessing` (node 13673:13599).
+              // SPEC.md: "Same as processing above, plus SpeechBubble
+              // state="Input" showSubtitle echoing back what was typed,
+              // shown alongside the Loading bubble." The live frame's own
+              // echo isn't `SpeechBubble`'s `Input` state, though —
+              // `Input` drops the tail for a plain bubble (per that
+              // component's own doc), but this echo keeps the same
+              // "You typed" title + bordered box shape `TextField` uses
+              // on `typeInput` itself, not a second bubble. Reproduced to
+              // match the live frame: hand-built inline reusing the same
+              // real tokens `TextField`'s own title/field literals
+              // already use (see component-gaps.md), not a `SpeechBubble`
+              // instance. The prompt drops to the same bare plain-text
+              // treatment the voice path's `processing` already uses.
+              <div className="flex w-full flex-col items-end" style={{ gap: 'var(--size-space-400)' }}>
+                <p
+                  className="w-full"
+                  style={{
+                    margin: 0,
+                    fontFamily: 'var(--type-scale-headline-xs-regular-font-family)',
+                    fontWeight: 'var(--type-scale-headline-xs-regular-font-weight)',
+                    fontSize: 'var(--type-scale-headline-xs-regular-font-size)',
+                    lineHeight: 'var(--type-scale-headline-xs-regular-line-height)',
+                    letterSpacing: 'var(--type-scale-headline-xs-regular-letter-spacing)',
+                    color: 'var(--semantic-color-text-primary)',
+                  }}
+                >
+                  {term.prompt}
+                </p>
+
+                <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)' }}>
+                  {/* Matches `TextField`'s own `FIELD_TEXT_STYLE` literal
+                      exactly (Inter Variable, headline-xxs-bold weight/
+                      line-height/tracking, 14px — none of it a real bound
+                      Figma text style, per that component's own doc
+                      comment) rather than reinventing a slightly-different
+                      literal for the same real title copy. */}
+                  <p
+                    className="w-full"
+                    style={{
+                      margin: 0,
+                      fontFamily: "'Inter Variable', sans-serif",
+                      fontWeight: 'var(--type-scale-headline-xxs-bold-font-weight)' as unknown as number,
+                      fontSize: 14,
+                      lineHeight: 'var(--type-scale-headline-xxs-bold-line-height)',
+                      letterSpacing: 'var(--type-scale-headline-xxs-bold-letter-spacing)',
+                      color: 'var(--semantic-color-text-primary)',
+                    }}
+                  >
+                    You typed
+                  </p>
+                  <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-050)' }}>
+                    <div
+                      className="w-full"
+                      style={{
+                        boxSizing: 'border-box',
+                        padding: 'var(--size-space-300)',
+                        borderRadius: 'var(--size-radius-400)',
+                        background: 'var(--semantic-color-background-input)',
+                        border: '1px solid var(--semantic-color-border-default)',
+                      }}
+                    >
+                      {/* Real Figma run is "Inter:Regular" 14px, unlike
+                          the SemiBold title/field literal above — a
+                          genuinely different weight on this live frame,
+                          not a copy-paste of the title's own style. */}
+                      <p
+                        style={{
+                          margin: 0,
+                          fontFamily: "'Inter Variable', sans-serif",
+                          fontWeight: 400,
+                          fontSize: 14,
+                          lineHeight: 'normal',
+                          color: 'var(--semantic-color-text-primary)',
+                          whiteSpace: 'pre-wrap',
+                        }}
+                      >
+                        {typedAnswer}
+                      </p>
+                    </div>
+                    <p
+                      className="w-full"
+                      style={{
+                        margin: 0,
+                        fontFamily: 'var(--type-scale-caption-m-regular-font-family)',
+                        fontWeight: 'var(--type-scale-caption-m-regular-font-weight)',
+                        fontSize: 'var(--type-scale-caption-m-regular-font-size)',
+                        lineHeight: 'var(--type-scale-caption-m-regular-line-height)',
+                        letterSpacing: 'var(--type-scale-caption-m-regular-letter-spacing)',
+                        color: 'var(--semantic-color-text-tertiary)',
+                      }}
+                    >
+                      A couple of sentences is enough, you don&apos;t need to retype the full explanation.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
+                  <Image src="/images/thinking.svg" alt="" width={70} height={70} style={{ flexShrink: 0 }} />
+                  <SpeechBubble state="Loading" className="flex-1" />
+                </div>
+              </div>
+            ) : subState === 'typeResultRecalled' ? (
+              // `Learning-topic 1-typeResult-Recalled` (node
+              // 13622:18425). Its own designer note: "Unaided correct
+              // result on the text-fallback path. What the student typed
+              // shows as plain body copy rather than an audio bubble."
+              // The live frame's echo turns out to be a real `speechBubble`
+              // after all, though (bg/surface fill, no tail) — exactly
+              // `SpeechBubble`'s own documented `Input` state (design-
+              // system.md: "real instances on Learning-typeResult-Recalled
+              // and Learning-typeProcessing"), not the `TextField`-shaped
+              // bordered box `typeProcessing`'s own frame used for the
+              // same echo (see that screen's own component-gaps.md entry
+              // — the two live frames genuinely use two different shapes
+              // for what SPEC.md describes as the identical echo). Built
+              // with the real component here since this frame's shape
+              // matches it exactly. The outcome bubble below reuses
+              // `SpeechBubble`'s own real `Success` defaults — same
+              // "Nice!"/"Unaided"/"You said: ..." copy as the voice
+              // path's own `resultRecalled`, copied verbatim from the
+              // live frame even though the "You said" phrasing reads
+              // like an unedited carryover from the voice screen on a
+              // typed-answer result — flagged, not silently reworded.
+              <div className="flex w-full flex-col items-end" style={{ gap: 'var(--size-space-400)' }}>
+                <p
+                  className="w-full"
+                  style={{
+                    margin: 0,
+                    fontFamily: 'var(--type-scale-headline-xs-regular-font-family)',
+                    fontWeight: 'var(--type-scale-headline-xs-regular-font-weight)',
+                    fontSize: 'var(--type-scale-headline-xs-regular-font-size)',
+                    lineHeight: 'var(--type-scale-headline-xs-regular-line-height)',
+                    letterSpacing: 'var(--type-scale-headline-xs-regular-letter-spacing)',
+                    color: 'var(--semantic-color-text-primary)',
+                  }}
+                >
+                  {term.prompt}
+                </p>
+
+                <SpeechBubble state="Input" message={typedAnswer} className="w-full" />
+
+                <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
+                  <MascotSlot size="XL" pose="approving" />
+                  <SpeechBubble
+                    state="Success"
+                    title="Nice!"
+                    subtitle="Unaided"
+                    message="You said: 'It’s the spark that makes you want to create something'"
+                    className="flex-1"
+                  />
+                </div>
+              </div>
+            ) : subState === 'topic2ResultUnaided' ? (
+              // `Learning-topic 2-result-unaided` (node 13737:17173).
+              // Deliberately unreachable — see the `SubState` type's own
+              // doc comment above and component-gaps.md for why. Same
+              // real shape as the voice path's own `resultRecalled`
+              // (plain-text prompt, `AudioScrubber` `state="Default"`,
+              // mascot + `SpeechBubble state="Success"`), just for term 2
+              // instead of term 1 — `term.prompt`/the message below both
+              // already read "Divergent thinking" once `termIndex` is 1,
+              // so no term-2-specific literals were needed beyond the
+              // message text itself. This frame's own `middleContent`
+              // gap is a real 24px (`--size-space-600`), not the 16px
+              // (`--size-space-400`) every other result-shaped branch
+              // above uses — reproduced as the live value, not
+              // normalized to match its siblings.
+              <div className="flex w-full flex-col items-end" style={{ gap: 'var(--size-space-600)' }}>
+                <p
+                  className="w-full"
+                  style={{
+                    margin: 0,
+                    fontFamily: 'var(--type-scale-headline-xs-regular-font-family)',
+                    fontWeight: 'var(--type-scale-headline-xs-regular-font-weight)',
+                    fontSize: 'var(--type-scale-headline-xs-regular-font-size)',
+                    lineHeight: 'var(--type-scale-headline-xs-regular-line-height)',
+                    letterSpacing: 'var(--type-scale-headline-xs-regular-letter-spacing)',
+                    color: 'var(--semantic-color-text-primary)',
+                  }}
+                >
+                  {term.prompt}
+                </p>
+
+                <AudioScrubber state="Default" />
+
+                <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
+                  <MascotSlot size="XL" pose="approving" />
+                  <SpeechBubble
+                    state="Success"
+                    title="Nice!"
+                    subtitle="Unaided"
+                    message="Divergent thinking is generating as many different ideas as possible before narrowing down to one."
+                    className="flex-1"
+                  />
+                </div>
+              </div>
             ) : (
               <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
                 <MascotSlot size="XL" pose="approving" />
@@ -754,7 +1086,7 @@ export default function Session() {
             <>
               <MicButton state="Idle" showLabel onClick={handleMicTap} />
               <div className="flex items-start" style={{ gap: 'var(--size-space-600)' }}>
-                <Button variant="Tertiary" size="S" cta="Type instead" />
+                <Button variant="Tertiary" size="S" cta="Type instead" onClick={() => setSubState('typeInput')} />
                 {/* `Learning-skipped` (term 4's own `idle`, node 13734:16233)
                     is the only term whose cold "I don’t know" tap has a real
                     destination — its own connector goes straight to Summary,
@@ -897,7 +1229,7 @@ export default function Session() {
                   `resultHinted2Succeed` instead of looping back here. */}
               <MicButton state="Idle" showLabel label="Try again" onClick={handleRetry} />
               <div className="flex items-start" style={{ gap: 'var(--size-space-600)' }}>
-                <Button variant="Tertiary" size="S" cta="Type instead" />
+                <Button variant="Tertiary" size="S" cta="Type instead" onClick={() => setSubState('typeInput')} />
                 <Button variant="Tertiary" size="S" cta="I don’t know" />
               </div>
             </>
@@ -929,6 +1261,65 @@ export default function Session() {
               className="w-full"
               onClick={hasNextTerm ? handleContinue : undefined}
             />
+          )}
+
+          {subState === 'typeInput' && (
+            // SPEC.md: "tap 'Submit' → typeProcessing. Tap 'Switch to
+            // voice' → idle (voice mode, same term)." The live frame's
+            // own `buttonGroup` (node 13702:14138) pairs a filled Submit
+            // with a no-fill "Switch to voice" — `Primary` + `Tertiary`
+            // chrome, not `ButtonGroup`'s own fixed `Vertical` shape
+            // (`Primary`+`Secondary`, per `shared/buttonVariants.ts`) —
+            // same gap as Primer-intro's own second button (component-
+            // gaps.md), built as two direct `Button` instances at that
+            // same real `--size-space-200` gap instead.
+            <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)' }}>
+              <Button variant="Primary" size="L" cta="Submit" className="w-full" onClick={handleSubmitTyped} />
+              <Button variant="Tertiary" size="L" cta="Switch to voice" className="w-full" onClick={handleSwitchToVoice} />
+            </div>
+          )}
+
+          {subState === 'typeProcessing' && (
+            // `Learning-topic 1-typeProcessing`'s own designer note:
+            // "Submit and Switch to voice are dimmed to read as disabled
+            // during the wait" — real `Button` `state="Disabled"` on both,
+            // matching the voice path's own `processing` (SPEC.md: "Button
+            // state=Disabled on whichever CTAs are present"). Genuinely
+            // inert, not just visually dimmed — no `onClick` on either,
+            // same as `processing`'s own disabled buttons.
+            <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)' }}>
+              <Button variant="Primary" size="L" cta="Submit" state="Disabled" className="w-full" />
+              <Button variant="Tertiary" size="L" cta="Switch to voice" state="Disabled" className="w-full" />
+            </div>
+          )}
+
+          {subState === 'typeResultRecalled' && (
+            // Live frame's own bottomContent (node 13622:18567) keeps
+            // both "Continue" (Primary/L, wired same as the voice path's
+            // own resultRecalled) and a second, real "Switch to voice"
+            // (Tertiary/L) — the designer note's own "Switch to voice
+            // stays available even after a correct answer." Shown to
+            // match the frame, left unwired rather than routed to
+            // `handleSwitchToVoice`: that destination resets this term
+            // back to a cold `idle`, which would discard an outcome
+            // that's already resolved Recalled — a real regression, not
+            // just an unbuilt destination. SPEC.md gives no explicit
+            // behavior for this button once a result already exists, so
+            // flagged rather than guessed either way.
+            <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)' }}>
+              <Button variant="Primary" size="L" cta="Continue" className="w-full" onClick={hasNextTerm ? handleContinue : undefined} />
+              <Button variant="Tertiary" size="L" cta="Switch to voice" className="w-full" />
+            </div>
+          )}
+
+          {subState === 'topic2ResultUnaided' && (
+            // Live frame's own bottomContent (node 13737:17209) has only
+            // the single "Continue" button — no second "Switch to voice"
+            // here, unlike `typeResultRecalled`'s own frame. Left
+            // entirely unwired (no `onClick`): this subState is never
+            // actually entered anywhere, so there's nothing for
+            // "Continue" to meaningfully advance from.
+            <Button variant="Primary" size="L" cta="Continue" className="w-full" />
           )}
         </div>
       </div>

@@ -180,7 +180,7 @@ export default function PrimerIntro() {
 
             <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)', padding: 'var(--size-space-700)' }}>
               <Button variant="Primary" size="L" cta="Start learning" className="w-full" onClick={requestMic} />
-              <Button variant="Tertiary" size="L" cta="I can't talk right now" className="w-full" onClick={() => router.push('/session')} />
+              <Button variant="Tertiary" size="L" cta="I can't talk right now" className="w-full" onClick={() => router.push('/session?entry=text')} />
             </div>
           </>
         ) : (
@@ -263,7 +263,7 @@ export default function PrimerIntro() {
 
             <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)', padding: 'var(--size-space-700)' }}>
               <Button variant="Primary" size="L" cta="Turn on my microphone" className="w-full" onClick={requestMic} />
-              <Button variant="Tertiary" size="L" cta="Continue with text" className="w-full" onClick={() => router.push('/session')} />
+              <Button variant="Tertiary" size="L" cta="Continue with text" className="w-full" onClick={() => router.push('/session?entry=text')} />
             </div>
           </>
         )}
