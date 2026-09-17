@@ -221,6 +221,10 @@ export default function Session() {
   const [termIndex, setTermIndex] = useState(0)
   const term = TERMS[termIndex]
   const hasNextTerm = termIndex + 1 < TERMS.length
+  // Terms 1-2 (Recalled/Hinted) still need a real attempt on `idle`;
+  // terms 3-4 (Revealed/Skipped) are cold-skip only — see `idle`'s own
+  // render block below for the 2026-09-17 correction this drives.
+  const canAttempt = term.outcome === 'Recalled' || term.outcome === 'Hinted'
   const [isPlaying, setIsPlaying] = useState(false)
   const [audioUrl, setAudioUrl] = useState<string | null>(null)
   // SPEC.md: Hinted1's "Try again" re-attempt keeps the first attempt's
@@ -1196,22 +1200,35 @@ export default function Session() {
         <div className="relative flex w-full flex-col items-center" style={{ gap: 'var(--size-space-400)', padding: 'var(--size-space-700)' }}>
           {subState === 'idle' && (
             <>
-              <MicButton state="Idle" showLabel onClick={handleMicTap} />
+              {/* Corrected 2026-09-17, per Mia: on terms 3-4 (Revealed/
+                  Skipped), this screen's own scripted path is the cold
+                  "I don't know" tap alone — Mic and "Type instead"
+                  shouldn't actually be tappable here, even though they're
+                  still shown (matching the live frame's own visual,
+                  which carries no Disabled styling on either). Previously
+                  both were left live on every term, reasoning that "an
+                  actual attempt still resolves correctly via processing's
+                  own outcome branch" — technically true, but not what
+                  Mia wants: terms 1-2 (Recalled/Hinted) still need a real
+                  attempt, but 3-4 are cold-skip only. */}
+              <MicButton state="Idle" showLabel onClick={canAttempt ? handleMicTap : undefined} />
               <div className="flex items-start" style={{ gap: 'var(--size-space-600)' }}>
-                <Button variant="Tertiary" size="S" cta="Type instead" onClick={() => setSubState('typeInput')} />
+                <Button
+                  variant="Tertiary"
+                  size="S"
+                  cta="Type instead"
+                  onClick={canAttempt ? () => setSubState('typeInput') : undefined}
+                />
                 {/* SPEC.md (2026-09-16 Figma pass): `Learning-topic 3-I don't
                     know` is a real, distinct connector — term 3 no longer
                     requires a full attempt before Revealed; its cold "I
                     don't know" tap goes straight to `Learning-topic
                     3-result-Revealed`, matching term 4's `Learning-topic
                     4-skipped` shape exactly (visually identical `idle`
-                    content, just named for its scripted outcome). An actual
-                    attempt is still mechanically live on both terms (the mic
-                    still works) and resolves to the same `Revealed`/`Skipped`
-                    destination via `processing`'s own outcome branch — this
-                    is only the cold-skip shortcut. Terms 1-2's cold-skip
-                    stays unwired: no real destination exists for giving up
-                    on Recalled/Hinted before ever attempting. */}
+                    content, just named for its scripted outcome). Terms
+                    1-2's cold-skip stays unwired: no real destination
+                    exists for giving up on Recalled/Hinted before ever
+                    attempting. */}
                 <Button
                   variant="Tertiary"
                   size="S"
