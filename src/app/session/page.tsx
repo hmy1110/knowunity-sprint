@@ -18,10 +18,12 @@ import { TextField } from '@/components/TextField/TextField'
 
 // `Learning-idle`, `Learning-recording`, `Learning-ready to send`,
 // `Learning-processing`, `Learning-result-Recalled`,
-// `Learning-result-Hinted1`, `Learning-result-Hinted2-recording`,
-// `Learning-result-Hinted2-ready to send`,
-// `Learning-result-Hinted2-processing`,
-// `Learning-result-Hinted2-succeed`, `Learning-result-Revealed`,
+// `Learning-result-Hinted1`, `Learning-topic 2-result-Hinted1-recording`,
+// `Learning-topic 2-result-Hinted1-ready to send`,
+// `Learning-topic 2-result-Hinted1-processing`,
+// `Learning-topic 2-result-Hinted1-recalled` (node 13673:13893 — corrected
+// 2026-09-17, per Mia, from this doc's earlier `Learning-result-Hinted2-
+// succeed`; see the `resultHinted1Recalled` block below), `Learning-result-Revealed`,
 // `Learning-skipped`, `Learning-topic 1-typeInput`,
 // `Learning-topic 1-typeProcessing`, and
 // `Learning-topic 1-typeResult-Recalled` are built so far — Session is
@@ -55,7 +57,7 @@ type SubState =
   | 'hinted2Recording'
   | 'hinted2ReadyToSend'
   | 'hinted2Processing'
-  | 'resultHinted2Succeed'
+  | 'resultHinted1Recalled'
   | 'resultRevealed'
   | 'typeInput'
   | 'typeProcessing'
@@ -167,8 +169,8 @@ function CheckIcon() {
 
 // Real "alert-circle" asset — the same one `SpeechBubble`'s own
 // `Warning` state renders internally, reused here since
-// `Learning-result-Hinted2-succeed`'s own Hint 1 block collapses to
-// plain text (no bubble chrome, no tail — see the component's own doc
+// `Learning-topic 2-result-Hinted1-recalled`'s own Hint 1 block collapses
+// to plain text (no bubble chrome, no tail — see the component's own doc
 // comment on this exact "collapsed" treatment) rather than a second
 // `SpeechBubble` instance.
 function AlertCircleIcon() {
@@ -214,12 +216,12 @@ export default function Session() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [audioUrl, setAudioUrl] = useState<string | null>(null)
   // SPEC.md: Hinted1's "Try again" re-attempt keeps the first attempt's
-  // recording around — `Learning-result-Hinted2-succeed` plays back
-  // both. Only ever set via `handleRetry`, below.
+  // recording around — `Learning-topic 2-result-Hinted1-recalled` plays
+  // back both. Only ever set via `handleRetry`, below.
   const [isPlayingFirstAttempt, setIsPlayingFirstAttempt] = useState(false)
   const [firstAttemptAudioUrl, setFirstAttemptAudioUrl] = useState<string | null>(null)
   // True once "Try again" has been tapped for this term — tells the
-  // `processing` timer to resolve to `resultHinted2Succeed` instead of
+  // `processing` timer to resolve to `resultHinted1Recalled` instead of
   // looping back to `resultHinted1`.
   const [isRetry, setIsRetry] = useState(false)
   // `typeInput`'s own real captured keystrokes — SPEC.md: "TextField has
@@ -243,10 +245,10 @@ export default function Session() {
   // mic-permission gate already covers that path before a student ever
   // reaches Session; see SPEC.md's Primer section. Shared by the first
   // attempt (`handleMicTap`, → the generic `recording`) and Hinted1's
-  // re-attempt (`handleRetry`, → the real `Learning-result-Hinted2-
-  // recording` frame instead, confirmed as its own distinct screen —
-  // node 13728:15704, keeping the first attempt's history on screen
-  // rather than reusing the plain `recording` layout).
+  // re-attempt (`handleRetry`, → the real `Learning-topic 2-result-
+  // Hinted1-recording` frame instead, confirmed as its own distinct
+  // screen — node 13728:15704, keeping the first attempt's history on
+  // screen rather than reusing the plain `recording` layout).
   async function startRecording(isRetryAttempt: boolean) {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
@@ -281,14 +283,14 @@ export default function Session() {
   // `recording`'s own mic tap stops the real recorder and stream, turns
   // the captured chunks into a real playable URL, and moves to
   // `readyToSend` (or, on a re-attempt, the real
-  // `Learning-result-Hinted2-ready to send` frame — node 13728:15886,
-  // confirmed as its own distinct screen, not a reuse of the generic
-  // one) — the SPEC.md-documented transition, now that a screen exists
-  // to receive it. Doesn't revoke the previous `audioUrl` here (unlike
-  // a plain overwrite) — on a Hinted1 re-attempt, that previous URL is
-  // the first attempt's own recording, already moved to
+  // `Learning-topic 2-result-Hinted1-ready to send` frame — node
+  // 13728:15886, confirmed as its own distinct screen, not a reuse of
+  // the generic one) — the SPEC.md-documented transition, now that a
+  // screen exists to receive it. Doesn't revoke the previous `audioUrl`
+  // here (unlike a plain overwrite) — on a Hinted1 re-attempt, that
+  // previous URL is the first attempt's own recording, already moved to
   // `firstAttemptAudioUrl` by `handleRetry` and still needed for
-  // `resultHinted2Succeed`'s two-scrubber playback. Explicit discards
+  // `resultHinted1Recalled`'s two-scrubber playback. Explicit discards
   // (`handleRedo`, `handleContinue`) revoke instead.
   function handleStopRecording() {
     const recorder = recorderRef.current
@@ -329,7 +331,7 @@ export default function Session() {
     }
   }
 
-  // `resultHinted2Succeed` plays back the first attempt through its own
+  // `resultHinted1Recalled` plays back the first attempt through its own
   // separate hidden `<audio>` element, independent of the one above
   // (which plays the second/current attempt).
   function handleToggleFirstAttemptPlayback() {
@@ -367,7 +369,7 @@ export default function Session() {
     setSubState(isRetry ? 'hinted2Processing' : 'processing')
   }
 
-  // SPEC.md: Recalled's and Hinted2-succeed's "Continue" → the next
+  // SPEC.md: Recalled's and Hinted1-recalled's "Continue" → the next
   // term's `idle` (the last term's would go to `/summary` instead — not
   // reachable yet, since `TERMS` only has 2 real entries, guarded by
   // `hasNextTerm`). Clears this term's captured audio so the next term
@@ -409,7 +411,7 @@ export default function Session() {
   // processing screen this is. `processing` only ever means a first
   // attempt now (`handleSend` routes retries to `hinted2Processing`
   // instead), so it resolves by this term's scripted outcome alone.
-  // `hinted2Processing` always resolves to `resultHinted2Succeed`,
+  // `hinted2Processing` always resolves to `resultHinted1Recalled`,
   // scripted to always succeed per SPEC.md.
   //
   // Term 4's canned path is the cold "I don't know" tap on its own
@@ -433,7 +435,7 @@ export default function Session() {
       return () => clearTimeout(timer)
     }
     if (subState === 'hinted2Processing') {
-      const timer = setTimeout(() => setSubState('resultHinted2Succeed'), 2500)
+      const timer = setTimeout(() => setSubState('resultHinted1Recalled'), 2500)
       return () => clearTimeout(timer)
     }
     // Text path's own wait state. Only `term.outcome === 'Recalled'` has
@@ -448,8 +450,10 @@ export default function Session() {
     }
   }, [subState, term.outcome, router])
 
-  // Shared between `hinted2Processing` and `resultHinted2Succeed` —
-  // both live frames (13727:15363, 13713:14750) show the identical
+  // Shared between `hinted2Processing` and `resultHinted1Recalled` —
+  // both live frames (13727:15363, 13673:13893 — corrected 2026-09-17,
+  // per Mia, from this doc's earlier 13713:14750, the separate hidden
+  // two-hint `Learning-result-Hinted2-succeed`) show the identical
   // history stack (prompt, first attempt's `AudioScrubber`, the Hint 1
   // header collapsed to plain text, second attempt's `AudioScrubber`)
   // before diverging on the final row (thinking+Loading vs. the full
@@ -518,7 +522,7 @@ export default function Session() {
   )
 
   // `Learning-result-Hinted1` (node 13622:17189) and
-  // `Learning-result-Hinted2-recording` (node 13728:15704) share this
+  // `Learning-topic 2-result-Hinted1-recording` (node 13728:15704) share this
   // identical row — the full mascot + `SpeechBubble state="Warning"`,
   // not the collapsed-to-plain-text treatment `hintedHistory` above
   // uses once a second attempt has actually started.
@@ -643,16 +647,24 @@ export default function Session() {
               </span>
             </div>
 
-            {subState === 'hinted2Processing' || subState === 'resultHinted2Succeed' ? (
-              // `Learning-result-Hinted2-processing` (node 13727:15363)
-              // and `Learning-result-Hinted2-succeed` (node 13713:14750)
-              // share the identical history stack above — see
-              // `hintedHistory` above — and only diverge on the final
-              // row: bare `thinking` pose + `SpeechBubble state="Loading"`
-              // while processing (matching `processing`'s own bare-
-              // thinking treatment), vs. the full `MascotSlot` +
-              // `SpeechBubble state="Success"` once resolved. Terminal on
-              // Hinted2-succeed — single "Continue," no further retry.
+            {subState === 'hinted2Processing' || subState === 'resultHinted1Recalled' ? (
+              // `Learning-topic 2-result-Hinted1-processing` (node
+              // 13727:15363) and `Learning-topic 2-result-Hinted1-recalled`
+              // (node 13673:13893 — corrected 2026-09-17, per Mia: this is
+              // the real name/identity of the frame this doc and
+              // component-gaps.md previously misattributed to
+              // `Learning-result-Hinted2-succeed`, node 13713:14750, a
+              // separate two-hint success flow that's now hidden in Figma
+              // and out of scope, confirmed by Mia) share the identical
+              // history stack above — see `hintedHistory` above — and only
+              // diverge on the final row: bare `thinking` pose +
+              // `SpeechBubble state="Loading"` while processing (matching
+              // `processing`'s own bare-thinking treatment), vs. the full
+              // `MascotSlot` + `SpeechBubble state="Success"` once
+              // resolved. `subtitle="Hint 1 of 2"` (not "2 of 2" as this
+              // screen previously read) — this term only ever needed one
+              // hint before succeeding. Terminal — single "Continue," no
+              // further retry.
               <div className="flex w-full flex-col items-end" style={{ gap: 'var(--size-space-400)' }}>
                 {hintedHistory}
 
@@ -667,7 +679,7 @@ export default function Session() {
                     <SpeechBubble
                       state="Success"
                       title="Nice!"
-                      subtitle="Hint 2 of 2"
+                      subtitle="Hint 1 of 2"
                       message="Divergent thinking is generating as many different ideas as possible before narrowing down to one."
                       className="flex-1"
                     />
@@ -681,8 +693,8 @@ export default function Session() {
               subState === 'hinted2ReadyToSend' ||
               subState === 'resultRevealed' ? (
               // `Learning-processing`, `Learning-result-Recalled`,
-              // `Learning-result-Hinted1`, `Learning-result-Hinted2-
-              // recording`, `Learning-result-Hinted2-ready to send`, and
+              // `Learning-result-Hinted1`, `Learning-topic 2-result-Hinted1-
+              // recording`, `Learning-topic 2-result-Hinted1-ready to send`, and
               // `Learning-result-Revealed` all share this same
               // restructured layout: the mascot+tail prompt bubble drops
               // to plain text (the question has already been "said"; it
@@ -709,8 +721,8 @@ export default function Session() {
                 </p>
 
                 {subState === 'hinted2Recording' || subState === 'hinted2ReadyToSend' ? (
-                  // `Learning-result-Hinted2-recording`'s and
-                  // `Learning-result-Hinted2-ready to send`'s own top
+                  // `Learning-topic 2-result-Hinted1-recording`'s and
+                  // `Learning-topic 2-result-Hinted1-ready to send`'s own top
                   // scrubber both play back the *first* attempt — bound
                   // to `firstAttemptAudioUrl`, not the generic
                   // `audioUrl`. By `hinted2ReadyToSend`, `audioUrl`
@@ -787,7 +799,7 @@ export default function Session() {
                   </div>
                 ) : (
                   // `Learning-result-Hinted1` (node 13622:17189) and
-                  // `Learning-result-Hinted2-recording` (node
+                  // `Learning-topic 2-result-Hinted1-recording` (node
                   // 13728:15704) share the identical `hintedWarningRow`
                   // — same normal `MascotSlot` wrapper as Recalled, with
                   // a `Warning` `SpeechBubble` instead. Confirmed
@@ -1073,7 +1085,7 @@ export default function Session() {
             fallback hex reads opaque `#0a0a0a`, but the real bound
             token is `rgba(10,10,10,0.5)` — bound to that, not the
             literal). Positioned absolute so the mic button below still
-            paints above it. `Learning-result-Hinted2-recording`'s own
+            paints above it. `Learning-topic 2-result-Hinted1-recording`'s own
             live frame (node 13728:15704) has the identical scrim layer
             — confirmed independently, not assumed to carry over from
             `recording`. */}
@@ -1110,7 +1122,7 @@ export default function Session() {
           )}
 
           {(subState === 'readyToSend' || subState === 'hinted2ReadyToSend') && (
-            // `Learning-result-Hinted2-ready to send`'s own bottomContent
+            // `Learning-topic 2-result-Hinted1-ready to send`'s own bottomContent
             // (node 13728:15886) is identical to the generic
             // `Learning-ready to send`'s — same `AudioScrubber` (playing
             // the just-finished second attempt, via the generic
@@ -1226,7 +1238,7 @@ export default function Session() {
                   starts a real second recording via `handleRetry`,
                   looping back through `recording` → `readyToSend` →
                   `processing`, which now resolves to
-                  `resultHinted2Succeed` instead of looping back here. */}
+                  `resultHinted1Recalled` instead of looping back here. */}
               <MicButton state="Idle" showLabel label="Try again" onClick={handleRetry} />
               <div className="flex items-start" style={{ gap: 'var(--size-space-600)' }}>
                 <Button variant="Tertiary" size="S" cta="Type instead" onClick={() => setSubState('typeInput')} />
@@ -1235,7 +1247,7 @@ export default function Session() {
             </>
           )}
 
-          {subState === 'resultHinted2Succeed' && (
+          {subState === 'resultHinted1Recalled' && (
             // SPEC.md: "Terminal, single 'Continue,' no further retry."
             // Same `hasNextTerm` guard as Recalled's — now real: term 3
             // ("Visual hierarchy," Revealed) is built, so this Continue
