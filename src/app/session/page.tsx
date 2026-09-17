@@ -34,17 +34,20 @@ import { TextField } from '@/components/TextField/TextField'
 // reason — term 1 is the only outcome with a built `typeResult`
 // destination so far.
 //
-// `topic2ResultUnaided` (`Learning-topic 2-result-unaided`) is also
-// built below, but — per Mia's explicit call, 2026-09-17 — deliberately
-// left unreachable: nothing sets this subState anywhere. Its own live
-// Figma frame sits on a separate connector chain (`StudyPlan-inProgress
-// -> Learning-topic 2-result-unaided -> topic 3-unaided -> topic
-// 4-unaided -> Summary-all recalled`) that skips term 1 entirely and
-// ends at a different Summary variant — reads as a full alternate
-// "everything recalled" demo path, not a branch of this sprint's own
-// fixed script (term 2 always resolves `Hinted`, confirmed repeatedly
-// above and in SPEC.md). Wiring it into term 2's live flow would
-// contradict that script; building the other 3 screens plus a second
+// `topic2ResultUnaided` and `topic3ResultUnaided` (`Learning-topic
+// 2-result-unaided`, node 13737:17173, and `Learning-topic
+// 3-result-unaided`, node 13737:17370) are also built below, but — per
+// Mia's explicit call, 2026-09-17 — deliberately left unreachable:
+// nothing sets either subState anywhere. Their live Figma frames sit on
+// a separate connector chain (`StudyPlan-inProgress -> Learning-topic
+// 2-result-unaided -> topic 3-unaided -> topic 4-unaided ->
+// Summary-all recalled`) that skips term 1 entirely and ends at a
+// different Summary variant — reads as a full alternate "everything
+// recalled" demo path, not a branch of this sprint's own fixed script
+// (term 2 always resolves `Hinted`, term 3 `Revealed`, confirmed
+// repeatedly above and in SPEC.md). Wiring either into the live flow
+// would contradict that script; building the remaining screen
+// (`Learning-topic 4-result-unaided`) plus a second
 // Summary would be a materially bigger feature (real session-entry-
 // source tracking) than "one screen." See component-gaps.md.
 type SubState =
@@ -63,6 +66,7 @@ type SubState =
   | 'typeProcessing'
   | 'typeResultRecalled'
   | 'topic2ResultUnaided'
+  | 'topic3ResultUnaided'
 
 // SPEC.md: "The 4 terms are scripted by index, not by content: term 1
 // resolves Recalled, term 2 Hinted, term 3 Revealed, term 4 Skipped."
@@ -1071,6 +1075,47 @@ export default function Session() {
                   />
                 </div>
               </div>
+            ) : subState === 'topic3ResultUnaided' ? (
+              // `Learning-topic 3-result-unaided` (node 13737:17370).
+              // Deliberately unreachable, same reasoning as
+              // `topic2ResultUnaided` immediately above — see the
+              // `SubState` type's own doc comment and component-gaps.md.
+              // Identical shape: plain-text prompt, `AudioScrubber`
+              // `state="Default"`, mascot + `SpeechBubble
+              // state="Success"`, just for term 3 — `term.prompt`/the
+              // message below both read "Visual hierarchy" once
+              // `termIndex` is 2. Same real 24px (`--size-space-600`)
+              // middleContent gap as its sibling, confirmed independently
+              // on this frame rather than assumed to carry over.
+              <div className="flex w-full flex-col items-end" style={{ gap: 'var(--size-space-600)' }}>
+                <p
+                  className="w-full"
+                  style={{
+                    margin: 0,
+                    fontFamily: 'var(--type-scale-headline-xs-regular-font-family)',
+                    fontWeight: 'var(--type-scale-headline-xs-regular-font-weight)',
+                    fontSize: 'var(--type-scale-headline-xs-regular-font-size)',
+                    lineHeight: 'var(--type-scale-headline-xs-regular-line-height)',
+                    letterSpacing: 'var(--type-scale-headline-xs-regular-letter-spacing)',
+                    color: 'var(--semantic-color-text-primary)',
+                  }}
+                >
+                  {term.prompt}
+                </p>
+
+                <AudioScrubber state="Default" />
+
+                <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
+                  <MascotSlot size="XL" pose="approving" />
+                  <SpeechBubble
+                    state="Success"
+                    title="Nice!"
+                    subtitle="Unaided"
+                    message="Visual hierarchy arranges elements to guide attention and show what matters most."
+                    className="flex-1"
+                  />
+                </div>
+              </div>
             ) : (
               <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
                 <MascotSlot size="XL" pose="approving" />
@@ -1342,6 +1387,15 @@ export default function Session() {
             // entirely unwired (no `onClick`): this subState is never
             // actually entered anywhere, so there's nothing for
             // "Continue" to meaningfully advance from.
+            <Button variant="Primary" size="L" cta="Continue" className="w-full" />
+          )}
+
+          {subState === 'topic3ResultUnaided' && (
+            // Live frame's own bottomContent (node 13737:17387), same
+            // single-"Continue" shape as `topic2ResultUnaided`'s sibling
+            // frame — confirmed independently, not assumed to carry
+            // over. Left unwired for the same reason: never actually
+            // entered anywhere.
             <Button variant="Primary" size="L" cta="Continue" className="w-full" />
           )}
         </div>
