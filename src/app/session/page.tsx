@@ -19,13 +19,14 @@ import { StatusIndicator } from '@/components/StatusIndicator/StatusIndicator'
 // `Learning-processing`, `Learning-result-Recalled`,
 // `Learning-result-Hinted1`, `Learning-result-Hinted2-recording`,
 // `Learning-result-Hinted2-ready to send`,
-// `Learning-result-Hinted2-processing`, and
-// `Learning-result-Hinted2-succeed` are built so far — Session is one
-// route with many internal sub-states per SPEC.md ({ termIndex, mode,
-// subState }); the rest of the loop (Revealed, Skipped, typeInput,
-// etc.) isn't built yet. The `subState` scaffold below only covers the
-// ten real states that exist — Skip/"I don't know"/"Type instead"
-// still aren't wired, since none of their target states exist yet.
+// `Learning-result-Hinted2-processing`,
+// `Learning-result-Hinted2-succeed`, and `Learning-result-Revealed` are
+// built so far — Session is one route with many internal sub-states per
+// SPEC.md ({ termIndex, mode, subState }); the rest of the loop
+// (Skipped, typeInput, etc.) isn't built yet. The `subState` scaffold
+// below only covers the eleven real states that exist — Skip/"I don't
+// know"/"Type instead" still aren't wired, since none of their target
+// states exist yet.
 type SubState =
   | 'idle'
   | 'recording'
@@ -37,16 +38,26 @@ type SubState =
   | 'hinted2ReadyToSend'
   | 'hinted2Processing'
   | 'resultHinted2Succeed'
+  | 'resultRevealed'
 
 // SPEC.md: "The 4 terms are scripted by index, not by content: term 1
 // resolves Recalled, term 2 Hinted, term 3 Revealed, term 4 Skipped."
-// Only the first two are real destinations so far (Revealed/Skipped
-// aren't built) — `termIndex` won't advance past 1 until they are.
-// Prompt copy confirmed per-term from each term's own live Figma frame,
-// not assumed to repeat term 1's.
-const TERMS: { name: string; outcome: 'Recalled' | 'Hinted'; prompt: string }[] = [
+// Only the first three are real destinations so far (Skipped isn't
+// built) — `termIndex` won't advance past 2 until it is. Prompt copy
+// confirmed per-term from each term's own live Figma frame, not
+// assumed to repeat an earlier term's. Term 3's own real frame
+// (Learning-result-Revealed, node 13669:17091) shows no cold-skip
+// variant reached from `idle`'s own "I don't know" — its prompt has
+// already dropped out of the `Prompt` `SpeechBubble`'s bubble chrome
+// into the same bare plain-text treatment `processing`/`resultRecalled`
+// use, confirming term 3 really does attempt once via the normal
+// `recording` → `readyToSend` → `processing` chain and gets revealed
+// directly from there, never offered a hint first — not a separate
+// cold-skip mechanic.
+const TERMS: { name: string; outcome: 'Recalled' | 'Hinted' | 'Revealed'; prompt: string }[] = [
   { name: 'Inspiration', outcome: 'Recalled', prompt: 'Let’s start. Explain the term “Inspiration” out loud, in your own words.' },
   { name: 'Divergent thinking', outcome: 'Hinted', prompt: 'Explain the term “Divergent thinking” out loud, in your own words.' },
+  { name: 'Visual hierarchy', outcome: 'Revealed', prompt: 'Explain the term “visual hierarchy” out loud, in your own words.' },
 ]
 
 // Real "x-close" asset (component 3248:81244), confirmed via
@@ -323,13 +334,14 @@ export default function Session() {
   // processing screen this is. `processing` only ever means a first
   // attempt now (`handleSend` routes retries to `hinted2Processing`
   // instead), so it resolves by this term's scripted outcome alone
-  // (SPEC.md: "term 1 resolves Recalled, term 2 Hinted..." —
-  // Revealed/Skipped aren't built, so only `Recalled`/`Hinted` route
+  // (SPEC.md: "term 1 resolves Recalled, term 2 Hinted, term 3
+  // Revealed..." — Skipped isn't built, so only the first three route
   // anywhere real). `hinted2Processing` always resolves to
   // `resultHinted2Succeed`, scripted to always succeed per SPEC.md.
   useEffect(() => {
     if (subState === 'processing') {
-      const nextSubState = term.outcome === 'Hinted' ? 'resultHinted1' : 'resultRecalled'
+      const nextSubState =
+        term.outcome === 'Hinted' ? 'resultHinted1' : term.outcome === 'Revealed' ? 'resultRevealed' : 'resultRecalled'
       const timer = setTimeout(() => setSubState(nextSubState), 2500)
       return () => clearTimeout(timer)
     }
@@ -560,18 +572,20 @@ export default function Session() {
               subState === 'resultRecalled' ||
               subState === 'resultHinted1' ||
               subState === 'hinted2Recording' ||
-              subState === 'hinted2ReadyToSend' ? (
+              subState === 'hinted2ReadyToSend' ||
+              subState === 'resultRevealed' ? (
               // `Learning-processing`, `Learning-result-Recalled`,
               // `Learning-result-Hinted1`, `Learning-result-Hinted2-
-              // recording`, and `Learning-result-Hinted2-ready to send`
-              // all share this same restructured layout: the mascot+tail
-              // prompt bubble drops to plain text (the question has
-              // already been "said"; it now reads as a caption of what
-              // was asked), with an `AudioScrubber` above a second
-              // mascot+bubble row. Right-aligned (`items-end`) to match
-              // all five live frames; the plain-text block and the
-              // header row above are full-width regardless, so this only
-              // visibly affects the non-full-width `AudioScrubber`.
+              // recording`, `Learning-result-Hinted2-ready to send`, and
+              // `Learning-result-Revealed` all share this same
+              // restructured layout: the mascot+tail prompt bubble drops
+              // to plain text (the question has already been "said"; it
+              // now reads as a caption of what was asked), with an
+              // `AudioScrubber` above a second mascot+bubble row.
+              // Right-aligned (`items-end`) to match all six live
+              // frames; the plain-text block and the header row above
+              // are full-width regardless, so this only visibly affects
+              // the non-full-width `AudioScrubber`.
               <div className="flex w-full flex-col items-end" style={{ gap: 'var(--size-space-400)' }}>
                 <p
                   className="w-full"
@@ -603,6 +617,13 @@ export default function Session() {
                     state={isPlayingFirstAttempt ? 'Playing' : 'Default'}
                     onClick={handleToggleFirstAttemptPlayback}
                   />
+                ) : subState === 'resultRevealed' ? (
+                  // `Learning-result-Revealed`'s own live frame (node
+                  // 13669:17091) has no `AudioScrubber` at all — term 3's
+                  // real attempt is revealed straight away, never
+                  // replayed. Confirmed absent, not an oversight to fill
+                  // in.
+                  null
                 ) : (
                   <AudioScrubber state={isPlaying ? 'Playing' : 'Default'} onClick={handleTogglePlayback} />
                 )}
@@ -637,6 +658,24 @@ export default function Session() {
                       title="Nice!"
                       subtitle="Unaided"
                       message="You said: 'It’s the spark that makes you want to create something'"
+                      className="flex-1"
+                    />
+                  </div>
+                ) : subState === 'resultRevealed' ? (
+                  // `Learning-result-Revealed`'s own live frame (node
+                  // 13669:17091): same normal `MascotSlot` wrapper again,
+                  // with a `Error` `SpeechBubble` — real title/subtitle/
+                  // message confirmed from the frame, not SPEC.md's
+                  // generic "state=Error, showing the correct term"
+                  // alone. `SpeechBubble`'s own `Error` state already
+                  // supplies the x-circle icon/title color internally.
+                  <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
+                    <MascotSlot size="XL" pose="approving" />
+                    <SpeechBubble
+                      state="Error"
+                      title="Here’s the answer."
+                      subtitle="Revealed"
+                      message="Visual hierarchy arranges elements to guide attention and show what matters most."
                       className="flex-1"
                     />
                   </div>
@@ -816,8 +855,23 @@ export default function Session() {
 
           {subState === 'resultHinted2Succeed' && (
             // SPEC.md: "Terminal, single 'Continue,' no further retry."
-            // Same `hasNextTerm` guard as Recalled's — term 3
-            // ("Visual hierarchy," Revealed) isn't built yet.
+            // Same `hasNextTerm` guard as Recalled's — now real: term 3
+            // ("Visual hierarchy," Revealed) is built, so this Continue
+            // really does advance once term 2 resolves.
+            <Button
+              variant="Primary"
+              size="L"
+              cta="Continue"
+              className="w-full"
+              onClick={hasNextTerm ? handleContinue : undefined}
+            />
+          )}
+
+          {subState === 'resultRevealed' && (
+            // SPEC.md: "Revealed... Button variant="Primary" cta="Continue"."
+            // Same `hasNextTerm` guard — term 4 ("Visual research,"
+            // Skipped) isn't built yet, so this no-ops past term 3 until
+            // `TERMS` gains a fourth entry.
             <Button
               variant="Primary"
               size="L"
