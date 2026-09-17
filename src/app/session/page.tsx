@@ -1099,19 +1099,30 @@ export default function Session() {
               <MicButton state="Idle" showLabel onClick={handleMicTap} />
               <div className="flex items-start" style={{ gap: 'var(--size-space-600)' }}>
                 <Button variant="Tertiary" size="S" cta="Type instead" onClick={() => setSubState('typeInput')} />
-                {/* `Learning-skipped` (term 4's own `idle`, node 13734:16233)
-                    is the only term whose cold "I don’t know" tap has a real
-                    destination — its own connector goes straight to Summary,
-                    since it's the last term and there's no result screen to
-                    show first. Terms 1-3's cold-skip stays unwired, same as
-                    before: SPEC.md's generic idle-skip path is real per the
-                    design but never exercised by this sprint's fixed script,
-                    so there's nothing built to route to yet. */}
+                {/* SPEC.md (2026-09-16 Figma pass): `Learning-topic 3-I don't
+                    know` is a real, distinct connector — term 3 no longer
+                    requires a full attempt before Revealed; its cold "I
+                    don't know" tap goes straight to `Learning-topic
+                    3-result-Revealed`, matching term 4's `Learning-topic
+                    4-skipped` shape exactly (visually identical `idle`
+                    content, just named for its scripted outcome). An actual
+                    attempt is still mechanically live on both terms (the mic
+                    still works) and resolves to the same `Revealed`/`Skipped`
+                    destination via `processing`'s own outcome branch — this
+                    is only the cold-skip shortcut. Terms 1-2's cold-skip
+                    stays unwired: no real destination exists for giving up
+                    on Recalled/Hinted before ever attempting. */}
                 <Button
                   variant="Tertiary"
                   size="S"
                   cta="I don’t know"
-                  onClick={!hasNextTerm ? () => router.push('/summary') : undefined}
+                  onClick={
+                    term.outcome === 'Revealed'
+                      ? () => setSubState('resultRevealed')
+                      : !hasNextTerm
+                        ? () => router.push('/summary')
+                        : undefined
+                  }
                 />
               </div>
             </>
