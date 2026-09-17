@@ -34,22 +34,25 @@ import { TextField } from '@/components/TextField/TextField'
 // reason — term 1 is the only outcome with a built `typeResult`
 // destination so far.
 //
-// `topic2ResultUnaided` and `topic3ResultUnaided` (`Learning-topic
-// 2-result-unaided`, node 13737:17173, and `Learning-topic
-// 3-result-unaided`, node 13737:17370) are also built below, but — per
-// Mia's explicit call, 2026-09-17 — deliberately left unreachable:
-// nothing sets either subState anywhere. Their live Figma frames sit on
-// a separate connector chain (`StudyPlan-inProgress -> Learning-topic
+// `topic2ResultUnaided`, `topic3ResultUnaided`, and `topic4ResultUnaided`
+// (`Learning-topic 2-result-unaided`, node 13737:17173; `Learning-topic
+// 3-result-unaided`, node 13737:17370; `Learning-topic 4-result-unaided`,
+// node 13737:17501) are also built below, but — per Mia's explicit call,
+// 2026-09-17 — deliberately left unreachable: nothing sets any of the
+// three subStates anywhere. Their live Figma frames sit on a separate
+// connector chain (`StudyPlan-inProgress -> Learning-topic
 // 2-result-unaided -> topic 3-unaided -> topic 4-unaided ->
 // Summary-all recalled`) that skips term 1 entirely and ends at a
 // different Summary variant — reads as a full alternate "everything
 // recalled" demo path, not a branch of this sprint's own fixed script
-// (term 2 always resolves `Hinted`, term 3 `Revealed`, confirmed
-// repeatedly above and in SPEC.md). Wiring either into the live flow
-// would contradict that script; building the remaining screen
-// (`Learning-topic 4-result-unaided`) plus a second
-// Summary would be a materially bigger feature (real session-entry-
-// source tracking) than "one screen." See component-gaps.md.
+// (term 2 always resolves `Hinted`, term 3 `Revealed`, term 4 `Skipped`,
+// confirmed repeatedly above and in SPEC.md). Wiring any of the three
+// into the live flow would contradict that script and would need real
+// session-entry-source tracking (fresh vs. resumed-from-inProgress) —
+// out of scope, per Mia's same call. `Summary-all recalled` (the chain's
+// own destination) is separately built at `/summary?variant=all-recalled`
+// — see that file and component-gaps.md. See component-gaps.md for this
+// file's own three screens.
 type SubState =
   | 'idle'
   | 'recording'
@@ -67,6 +70,7 @@ type SubState =
   | 'typeResultRecalled'
   | 'topic2ResultUnaided'
   | 'topic3ResultUnaided'
+  | 'topic4ResultUnaided'
 
 // SPEC.md: "The 4 terms are scripted by index, not by content: term 1
 // resolves Recalled, term 2 Hinted, term 3 Revealed, term 4 Skipped."
@@ -585,11 +589,22 @@ export default function Session() {
                   Learning-skipped (term 4's own idle) is *also* 75%, not
                   100% — matching design-system.md's own note that 100 has
                   no real example anywhere; that value is reserved for
-                  Summary once the whole session is actually done. */}
+                  Summary once the whole session is actually done.
+                  `topic4ResultUnaided` is the one confirmed exception: its
+                  own live frame (node 13737:17501) really does show a
+                  full 100% bar, not 75% — this alternate "everything
+                  recalled" demo path treats reaching term 4's unaided
+                  result as the session's own real end point (it feeds
+                  Summary-all recalled next), unlike the main script's
+                  term 4, which still caps at 75%. Reproduced as its own
+                  real value, not forced to match the main script's
+                  formula. */}
               <ProgressIndicator
                 variant="Primary"
                 thickness="16"
-                progress={String(Math.min(termIndex + 1, 3) * 25) as ProgressIndicatorProgress}
+                progress={
+                  (subState === 'topic4ResultUnaided' ? '100' : String(Math.min(termIndex + 1, 3) * 25)) as ProgressIndicatorProgress
+                }
                 label="Topic progress"
               />
             </div>
@@ -1116,6 +1131,46 @@ export default function Session() {
                   />
                 </div>
               </div>
+            ) : subState === 'topic4ResultUnaided' ? (
+              // `Learning-topic 4-result-unaided` (node 13737:17501).
+              // Deliberately unreachable, same reasoning as
+              // `topic2ResultUnaided`/`topic3ResultUnaided` above — see
+              // the `SubState` type's own doc comment and
+              // component-gaps.md. Identical shape, just for term 4 —
+              // `term.prompt`/the message below both read "Visual
+              // research" once `termIndex` is 3. Same real 24px
+              // (`--size-space-600`) middleContent gap as its siblings,
+              // confirmed independently on this frame rather than
+              // assumed to carry over.
+              <div className="flex w-full flex-col items-end" style={{ gap: 'var(--size-space-600)' }}>
+                <p
+                  className="w-full"
+                  style={{
+                    margin: 0,
+                    fontFamily: 'var(--type-scale-headline-xs-regular-font-family)',
+                    fontWeight: 'var(--type-scale-headline-xs-regular-font-weight)',
+                    fontSize: 'var(--type-scale-headline-xs-regular-font-size)',
+                    lineHeight: 'var(--type-scale-headline-xs-regular-line-height)',
+                    letterSpacing: 'var(--type-scale-headline-xs-regular-letter-spacing)',
+                    color: 'var(--semantic-color-text-primary)',
+                  }}
+                >
+                  {term.prompt}
+                </p>
+
+                <AudioScrubber state="Default" />
+
+                <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
+                  <MascotSlot size="XL" pose="approving" />
+                  <SpeechBubble
+                    state="Success"
+                    title="Nice!"
+                    subtitle="Unaided"
+                    message="Visual research is the use of images and other visual media to collect, analyze, and present research data."
+                    className="flex-1"
+                  />
+                </div>
+              </div>
             ) : (
               <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
                 <MascotSlot size="XL" pose="approving" />
@@ -1396,6 +1451,14 @@ export default function Session() {
             // frame — confirmed independently, not assumed to carry
             // over. Left unwired for the same reason: never actually
             // entered anywhere.
+            <Button variant="Primary" size="L" cta="Continue" className="w-full" />
+          )}
+
+          {subState === 'topic4ResultUnaided' && (
+            // Live frame's own bottomContent (node 13737:17518), same
+            // single-"Continue" shape as its siblings — confirmed
+            // independently, not assumed to carry over. Left unwired
+            // for the same reason: never actually entered anywhere.
             <Button variant="Primary" size="L" cta="Continue" className="w-full" />
           )}
         </div>
