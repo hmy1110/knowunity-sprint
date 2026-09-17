@@ -20,13 +20,12 @@ import { StatusIndicator } from '@/components/StatusIndicator/StatusIndicator'
 // `Learning-result-Hinted1`, `Learning-result-Hinted2-recording`,
 // `Learning-result-Hinted2-ready to send`,
 // `Learning-result-Hinted2-processing`,
-// `Learning-result-Hinted2-succeed`, and `Learning-result-Revealed` are
-// built so far — Session is one route with many internal sub-states per
-// SPEC.md ({ termIndex, mode, subState }); the rest of the loop
-// (Skipped, typeInput, etc.) isn't built yet. The `subState` scaffold
-// below only covers the eleven real states that exist — Skip/"I don't
-// know"/"Type instead" still aren't wired, since none of their target
-// states exist yet.
+// `Learning-result-Hinted2-succeed`, `Learning-result-Revealed`, and
+// `Learning-skipped` are built so far — Session is one route with many
+// internal sub-states per SPEC.md ({ termIndex, mode, subState }); the
+// rest of the loop (typeInput, etc.) isn't built yet. The `subState`
+// scaffold below only covers the real states that exist — Skip/"Type
+// instead" still aren't wired, since neither has a built target state.
 type SubState =
   | 'idle'
   | 'recording'
@@ -42,10 +41,8 @@ type SubState =
 
 // SPEC.md: "The 4 terms are scripted by index, not by content: term 1
 // resolves Recalled, term 2 Hinted, term 3 Revealed, term 4 Skipped."
-// Only the first three are real destinations so far (Skipped isn't
-// built) — `termIndex` won't advance past 2 until it is. Prompt copy
-// confirmed per-term from each term's own live Figma frame, not
-// assumed to repeat an earlier term's. Term 3's own real frame
+// Prompt copy confirmed per-term from each term's own live Figma frame,
+// not assumed to repeat an earlier term's. Term 3's own real frame
 // (Learning-result-Revealed, node 13669:17091) shows no cold-skip
 // variant reached from `idle`'s own "I don't know" — its prompt has
 // already dropped out of the `Prompt` `SpeechBubble`'s bubble chrome
@@ -54,10 +51,29 @@ type SubState =
 // `recording` → `readyToSend` → `processing` chain and gets revealed
 // directly from there, never offered a hint first — not a separate
 // cold-skip mechanic.
-const TERMS: { name: string; outcome: 'Recalled' | 'Hinted' | 'Revealed'; prompt: string }[] = [
+//
+// **Term 4 ("Visual research," Skipped) turned out to supersede SPEC.md's
+// own description, not just extend it.** SPEC.md's Hinted1 section says
+// term 4 "attempts once, lands on the hint-shown state, then skips from
+// there" via `Learning-result-Hinted1`'s own "I don't know" button,
+// landing on a `Learning-result-I don't know` result screen (node
+// `13674:14198`) that still exists in Figma with its own connector from
+// Hinted1. But a separate, newer frame literally named `Learning-skipped`
+// (node `13734:16233`) sits right after `Learning-result-Revealed` in the
+// canvas's own term-by-term sequence, with its own explicit connectors:
+// `Learning-result-Revealed -> Learning-skipped -> Summary`. Structurally
+// it's identical to `Learning-idle` (MicButton Idle, tailed `SpeechBubble
+// state="Prompt"`, "Type instead"/"I don't know") — it's term 4's own
+// cold-start `idle`, not a post-attempt result screen, and it skips
+// straight to Summary with no distinct result frame in between. Built to
+// match this newer, positionally-canonical frame: term 4 never routes
+// through Hinted1 at all. Flagged in component-gaps.md rather than
+// silently picking one, since both frames are real and still connected.
+const TERMS: { name: string; outcome: 'Recalled' | 'Hinted' | 'Revealed' | 'Skipped'; prompt: string }[] = [
   { name: 'Inspiration', outcome: 'Recalled', prompt: 'Let’s start. Explain the term “Inspiration” out loud, in your own words.' },
   { name: 'Divergent thinking', outcome: 'Hinted', prompt: 'Explain the term “Divergent thinking” out loud, in your own words.' },
   { name: 'Visual hierarchy', outcome: 'Revealed', prompt: 'Explain the term “visual hierarchy” out loud, in your own words.' },
+  { name: 'Visual research', outcome: 'Skipped', prompt: 'Explain the term “Visual research” out loud, in your own words.' },
 ]
 
 // Real "x-close" asset (component 3248:81244), confirmed via
@@ -333,15 +349,27 @@ export default function Session() {
   // SPEC.md's real ~2-3s auto-advance timer, branching by which
   // processing screen this is. `processing` only ever means a first
   // attempt now (`handleSend` routes retries to `hinted2Processing`
-  // instead), so it resolves by this term's scripted outcome alone
-  // (SPEC.md: "term 1 resolves Recalled, term 2 Hinted, term 3
-  // Revealed..." — Skipped isn't built, so only the first three route
-  // anywhere real). `hinted2Processing` always resolves to
-  // `resultHinted2Succeed`, scripted to always succeed per SPEC.md.
+  // instead), so it resolves by this term's scripted outcome alone.
+  // `hinted2Processing` always resolves to `resultHinted2Succeed`,
+  // scripted to always succeed per SPEC.md.
+  //
+  // Term 4's canned path is the cold "I don't know" tap on its own
+  // `idle` (`Learning-skipped`, below), never through `recording` at
+  // all — but the mic button there is still mechanically live, so an
+  // actual attempt has to resolve to *something*. No distinct
+  // post-attempt result frame exists for term 4 in Figma (unlike
+  // Recalled/Hinted1/Revealed) — its own connectors go straight
+  // `Learning-skipped -> Summary` with nothing in between — so an
+  // attempted `Skipped` outcome routes there too, the same terminal
+  // destination as the cold tap, rather than inventing a result screen
+  // Figma doesn't have.
   useEffect(() => {
     if (subState === 'processing') {
-      const nextSubState =
-        term.outcome === 'Hinted' ? 'resultHinted1' : term.outcome === 'Revealed' ? 'resultRevealed' : 'resultRecalled'
+      if (term.outcome === 'Skipped') {
+        const timer = setTimeout(() => router.push('/summary'), 2500)
+        return () => clearTimeout(timer)
+      }
+      const nextSubState = term.outcome === 'Hinted' ? 'resultHinted1' : term.outcome === 'Revealed' ? 'resultRevealed' : 'resultRecalled'
       const timer = setTimeout(() => setSubState(nextSubState), 2500)
       return () => clearTimeout(timer)
     }
@@ -349,7 +377,7 @@ export default function Session() {
       const timer = setTimeout(() => setSubState('resultHinted2Succeed'), 2500)
       return () => clearTimeout(timer)
     }
-  }, [subState, term.outcome])
+  }, [subState, term.outcome, router])
 
   // Shared between `hinted2Processing` and `resultHinted2Succeed` —
   // both live frames (13727:15363, 13713:14750) show the identical
@@ -472,10 +500,19 @@ export default function Session() {
         <AppBar variant="leftIconButtonOnly" leftIcon={CLOSE_ICON} leftLabel="Close" onLeftClick={() => router.push('/')}>
           <div className="flex h-full w-full items-center" style={{ gap: 'var(--size-space-200)', padding: '10px 0' }}>
             <div className="flex-1">
+              {/* Caps at 75%, not 100%, once on term 4 — confirmed by
+                  comparing the live fill fractions across screens rather
+                  than assuming a straight `(termIndex+1)*25`: Learning-idle
+                  (term 1) is 25%, Learning-result-Hinted1 (term 2) is 50%,
+                  Learning-result-Revealed (term 3) is 75%, and
+                  Learning-skipped (term 4's own idle) is *also* 75%, not
+                  100% — matching design-system.md's own note that 100 has
+                  no real example anywhere; that value is reserved for
+                  Summary once the whole session is actually done. */}
               <ProgressIndicator
                 variant="Primary"
                 thickness="16"
-                progress={String((termIndex + 1) * 25) as ProgressIndicatorProgress}
+                progress={String(Math.min(termIndex + 1, 3) * 25) as ProgressIndicatorProgress}
                 label="Topic progress"
               />
             </div>
@@ -718,7 +755,20 @@ export default function Session() {
               <MicButton state="Idle" showLabel onClick={handleMicTap} />
               <div className="flex items-start" style={{ gap: 'var(--size-space-600)' }}>
                 <Button variant="Tertiary" size="S" cta="Type instead" />
-                <Button variant="Tertiary" size="S" cta="I don’t know" />
+                {/* `Learning-skipped` (term 4's own `idle`, node 13734:16233)
+                    is the only term whose cold "I don’t know" tap has a real
+                    destination — its own connector goes straight to Summary,
+                    since it's the last term and there's no result screen to
+                    show first. Terms 1-3's cold-skip stays unwired, same as
+                    before: SPEC.md's generic idle-skip path is real per the
+                    design but never exercised by this sprint's fixed script,
+                    so there's nothing built to route to yet. */}
+                <Button
+                  variant="Tertiary"
+                  size="S"
+                  cta="I don’t know"
+                  onClick={!hasNextTerm ? () => router.push('/summary') : undefined}
+                />
               </div>
             </>
           )}

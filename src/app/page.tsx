@@ -175,8 +175,19 @@ function SectionDivider({ label }: { label: string }) {
   )
 }
 
-export default function StudyPlanNotStarted() {
+// SPEC.md: the 3 study-plan-entry states are "derived from a local
+// recall-session record, not fetched." Session doesn't persist one yet
+// (it doesn't write anything to survive a route change), so there's
+// nothing real for "/" to read from today — the same order Summary's
+// own hardcoded sample result array followed before Session existed
+// to supply the real thing. Hardcoded here for the same reason;
+// flip to `true` (or wire it to a real record once Session writes
+// one) to reach `StudyPlan-inProgress` instead of `-notStarted`.
+const IS_IN_PROGRESS = false
+
+export default function StudyPlanEntry() {
   const router = useRouter()
+  const isInProgress = IS_IN_PROGRESS
 
   return (
     <div className="flex min-h-screen items-center justify-center" style={{ background: 'var(--semantic-color-background-page)' }}>
@@ -309,9 +320,60 @@ export default function StudyPlanNotStarted() {
                     cta="Speak"
                     showRightIcon
                     rightIcon={ARROW_FORWARD_ICON}
-                    onClick={() => router.push('/primer')}
+                    onClick={() => router.push(isInProgress ? '/session' : '/primer')}
                   />
                 </div>
+
+                {/* StudyPlan-inProgress's own live frame (node 13622:18080)
+                    adds this row under the button — SPEC.md's "Redo" label
+                    for this state turned out wrong once checked against the
+                    live frame: the real instance still reads "Speak," only
+                    `StudyPlan-finish` demotes to "Redo" (per that screen's
+                    own designer note). The bar itself has no matching
+                    ProgressIndicator preset — its 8px fill inside a 2px
+                    inset track (`size/space/200` fill height, `size/space/050`
+                    inset) is shorter than both real thickness values (16/24)
+                    that component supports, so it's hand-built here from the
+                    same real tokens rather than forced into a mismatched
+                    preset; see component-gaps.md. The "2 OF 4" label is a
+                    separate text element next to the bar, not the
+                    component's own `showText` mode — the same established
+                    pattern as the appBar's own "Topics X of 4" count. */}
+                {isInProgress && (
+                  <div className="flex w-full" style={{ gap: 'var(--size-space-400)', alignItems: 'flex-start' }}>
+                    <div
+                      className="flex-1"
+                      style={{
+                        padding: 'var(--size-space-050)',
+                        borderRadius: 'var(--size-radius-full)',
+                        background: 'var(--semantic-color-background-stacking)',
+                        boxSizing: 'border-box',
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: '50%',
+                          height: 'var(--size-space-200)',
+                          borderRadius: 'var(--size-radius-full)',
+                          background: 'var(--semantic-color-accent-brand-bold)',
+                        }}
+                      />
+                    </div>
+                    <span
+                      style={{
+                        fontFamily: 'var(--type-scale-caption-s-bold-font-family)',
+                        fontWeight: 'var(--type-scale-caption-s-bold-font-weight)',
+                        fontSize: 'var(--type-scale-caption-s-bold-font-size)',
+                        lineHeight: 'var(--type-scale-caption-s-bold-line-height)',
+                        letterSpacing: 'var(--type-scale-caption-s-bold-letter-spacing)',
+                        color: 'var(--semantic-color-text-secondary)',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      2 OF 4
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
 

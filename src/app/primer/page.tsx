@@ -1,13 +1,54 @@
 'use client'
 
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { AppBar } from '@/components/AppBar/AppBar'
 import { Button } from '@/components/Button/Button'
 import { IconSlot } from '@/components/IconSlot/IconSlot'
+import { InlineAlert } from '@/components/InlineAlert/InlineAlert'
 import { MascotSlot } from '@/components/MascotSlot/MascotSlot'
+import { ProgressIndicator } from '@/components/ProgressIndicator/ProgressIndicator'
 import { ArrowLeftIcon } from '@/components/shared/icons'
 import { StatusBar } from '@/components/StatusBar/StatusBar'
 import { TextBlock } from '@/components/TextBlock/TextBlock'
+
+type Screen = 'intro' | 'micDenied'
+
+// Real "x-close" asset (component 3248:81244) — same one Session's own
+// AppBar uses, confirmed via the live Primer-micDenied frame (node
+// 13615:5335): its own appBar is X-close + a real ProgressIndicator/XP
+// badge pair, not the arrow-left-plus-empty-slot shape `intro`'s own
+// live frame uses below. The two Primer states genuinely have different
+// appBars, not a shared one — checked independently rather than assumed.
+const CLOSE_ICON = (
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+    <path
+      d="M17.293 5.29297C17.6835 4.90244 18.3165 4.90244 18.707 5.29297C19.0976 5.68349 19.0976 6.31651 18.707 6.70703L13.4141 12L18.707 17.293C19.0976 17.6835 19.0976 18.3165 18.707 18.707C18.3165 19.0976 17.6835 19.0976 17.293 18.707L12 13.4141L6.70703 18.707C6.31651 19.0976 5.68349 19.0976 5.29297 18.707C4.90244 18.3165 4.90244 17.6835 5.29297 17.293L10.5859 12L5.29297 6.70703C4.90244 6.31651 4.90244 5.68349 5.29297 5.29297C5.68349 4.90244 6.31651 4.90244 6.70703 5.29297L12 10.5859L17.293 5.29297Z"
+      fill="currentColor"
+    />
+  </svg>
+)
+
+// The "badge (XP/lightning counter)" pattern design-system.md documents
+// as hand-built independently on 9 real screens (this one + every
+// Learning-*), same real asset/token pairing Session's own copy uses
+// (`accent/blue/on-subtle` + `accent/blue/subtle`) — kept as its own
+// inline copy here rather than shared yet, per that note's own "rebuilt
+// independently on every screen" description of the current state.
+function LightningIcon() {
+  return (
+    <svg viewBox="0 0 17.9338 22" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
+      <path
+        d="M4.76562 22C3.82994 22 2.94682 21.4981 2.45269 20.6864C1.95857 19.8748 1.91651 18.8816 2.34756 18.0165C3.13606 16.4146 3.75635 15.1757 4.22945 14.2146C3.77737 14.2146 3.27273 14.2146 2.70501 14.2146C1.55906 14.2146 0.560296 13.5097 0.171303 12.4204C-0.228203 11.3311 0.0871968 10.135 0.949289 9.38738C3.23068 7.41165 8.69761 3.03301 11.757 0.587379C12.2406 0.202913 12.8188 0 13.4181 0C14.3958 0 15.3 0.54466 15.7836 1.40971C16.2567 2.26408 16.2357 3.33204 15.731 4.17573L13.8702 7.28349H15.2264C16.3618 7.28349 17.3606 7.98835 17.7601 9.06699C18.1596 10.1456 17.8547 11.3417 17.0031 12.1L6.54238 21.3165C6.04825 21.7544 5.41745 21.9893 4.77614 21.9893L4.76562 22Z"
+        fill="var(--semantic-color-accent-blue-on-subtle)"
+      />
+      <path
+        d="M4.755 20.4194C4.51319 20.4194 4.26087 20.334 4.05061 20.1738C3.60905 19.8321 3.48289 19.234 3.73521 18.7321C5.34375 15.4855 6.24789 13.6486 6.8051 12.6127C5.96403 12.6447 4.67089 12.6447 2.69439 12.6447C2.21078 12.6447 1.79024 12.3457 1.62203 11.8864C1.45382 11.4272 1.57998 10.9146 1.95846 10.5942C4.21882 8.63984 9.67523 4.27188 12.7241 1.83693C13.1657 1.4845 13.7649 1.50586 14.1854 1.87965C14.606 2.26411 14.7006 2.87285 14.4062 3.36411L11.105 8.87479H15.2368C15.7204 8.87479 16.1409 9.17382 16.3091 9.63304C16.4774 10.0923 16.3512 10.5942 15.9832 10.9253L5.52247 20.1418C5.30169 20.334 5.03886 20.4301 4.77603 20.4301L4.755 20.4194ZM8.24542 12.4097C8.03516 12.8262 7.25717 14.3748 5.00732 18.9243L14.995 10.1243H10.9368C10.5268 10.1243 10.1378 9.90003 9.93807 9.52625C9.73831 9.16314 9.74883 8.7146 9.95909 8.35149L13.1026 3.1078C10.0537 5.53207 5.05989 9.54761 2.84158 11.4486C6.02711 11.3952 7.41487 11.3738 7.65668 11.3631C7.74078 11.3311 7.81438 11.3418 7.909 11.3631C8.18234 11.4272 8.3821 11.6835 8.3821 11.9719C8.3821 12.1748 8.3821 12.3136 8.23491 12.4097H8.24542Z"
+        fill="var(--semantic-color-accent-blue-subtle)"
+      />
+    </svg>
+  )
+}
 
 // Bullet-row icons — real vectors pulled straight from the live
 // Primer-intro instance (`Mic`/`Award` via the Desktop Bridge plugin's
@@ -66,14 +107,17 @@ const BULLETS = [
 
 export default function PrimerIntro() {
   const router = useRouter()
+  const [screen, setScreen] = useState<Screen>('intro')
 
-  async function handleStartLearning() {
+  // SPEC.md: "Start learning" → real getUserMedia call: granted →
+  // /session; denied → same route, state flips to micDenied. "Turn on
+  // my microphone" on micDenied re-triggers the same call.
+  async function requestMic() {
     try {
       await navigator.mediaDevices.getUserMedia({ audio: true })
       router.push('/session')
     } catch {
-      // Denied — Primer-micDenied isn't built yet (see component-gaps.md),
-      // so there's nowhere to send this state yet. Stays on this screen.
+      setScreen('micDenied')
     }
   }
 
@@ -82,60 +126,147 @@ export default function PrimerIntro() {
       <div className="flex min-h-screen w-full max-w-[390px] flex-col">
         <StatusBar />
 
-        <div className="flex w-full flex-col" style={{ gap: 'var(--size-space-100)' }}>
-          <AppBar variant="leftIconButtonOnly" leftIcon={<ArrowLeftIcon />} leftLabel="Back" onLeftClick={() => router.push('/')} />
-        </div>
-
-        <main
-          className="flex flex-1 flex-col items-center justify-center"
-          style={{ gap: 'var(--size-space-400)', padding: '0 var(--size-space-400)' }}
-        >
-          <div className="flex w-full flex-col items-center" style={{ gap: 32 }}>
-            <div className="relative flex items-end justify-center" style={{ width: 120, height: 120 }}>
-              <div
-                className="absolute"
-                style={{
-                  bottom: 0,
-                  width: 105,
-                  height: 19,
-                  borderRadius: 'var(--size-radius-full)',
-                  background: 'var(--semantic-color-background-stacking)',
-                }}
-              />
-              <MascotSlot size="2XL" pose="standby" />
+        {screen === 'intro' ? (
+          <>
+            <div className="flex w-full flex-col" style={{ gap: 'var(--size-space-100)' }}>
+              <AppBar variant="leftIconButtonOnly" leftIcon={<ArrowLeftIcon />} leftLabel="Back" onLeftClick={() => router.push('/')} />
             </div>
 
-            <div style={{ width: '100%', textAlign: 'center' }}>
-              <TextBlock variant="L" showCaption={false} title="Explain it to Knowie" />
-            </div>
-          </div>
+            <main
+              className="flex flex-1 flex-col items-center justify-center"
+              style={{ gap: 'var(--size-space-400)', padding: '0 var(--size-space-400)' }}
+            >
+              <div className="flex w-full flex-col items-center" style={{ gap: 32 }}>
+                <div className="relative flex items-end justify-center" style={{ width: 120, height: 120 }}>
+                  <div
+                    className="absolute"
+                    style={{
+                      bottom: 0,
+                      width: 105,
+                      height: 19,
+                      borderRadius: 'var(--size-radius-full)',
+                      background: 'var(--semantic-color-background-stacking)',
+                    }}
+                  />
+                  <MascotSlot size="2XL" pose="standby" />
+                </div>
 
-          <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-400)' }}>
-            {BULLETS.map((bullet) => (
-              <div key={bullet.text} className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
-                <IconSlot size="250" icon={bullet.icon} style={{ color: 'var(--semantic-color-text-primary)' }} />
-                <span
-                  className="flex-1"
-                  style={{
-                    fontFamily: 'var(--type-scale-body-m-regular-font-family)',
-                    fontWeight: 'var(--type-scale-body-m-regular-font-weight)',
-                    fontSize: 'var(--type-scale-body-m-regular-font-size)',
-                    lineHeight: 'var(--type-scale-body-m-regular-line-height)',
-                    letterSpacing: 'var(--type-scale-body-m-regular-letter-spacing)',
-                    color: 'var(--semantic-color-text-primary)',
-                  }}
-                >
-                  {bullet.text}
-                </span>
+                <div style={{ width: '100%', textAlign: 'center' }}>
+                  <TextBlock variant="L" showCaption={false} title="Explain it to Knowie" />
+                </div>
               </div>
-            ))}
-          </div>
-        </main>
 
-        <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)', padding: 'var(--size-space-700)' }}>
-          <Button variant="Primary" size="L" cta="Start learning" className="w-full" onClick={handleStartLearning} />
-          <Button variant="Tertiary" size="L" cta="I can't talk right now" className="w-full" onClick={() => router.push('/session')} />
-        </div>
+              <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-400)' }}>
+                {BULLETS.map((bullet) => (
+                  <div key={bullet.text} className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
+                    <IconSlot size="250" icon={bullet.icon} style={{ color: 'var(--semantic-color-text-primary)' }} />
+                    <span
+                      className="flex-1"
+                      style={{
+                        fontFamily: 'var(--type-scale-body-m-regular-font-family)',
+                        fontWeight: 'var(--type-scale-body-m-regular-font-weight)',
+                        fontSize: 'var(--type-scale-body-m-regular-font-size)',
+                        lineHeight: 'var(--type-scale-body-m-regular-line-height)',
+                        letterSpacing: 'var(--type-scale-body-m-regular-letter-spacing)',
+                        color: 'var(--semantic-color-text-primary)',
+                      }}
+                    >
+                      {bullet.text}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </main>
+
+            <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)', padding: 'var(--size-space-700)' }}>
+              <Button variant="Primary" size="L" cta="Start learning" className="w-full" onClick={requestMic} />
+              <Button variant="Tertiary" size="L" cta="I can't talk right now" className="w-full" onClick={() => router.push('/session')} />
+            </div>
+          </>
+        ) : (
+          <>
+            {/* Real live frame (node 13615:5335) has its own distinct
+                appBar, not a shared one with `intro` — X-close, plus a
+                real ProgressIndicator (67.25/269px fill = exactly 25%,
+                not the "0, untested" value SPEC.md assumed) and the same
+                XP badge pattern Session's own appBar uses. Confirmed via
+                the Desktop Bridge plugin directly, not eyeballed. */}
+            <AppBar variant="leftIconButtonOnly" leftIcon={CLOSE_ICON} leftLabel="Close" onLeftClick={() => router.push('/')}>
+              <div className="flex h-full w-full items-center" style={{ gap: 'var(--size-space-200)', padding: '10px 0' }}>
+                <div className="flex-1">
+                  <ProgressIndicator variant="Primary" thickness="16" progress="25" label="Topic progress" />
+                </div>
+                <div
+                  className="inline-flex shrink-0 items-center"
+                  style={{ gap: 'var(--size-space-100)', padding: '0 var(--size-space-100)' }}
+                >
+                  <span style={{ width: 17.934, height: 22, display: 'inline-flex' }}>
+                    <LightningIcon />
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: 'var(--type-scale-headline-xs-bold-font-family)',
+                      fontWeight: 'var(--type-scale-headline-xs-bold-font-weight)',
+                      fontSize: 'var(--type-scale-headline-xs-bold-font-size)',
+                      lineHeight: 'var(--type-scale-headline-xs-bold-line-height)',
+                      letterSpacing: 'var(--type-scale-headline-xs-bold-letter-spacing)',
+                      color: 'var(--semantic-color-accent-blue-on-subtle)',
+                    }}
+                  >
+                    8
+                  </span>
+                </div>
+              </div>
+            </AppBar>
+
+            <main
+              className="flex flex-1 flex-col items-center"
+              style={{ gap: 'var(--size-space-400)', padding: 'var(--size-space-700) var(--size-space-400) 0' }}
+            >
+              <div className="relative flex items-end justify-center" style={{ width: 120, height: 120 }}>
+                <div
+                  className="absolute"
+                  style={{
+                    bottom: 0,
+                    width: 105,
+                    height: 19,
+                    borderRadius: 'var(--size-radius-full)',
+                    background: 'var(--semantic-color-background-stacking)',
+                  }}
+                />
+                <MascotSlot size="2XL" pose="standby" />
+              </div>
+
+              <InlineAlert variant="Warning" showDescriptor={false} title="Microphone access is off" />
+
+              {/* Real body copy — confirmed from the live frame, not in
+                  SPEC.md's own component list for this screen at all.
+                  Binds the same raw 32px/36px/700 primitive pair Summary's
+                  own headline already resolved to `--type-scale-headline-l-*`
+                  (no named text style matches it in Figma either — same
+                  ~1px drift already documented there), not `TextBlock`. */}
+              <p
+                style={{
+                  width: '100%',
+                  textAlign: 'center',
+                  fontFamily: 'var(--type-scale-headline-l-font-family)',
+                  fontWeight: 'var(--type-scale-headline-l-font-weight)',
+                  fontSize: 'var(--type-scale-headline-l-font-size)',
+                  lineHeight: 'var(--type-scale-headline-l-line-height)',
+                  letterSpacing: 'var(--type-scale-headline-l-letter-spacing)',
+                  color: 'var(--semantic-color-text-primary)',
+                }}
+              >
+                One tap in Settings, and you&apos;re back to speaking. Nothing else changes.
+              </p>
+            </main>
+
+            <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)', padding: 'var(--size-space-700)' }}>
+              <Button variant="Primary" size="L" cta="Turn on my microphone" className="w-full" onClick={requestMic} />
+              <Button variant="Tertiary" size="L" cta="Continue with text" className="w-full" onClick={() => router.push('/session')} />
+            </div>
+          </>
+        )}
       </div>
     </div>
   )
