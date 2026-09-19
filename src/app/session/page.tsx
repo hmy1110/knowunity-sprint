@@ -37,22 +37,13 @@ import { TextField } from '@/components/TextField/TextField'
 // `topic2ResultUnaided`, `topic3ResultUnaided`, and `topic4ResultUnaided`
 // (`Learning-topic 2-result-unaided`, node 13737:17173; `Learning-topic
 // 3-result-unaided`, node 13737:17370; `Learning-topic 4-result-unaided`,
-// node 13737:17501) are also built below, but — per Mia's explicit call,
-// 2026-09-17 — deliberately left unreachable: nothing sets any of the
-// three subStates anywhere. Their live Figma frames sit on a separate
-// connector chain (`StudyPlan-inProgress -> Learning-topic
-// 2-result-unaided -> topic 3-unaided -> topic 4-unaided ->
-// Summary-all recalled`) that skips term 1 entirely and ends at a
-// different Summary variant — reads as a full alternate "everything
-// recalled" demo path, not a branch of this sprint's own fixed script
-// (term 2 always resolves `Hinted`, term 3 `Revealed`, term 4 `Skipped`,
-// confirmed repeatedly above and in SPEC.md). Wiring any of the three
-// into the live flow would contradict that script and would need real
-// session-entry-source tracking (fresh vs. resumed-from-inProgress) —
-// out of scope, per Mia's same call. `Summary-all recalled` (the chain's
-// own destination) is separately built at `/summary?variant=all-recalled`
-// — see that file and component-gaps.md. See component-gaps.md for this
-// file's own three screens.
+// node 13737:17501) are the alternate "everything recalled" chain, which
+// skips term 1 and ends at `Summary-all recalled`. Reached by `?review=1`
+// (Summary's "Review what you missed", StudyPlan-inProgress's "Review") —
+// wired 2026-09-18, per Mia, replacing her 2026-09-17 call to leave them
+// unreachable. In a review run the scripted outcomes below don't apply:
+// each term starts at `idle`, needs a real voice attempt, and resolves to
+// its own unaided frame.
 type SubState =
   | 'idle'
   | 'recording'
@@ -105,7 +96,7 @@ type SubState =
 const TERMS: { name: string; outcome: 'Recalled' | 'Hinted' | 'Revealed' | 'Skipped'; prompt: string }[] = [
   { name: 'Inspiration', outcome: 'Recalled', prompt: 'Let’s start. Explain the term “Inspiration” out loud, in your own words.' },
   { name: 'Divergent thinking', outcome: 'Hinted', prompt: 'Explain the term “Divergent thinking” out loud, in your own words.' },
-  { name: 'Visual hierarchy', outcome: 'Revealed', prompt: 'Explain the term “visual hierarchy” out loud, in your own words.' },
+  { name: 'Visual hierarchy', outcome: 'Revealed', prompt: 'Explain the term “Visual hierarchy” out loud, in your own words.' },
   { name: 'Visual research', outcome: 'Skipped', prompt: 'Explain the term “Visual research” out loud, in your own words.' },
 ]
 
@@ -218,13 +209,23 @@ export default function Session() {
   const [subState, setSubState] = useState<SubState>(() =>
     searchParams.get('entry') === 'text' ? 'typeInput' : 'idle',
   )
-  const [termIndex, setTermIndex] = useState(0)
+  // `?review=1` (Summary's "Review what you missed", StudyPlan-inProgress's
+  // "Review"): the alternate "everything recalled" chain, per Mia
+  // (2026-09-18) — starts at term 2 (`Learning-topic 2`), every attempt
+  // resolves to that term's `Learning-topic N-result-unaided`, and term 4's
+  // "Continue" ends at `Summary-all recalled`. Replaces the earlier call to
+  // leave those three screens unreachable.
+  const isReview = searchParams.get('review') === '1'
+  const [termIndex, setTermIndex] = useState(isReview ? 1 : 0)
   const term = TERMS[termIndex]
   const hasNextTerm = termIndex + 1 < TERMS.length
   // Terms 1-2 (Recalled/Hinted) still need a real attempt on `idle`;
   // terms 3-4 (Revealed/Skipped) are cold-skip only — see `idle`'s own
-  // render block below for the 2026-09-17 correction this drives.
-  const canAttempt = term.outcome === 'Recalled' || term.outcome === 'Hinted'
+  // render block below for the 2026-09-17 correction this drives. In a
+  // review run every term needs a real attempt, and only by voice: the
+  // unaided frames have no typed-answer equivalent.
+  const canAttempt = isReview || term.outcome === 'Recalled' || term.outcome === 'Hinted'
+  const canType = !isReview && canAttempt
   const [isPlaying, setIsPlaying] = useState(false)
   const [audioUrl, setAudioUrl] = useState<string | null>(null)
   // SPEC.md: Hinted1's "Try again" re-attempt keeps the first attempt's
@@ -438,6 +439,11 @@ export default function Session() {
   // Figma doesn't have.
   useEffect(() => {
     if (subState === 'processing') {
+      if (isReview) {
+        const unaided = (['topic2ResultUnaided', 'topic3ResultUnaided', 'topic4ResultUnaided'] as const)[termIndex - 1]
+        const timer = setTimeout(() => setSubState(unaided), 1500)
+        return () => clearTimeout(timer)
+      }
       if (term.outcome === 'Skipped') {
         const timer = setTimeout(() => router.push('/summary'), 1500)
         return () => clearTimeout(timer)
@@ -460,7 +466,7 @@ export default function Session() {
       const timer = setTimeout(() => setSubState('typeResultRecalled'), 1500)
       return () => clearTimeout(timer)
     }
-  }, [subState, term.outcome, router])
+  }, [subState, term.outcome, router, isReview, termIndex])
 
   // Shared between `hinted2Processing` and `resultHinted1Recalled` —
   // both live frames (13727:15363, 13673:13893 — corrected 2026-09-17,
@@ -487,7 +493,7 @@ export default function Session() {
         {term.prompt}
       </p>
 
-      <AudioScrubber state={isPlayingFirstAttempt ? 'Playing' : 'Default'} onClick={handleToggleFirstAttemptPlayback} />
+      <AudioScrubber data-hotspot state={isPlayingFirstAttempt ? 'Playing' : 'Default'} onClick={handleToggleFirstAttemptPlayback} />
 
       <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-100)' }}>
         <div className="flex w-full flex-col items-start" style={{ gap: 2 }}>
@@ -529,7 +535,7 @@ export default function Session() {
         </p>
       </div>
 
-      <AudioScrubber state={isPlaying ? 'Playing' : 'Default'} onClick={handleTogglePlayback} />
+      <AudioScrubber data-hotspot state={isPlaying ? 'Playing' : 'Default'} onClick={handleTogglePlayback} />
     </>
   )
 
@@ -582,58 +588,60 @@ export default function Session() {
           />
         )}
 
-        <AppBar variant="leftIconButtonOnly" leftIcon={CLOSE_ICON} leftLabel="Close" onLeftClick={() => router.push('/')}>
-          <div className="flex h-full w-full items-center" style={{ gap: 'var(--size-space-200)', padding: '10px 0' }}>
-            <div className="flex-1">
-              {/* Caps at 75%, not 100%, once on term 4 — confirmed by
-                  comparing the live fill fractions across screens rather
-                  than assuming a straight `(termIndex+1)*25`: Learning-idle
-                  (term 1) is 25%, Learning-result-Hinted1 (term 2) is 50%,
-                  Learning-result-Revealed (term 3) is 75%, and
-                  Learning-skipped (term 4's own idle) is *also* 75%, not
-                  100% — matching design-system.md's own note that 100 has
-                  no real example anywhere; that value is reserved for
-                  Summary once the whole session is actually done.
-                  `topic4ResultUnaided` is the one confirmed exception: its
-                  own live frame (node 13737:17501) really does show a
-                  full 100% bar, not 75% — this alternate "everything
-                  recalled" demo path treats reaching term 4's unaided
-                  result as the session's own real end point (it feeds
-                  Summary-all recalled next), unlike the main script's
-                  term 4, which still caps at 75%. Reproduced as its own
-                  real value, not forced to match the main script's
-                  formula. */}
-              <ProgressIndicator
-                variant="Primary"
-                thickness="16"
-                progress={
-                  (subState === 'topic4ResultUnaided' ? '100' : String(Math.min(termIndex + 1, 3) * 25)) as ProgressIndicatorProgress
-                }
-                label="Topic progress"
-              />
-            </div>
-            <div
-              className="inline-flex shrink-0 items-center"
-              style={{ gap: 'var(--size-space-100)', padding: '0 var(--size-space-100)' }}
-            >
-              <span style={{ width: 17.934, height: 22, display: 'inline-flex' }}>
-                <LightningIcon />
-              </span>
-              <span
-                style={{
-                  fontFamily: 'var(--type-scale-headline-xs-bold-font-family)',
-                  fontWeight: 'var(--type-scale-headline-xs-bold-font-weight)',
-                  fontSize: 'var(--type-scale-headline-xs-bold-font-size)',
-                  lineHeight: 'var(--type-scale-headline-xs-bold-line-height)',
-                  letterSpacing: 'var(--type-scale-headline-xs-bold-letter-spacing)',
-                  color: 'var(--semantic-color-accent-blue-on-subtle)',
-                }}
+        <div data-hotspot-within style={{ display: 'contents' }}>
+          <AppBar variant="leftIconButtonOnly" leftIcon={CLOSE_ICON} leftLabel="Close" onLeftClick={() => router.push('/')}>
+            <div className="flex h-full w-full items-center" style={{ gap: 'var(--size-space-200)', padding: '10px 0' }}>
+              <div className="flex-1">
+                {/* Caps at 75%, not 100%, once on term 4 — confirmed by
+                    comparing the live fill fractions across screens rather
+                    than assuming a straight `(termIndex+1)*25`: Learning-idle
+                    (term 1) is 25%, Learning-result-Hinted1 (term 2) is 50%,
+                    Learning-result-Revealed (term 3) is 75%, and
+                    Learning-skipped (term 4's own idle) is *also* 75%, not
+                    100% — matching design-system.md's own note that 100 has
+                    no real example anywhere; that value is reserved for
+                    Summary once the whole session is actually done.
+                    `topic4ResultUnaided` is the one confirmed exception: its
+                    own live frame (node 13737:17501) really does show a
+                    full 100% bar, not 75% — this alternate "everything
+                    recalled" demo path treats reaching term 4's unaided
+                    result as the session's own real end point (it feeds
+                    Summary-all recalled next), unlike the main script's
+                    term 4, which still caps at 75%. Reproduced as its own
+                    real value, not forced to match the main script's
+                    formula. */}
+                <ProgressIndicator
+                  variant="Primary"
+                  thickness="16"
+                  progress={
+                    (subState === 'topic4ResultUnaided' ? '100' : String(Math.min(termIndex + 1, 3) * 25)) as ProgressIndicatorProgress
+                  }
+                  label="Topic progress"
+                />
+              </div>
+              <div
+                className="inline-flex shrink-0 items-center"
+                style={{ gap: 'var(--size-space-100)', padding: '0 var(--size-space-100)' }}
               >
-                8
-              </span>
+                <span style={{ width: 17.934, height: 22, display: 'inline-flex' }}>
+                  <LightningIcon />
+                </span>
+                <span
+                  style={{
+                    fontFamily: 'var(--type-scale-headline-xs-bold-font-family)',
+                    fontWeight: 'var(--type-scale-headline-xs-bold-font-weight)',
+                    fontSize: 'var(--type-scale-headline-xs-bold-font-size)',
+                    lineHeight: 'var(--type-scale-headline-xs-bold-line-height)',
+                    letterSpacing: 'var(--type-scale-headline-xs-bold-letter-spacing)',
+                    color: 'var(--semantic-color-accent-blue-on-subtle)',
+                  }}
+                >
+                  8
+                </span>
+              </div>
             </div>
-          </div>
-        </AppBar>
+          </AppBar>
+        </div>
 
         <main className="flex flex-1 flex-col items-center" style={{ padding: 'var(--size-space-200) var(--size-space-400) 0' }}>
           <div className="flex w-full flex-col items-center" style={{ gap: 24 }}>
@@ -651,13 +659,16 @@ export default function Session() {
                 Topics {termIndex + 1} of 4
               </span>
               {/* Not in SPEC.md's own component list for `idle` — the live
-                  Figma frame shows this "Skip" text link in the header row
-                  alongside the bottom "I don't know" button, which SPEC.md
-                  already documents as the cold-skip action. Shown to match
-                  the frame; not wired yet since no built destination exists
-                  for either skip path. */}
-              <span
+                  Figma frame shows this "Skip" text link in the header row.
+                  Corrected 2026-09-18, per Mia: on Learning-topic 4-skipped
+                  this is the tappable skip (straight to `/summary`), not
+                  the bottom "I don't know" button. Terms 1-3 show it to
+                  match the frame but leave it inert. */}
+              <button
+                type="button"
+                onClick={subState === 'idle' && !hasNextTerm && !isReview ? () => router.push('/summary') : undefined}
                 style={{
+                  position: 'relative',
                   fontFamily: 'var(--type-scale-headline-xxs-bold-font-family)',
                   fontWeight: 'var(--type-scale-headline-xxs-bold-font-weight)',
                   fontSize: 'var(--type-scale-headline-xxs-bold-font-size)',
@@ -667,7 +678,16 @@ export default function Session() {
                 }}
               >
                 Skip
-              </span>
+                {/* Tap area the same 48×48 as the appBar's own icon buttons
+                    (an unbound literal there too), centered on the label so
+                    the text and the header row's layout stay where they
+                    were. */}
+                <span
+                  aria-hidden
+                  data-hotspot={(subState === 'idle' && !hasNextTerm && !isReview) || undefined}
+                  style={{ position: 'absolute', top: '50%', left: '50%', width: 48, height: 48, transform: 'translate(-50%, -50%)' }}
+                />
+              </button>
             </div>
 
             {subState === 'hinted2Processing' || subState === 'resultHinted1Recalled' ? (
@@ -755,6 +775,7 @@ export default function Session() {
                   // which has its own separate second `AudioScrubber`
                   // for that one, down in `bottomContent` below.
                   <AudioScrubber
+                    data-hotspot
                     state={isPlayingFirstAttempt ? 'Playing' : 'Default'}
                     onClick={handleToggleFirstAttemptPlayback}
                   />
@@ -766,7 +787,7 @@ export default function Session() {
                   // in.
                   null
                 ) : (
-                  <AudioScrubber state={isPlaying ? 'Playing' : 'Default'} onClick={handleTogglePlayback} />
+                  <AudioScrubber data-hotspot state={isPlaying ? 'Playing' : 'Default'} onClick={handleTogglePlayback} />
                 )}
 
                 {subState === 'processing' ? (
@@ -858,6 +879,7 @@ export default function Session() {
                   <div className="relative w-full">
                     <TextField variant="Placeholder" showTitle={false} showCaption={false} showLeadingIcon={false} placeholder="Type a short answer..." />
                     <input
+                      data-hotspot
                       type="text"
                       value={typedAnswer}
                       onChange={(event) => setTypedAnswer(event.target.value)}
@@ -1211,13 +1233,14 @@ export default function Session() {
                   own outcome branch" — technically true, but not what
                   Mia wants: terms 1-2 (Recalled/Hinted) still need a real
                   attempt, but 3-4 are cold-skip only. */}
-              <MicButton state="Idle" showLabel onClick={canAttempt ? handleMicTap : undefined} />
+              <MicButton data-hotspot={canAttempt || undefined} data-hotspot-pad="200" state="Idle" showLabel onClick={canAttempt ? handleMicTap : undefined} />
               <div className="flex items-start" style={{ gap: 'var(--size-space-600)' }}>
                 <Button
                   variant="Tertiary"
                   size="S"
                   cta="Type instead"
-                  onClick={canAttempt ? () => setSubState('typeInput') : undefined}
+                  data-hotspot={canType || undefined}
+                  onClick={canType ? () => setSubState('typeInput') : undefined}
                 />
                 {/* SPEC.md (2026-09-16 Figma pass): `Learning-topic 3-I don't
                     know` is a real, distinct connector — term 3 no longer
@@ -1233,20 +1256,15 @@ export default function Session() {
                   variant="Tertiary"
                   size="S"
                   cta="I don’t know"
-                  onClick={
-                    term.outcome === 'Revealed'
-                      ? () => setSubState('resultRevealed')
-                      : !hasNextTerm
-                        ? () => router.push('/summary')
-                        : undefined
-                  }
+                  data-hotspot={(!isReview && term.outcome === 'Revealed') || undefined}
+                  onClick={!isReview && term.outcome === 'Revealed' ? () => setSubState('resultRevealed') : undefined}
                 />
               </div>
             </>
           )}
 
           {(subState === 'recording' || subState === 'hinted2Recording') && (
-            <MicButton state="Recording" onClick={handleStopRecording} />
+            <MicButton data-hotspot data-hotspot-pad="200" state="Recording" onClick={handleStopRecording} />
           )}
 
           {(subState === 'readyToSend' || subState === 'hinted2ReadyToSend') && (
@@ -1259,7 +1277,7 @@ export default function Session() {
             // assumed — its only real difference from the generic screen
             // is the extra history kept in `middleContent` above.
             <>
-              <AudioScrubber state={isPlaying ? 'Playing' : 'Default'} onClick={handleTogglePlayback} />
+              <AudioScrubber data-hotspot state={isPlaying ? 'Playing' : 'Default'} onClick={handleTogglePlayback} />
               <StatusIndicator status="Ready" />
               <div className="flex items-start" style={{ gap: 'var(--size-space-400)' }}>
                 <div className="flex flex-col items-center" style={{ gap: 'var(--size-space-400)' }}>
@@ -1274,6 +1292,7 @@ export default function Session() {
                   <button
                     type="button"
                     aria-label="Redo"
+                    data-hotspot
                     onClick={handleRedo}
                     className="relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full"
                     style={{ width: 56, height: 56, background: 'var(--semantic-color-feedback-error-on-bold)' }}
@@ -1302,7 +1321,7 @@ export default function Session() {
                 </div>
 
                 <div className="flex flex-col items-center" style={{ gap: 'var(--size-space-400)' }}>
-                  <ButtonIcon variant="Primary" size="L" icon={<CheckIcon />} label="Send" onClick={handleSend} />
+                  <ButtonIcon data-hotspot variant="Primary" size="L" icon={<CheckIcon />} label="Send" onClick={handleSend} />
                   <span
                     style={{
                       fontFamily: 'var(--type-scale-headline-xxs-bold-font-family)',
@@ -1352,6 +1371,7 @@ export default function Session() {
               size="L"
               cta="Continue"
               className="w-full"
+              data-hotspot={hasNextTerm || undefined}
               onClick={hasNextTerm ? handleContinue : undefined}
             />
           )}
@@ -1367,9 +1387,9 @@ export default function Session() {
                   looping back through `recording` → `readyToSend` →
                   `processing`, which now resolves to
                   `resultHinted1Recalled` instead of looping back here. */}
-              <MicButton state="Idle" showLabel label="Try again" onClick={handleRetry} />
+              <MicButton data-hotspot data-hotspot-pad="200" state="Idle" showLabel label="Try again" onClick={handleRetry} />
               <div className="flex items-start" style={{ gap: 'var(--size-space-600)' }}>
-                <Button variant="Tertiary" size="S" cta="Type instead" onClick={() => setSubState('typeInput')} />
+                <Button data-hotspot variant="Tertiary" size="S" cta="Type instead" onClick={() => setSubState('typeInput')} />
                 <Button variant="Tertiary" size="S" cta="I don’t know" />
               </div>
             </>
@@ -1385,6 +1405,7 @@ export default function Session() {
               size="L"
               cta="Continue"
               className="w-full"
+              data-hotspot={hasNextTerm || undefined}
               onClick={hasNextTerm ? handleContinue : undefined}
             />
           )}
@@ -1399,6 +1420,7 @@ export default function Session() {
               size="L"
               cta="Continue"
               className="w-full"
+              data-hotspot={hasNextTerm || undefined}
               onClick={hasNextTerm ? handleContinue : undefined}
             />
           )}
@@ -1414,8 +1436,8 @@ export default function Session() {
             // gaps.md), built as two direct `Button` instances at that
             // same real `--size-space-200` gap instead.
             <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)' }}>
-              <Button variant="Primary" size="L" cta="Submit" className="w-full" onClick={handleSubmitTyped} />
-              <Button variant="Tertiary" size="L" cta="Switch to voice" className="w-full" onClick={handleSwitchToVoice} />
+              <Button variant="Primary" size="L" cta="Submit" className="w-full" data-hotspot onClick={handleSubmitTyped} />
+              <Button variant="Secondary" size="L" cta="Switch to voice" className="w-full" data-hotspot onClick={handleSwitchToVoice} />
             </div>
           )}
 
@@ -1429,7 +1451,7 @@ export default function Session() {
             // same as `processing`'s own disabled buttons.
             <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)' }}>
               <Button variant="Primary" size="L" cta="Submit" state="Disabled" className="w-full" />
-              <Button variant="Tertiary" size="L" cta="Switch to voice" state="Disabled" className="w-full" />
+              <Button variant="Secondary" size="L" cta="Switch to voice" state="Disabled" className="w-full" />
             </div>
           )}
 
@@ -1447,36 +1469,40 @@ export default function Session() {
             // behavior for this button once a result already exists, so
             // flagged rather than guessed either way.
             <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)' }}>
-              <Button variant="Primary" size="L" cta="Continue" className="w-full" onClick={hasNextTerm ? handleContinue : undefined} />
-              <Button variant="Tertiary" size="L" cta="Switch to voice" className="w-full" />
+              <Button variant="Primary" size="L" cta="Continue" className="w-full" data-hotspot={hasNextTerm || undefined} onClick={hasNextTerm ? handleContinue : undefined} />
+              <Button variant="Secondary" size="L" cta="Switch to voice" className="w-full" />
             </div>
           )}
 
           {subState === 'topic2ResultUnaided' && (
             // Live frame's own bottomContent (node 13737:17209) has only
             // the single "Continue" button — no second "Switch to voice"
-            // here, unlike `typeResultRecalled`'s own frame. Left
-            // entirely unwired (no `onClick`): this subState is never
-            // actually entered anywhere, so there's nothing for
-            // "Continue" to meaningfully advance from.
-            <Button variant="Primary" size="L" cta="Continue" className="w-full" />
+            // here, unlike `typeResultRecalled`'s own frame. Reached only
+            // by a `?review=1` run; advances to term 3's `idle`.
+            <Button variant="Primary" size="L" cta="Continue" className="w-full" data-hotspot onClick={handleContinue} />
           )}
 
           {subState === 'topic3ResultUnaided' && (
             // Live frame's own bottomContent (node 13737:17387), same
             // single-"Continue" shape as `topic2ResultUnaided`'s sibling
             // frame — confirmed independently, not assumed to carry
-            // over. Left unwired for the same reason: never actually
-            // entered anywhere.
-            <Button variant="Primary" size="L" cta="Continue" className="w-full" />
+            // over. Advances to term 4's `idle`.
+            <Button variant="Primary" size="L" cta="Continue" className="w-full" data-hotspot onClick={handleContinue} />
           )}
 
           {subState === 'topic4ResultUnaided' && (
             // Live frame's own bottomContent (node 13737:17518), same
             // single-"Continue" shape as its siblings — confirmed
-            // independently, not assumed to carry over. Left unwired
-            // for the same reason: never actually entered anywhere.
-            <Button variant="Primary" size="L" cta="Continue" className="w-full" />
+            // independently, not assumed to carry over. The end of the
+            // review run: `Summary-all recalled`.
+            <Button
+              variant="Primary"
+              size="L"
+              cta="Continue"
+              className="w-full"
+              data-hotspot
+              onClick={() => router.push('/summary?variant=all-recalled')}
+            />
           )}
         </div>
       </div>

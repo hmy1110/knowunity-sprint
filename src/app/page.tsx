@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { AppBar } from '@/components/AppBar/AppBar'
 import { Button } from '@/components/Button/Button'
 import { Chips } from '@/components/Chips/Chips'
@@ -192,20 +192,18 @@ function SectionDivider({ label }: { label: string }) {
 }
 
 // SPEC.md: the 3 study-plan-entry states are "derived from a local
-// recall-session record, not fetched." Session doesn't persist one yet
-// (it doesn't write anything to survive a route change), so there's
-// nothing real for "/" to read from today — the same order Summary's
-// own hardcoded sample result array followed before Session existed
-// to supply the real thing. Hardcoded here for the same reason; flip
-// to `'inProgress'` or `'finish'` (or wire it to a real record once
-// Session writes one) to reach the other two live frames instead of
-// `StudyPlan-notStarted`.
-const STUDY_PLAN_STATE: 'notStarted' | 'inProgress' | 'finish' = 'notStarted'
+// recall-session record, not fetched." Session doesn't persist one, so
+// the state comes from `?state=` instead, set by the screen that leads
+// here (Summary's "Continue" → `inProgress`, Summary-all recalled's
+// "Continue" → `finish`, per Figma's own arrows); a bare `/` is
+// `notStarted`.
 
 export default function StudyPlanEntry() {
   const router = useRouter()
-  const isInProgress = STUDY_PLAN_STATE === 'inProgress'
-  const isFinished = STUDY_PLAN_STATE === 'finish'
+  const searchParams = useSearchParams()
+  const studyPlanState = searchParams.get('state')
+  const isInProgress = studyPlanState === 'inProgress'
+  const isFinished = studyPlanState === 'finish'
 
   return (
     <div className="flex min-h-screen items-center justify-center" style={{ background: 'var(--semantic-color-background-page)' }}>
@@ -319,7 +317,11 @@ export default function StudyPlanEntry() {
               >
                 <Chips color="pro" active text="🔥 +20% exam score" size="XXS" showLeftIcon={false} showRightIcon={false} />
 
-                <div className="flex w-full items-center justify-between">
+                {/* Figma's title row (`Frame 2147207767`, all three states) is
+                    a fixed 48px, the button instance filling it, so a 32px
+                    Button sits with 8px above and below and never touches
+                    the progress row underneath. Unbound literal. */}
+                <div className="flex w-full items-center justify-between" style={{ height: 48 }}>
                   <span
                     style={{
                       fontFamily: 'var(--type-scale-headline-s-font-family)',
@@ -355,6 +357,7 @@ export default function StudyPlanEntry() {
                         background: 'var(--semantic-color-interactive-secondary)',
                         boxShadow: 'inset 0 -2px 0 0 rgba(0,0,0,0.15)',
                       }}
+                      data-hotspot
                       onClick={() => router.push('/session')}
                     >
                       <span className="inline-flex items-center" style={{ gap: 'var(--size-space-150)', paddingBottom: 2 }}>
@@ -378,10 +381,11 @@ export default function StudyPlanEntry() {
                     <Button
                       variant="Primary"
                       size="S"
-                      cta="Speak"
+                      cta={isInProgress ? 'Review' : 'Speak'}
+                      data-hotspot
                       showRightIcon
                       rightIcon={ARROW_FORWARD_ICON}
-                      onClick={() => router.push(isInProgress ? '/session' : '/primer')}
+                      onClick={() => router.push(isInProgress ? '/session?review=1' : '/primer')}
                     />
                   )}
                 </div>
@@ -419,7 +423,7 @@ export default function StudyPlanEntry() {
                     >
                       <div
                         style={{
-                          width: isFinished ? '100%' : '50%',
+                          width: isFinished ? '100%' : '25%',
                           height: 'var(--size-space-200)',
                           borderRadius: 'var(--size-radius-full)',
                           background: isFinished
@@ -439,7 +443,7 @@ export default function StudyPlanEntry() {
                         whiteSpace: 'nowrap',
                       }}
                     >
-                      {isFinished ? '4 OF 4' : '2 OF 4'}
+                      {isFinished ? '4 OF 4' : '1 OF 4'}
                     </span>
                   </div>
                 )}

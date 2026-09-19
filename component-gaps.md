@@ -241,3 +241,26 @@ Running list of things built inline during a screen build because Storybook had 
 ## Divergences from the currently-selected Figma frame, not gaps
 
 - **AppBar's left icon and progress value — resolved, SPEC.md may be stale here.** Originally built as an X-close icon plus `ProgressIndicator progress="100"`, per AppBar's Storybook doc (`Real Usage Primer Learning Summary` story) and SPEC.md's own text ("X close + ProgressIndicator progress=100"). Mia confirmed directly against the live Summary frame (2026-09-16) that topNavigation is actually just the `arrow-left` icon with no progress bar — corrected to match. Primer-intro's own live frame (node `13622:15919`) shows the identical `arrow-left`-plus-empty-slot shape, confirming this isn't a one-off on Summary. SPEC.md's Primer section and/or the `Real Usage Primer Learning Summary` Storybook story are out of date on this point and worth a follow-up correction.
+
+## ButtonGroup second button: Tertiary → Secondary (2026-09-18, per Mia)
+
+- **The second button in every L-size Primary pair is now `Secondary`, not `Tertiary`** — Mia's Figma change, reported directly (screenshot of Primer-micDenied's "Turn on my microphone" / "Continue with text"), not re-verified against the live frame here. Applied to all five instances: Primer-intro "I can't talk right now", Primer-micDenied "Continue with text", and "Switch to voice" on typeInput, typeProcessing (still `Disabled`) and typeResultRecalled. The S-size Tertiary pair ("Type instead" / "I don't know") is a different pattern and is unchanged.
+- **This resolves the `ButtonGroup` `Vertical` gap logged under Primer-intro, Learning-typeInput and Primer-micDenied above** — `Vertical` is Primary + Secondary, which is exactly this pair now. Those screens still use two direct `Button` instances; they can move to `ButtonGroup` if wanted. Not done here: `typeResultRecalled`'s "Switch to voice" is deliberately unwired, and `ButtonGroup` gives no way to mark one of its two buttons as a dead one for the hotspot hints.
+- `SPEC.md` and `design-system.md` §1 still say Tertiary for these pairs.
+
+## Learning-topic 4-skipped: the tappable skip is "Skip", not "I don't know" (2026-09-18, per Mia)
+
+- **"Skip" (header row, top-right) now goes to `/summary` on term 4's idle screen; the bottom "I don't know" is inert there.** Previously "I don't know" was the wired one and "Skip" was an unwired `<span>`. "Skip" is now a `<button>` with the same type styles; on terms 1-3 it's still shown and inert. Term 3's "I don't know" → Revealed is unchanged.
+
+## Summary → StudyPlan / review chain wired (2026-09-18, per Mia)
+
+- **Routing.** Summary "Continue" → `/?state=inProgress`; Summary-all recalled "Continue" → `/?state=finish`. `/` reads `?state=` (a bare `/` is `notStarted`) instead of the old hardcoded constant. "Review what you missed" and StudyPlan-inProgress's "Review" → `/session?review=1`.
+- **Review run.** Starts at term 2 (`Learning-topic 2`), every attempt resolves after 1.5s to `topic{2,3,4}ResultUnaided`, "Continue" advances, term 4's ends at `/summary?variant=all-recalled`. This makes the three `-result-unaided` screens reachable, replacing the 2026-09-17 "deliberately unreachable" call.
+- **Inert in a review run:** "Type instead" (no typed-answer equivalent of the unaided frames exists), "I don't know", and term 4's "Skip". Shown, not wired.
+- **`inProgress`'s label and bar were stale against SPEC.md** ("2 OF 4", 50% in code; "1 OF 4", 25% on the live frame per SPEC.md, checked 2026-09-18). Never noticed because the state wasn't reachable. Corrected now that it is.
+
+## Study-plan card: title row is a fixed 48px (2026-09-18, per Mia)
+
+- **The card's title row (`Frame 2147207767`) is 48px tall in all three live frames** (notStarted, inProgress, finish; checked via node metadata), with the S button (32px) centered in it. It was left to size to its content, so the row collapsed to 32px and the button sat directly on the progress bar. Now `height: 48` (an unbound literal). Card heights now match the frames: 92px notStarted, 104px inProgress/finish.
+
+- **Superseded 2026-09-18 (per Mia): `inProgress`'s button reads "Review", not "Speak"** — the earlier "Button label" entry under StudyPlan-inProgress above is stale. SPEC.md and design-system.md already said "Review"; only the code lagged.

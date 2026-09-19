@@ -271,7 +271,9 @@ export default function Summary() {
         <StatusBar />
 
         <div className="flex w-full flex-col" style={{ gap: 'var(--size-space-100)' }}>
-          <AppBar variant="leftIconButtonOnly" leftIcon={<ArrowLeftIcon />} leftLabel="Back" onLeftClick={() => router.push('/')} />
+          <div data-hotspot-within style={{ display: 'contents' }}>
+            <AppBar variant="leftIconButtonOnly" leftIcon={<ArrowLeftIcon />} leftLabel="Back" onLeftClick={() => router.push('/')} />
+          </div>
         </div>
 
         <main
@@ -427,14 +429,16 @@ export default function Summary() {
             // — no "Review what you missed" pairing, since nothing was
             // missed. Wired to the same destination as the mixed
             // variant's own secondary button.
-            <Button variant="Primary" size="L" cta="Continue" className="w-full" onClick={() => router.push('/')} />
+            <Button variant="Primary" size="L" cta="Continue" className="w-full" data-hotspot onClick={() => router.push('/?state=finish')} />
           ) : (
+            <div data-hotspot-within style={{ display: 'contents' }}>
             <ButtonGroup
               variant="Vertical"
               size="L"
-              primary={{ cta: 'Review what you missed', onClick: () => router.push('/session') }}
-              secondary={{ cta: 'Continue', onClick: () => router.push('/') }}
+              primary={{ cta: 'Review what you missed', onClick: () => router.push('/session?review=1') }}
+              secondary={{ cta: 'Continue', onClick: () => router.push('/?state=inProgress') }}
             />
+            </div>
           )}
         </div>
       </div>

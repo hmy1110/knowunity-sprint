@@ -129,7 +129,9 @@ export default function PrimerIntro() {
         {screen === 'intro' ? (
           <>
             <div className="flex w-full flex-col" style={{ gap: 'var(--size-space-100)' }}>
-              <AppBar variant="leftIconButtonOnly" leftIcon={<ArrowLeftIcon />} leftLabel="Back" onLeftClick={() => router.push('/')} />
+              <div data-hotspot-within style={{ display: 'contents' }}>
+                <AppBar variant="leftIconButtonOnly" leftIcon={<ArrowLeftIcon />} leftLabel="Back" onLeftClick={() => router.push('/')} />
+              </div>
             </div>
 
             <main
@@ -179,8 +181,8 @@ export default function PrimerIntro() {
             </main>
 
             <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)', padding: 'var(--size-space-700)' }}>
-              <Button variant="Primary" size="L" cta="Start learning" className="w-full" onClick={requestMic} />
-              <Button variant="Tertiary" size="L" cta="I can't talk right now" className="w-full" onClick={() => router.push('/session?entry=text')} />
+              <Button variant="Primary" size="L" cta="Start learning" className="w-full" data-hotspot onClick={requestMic} />
+              <Button variant="Secondary" size="L" cta="I can't talk right now" className="w-full" data-hotspot onClick={() => router.push('/session?entry=text')} />
             </div>
           </>
         ) : (
@@ -191,33 +193,35 @@ export default function PrimerIntro() {
                 not the "0, untested" value SPEC.md assumed) and the same
                 XP badge pattern Session's own appBar uses. Confirmed via
                 the Desktop Bridge plugin directly, not eyeballed. */}
-            <AppBar variant="leftIconButtonOnly" leftIcon={CLOSE_ICON} leftLabel="Close" onLeftClick={() => router.push('/')}>
-              <div className="flex h-full w-full items-center" style={{ gap: 'var(--size-space-200)', padding: '10px 0' }}>
-                <div className="flex-1">
-                  <ProgressIndicator variant="Primary" thickness="16" progress="25" label="Topic progress" />
-                </div>
-                <div
-                  className="inline-flex shrink-0 items-center"
-                  style={{ gap: 'var(--size-space-100)', padding: '0 var(--size-space-100)' }}
-                >
-                  <span style={{ width: 17.934, height: 22, display: 'inline-flex' }}>
-                    <LightningIcon />
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: 'var(--type-scale-headline-xs-bold-font-family)',
-                      fontWeight: 'var(--type-scale-headline-xs-bold-font-weight)',
-                      fontSize: 'var(--type-scale-headline-xs-bold-font-size)',
-                      lineHeight: 'var(--type-scale-headline-xs-bold-line-height)',
-                      letterSpacing: 'var(--type-scale-headline-xs-bold-letter-spacing)',
-                      color: 'var(--semantic-color-accent-blue-on-subtle)',
-                    }}
+            <div data-hotspot-within style={{ display: 'contents' }}>
+              <AppBar variant="leftIconButtonOnly" leftIcon={CLOSE_ICON} leftLabel="Close" onLeftClick={() => router.push('/')}>
+                <div className="flex h-full w-full items-center" style={{ gap: 'var(--size-space-200)', padding: '10px 0' }}>
+                  <div className="flex-1">
+                    <ProgressIndicator variant="Primary" thickness="16" progress="25" label="Topic progress" />
+                  </div>
+                  <div
+                    className="inline-flex shrink-0 items-center"
+                    style={{ gap: 'var(--size-space-100)', padding: '0 var(--size-space-100)' }}
                   >
-                    8
-                  </span>
+                    <span style={{ width: 17.934, height: 22, display: 'inline-flex' }}>
+                      <LightningIcon />
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: 'var(--type-scale-headline-xs-bold-font-family)',
+                        fontWeight: 'var(--type-scale-headline-xs-bold-font-weight)',
+                        fontSize: 'var(--type-scale-headline-xs-bold-font-size)',
+                        lineHeight: 'var(--type-scale-headline-xs-bold-line-height)',
+                        letterSpacing: 'var(--type-scale-headline-xs-bold-letter-spacing)',
+                        color: 'var(--semantic-color-accent-blue-on-subtle)',
+                      }}
+                    >
+                      8
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </AppBar>
+              </AppBar>
+            </div>
 
             <main
               className="flex flex-1 flex-col items-center"
@@ -262,8 +266,8 @@ export default function PrimerIntro() {
             </main>
 
             <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)', padding: 'var(--size-space-700)' }}>
-              <Button variant="Primary" size="L" cta="Turn on my microphone" className="w-full" onClick={requestMic} />
-              <Button variant="Tertiary" size="L" cta="Continue with text" className="w-full" onClick={() => router.push('/session?entry=text')} />
+              <Button variant="Primary" size="L" cta="Turn on my microphone" className="w-full" data-hotspot onClick={requestMic} />
+              <Button variant="Secondary" size="L" cta="Continue with text" className="w-full" data-hotspot onClick={() => router.push('/session?entry=text')} />
             </div>
           </>
         )}
