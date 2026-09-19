@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { AppBar } from '@/components/AppBar/AppBar'
 import { AudioScrubber } from '@/components/AudioScrubber/AudioScrubber'
 import { Button } from '@/components/Button/Button'
+import { ButtonGroup } from '@/components/ButtonGroup/ButtonGroup'
 import { ButtonIcon } from '@/components/ButtonIcon/ButtonIcon'
 import { IconSlot } from '@/components/IconSlot/IconSlot'
 import { MascotSlot } from '@/components/MascotSlot/MascotSlot'
@@ -1429,15 +1430,16 @@ export default function Session() {
             // SPEC.md: "tap 'Submit' → typeProcessing. Tap 'Switch to
             // voice' → idle (voice mode, same term)." The live frame's
             // own `buttonGroup` (node 13702:14138) pairs a filled Submit
-            // with a no-fill "Switch to voice" — `Primary` + `Tertiary`
-            // chrome, not `ButtonGroup`'s own fixed `Vertical` shape
-            // (`Primary`+`Secondary`, per `shared/buttonVariants.ts`) —
-            // same gap as Primer-intro's own second button (component-
-            // gaps.md), built as two direct `Button` instances at that
-            // same real `--size-space-200` gap instead.
-            <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)' }}>
-              <Button variant="Primary" size="L" cta="Submit" className="w-full" data-hotspot onClick={handleSubmitTyped} />
-              <Button variant="Secondary" size="L" cta="Switch to voice" className="w-full" data-hotspot onClick={handleSwitchToVoice} />
+            // with "Switch to voice" — `Primary` + `Secondary` since the
+            // 2026-09-18 Figma update (was `Tertiary`), exactly
+            // `ButtonGroup`'s own `Vertical` shape.
+            <div data-hotspot-within style={{ display: 'contents' }}>
+              <ButtonGroup
+                variant="Vertical"
+                size="L"
+                primary={{ cta: 'Submit', onClick: handleSubmitTyped }}
+                secondary={{ cta: 'Switch to voice', onClick: handleSwitchToVoice }}
+              />
             </div>
           )}
 
@@ -1449,10 +1451,12 @@ export default function Session() {
             // state=Disabled on whichever CTAs are present"). Genuinely
             // inert, not just visually dimmed — no `onClick` on either,
             // same as `processing`'s own disabled buttons.
-            <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)' }}>
-              <Button variant="Primary" size="L" cta="Submit" state="Disabled" className="w-full" />
-              <Button variant="Secondary" size="L" cta="Switch to voice" state="Disabled" className="w-full" />
-            </div>
+            <ButtonGroup
+              variant="Vertical"
+              size="L"
+              primary={{ cta: 'Submit', state: 'Disabled' }}
+              secondary={{ cta: 'Switch to voice', state: 'Disabled' }}
+            />
           )}
 
           {subState === 'typeResultRecalled' && (

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { AppBar } from '@/components/AppBar/AppBar'
-import { Button } from '@/components/Button/Button'
+import { ButtonGroup } from '@/components/ButtonGroup/ButtonGroup'
 import { IconSlot } from '@/components/IconSlot/IconSlot'
 import { InlineAlert } from '@/components/InlineAlert/InlineAlert'
 import { MascotSlot } from '@/components/MascotSlot/MascotSlot'
@@ -181,8 +181,14 @@ export default function PrimerIntro() {
             </main>
 
             <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)', padding: 'var(--size-space-700)' }}>
-              <Button variant="Primary" size="L" cta="Start learning" className="w-full" data-hotspot onClick={requestMic} />
-              <Button variant="Secondary" size="L" cta="I can't talk right now" className="w-full" data-hotspot onClick={() => router.push('/session?entry=text')} />
+              <div data-hotspot-within style={{ display: 'contents' }}>
+                <ButtonGroup
+                  variant="Vertical"
+                  size="L"
+                  primary={{ cta: 'Start learning', onClick: requestMic }}
+                  secondary={{ cta: "I can't talk right now", onClick: () => router.push('/session?entry=text') }}
+                />
+              </div>
             </div>
           </>
         ) : (
@@ -266,8 +272,14 @@ export default function PrimerIntro() {
             </main>
 
             <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)', padding: 'var(--size-space-700)' }}>
-              <Button variant="Primary" size="L" cta="Turn on my microphone" className="w-full" data-hotspot onClick={requestMic} />
-              <Button variant="Secondary" size="L" cta="Continue with text" className="w-full" data-hotspot onClick={() => router.push('/session?entry=text')} />
+              <div data-hotspot-within style={{ display: 'contents' }}>
+                <ButtonGroup
+                  variant="Vertical"
+                  size="L"
+                  primary={{ cta: 'Turn on my microphone', onClick: requestMic }}
+                  secondary={{ cta: 'Continue with text', onClick: () => router.push('/session?entry=text') }}
+                />
+              </div>
             </div>
           </>
         )}
