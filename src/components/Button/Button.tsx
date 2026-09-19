@@ -151,6 +151,12 @@ export function Button({
   const isLoading = state === 'Loading'
   const isDisabled = state === 'Disabled' || isLoading
   const hasFill = variant !== 'Tertiary'
+  // Figma's Tertiary/S frame is 48px tall around the 32px visible label
+  // row (confirmed by Mia, 2026-09-19); the extra 16px is tap area, not
+  // layout. Reproduced as an absolutely positioned child so the visible
+  // size and the surrounding layout don't move, same as the Skip link in
+  // session/page.tsx. The 48px is an unbound literal in Figma too.
+  const hasOuterTapArea = variant === 'Tertiary' && size === 'S'
 
   return (
     <button
@@ -162,6 +168,7 @@ export function Button({
       aria-label={isLoading ? cta : undefined}
       className={`inline-flex items-center justify-center ${className ?? ''}`}
       style={{
+        position: hasOuterTapArea ? 'relative' : undefined,
         height: sizeConfig.heightPx, // Not bound to a token in Figma — see doc comment above.
         paddingInline: `var(${sizeConfig.paddingXVar})`,
         borderRadius: hasFill ? 'var(--size-radius-full)' : undefined,
@@ -222,6 +229,19 @@ export function Button({
 
         {showRightIcon && rightIcon && <IconSlot size={ICON_SLOT_SIZE[size]} icon={rightIcon} />}
       </span>
+      {hasOuterTapArea && (
+        <span
+          aria-hidden
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            width: 'max(100%, 48px)',
+            height: 48,
+            transform: 'translate(-50%, -50%)',
+          }}
+        />
+      )}
     </button>
   )
 }

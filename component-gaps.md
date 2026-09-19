@@ -269,3 +269,11 @@ Running list of things built inline during a screen build because Storybook had 
 
 - **The appBar XP/lightning badge stays hand-built on each screen.** It is inline in `src/app/session/page.tsx` and `src/app/primer/page.tsx` (Primer-micDenied). Mia decided not to make it a component, so it is not a "repeated gap that never became a component" and should not be reported as one.
 - **`CLOSE_ICON` (`x-close`) stays defined per file.** It is duplicated in `src/app/session/page.tsx` and `src/app/primer/page.tsx`. Same decision: not moving it into `shared/icons.tsx`, and not reported as a gap.
+
+## Tertiary/S tap area is 48px around a 32px label (2026-09-19, per Mia)
+
+- **Figma's Tertiary/S frame is 48px tall (e.g. "I don't know" is 84 Hug × 48 Hug); the visible label row is 32px.** Mia confirmed the extra 16px is tap area. `Button` rendered only the 32px, so "Type instead" and "I don't know" were under the 44pt floor in `eval/rubric.md` G2.
+- **Built into `Button` (`src/components/Button/Button.tsx`) for Tertiary + S only:** an `aria-hidden`, absolutely positioned 48px-tall child, centered on the button, `max(100%, 48px)` wide, so the visible size and layout don't move. Same pattern as the Skip link's 48×48 hotspot in `src/app/session/page.tsx`. The 48px is an unbound literal in Figma too.
+- **Measured at 390px on `/session` idle:** Skip 48×48, Type instead 109×48, I don't know 104×48. A tap at the top and bottom edge of each area hits the button, and the areas start 8px below the mic button (mic bottom 768, tap area top 776), so they don't overlap it.
+- **Not confirmed:** Primary/Secondary at S and M (`ButtonIcon`'s doc comment says its S and M frames are also 48×48 around a 32/40px circle) still have no outer tap area. Only Tertiary/S was checked against Figma. States other than `idle` were not measured.
+- **Figma vs render width:** the Figma selection showed "I don't know" as 84px wide; the render is 104px. Not investigated (font or text style is the likely cause).
