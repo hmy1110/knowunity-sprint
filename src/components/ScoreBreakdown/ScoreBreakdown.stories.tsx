@@ -12,7 +12,7 @@ const FIGMA_DESCRIPTION = `Not a Figma component — Figma's own layer names rea
 **Gaps found building this (see ScoreBreakdown.tsx for full detail):**
 
 - Bar segment and legend order matches Table's own good-to-bad sort (Recalled → Hinted → Revealed → Skipped), confirmed by each rectangle's real x position, not its position in the layer tree.
-- \`percent\` is a caller-supplied prop, not derived from \`counts\` here. The one real instance (1 of each status) shows "50% recalled this session," which reads as (Recalled + Hinted) ÷ total — crediting a hinted success as still "recalled" — but that formula is inferred from a single data point, not confirmed anywhere in Figma.
+- \`percent\` is a caller-supplied prop, not derived from \`counts\` here. Figma's two live Summary instances (checked 2026-09-19) show 1 of each status as "25% recalled this session" and 4 Recalled as "100%" — both Recalled ÷ total, so a Hinted term is not counted as recalled. The Default and NoSkippedTerms stories below use that formula.
 - Colors are real bound variables that in several cases share a hex value with Tag's own colors but bind a different token (e.g. Recalled binds \`feedback/success/bold\` here, not Tag's \`accent/green/bold\`) — bound exactly as found on the real node, not assumed to match Tag.`
 
 const meta = {
@@ -35,7 +35,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   tags: ['ai-generated'],
   args: {
-    percent: 50,
+    percent: 25,
     counts: { Recalled: 1, Hinted: 1, Revealed: 1, Skipped: 1 },
   },
 }
@@ -45,7 +45,7 @@ export const Default: Story = {
 export const NoSkippedTerms: Story = {
   tags: ['ai-generated'],
   args: {
-    percent: 75,
+    percent: 50,
     counts: { Recalled: 2, Hinted: 1, Revealed: 1, Skipped: 0 },
   },
 }

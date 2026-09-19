@@ -17,19 +17,17 @@ import type { TagStatus } from '../Tag/Tag'
  * so a caller can't accidentally pair the wrong title with a status.
  *
  * **The sentence is real rich text, not a single flat string** —
- * confirmed via `getStyledTextSegments`, since the node's own
- * `fontName`/`textStyleId` read as Figma's `mixed` symbol on every
- * real instance: the leading term name renders SemiBold (600), the
- * rest renders Regular (400), both at the same 14px/`text/primary`.
- * Modeled here as two props, `term` and `reflection`, rather than one
- * string with embedded markup, so the bold/regular split can't drift
- * from the real content's own split.
+ * confirmed via `getStyledTextSegments`: the leading term name renders
+ * SemiBold (600) and binds "Greed/Headline XXS Bold"
+ * (`--type-scale-headline-xxs-bold-*`), the rest renders Regular (400)
+ * and binds "Greed/Headline XXS Regular"
+ * (`--type-scale-headline-xxs-regular-*`), both 14px/16px, `text/primary`
+ * (checked 2026-09-19; an earlier version of this note said the sentence
+ * had no named style). Modeled here as two props, `term` and
+ * `reflection`, rather than one string with embedded markup, so the
+ * bold/regular split can't drift from the real content's own split.
  *
- * **The title *is* bound to a real named style, "Greed/Headline XXS
- * Bold"** (`--type-scale-headline-xxs-bold-*`), used here in full. The
- * sentence has no named style at all (expected, given its own mixed
- * formatting) — reproduced as Figma's literal values (`Greed VF-TRIAL`,
- * 14px, weight 600/400) rather than left unbound.
+ * **The title also binds "Greed/Headline XXS Bold"**, used here in full.
  *
  * **The title's color is status-tinted, per Mia's explicit call
  * (2026-09-16), not `text/primary` like the real node itself binds** —
@@ -89,11 +87,14 @@ const TITLE_TEXT_STYLE: CSSProperties = {
   letterSpacing: 'var(--type-scale-headline-xxs-bold-letter-spacing)',
 }
 
-// No named style binds this run in Figma at all (mixed weight within
-// one run) — reproduced as literals, see doc comment above.
-const SENTENCE_TEXT_STYLE: CSSProperties = {
-  fontFamily: "'Greed VF-TRIAL', sans-serif",
-  fontSize: 14,
+const TERM_TEXT_STYLE: CSSProperties = TITLE_TEXT_STYLE
+
+const REFLECTION_TEXT_STYLE: CSSProperties = {
+  fontFamily: 'var(--type-scale-headline-xxs-regular-font-family)',
+  fontWeight: 'var(--type-scale-headline-xxs-regular-font-weight)' as unknown as number,
+  fontSize: 'var(--type-scale-headline-xxs-regular-font-size)',
+  lineHeight: 'var(--type-scale-headline-xxs-regular-line-height)',
+  letterSpacing: 'var(--type-scale-headline-xxs-regular-letter-spacing)',
 }
 
 export function TermResultList({ rows, className, style }: TermResultListProps) {
@@ -104,8 +105,8 @@ export function TermResultList({ rows, className, style }: TermResultListProps) 
           <p className="m-0" style={{ ...TITLE_TEXT_STYLE, color: `var(${STATUS_TITLE_COLOR_VAR[row.status]})` }}>
             {STATUS_TITLE[row.status]}
           </p>
-          <p className="m-0" style={{ ...SENTENCE_TEXT_STYLE, color: 'var(--semantic-color-text-primary)' }}>
-            <span style={{ fontWeight: 600 }}>{row.term}</span>
+          <p className="m-0" style={{ ...REFLECTION_TEXT_STYLE, color: 'var(--semantic-color-text-primary)' }}>
+            <span style={TERM_TEXT_STYLE}>{row.term}</span>
             {`, ${row.reflection}`}
           </p>
         </div>

@@ -46,8 +46,13 @@ const ALL_RECALLED_RESULTS: TermResultRow[] = [
   },
 ]
 
-const ALL_RECALLED_XP = '8'
-const ALL_RECALLED_SCORE = '4/4'
+// Mia, 2026-09-19: 2 XP for every term recalled on its own, so 4 of 4 is
+// 8 XP. A Hinted, Revealed or Skipped term earns none (the live mixed
+// Summary reads 2 XP for its one Recalled term).
+const XP_PER_RECALLED = 2
+
+const ALL_RECALLED_XP = String(XP_PER_RECALLED * countByStatus(ALL_RECALLED_RESULTS).Recalled)
+const ALL_RECALLED_SCORE = `${countByStatus(ALL_RECALLED_RESULTS).Recalled}/${ALL_RECALLED_RESULTS.length}`
 const ALL_RECALLED_PACE = '2:09'
 
 // SPEC.md's fixed script: term 1 Recalled, term 2 Hinted, term 3
@@ -78,9 +83,9 @@ const TERM_RESULTS: TermResultRow[] = [
   },
 ]
 
-const SESSION_XP = '4'
-const SESSION_SCORE = '2/4'
-const SESSION_PACE = '2:09'
+// Live Figma mixed Summary (checked 2026-09-19): BLAZING 1:09. The pace
+// is not derivable from the term results, so it stays a constant.
+const SESSION_PACE = '1:09'
 
 // `sessionStats` (Summary's XP/Score/time row) — design-system.md §1
 // documents this as a hand-built, non-componentized pattern (same
@@ -194,7 +199,10 @@ function StatBox({ label, value, boldVar, onBoldVar, icon, iconWidth, iconHeight
       className="flex flex-1 flex-col items-center"
       style={{
         borderRadius: 'var(--size-radius-400)',
-        border: `2px solid var(${boldVar})`,
+        // Figma's stroke here is 2px OUTSIDE (checked 2026-09-19): it draws
+        // outside the box and adds nothing to the layout, so it's a
+        // spread shadow, not a border.
+        boxShadow: `0 0 0 var(--size-stroke-heavy-border) var(${boldVar})`,
         background: `var(${boldVar})`,
       }}
     >
@@ -249,6 +257,15 @@ function countByStatus(rows: TermResultRow[]): Record<TagStatus, number> {
     Skipped: rows.filter((row) => row.status === 'Skipped').length,
   }
 }
+
+// Only a Recalled term counts toward the score and the headline percent;
+// Hinted does not. Live Figma (checked 2026-09-19): mixed run 1 of 4 =
+// 25% and 1/4, all-recalled 4 of 4 = 100% and 4/4 — both fit
+// Recalled ÷ total. Replaces the earlier 50% / 2/4, which counted Hinted.
+const SESSION_COUNTS = countByStatus(TERM_RESULTS)
+const SESSION_XP = String(XP_PER_RECALLED * SESSION_COUNTS.Recalled)
+const SESSION_SCORE = `${SESSION_COUNTS.Recalled}/${TERM_RESULTS.length}`
+const SESSION_PERCENT = Math.round((SESSION_COUNTS.Recalled / TERM_RESULTS.length) * 100)
 
 const HEADLINE_TEXT_STYLE = {
   margin: 0,
@@ -404,9 +421,22 @@ function SummaryContent() {
                   <p
                     key={row.term}
                     className="m-0"
-                    style={{ fontFamily: "'Greed VF-TRIAL', sans-serif", fontSize: 14, color: 'var(--semantic-color-text-primary)' }}
+                    style={{
+                      fontFamily: 'var(--type-scale-headline-xxs-regular-font-family)',
+                      fontWeight: 'var(--type-scale-headline-xxs-regular-font-weight)' as unknown as number,
+                      fontSize: 'var(--type-scale-headline-xxs-regular-font-size)',
+                      lineHeight: 'var(--type-scale-headline-xxs-regular-line-height)',
+                      letterSpacing: 'var(--type-scale-headline-xxs-regular-letter-spacing)',
+                      color: 'var(--semantic-color-text-primary)',
+                    }}
                   >
-                    <span style={{ fontWeight: 600 }}>{row.term}</span>
+                    <span
+                      style={{
+                        fontWeight: 'var(--type-scale-headline-xxs-bold-font-weight)' as unknown as number,
+                      }}
+                    >
+                      {row.term}
+                    </span>
                     {`, ${row.reflection}`}
                   </p>
                 ))}
@@ -414,7 +444,7 @@ function SummaryContent() {
             </>
           ) : (
             <>
-              <ScoreBreakdown percent={50} counts={countByStatus(TERM_RESULTS)} style={{ width: '100%' }} />
+              <ScoreBreakdown percent={SESSION_PERCENT} counts={SESSION_COUNTS} style={{ width: '100%' }} />
 
               <Table style={{ width: '100%' }} />
 

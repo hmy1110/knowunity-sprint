@@ -24,13 +24,14 @@ import type { TagStatus } from '../Tag/Tag'
  * not a meaningful ratio).
  *
  * **`percent` is a caller-supplied prop, not derived from `counts`
- * here.** The one real instance shows 1 Recalled + 1 Hinted + 1
- * Revealed + 1 Skipped alongside "50% recalled this session" — half,
- * not the 25% a literal Recalled-only reading would give, which reads
- * as (Recalled + Hinted) ÷ total, crediting a hinted success as still
- * "recalled." That formula is inferred from a single data point, not
- * confirmed anywhere in Figma, so it isn't baked into this presentational
- * component — the caller computes and passes the number.
+ * here.** Figma's two live Summary instances (checked 2026-09-19) show
+ * 1 Recalled + 1 Hinted + 1 Revealed + 1 Skipped alongside "25%
+ * recalled this session," and 4 Recalled alongside "100%" — both
+ * Recalled ÷ total, so a Hinted term does not count as recalled. (An
+ * earlier version of the mixed frame read "50%", which fit
+ * (Recalled + Hinted) ÷ total; Figma has since replaced it.) The
+ * formula is still not baked into this presentational component — the
+ * caller computes and passes the number.
  *
  * **Colors are real bound variables, confirmed via the plugin — several
  * share a hex value with `Tag`'s own colors but bind a different
@@ -57,7 +58,7 @@ import type { TagStatus } from '../Tag/Tag'
  * followed. Each legend item's icon-to-label 4px gap *is* bound to
  * `space/100` and is bound here too.
  *
- * **Text**: the "50%" headline binds the real named style "Greed/
+ * **Text**: the percent headline ("25%" on the mixed instance) binds the real named style "Greed/
  * Headline XL" (`--type-scale-headline-xl-*`) cleanly, no drift.
  * "recalled this session" binds "Greed/Headline XXS Regular" and each
  * legend label binds "Greed/Caption M Regular" — both real bindings,
@@ -68,7 +69,7 @@ import type { TagStatus } from '../Tag/Tag'
  */
 
 export interface ScoreBreakdownProps {
-  /** The headline percentage. Not derived from `counts` — see doc comment above on the untested formula. */
+  /** The headline percentage. Not derived from `counts` — see doc comment above: Figma's instances fit Recalled ÷ total. */
   percent: number
   /** Caption under the percentage. Figma's own real value: "recalled this session". */
   percentLabel?: string

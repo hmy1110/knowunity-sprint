@@ -189,17 +189,17 @@
   --size-depth-negative-200: -8;
   --size-blur-100: 4px;
   --size-blur-800: 32px;
-  --typography-size-2xs: 9px;
+  --typography-size-2xs: 8px;
   --typography-size-xs: 12px;
-  --typography-size-sm: 15px;
+  --typography-size-sm: 14px;
   --typography-size-md: 18px;
-  --typography-size-lg: 21px;
+  --typography-size-lg: 20px;
   --typography-size-xl: 28px;
-  --typography-size-2xl: 33px;
+  --typography-size-2xl: 32px;
   --typography-size-3xl: 44px;
-  --typography-size-4xl: 59px;
-  --typography-size-5xl: 76px;
-  --typography-size-6xl: 103px;
+  --typography-size-4xl: 60px;
+  --typography-size-5xl: 72px;
+  --typography-size-6xl: 100px;
   --typography-size-root: 16px;
   --typography-line-height-2xs: 12px;
   --typography-line-height-xs: 16px;
@@ -232,17 +232,17 @@
   --responsive-root-font-size: 16px;
   --type-scale-display-l-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Display L" from the file's local text styles. */
   --type-scale-display-l-font-weight: 900; /** Text style "Greed/Display L" from the file's local text styles. */
-  --type-scale-display-l-font-size: 103px; /** Text style "Greed/Display L" from the file's local text styles. */
+  --type-scale-display-l-font-size: 100px; /** Text style "Greed/Display L" from the file's local text styles. */
   --type-scale-display-l-line-height: 104px; /** Text style "Greed/Display L" from the file's local text styles. */
   --type-scale-display-l-letter-spacing: -0.01em; /** Text style "Greed/Display L" from the file's local text styles. */
   --type-scale-display-m-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Display M" from the file's local text styles. */
   --type-scale-display-m-font-weight: 700; /** Text style "Greed/Display M" from the file's local text styles. */
-  --type-scale-display-m-font-size: 76px; /** Text style "Greed/Display M" from the file's local text styles. */
+  --type-scale-display-m-font-size: 72px; /** Text style "Greed/Display M" from the file's local text styles. */
   --type-scale-display-m-line-height: 76px; /** Text style "Greed/Display M" from the file's local text styles. */
   --type-scale-display-m-letter-spacing: -0.01em; /** Text style "Greed/Display M" from the file's local text styles. */
   --type-scale-display-s-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Display S" from the file's local text styles. */
   --type-scale-display-s-font-weight: 700; /** Text style "Greed/Display S" from the file's local text styles. */
-  --type-scale-display-s-font-size: 59px; /** Text style "Greed/Display S" from the file's local text styles. */
+  --type-scale-display-s-font-size: 60px; /** Text style "Greed/Display S" from the file's local text styles. */
   --type-scale-display-s-line-height: 60px; /** Text style "Greed/Display S" from the file's local text styles. */
   --type-scale-display-s-letter-spacing: -0.01em; /** Text style "Greed/Display S" from the file's local text styles. */
   --type-scale-headline-xl-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Headline XL" from the file's local text styles. */
@@ -252,7 +252,7 @@
   --type-scale-headline-xl-letter-spacing: -0.01em; /** Text style "Greed/Headline XL" from the file's local text styles. */
   --type-scale-headline-l-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Headline L" from the file's local text styles. */
   --type-scale-headline-l-font-weight: 700; /** Text style "Greed/Headline L" from the file's local text styles. */
-  --type-scale-headline-l-font-size: 33px; /** Text style "Greed/Headline L" from the file's local text styles. */
+  --type-scale-headline-l-font-size: 32px; /** Text style "Greed/Headline L" from the file's local text styles. */
   --type-scale-headline-l-line-height: 36px; /** Text style "Greed/Headline L" from the file's local text styles. */
   --type-scale-headline-l-letter-spacing: -0.01em; /** Text style "Greed/Headline L" from the file's local text styles. */
   --type-scale-headline-m-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Headline M" from the file's local text styles. */
@@ -262,67 +262,67 @@
   --type-scale-headline-m-letter-spacing: -0.01em; /** Text style "Greed/Headline M" from the file's local text styles. */
   --type-scale-headline-s-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Headline S" from the file's local text styles. */
   --type-scale-headline-s-font-weight: 700; /** Text style "Greed/Headline S" from the file's local text styles. */
-  --type-scale-headline-s-font-size: 21px; /** Text style "Greed/Headline S" from the file's local text styles. */
+  --type-scale-headline-s-font-size: 20px; /** Text style "Greed/Headline S" from the file's local text styles. */
   --type-scale-headline-s-line-height: 24px; /** Text style "Greed/Headline S" from the file's local text styles. */
   --type-scale-headline-s-letter-spacing: 0em; /** Text style "Greed/Headline S" from the file's local text styles. */
   --type-scale-headline-xs-bold-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Headline XS Bold" from the file's local text styles. */
   --type-scale-headline-xs-bold-font-weight: 600; /** Text style "Greed/Headline XS Bold" from the file's local text styles. */
   --type-scale-headline-xs-bold-font-size: 18px; /** Text style "Greed/Headline XS Bold" from the file's local text styles. */
   --type-scale-headline-xs-bold-line-height: 20px; /** Text style "Greed/Headline XS Bold" from the file's local text styles. */
-  --type-scale-headline-xs-bold-letter-spacing: 0.01em; /** Text style "Greed/Headline XS Bold" from the file's local text styles. */
+  --type-scale-headline-xs-bold-letter-spacing: 1px; /** Text style "Greed/Headline XS Bold" from the file's local text styles. */
   --type-scale-headline-xs-regular-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Headline XS Regular" from the file's local text styles. */
   --type-scale-headline-xs-regular-font-weight: 400; /** Text style "Greed/Headline XS Regular" from the file's local text styles. */
   --type-scale-headline-xs-regular-font-size: 18px; /** Text style "Greed/Headline XS Regular" from the file's local text styles. */
   --type-scale-headline-xs-regular-line-height: 20px; /** Text style "Greed/Headline XS Regular" from the file's local text styles. */
-  --type-scale-headline-xs-regular-letter-spacing: 0.01em; /** Text style "Greed/Headline XS Regular" from the file's local text styles. */
+  --type-scale-headline-xs-regular-letter-spacing: 1px; /** Text style "Greed/Headline XS Regular" from the file's local text styles. */
   --type-scale-headline-xxs-bold-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Headline XXS Bold" from the file's local text styles. */
   --type-scale-headline-xxs-bold-font-weight: 600; /** Text style "Greed/Headline XXS Bold" from the file's local text styles. */
-  --type-scale-headline-xxs-bold-font-size: 15px; /** Text style "Greed/Headline XXS Bold" from the file's local text styles. */
+  --type-scale-headline-xxs-bold-font-size: 14px; /** Text style "Greed/Headline XXS Bold" from the file's local text styles. */
   --type-scale-headline-xxs-bold-line-height: 16px; /** Text style "Greed/Headline XXS Bold" from the file's local text styles. */
-  --type-scale-headline-xxs-bold-letter-spacing: 0.01em; /** Text style "Greed/Headline XXS Bold" from the file's local text styles. */
+  --type-scale-headline-xxs-bold-letter-spacing: 1px; /** Text style "Greed/Headline XXS Bold" from the file's local text styles. */
   --type-scale-headline-xxs-regular-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Headline XXS Regular" from the file's local text styles. */
   --type-scale-headline-xxs-regular-font-weight: 400; /** Text style "Greed/Headline XXS Regular" from the file's local text styles. */
-  --type-scale-headline-xxs-regular-font-size: 15px; /** Text style "Greed/Headline XXS Regular" from the file's local text styles. */
+  --type-scale-headline-xxs-regular-font-size: 14px; /** Text style "Greed/Headline XXS Regular" from the file's local text styles. */
   --type-scale-headline-xxs-regular-line-height: 16px; /** Text style "Greed/Headline XXS Regular" from the file's local text styles. */
-  --type-scale-headline-xxs-regular-letter-spacing: 0.01em; /** Text style "Greed/Headline XXS Regular" from the file's local text styles. */
+  --type-scale-headline-xxs-regular-letter-spacing: 1px; /** Text style "Greed/Headline XXS Regular" from the file's local text styles. */
   --type-scale-body-m-bold-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Body M Bold" from the file's local text styles. */
   --type-scale-body-m-bold-font-weight: 600; /** Text style "Greed/Body M Bold" from the file's local text styles. */
   --type-scale-body-m-bold-font-size: 18px; /** Text style "Greed/Body M Bold" from the file's local text styles. */
   --type-scale-body-m-bold-line-height: 24px; /** Text style "Greed/Body M Bold" from the file's local text styles. */
-  --type-scale-body-m-bold-letter-spacing: 0.01em; /** Text style "Greed/Body M Bold" from the file's local text styles. */
+  --type-scale-body-m-bold-letter-spacing: 1px; /** Text style "Greed/Body M Bold" from the file's local text styles. */
   --type-scale-body-m-regular-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Body M Regular" from the file's local text styles. */
   --type-scale-body-m-regular-font-weight: 400; /** Text style "Greed/Body M Regular" from the file's local text styles. */
   --type-scale-body-m-regular-font-size: 18px; /** Text style "Greed/Body M Regular" from the file's local text styles. */
   --type-scale-body-m-regular-line-height: 24px; /** Text style "Greed/Body M Regular" from the file's local text styles. */
-  --type-scale-body-m-regular-letter-spacing: 0.01em; /** Text style "Greed/Body M Regular" from the file's local text styles. */
+  --type-scale-body-m-regular-letter-spacing: 1px; /** Text style "Greed/Body M Regular" from the file's local text styles. */
   --type-scale-body-s-bold-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Body S Bold" from the file's local text styles. */
   --type-scale-body-s-bold-font-weight: 600; /** Text style "Greed/Body S Bold" from the file's local text styles. */
-  --type-scale-body-s-bold-font-size: 15px; /** Text style "Greed/Body S Bold" from the file's local text styles. */
+  --type-scale-body-s-bold-font-size: 14px; /** Text style "Greed/Body S Bold" from the file's local text styles. */
   --type-scale-body-s-bold-line-height: 20px; /** Text style "Greed/Body S Bold" from the file's local text styles. */
-  --type-scale-body-s-bold-letter-spacing: 0.01em; /** Text style "Greed/Body S Bold" from the file's local text styles. */
+  --type-scale-body-s-bold-letter-spacing: 1px; /** Text style "Greed/Body S Bold" from the file's local text styles. */
   --type-scale-body-s-regular-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Body S Regular" from the file's local text styles. */
   --type-scale-body-s-regular-font-weight: 400; /** Text style "Greed/Body S Regular" from the file's local text styles. */
-  --type-scale-body-s-regular-font-size: 15px; /** Text style "Greed/Body S Regular" from the file's local text styles. */
+  --type-scale-body-s-regular-font-size: 14px; /** Text style "Greed/Body S Regular" from the file's local text styles. */
   --type-scale-body-s-regular-line-height: 20px; /** Text style "Greed/Body S Regular" from the file's local text styles. */
-  --type-scale-body-s-regular-letter-spacing: 0.01em; /** Text style "Greed/Body S Regular" from the file's local text styles. */
+  --type-scale-body-s-regular-letter-spacing: 1px; /** Text style "Greed/Body S Regular" from the file's local text styles. */
   --type-scale-caption-m-bold-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Caption M Bold" from the file's local text styles. */
   --type-scale-caption-m-bold-font-weight: 600; /** Text style "Greed/Caption M Bold" from the file's local text styles. */
   --type-scale-caption-m-bold-font-size: 12px; /** Text style "Greed/Caption M Bold" from the file's local text styles. */
   --type-scale-caption-m-bold-line-height: 16px; /** Text style "Greed/Caption M Bold" from the file's local text styles. */
-  --type-scale-caption-m-bold-letter-spacing: 0.01em; /** Text style "Greed/Caption M Bold" from the file's local text styles. */
+  --type-scale-caption-m-bold-letter-spacing: 1px; /** Text style "Greed/Caption M Bold" from the file's local text styles. */
   --type-scale-caption-m-regular-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Caption M Regular" from the file's local text styles. */
   --type-scale-caption-m-regular-font-weight: 400; /** Text style "Greed/Caption M Regular" from the file's local text styles. */
   --type-scale-caption-m-regular-font-size: 12px; /** Text style "Greed/Caption M Regular" from the file's local text styles. */
   --type-scale-caption-m-regular-line-height: 16px; /** Text style "Greed/Caption M Regular" from the file's local text styles. */
-  --type-scale-caption-m-regular-letter-spacing: 0.01em; /** Text style "Greed/Caption M Regular" from the file's local text styles. */
+  --type-scale-caption-m-regular-letter-spacing: 1px; /** Text style "Greed/Caption M Regular" from the file's local text styles. */
   --type-scale-caption-s-bold-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Caption S Bold" from the file's local text styles. */
   --type-scale-caption-s-bold-font-weight: 600; /** Text style "Greed/Caption S Bold" from the file's local text styles. */
-  --type-scale-caption-s-bold-font-size: 9px; /** Text style "Greed/Caption S Bold" from the file's local text styles. */
+  --type-scale-caption-s-bold-font-size: 8px; /** Text style "Greed/Caption S Bold" from the file's local text styles. */
   --type-scale-caption-s-bold-line-height: 12px; /** Text style "Greed/Caption S Bold" from the file's local text styles. */
-  --type-scale-caption-s-bold-letter-spacing: 0.01em; /** Text style "Greed/Caption S Bold" from the file's local text styles. */
+  --type-scale-caption-s-bold-letter-spacing: 1px; /** Text style "Greed/Caption S Bold" from the file's local text styles. */
   --type-scale-caption-s-regular-font-family: 'Greed VF-TRIAL'; /** Text style "Greed/Caption S Regular" from the file's local text styles. */
   --type-scale-caption-s-regular-font-weight: 400; /** Text style "Greed/Caption S Regular" from the file's local text styles. */
-  --type-scale-caption-s-regular-font-size: 9px; /** Text style "Greed/Caption S Regular" from the file's local text styles. */
+  --type-scale-caption-s-regular-font-size: 8px; /** Text style "Greed/Caption S Regular" from the file's local text styles. */
   --type-scale-caption-s-regular-line-height: 12px; /** Text style "Greed/Caption S Regular" from the file's local text styles. */
-  --type-scale-caption-s-regular-letter-spacing: 0.01em; /** Text style "Greed/Caption S Regular" from the file's local text styles. */
+  --type-scale-caption-s-regular-letter-spacing: 1px; /** Text style "Greed/Caption S Regular" from the file's local text styles. */
 }

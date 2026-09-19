@@ -236,7 +236,9 @@ export function MicButton({ state = 'Idle', showLabel = true, label, className, 
               className="whitespace-nowrap text-center"
               style={{
                 margin: 0,
-                color: `var(${isProcessing ? '--semantic-color-text-disabled' : '--semantic-color-text-secondary'})`,
+                // All four states bind `text/secondary` (Figma rebound the
+                // Processing caption from `text/disabled`, checked 2026-09-19).
+                color: 'var(--semantic-color-text-secondary)',
                 fontFamily: 'var(--type-scale-headline-xxs-bold-font-family)',
                 fontWeight: 'var(--type-scale-headline-xxs-bold-font-weight)',
                 fontSize: 'var(--type-scale-headline-xxs-bold-font-size)',
