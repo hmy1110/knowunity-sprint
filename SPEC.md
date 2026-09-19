@@ -19,7 +19,7 @@ Session is last and hardest: it's a single route that cycles through many intern
 
 ## 1. Study plan entry — `/`
 
-**States** (derived from a local recall-session record, not fetched):
+**States** (nothing persists a session record, so the state comes from `?state=` — **added 2026-09-18**: `/` is `notStarted`, `/?state=inProgress` is reached from Summary's "Continue", `/?state=finish` from Summary-all recalled's "Continue"):
 - `notStarted` — no record exists yet
 - `inProgress` — a session is underway, not finished. The label ("1 OF 4" on the live frame, changed from "2 OF 4" on 2026-09-18) is **how many topics are already done** — so "1 OF 4" means 1 done, 3 left to review (confirmed by Mia 2026-09-18, correcting an earlier "which topic the student is on" reading).
 - `finish` — all 4 topics done (live frame reads "4 OF 4")
@@ -97,6 +97,8 @@ One route, content driven by the 4 resolved term outcomes rather than distinct i
 
 One route. Internal state = `{ termIndex: 0-3, mode: "voice" | "text", subState }`. The 4 terms are scripted by index, not by content: term 1 resolves Recalled, term 2 Hinted, term 3 Revealed, term 4 Skipped, regardless of what's actually said or typed. Navigating between `subState` values never changes the URL.
 
+**Review run (`/session?review=1`, added 2026-09-18, per Mia).** Reached from Summary's "Review what you missed" and StudyPlan-inProgress's "Review". It skips the scripted outcomes above: it starts at term 2 (`Learning-topic 2`), every term needs a real voice attempt and resolves after the same ~1.5s wait to that term's own `Learning-topic N-result-unaided` frame, and "Continue" advances to the next term's `idle`. Term 4's "Continue" goes to `/summary?variant=all-recalled`. "Type instead", "I don't know" and the "Skip" link are shown but inert throughout. The progress bar follows the same per-term values as the main run (50 / 75 / 75), then 100 on `Learning-topic 4-result-unaided`.
+
 **Figma frame naming (2026-09-16): every `Learning-*` frame was renamed to a `Learning-topic N-...` scheme** (e.g. `Learning-idle` → `Learning-topic 1-idle`, `Learning-result-Hinted1` → `Learning-topic 2-result-Hinted1`, `Learning-skipped` → `Learning-topic 4-skipped`). The parenthetical frame names below are updated to match; sub-state names in code are unaffected. Two of the renamed/added frames are named after their *eventual scripted outcome*, not their current visual content — `Learning-topic 3-I don't know` and `Learning-topic 4-skipped` both render as an ordinary idle screen (mic, prompt, "Type instead"/"I don't know") — flagged here so it doesn't read as a content mismatch later.
 
 **A second Figma pass (2026-09-17) renamed/added more frames, checked live against the file (not from a stale export):**
@@ -121,7 +123,7 @@ One route. Internal state = `{ termIndex: 0-3, mode: "voice" | "text", subState 
 
 ### `idle` (Learning-topic 1-idle for term 1; the same shared JSX also renders `Learning-topic 3-I don't know` and `Learning-topic 4-skipped` for terms 3-4 — see the naming note above)
 - **Components**: `MascotSlot` `size="XL"` `pose="approving"`, `SpeechBubble` `state="Prompt"` (the term's prompt), `MicButton` `state="Idle"` `showLabel` (label reads "Tap to speak"), `Button` `variant="Tertiary"` `size="S"` `cta="Type instead"`, `Button` `variant="Tertiary"` `size="S"` `cta="I don't know"` (always visible — skip; sits after "Type instead" on the live frame).
-- **Actions**: tap `MicButton` → briefly renders `state="Pressed"` as its own visible beat (resolved: render the press feedback explicitly rather than skip straight from Idle to Recording) → `recording`. Tap "I don't know" → `result` (Skipped/Revealed, no `AudioScrubber` — nothing's been recorded yet). Tap "Type instead" → `typeInput` (same term). **Corrected 2026-09-17, per Mia — supersedes this doc's own prior note:** on terms 3-4 (Revealed/Skipped), Mic and "Type instead" are shown but not tappable — this screen's own scripted path is the cold "I don't know" tap alone, not "an actual attempt still works mechanically, it just isn't what the script expects" as this doc previously reasoned. Terms 1-2 (Recalled/Hinted) are unaffected — a real attempt is still required and both remain fully live there.
+- **Actions**: tap `MicButton` → briefly renders `state="Pressed"` as its own visible beat (resolved: render the press feedback explicitly rather than skip straight from Idle to Recording) → `recording`. Tap "I don't know" → `result` (Skipped/Revealed, no `AudioScrubber` — nothing's been recorded yet). Tap "Type instead" → `typeInput` (same term). **Corrected 2026-09-17, per Mia — supersedes this doc's own prior note:** on terms 3-4 (Revealed/Skipped), Mic and "Type instead" are shown but not tappable — this screen's own scripted path is a single cold tap — "I don't know" on term 3, the header "Skip" link on term 4 (**corrected 2026-09-18**; term 4's bottom "I don't know" is inert) — not "an actual attempt still works mechanically, it just isn't what the script expects" as this doc previously reasoned. Terms 1-2 (Recalled/Hinted) are unaffected — a real attempt is still required and both remain fully live there.
 
 ### `recording` (Learning-topic 1-recording)
 - **Components**: `MicButton` `state="Recording"` (embeds its own `StatusIndicator` + "Tap to stop" caption — no separate `StatusIndicator` instance needed here), `SpeechBubble` `state="Prompt"` stays visible.
@@ -157,6 +159,11 @@ One route. Internal state = `{ termIndex: 0-3, mode: "voice" | "text", subState 
 - `SpeechBubble` `state="Input"` (title "You typed", the typed answer as its message) stacked above the outcome bubble (`Success`/`Warning`/`Error`, same rules as the voice path's `result` sub-state). Below: `Button` `variant="Primary"` `size="L"` `cta="Continue"` and `Button` `variant="Secondary"` `size="L"` `cta="Switch to voice"` — the second button is **new in this doc 2026-09-18** and has no destination in the flow diagram. Only the `Recalled` frame exists in Figma; the other three outcomes have no text-path result frame.
 
 ---
+
+## Prototype affordances (not product UI)
+
+- **Hotspot hints (added 2026-09-18).** Tapping anywhere that isn't a live destination briefly outlines every live element on the screen (a crisp 2px line plus a soft 4px halo, `border/focus`, ~0.75s), the way Figma's prototype viewer does. A live element opts in with `data-hotspot` (or a wrapper with `data-hotspot-within` for `AppBar`/`ButtonGroup`, whose buttons are built internally). A screen with no live element shows nothing. Lives in `src/components/shared/HotspotHints.tsx`; not a design-system component and has no Figma counterpart.
+- **Dead buttons are allowed.** A button with no destination in the two scripted paths stays inert: no toast, no pressed state. The hint above is what tells a tester where the way forward is. Buttons shown but inert on purpose are listed in `component-gaps.md`, not here.
 
 ## Explicitly out of scope
 
