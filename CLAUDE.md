@@ -41,5 +41,5 @@ When working on UI, use the storybook tools to read the component library before
 - `public/images/*.svg` — Knowie expressions. When a screen needs a mascot state.
 - `src/app/` — `page.tsx` root screen, `layout.tsx` shell and fonts, `globals.css` Tailwind entry and theme vars.
 - `.claude/skills/` — `ux-designer` flows, `ui-designer` visual craft, `ux-motion` transitions, `interactive-prototype` clickable build.
-- `package.json` — `npm run dev | build | start | lint | tokens`. `style-dictionary.config.mjs` — token build config. `tsconfig.json` — `@/*` maps to `./src/*`.
+- `package.json` — `npm run dev | build | start | lint | tokens | check:tokens`. `style-dictionary.config.mjs` — token build config. `scripts/check-tokens.mjs` — `check:tokens` fails on any raw hex color in `src/` outside comments. `tsconfig.json` — `@/*` maps to `./src/*`.
 - Remaining root files are scaffold config. `README.md` is not project documentation.

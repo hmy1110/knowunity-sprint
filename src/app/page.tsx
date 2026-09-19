@@ -467,12 +467,10 @@ function StudyPlanEntryContent() {
             <span aria-hidden style={{ width: 24, height: 24, padding: 'var(--size-space-200)', boxSizing: 'content-box', color: 'var(--semantic-color-text-secondary)' }}>
               <NavSearchIcon />
             </span>
-            {/* Highlighted/active tab — real bound fill #A684FF, confirmed
-                via the plugin, matches no token in this codebase (a stray
-                Figma variable literally named "text/link" with this exact
-                value, distinct from our own `text/link` token at
-                `#9178e6`) — reproduced as that literal, not substituted. */}
-            <span aria-hidden style={{ width: 24, height: 24, padding: 'var(--size-space-200)', boxSizing: 'content-box', color: '#A684FF' }}>
+            {/* Highlighted/active tab — bound to `highlight/border` (Mia
+                2026-09-19). Replaces the literal `#A684FF` this used to
+                reproduce; that value matched no token. */}
+            <span aria-hidden style={{ width: 24, height: 24, padding: 'var(--size-space-200)', boxSizing: 'content-box', color: 'var(--semantic-color-highlight-border)' }}>
               <NavTargetIcon />
             </span>
             <span aria-hidden style={{ width: 24, height: 24, padding: 'var(--size-space-200)', boxSizing: 'content-box', color: 'var(--semantic-color-text-secondary)' }}>
