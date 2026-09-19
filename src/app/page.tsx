@@ -1,5 +1,6 @@
 'use client'
 
+import { Suspense } from 'react'
 import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { AppBar } from '@/components/AppBar/AppBar'
@@ -198,7 +199,7 @@ function SectionDivider({ label }: { label: string }) {
 // "Continue" → `finish`, per Figma's own arrows); a bare `/` is
 // `notStarted`.
 
-export default function StudyPlanEntry() {
+function StudyPlanEntryContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const studyPlanState = searchParams.get('state')
@@ -491,5 +492,13 @@ export default function StudyPlanEntry() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function StudyPlanEntry() {
+  return (
+    <Suspense fallback={null}>
+      <StudyPlanEntryContent />
+    </Suspense>
   )
 }

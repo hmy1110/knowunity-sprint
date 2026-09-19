@@ -1,6 +1,6 @@
 'use client'
 
-import type { ReactNode } from 'react'
+import { Suspense, type ReactNode } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { AppBar } from '@/components/AppBar/AppBar'
 import { Button } from '@/components/Button/Button'
@@ -260,7 +260,7 @@ const HEADLINE_TEXT_STYLE = {
   letterSpacing: 'var(--type-scale-headline-l-letter-spacing)',
 } as const
 
-export default function Summary() {
+function SummaryContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const isAllRecalled = searchParams.get('variant') === 'all-recalled'
@@ -443,5 +443,13 @@ export default function Summary() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function Summary() {
+  return (
+    <Suspense fallback={null}>
+      <SummaryContent />
+    </Suspense>
   )
 }

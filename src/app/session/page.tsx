@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { AppBar } from '@/components/AppBar/AppBar'
@@ -196,7 +196,7 @@ function PlayPauseIcon() {
   )
 }
 
-export default function Session() {
+function SessionContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   // SPEC.md: "Tap 'I can't talk right now' (on Primer-intro) → /session
@@ -1511,5 +1511,13 @@ export default function Session() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function Session() {
+  return (
+    <Suspense fallback={null}>
+      <SessionContent />
+    </Suspense>
   )
 }
