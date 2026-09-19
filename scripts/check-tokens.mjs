@@ -1,4 +1,5 @@
-// Fails if a raw hex color appears in src/ outside a comment.
+// Fails if a raw hex color appears in src/ outside a comment or a markdown
+// code span (\`...\`) inside a template string.
 import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
@@ -14,6 +15,7 @@ for (const file of files) {
   const code = readFileSync(file, 'utf8')
     .replace(/\/\*[\s\S]*?\*\//g, blank)
     .replace(/(^|[^:])\/\/.*$/gm, '$1')
+    .replace(/\\`[^`\n]*?\\`/g, '')
   code.split('\n').forEach((line, i) => {
     for (const hex of line.match(HEX) ?? []) {
       console.log(`${file}:${i + 1}  ${hex}`)

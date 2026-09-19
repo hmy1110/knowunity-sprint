@@ -14,6 +14,7 @@ Mocked iOS prototype of a voice-in / text-out active-recall step, built in Next.
 - `build/css/tokens.css` is generated. Never edit it. Edit `tokens/tokens.json` and run `npm run tokens`.
 - Sentence case on every label, button, and heading.
 - Design a distinct visual for each of `idle → recording → processing → result`.
+- Run `npm run check:tokens` after building anything. It fails on any raw hex color in `src/` outside comments.
 
 ## Never
 
