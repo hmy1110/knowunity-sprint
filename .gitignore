@@ -48,6 +48,10 @@ next-env.d.ts
 *storybook.log
 storybook-static
 
+# chromatic run output (normally deleted after a successful upload)
+chromatic.log
+chromatic-diagnostics.json
+
 # local Claude Code / MCP config (may hold tokens)
 .mcp.json
 .claude/settings.local.json
