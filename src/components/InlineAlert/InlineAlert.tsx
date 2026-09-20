@@ -200,7 +200,10 @@ export function InlineAlert({
           className="whitespace-nowrap"
           style={{
             margin: 0,
-            color: 'var(--semantic-color-text-secondary)',
+            // Figma rebound the descriptor from `text/secondary` to
+            // `text/primary` (checked 2026-09-19); the Info title and
+            // icon still fall back to `text/secondary`, see COLOR_VAR.
+            color: 'var(--semantic-color-text-primary)',
             fontFamily: 'Inter, sans-serif', // Raw, unbound "Inter" — see doc comment above.
             fontWeight: 400,
             fontSize: 12,

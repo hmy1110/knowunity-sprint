@@ -260,6 +260,25 @@ export function SpeechBubble({
   const headerColorVar = HEADER_COLOR_VAR[state]
   const messageTypeScale = MESSAGE_TYPE_SCALE[state]
 
+  // Bound to `text/primary` (Figma rebound it from `text/secondary`,
+  // checked 2026-09-19). Inside the Header for Success/Warning/Error (2px
+  // under the title row), directly in the bubble for Input.
+  const subtitleElement = (
+    <p
+      className="w-full"
+      style={{
+        margin: 0,
+        color: 'var(--semantic-color-text-primary)',
+        fontFamily: 'Inter, sans-serif', // Raw, unbound "Inter" — see StatusIndicator.tsx for the same gap.
+        fontWeight: 400,
+        fontSize: 12,
+        lineHeight: 'normal',
+      }}
+    >
+      {subtitle}
+    </p>
+  )
+
   return (
     <div className={`inline-flex items-start ${className ?? ''}`} style={style}>
       {hasTail && (
@@ -326,7 +345,16 @@ export function SpeechBubble({
       <div
         className="relative flex shrink-0 flex-col items-start overflow-hidden"
         style={{
-          width: 237, // Not bound to a token in Figma — see doc comment above.
+          // 237px is the component's own width; every real instance
+          // (21 across the Learning-* frames, checked 2026-09-19) overrides
+          // the Bubble to "fill container", so it grows to whatever width
+          // the parent gives the root (`flex-1`, `w-full`) and stays 237px
+          // when the root hugs, as in Figma's own component set.
+          flex: '1 0 237px', // Not bound to a token in Figma — see doc comment above.
+          // Without this, a hugging root would grow to the message's
+          // unwrapped width (a growing flex item contributes its
+          // max-content size to the parent's intrinsic width).
+          contain: 'inline-size',
           padding: 16, // Not bound to a token in Figma — see doc comment above.
           borderRadius: 16, // Not bound to a token in Figma — see doc comment above.
           gap: hasHeader || state === 'Input' ? 4 : undefined, // Not bound to a token in Figma — see doc comment above.
@@ -355,24 +383,13 @@ export function SpeechBubble({
                 {title}
               </p>
             </div>
+            {hasSubtitle && subtitleElement}
           </div>
         )}
 
-        {hasSubtitle && (
-          <p
-            className="w-full"
-            style={{
-              margin: 0,
-              color: 'var(--semantic-color-text-secondary)',
-              fontFamily: 'Inter, sans-serif', // Raw, unbound "Inter" — see StatusIndicator.tsx for the same gap.
-              fontWeight: 400,
-              fontSize: 12,
-              lineHeight: 'normal',
-            }}
-          >
-            {subtitle}
-          </p>
-        )}
+        {/* Input has no Header: its "You typed" subtitle sits directly in
+            the bubble, 4px above the message. */}
+        {!hasHeader && hasSubtitle && subtitleElement}
 
         {hasMessage && messageTypeScale && (
           <p
@@ -392,7 +409,7 @@ export function SpeechBubble({
         )}
 
         {state === 'Loading' && (
-          <div className="inline-flex shrink-0 items-center" style={{ gap: 5 }}>
+          <div className="inline-flex shrink-0 items-center" style={{ gap: 5, height: 15 }}>
             {[0, 1, 2].map((i) => (
               <span
                 key={i}

@@ -239,11 +239,18 @@ export function MicButton({ state = 'Idle', showLabel = true, label, className, 
                 // All four states bind `text/secondary` (Figma rebound the
                 // Processing caption from `text/disabled`, checked 2026-09-19).
                 color: 'var(--semantic-color-text-secondary)',
+                // Idle/Pressed/Processing captions have no bound text style
+                // in Figma (checked 2026-09-19): 14px Greed SemiBold, 0%
+                // tracking, auto line height (17px), which is why the
+                // component is 77px wide here vs. 105px+ with Recording's
+                // bound 1px tracking. Family, weight and size match
+                // `headline-xxs-bold` exactly and stay bound to it; tracking
+                // and line height are the unbound part and stay literal.
                 fontFamily: 'var(--type-scale-headline-xxs-bold-font-family)',
                 fontWeight: 'var(--type-scale-headline-xxs-bold-font-weight)',
                 fontSize: 'var(--type-scale-headline-xxs-bold-font-size)',
-                lineHeight: 'var(--type-scale-headline-xxs-bold-line-height)',
-                letterSpacing: 'var(--type-scale-headline-xxs-bold-letter-spacing)',
+                lineHeight: 'normal',
+                letterSpacing: 0,
               }}
             >
               {caption}

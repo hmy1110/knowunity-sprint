@@ -15,6 +15,7 @@ import { ProgressIndicator, type ProgressIndicatorProgress } from '@/components/
 import { SpeechBubble } from '@/components/SpeechBubble/SpeechBubble'
 import { StatusBar } from '@/components/StatusBar/StatusBar'
 import { StatusIndicator } from '@/components/StatusIndicator/StatusIndicator'
+import { Steps } from '@/components/Steps/Steps'
 import { TextField } from '@/components/TextField/TextField'
 
 // `Learning-idle`, `Learning-recording`, `Learning-ready to send`,
@@ -644,52 +645,25 @@ function SessionContent() {
           </AppBar>
         </div>
 
-        <main className="flex flex-1 flex-col items-center" style={{ padding: 'var(--size-space-200) var(--size-space-400) 0' }}>
-          <div className="flex w-full flex-col items-center" style={{ gap: 24 }}>
-            <div className="flex w-full items-center justify-between">
-              <span
-                style={{
-                  fontFamily: 'var(--type-scale-caption-m-bold-font-family)',
-                  fontWeight: 'var(--type-scale-caption-m-bold-font-weight)',
-                  fontSize: 'var(--type-scale-caption-m-bold-font-size)',
-                  lineHeight: 'var(--type-scale-caption-m-bold-line-height)',
-                  letterSpacing: 'var(--type-scale-caption-m-bold-letter-spacing)',
-                  color: 'var(--semantic-color-text-primary)',
-                }}
-              >
-                Topics {termIndex + 1} of 4
-              </span>
-              {/* Not in SPEC.md's own component list for `idle` — the live
-                  Figma frame shows this "Skip" text link in the header row.
-                  Corrected 2026-09-18, per Mia: on Learning-topic 4-skipped
-                  this is the tappable skip (straight to `/summary`), not
-                  the bottom "I don't know" button. Terms 1-3 show it to
-                  match the frame but leave it inert. */}
-              <button
-                type="button"
-                onClick={subState === 'idle' && !hasNextTerm && !isReview ? () => router.push('/summary') : undefined}
-                style={{
-                  position: 'relative',
-                  fontFamily: 'var(--type-scale-headline-xxs-bold-font-family)',
-                  fontWeight: 'var(--type-scale-headline-xxs-bold-font-weight)',
-                  fontSize: 'var(--type-scale-headline-xxs-bold-font-size)',
-                  lineHeight: 'var(--type-scale-headline-xxs-bold-line-height)',
-                  letterSpacing: 'var(--type-scale-headline-xxs-bold-letter-spacing)',
-                  color: 'var(--semantic-color-text-primary)',
-                }}
-              >
-                Skip
-                {/* Tap area the same 48×48 as the appBar's own icon buttons
-                    (an unbound literal there too), centered on the label so
-                    the text and the header row's layout stay where they
-                    were. */}
-                <span
-                  aria-hidden
-                  data-hotspot={(subState === 'idle' && !hasNextTerm && !isReview) || undefined}
-                  style={{ position: 'absolute', top: '50%', left: '50%', width: 48, height: 48, transform: 'translate(-50%, -50%)' }}
-                />
-              </button>
-            </div>
+        {/* Steps is 48px tall and sits flush under the appBar; the content
+            below starts 16px under it on every frame, 24px on
+            Learning-topic 1-result (synced 2026-09-19 — before Steps the
+            row was 16px tall, 8px under the appBar, with 24px below it). */}
+        <main className="flex flex-1 flex-col items-center" style={{ padding: '0 var(--size-space-400)' }}>
+          <div
+            className="flex w-full flex-col items-center"
+            style={{ gap: subState === 'resultRecalled' ? 'var(--size-space-600)' : 'var(--size-space-400)' }}
+          >
+            {/* `Steps` (Figma node 13764:16058): "Topics N of 4" + Skip. Skip
+                is the tappable skip on term 4's idle (straight to
+                `/summary`, corrected 2026-09-18, per Mia); terms 1-3 show it
+                to match the frame but leave it inert. */}
+            <Steps
+              current={termIndex + 1}
+              total={4}
+              onSkip={subState === 'idle' && !hasNextTerm && !isReview ? () => router.push('/summary') : undefined}
+              skipHotspot={subState === 'idle' && !hasNextTerm && !isReview}
+            />
 
             {subState === 'hinted2Processing' || subState === 'resultHinted1Recalled' ? (
               // `Learning-topic 2-result-Hinted1-processing` (node

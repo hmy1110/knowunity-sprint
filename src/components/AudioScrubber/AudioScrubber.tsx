@@ -55,7 +55,10 @@ import type { ButtonHTMLAttributes } from 'react'
  *
  * - The pill's 40px corner radius (no radius token is 40px — the scale
  *   jumps from 36 to the 9999px `radius/Full`).
- * - The pill's 16px/4px padding.
+ * - The pill's 16px/4px padding and its fixed 44px height (Figma's
+ *   own container is `h-[44px]`, up from the 32px the padding and the
+ *   24px icon alone add up to — synced 2026-09-19, and it makes the
+ *   pill its own 44px tap target).
  * - The play/pause icon area's 24×24 box (not bound to `icon/300`
  *   despite matching it numerically — unlike AppBar's icon buttons,
  *   where `icon/300` genuinely is in that node's own bound-variables
@@ -64,7 +67,7 @@ import type { ButtonHTMLAttributes } from 'react'
  *   6.75px/13.75px/4.5px).
  * - Every waveform bar's 3px width, the 2.5px gap between bars, and
  *   their 18px corner radius.
- * - All 37 individual bar heights and their handful of specific
+ * - All 38 individual bar heights and their handful of specific
  *   opacity values (creating the fade at both ends of the waveform) —
  *   reproduced as a static illustration straight from Figma's own
  *   frame, not live audio data. This sprint has no real audio to
@@ -94,7 +97,7 @@ export interface AudioScrubberProps
   state?: AudioScrubberState
 }
 
-// The 37 waveform bars, straight off Figma's own static frame — see
+// The 38 waveform bars, straight off Figma's own static frame — see
 // doc comment above for why this isn't live audio data. Identical in
 // both states, matching Figma exactly.
 const WAVEFORM_BARS: Array<{ height: number; opacity?: number }> = [
@@ -131,6 +134,7 @@ const WAVEFORM_BARS: Array<{ height: number; opacity?: number }> = [
   { height: 6 },
   { height: 6 },
   { height: 6 },
+  { height: 6 }, // [gap:audioscrubber-bar-38] the 38th bar, added in Figma 2026-09-19
   { height: 6, opacity: 0.8 },
   { height: 6, opacity: 0.7 },
   { height: 6, opacity: 0.4 },
@@ -182,6 +186,7 @@ export function AudioScrubber({ state = 'Default', className, ...rest }: AudioSc
         borderRadius: 40, // Not bound to a token in Figma — see doc comment above.
         paddingInline: 16, // Not bound to a token in Figma — see doc comment above.
         paddingBlock: 4, // Not bound to a token in Figma — see doc comment above.
+        height: 44, // [gap:audioscrubber-height] Not bound to a token in Figma — see doc comment above.
         background: 'var(--semantic-color-background-input)',
         color: 'var(--semantic-color-interactive-primary)',
       }}
