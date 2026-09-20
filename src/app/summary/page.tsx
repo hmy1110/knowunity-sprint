@@ -351,11 +351,9 @@ function SummaryContent() {
 
           {isAllRecalled ? (
             <>
-              {/* The live frame's segbar legend still reads "4 Recalled" over its own
-                  3/3 score and three rows (checked 2026-09-20) — a leftover
-                  from the 4-term version. Counted from the rows here so the
-                  legend can't disagree with the table; flagged in
-                  component-gaps.md for Mia to fix in Figma. */}
+              {/* Legend counted from the rows so it can't disagree with the table.
+                  Live Figma reads "3 Recalled / 0 / 0 / 0" (Mia updated it
+                  2026-09-20; it read "4 Recalled" before). */}
               <ScoreBreakdown percent={100} counts={countByStatus(ALL_RECALLED_RESULTS)} style={{ width: '100%' }} />
 
               {/* `Table`/`TableCell`'s own status-driven divider (see

@@ -314,8 +314,8 @@ Read from live Figma through the Desktop Bridge plugin and `get_design_context`,
 ## Review run counter and Summary-all recalled, synced to live Figma (2026-09-20)
 
 - **What changed in Figma, and what the build now does.** The review run's three unaided frames read "Topics 1 of 3" / "2 of 3" / "3 of 3" (were "2 of 4" to "4 of 4") with a "6" XP badge (was 8). `Summary-all recalled` now reads SCORE 3/3, XP 6, three rows (Inspiration dropped), 100%. Built to match: `session/page.tsx` derives the count and badge from the run's term count, `summary/page.tsx` drops Inspiration from `ALL_RECALLED_RESULTS`. The main run is unchanged ("Topics N of 4", badge 8).
-- **Figma still shows a stale legend.** `Summary-all recalled`'s legend reads "4 Recalled" over a 3/3 score and three rows (checked live 2026-09-20). The build counts it from the rows and reads "3 Recalled". Mia to fix the legend in Figma; no component is missing.
+- **Legend fixed in Figma (Mia, 2026-09-20).** `Summary-all recalled`'s legend now reads "3 Recalled" and matches the 3/3 score and three rows. The build still counts it from the rows, so the two agree by construction.
 - **The review run's idle screens have no Figma frame.** Figma's chain goes `StudyPlan-inProgress` straight to the unaided result frames, so idle and recording in a review run use the same "of 3" count by inference. `Learning-topic 2`'s idle frame still reads "Topics 2 of 4" and is not part of this chain.
-- **"first try" copy kept.** The three remaining reflections still read "…in your own words, first try." in Figma, so they are unchanged.
+- **"first try" copy kept, confirmed fine by Mia (2026-09-20).** The three reflections still read "…in your own words, first try." in Figma and in code.
 - **Not touched:** the new `Learning-topic 3-resume` and `Learning-topic 3-resume-result-Recalled` frames (13736:16699, 13736:16802) are not part of this change and are not built.
 
