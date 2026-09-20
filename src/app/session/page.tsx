@@ -227,6 +227,10 @@ function SessionContent() {
   const xpGoal = 2 * runTermCount
   const [termIndex, setTermIndex] = useState(isReview ? 1 : 0)
   const term = TERMS[termIndex]
+  // The text-path frames (typeInput, typeProcessing, typeResultRecalled) drop
+  // "out loud" from the prompt in live Figma (2026-09-20): "Explain the term
+  // “Inspiration”, in your own words." — no one is speaking on that path.
+  const textPrompt = term.prompt.replace(' out loud', '')
   const hasNextTerm = termIndex + 1 < TERMS.length
   // Terms 1-2 (Recalled/Hinted) still need a real attempt on `idle`;
   // terms 3-4 (Revealed/Skipped) are cold-skip only — see `idle`'s own
@@ -856,7 +860,7 @@ function SessionContent() {
               <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-400)' }}>
                 <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
                   <MascotSlot size="XL" pose="approving" />
-                  <SpeechBubble state="Prompt" message={term.prompt} className="flex-1" />
+                  <SpeechBubble state="Prompt" message={textPrompt} className="flex-1" />
                 </div>
 
                 <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-050)' }}>
@@ -930,7 +934,7 @@ function SessionContent() {
                     color: 'var(--semantic-color-text-primary)',
                   }}
                 >
-                  {term.prompt}
+                  {textPrompt}
                 </p>
 
                 <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)' }}>
@@ -1040,7 +1044,7 @@ function SessionContent() {
                     color: 'var(--semantic-color-text-primary)',
                   }}
                 >
-                  {term.prompt}
+                  {textPrompt}
                 </p>
 
                 <SpeechBubble state="Input" message={typedAnswer} className="w-full" />
