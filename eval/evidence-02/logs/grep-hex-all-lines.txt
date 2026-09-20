@@ -1,0 +1,31 @@
+src/app/primer/page.tsx:60:// `#F4F2FF` fill/stroke to `currentColor`, tinted via `text/primary` on
+src/app/page.tsx:29:// `fill="#1D1B20"` to the real bound token this button's label already
+src/app/page.tsx:46:// bound token value (#F4F2FF === --semantic-color-interactive-on-secondary
+src/app/page.tsx:59:// fill-opacity="0.68"` (`#ffffffad`) on the real node — confirmed via
+src/app/page.tsx:61:// from our real `--semantic-color-text-secondary` (`#f5f3ffad`), the
+src/app/page.tsx:118:// tokens; `myai-chat`'s brand purple #8E51FF matches no real token
+src/app/page.tsx:471:                2026-09-19). Replaces the literal `#A684FF` this used to
+src/app/session/page.tsx:109:// Recolored from its hardcoded `fill="#F4F2FF"` to `currentColor`,
+src/app/session/page.tsx:126:// asset's own literal fills, `#7BA8F2`/`#0A1635`, both real token
+src/app/session/page.tsx:146:// from its hardcoded `#FF6B6B` to `currentColor` (matches `feedback/
+src/app/session/page.tsx:1188:            fallback hex reads opaque `#0a0a0a`, but the real bound
+src/components/TopicNode/TopicNode.tsx:17: * `fill="#E879C0"`, i.e. `accent/magenta/bold`) regardless of state.
+src/components/StatusBar/StatusBar.tsx:16: * their hardcoded `fill="#F4F2FF"` to `currentColor`, tinted via
+src/components/ScoreBreakdown/ScoreBreakdown.tsx:41: * `#00c386`, different token). Hinted binds `pro/accent`, documented in
+src/components/SpeechBubble/SpeechBubble.tsx:54: * re-flagging: each icon's own hardcoded fill (`#00C386`/`#FCD34D`/
+src/components/SpeechBubble/SpeechBubble.tsx:55: * `#FF6B6B`) exactly matches its title's bound color
+src/components/TextField/TextField.tsx:38: *   (`color/navy/900` → `#1a1c26`) that's actually exported to
+src/components/TextField/TextField.tsx:49: *   documents) instead of a real token — both resolve to `#ff6b6b`.
+src/components/TextField/TextField.tsx:51: *   `border/error` ("Invalid input edge...") is also `#ff6b6b`, used
+src/components/TextField/TextField.tsx:54: *   actually resolves to `#fca5a5`, a visibly lighter tint that doesn't
+src/components/TextField/TextField.tsx:55: *   match Figma's real `#ff6b6b` (confirmed via the plugin, not by
+src/components/TextField/TextField.tsx:59: *   bold` is the token that actually equals `#ff6b6b`, and it's the
+src/components/shared/LoadingSpinner.tsx:8: * hex fills (#090C18 for Primary, #F4F2FF for Secondary/Tertiary — the
+src/components/shared/icons.tsx:15:// hardcoded `fill="#F4F2FF"` to `currentColor`, tinted via `text/
+src/components/AudioScrubber/AudioScrubber.tsx:40: * with their hardcoded Figma fill color (`#F4F2FF`, exactly
+src/components/MicButton/MicButton.tsx:53: * Pressed glyph's `#090C18` stroke is exactly `interactive/onPrimary`,
+src/components/Tag/Tag.tsx:41: * bold`, despite matching hex `#00C386` — the two share a literal value
+src/components/InlineAlert/InlineAlert.tsx:50: * bound token, not assumed): Success `#00C386` = `feedback/success/
+src/components/InlineAlert/InlineAlert.tsx:51: * bold`; Warning `#FCD34D` = `text/warning`; Error `#FF6B6B` =
+src/components/InlineAlert/InlineAlert.tsx:52: * `feedback/error/bold`; Info `#F5F3FF @ 68%` = `text/secondary` —
+EXIT(grep)=0

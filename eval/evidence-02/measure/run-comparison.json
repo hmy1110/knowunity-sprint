@@ -1,0 +1,10967 @@
+{
+ "generated": "2026-09-20T16:36:47.450Z",
+ "states": {
+  "A01-studyplan-notStarted-default": {
+   "id": "A01-studyplan-notStarted-default",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "A02-studyplan-notStarted-speak-pressed": {
+   "id": "A02-studyplan-notStarted-speak-pressed",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "A03-studyplan-kebab-tap-settled": {
+   "id": "A03-studyplan-kebab-tap-settled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "A04-studyplan-topicnode-tap-settled": {
+   "id": "A04-studyplan-topicnode-tap-settled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "A05-studyplan-bottomnav-tap-settled": {
+   "id": "A05-studyplan-bottomnav-tap-settled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "A06-studyplan-state-bogus": {
+   "id": "A06-studyplan-state-bogus",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "A07-studyplan-inProgress-REFERENCE": {
+   "id": "A07-studyplan-inProgress-REFERENCE",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "A08-studyplan-finish-REFERENCE": {
+   "id": "A08-studyplan-finish-REFERENCE",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "A09-studyplan-speak-destination-primer": {
+   "id": "A09-studyplan-speak-destination-primer",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "B01-summary-mixed-default": {
+   "id": "B01-summary-mixed-default",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "pixelFull": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "fullSize": {
+    "run1": "780x2432",
+    "run2": "780x2432"
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 1216,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 1216,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "B02-summary-bottom-baseline": {
+   "id": "B02-summary-bottom-baseline",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 1216,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 1216,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "B02b-summary-review-pressed-scrolled": {
+   "id": "B02b-summary-review-pressed-scrolled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 1216,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 1216,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "B03b-summary-continue-pressed-scrolled": {
+   "id": "B03b-summary-continue-pressed-scrolled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 1216,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 1216,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "B04-summary-all-recalled": {
+   "id": "B04-summary-all-recalled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "pixelFull": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "fullSize": {
+    "run1": "780x2208",
+    "run2": "780x2208"
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 1104,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 1104,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "B05-summary-variant-bogus": {
+   "id": "B05-summary-variant-bogus",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "pixelFull": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "fullSize": {
+    "run1": "780x2432",
+    "run2": "780x2432"
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 1216,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 1216,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "B06-summary-scrolled-bottom": {
+   "id": "B06-summary-scrolled-bottom",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 1216,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 1216,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "B07-summary-back-destination": {
+   "id": "B07-summary-back-destination",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "B08-summary-continue-destination": {
+   "id": "B08-summary-continue-destination",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "B09-summary-review-destination": {
+   "id": "B09-summary-review-destination",
+   "pixel": {
+    "rgbDiffPct": 5.831,
+    "lumaDiffPct": 5.826,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 652.5
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Tap to speak",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        150,
+        156
+       ],
+       "w": [
+        90,
+        78
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ],
+       "w": [
+        137.1,
+        229.5
+       ]
+      }
+     },
+     {
+      "text": "Tap to speak",
+      "rect": {
+       "x": [
+        151,
+        157
+       ],
+       "w": [
+        88,
+        76
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "C01-t1-idle": {
+   "id": "C01-t1-idle",
+   "pixel": {
+    "rgbDiffPct": 5.872,
+    "lumaDiffPct": 5.867,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 652.5
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Tap to speak",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        150,
+        156
+       ],
+       "w": [
+        90,
+        78
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "1",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Let’s start. Explain the term “Inspiration” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ],
+       "w": [
+        185.9,
+        230.6
+       ]
+      }
+     },
+     {
+      "text": "Tap to speak",
+      "rect": {
+       "x": [
+        151,
+        157
+       ],
+       "w": [
+        88,
+        76
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "C02-t1-idle-mic-pressed": {
+   "id": "C02-t1-idle-mic-pressed",
+   "pixel": {
+    "rgbDiffPct": 5.872,
+    "lumaDiffPct": 5.867,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 652.5
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Tap to speak",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        150,
+        156
+       ],
+       "w": [
+        90,
+        78
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "1",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Let’s start. Explain the term “Inspiration” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ],
+       "w": [
+        185.9,
+        230.6
+       ]
+      }
+     },
+     {
+      "text": "Tap to speak",
+      "rect": {
+       "x": [
+        151,
+        157
+       ],
+       "w": [
+        88,
+        76
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "C03-t1-recording-a": {
+   "id": "C03-t1-recording-a",
+   "pixel": {
+    "rgbDiffPct": 5.569,
+    "lumaDiffPct": 5.561,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 146
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "1",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Let’s start. Explain the term “Inspiration” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ],
+       "w": [
+        185.9,
+        230.6
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "C03-t1-recording-b": {
+   "id": "C03-t1-recording-b",
+   "pixel": {
+    "rgbDiffPct": 5.569,
+    "lumaDiffPct": 5.561,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 146
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "1",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Let’s start. Explain the term “Inspiration” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ],
+       "w": [
+        185.9,
+        230.6
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "C04-t1-readyToSend": {
+   "id": "C04-t1-readyToSend",
+   "pixel": {
+    "rgbDiffPct": 7.045,
+    "lumaDiffPct": 7.04,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 565
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        66.5,
+        63.8
+       ],
+       "y": [
+        647,
+        635
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        66.5,
+        63.8
+       ],
+       "y": [
+        647,
+        635
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "y": [
+        647,
+        636
+       ],
+       "w": [
+        258,
+        264
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "1",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Let’s start. Explain the term “Inspiration” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ],
+       "w": [
+        185.9,
+        230.6
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "C05-t1-after-redo": {
+   "id": "C05-t1-after-redo",
+   "pixel": {
+    "rgbDiffPct": 5.872,
+    "lumaDiffPct": 5.867,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 652.5
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Tap to speak",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        150,
+        156
+       ],
+       "w": [
+        90,
+        78
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "1",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Let’s start. Explain the term “Inspiration” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ],
+       "w": [
+        185.9,
+        230.6
+       ]
+      }
+     },
+     {
+      "text": "Tap to speak",
+      "rect": {
+       "x": [
+        151,
+        157
+       ],
+       "w": [
+        88,
+        76
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "C06-t1-processing": {
+   "id": "C06-t1-processing",
+   "pixel": {
+    "rgbDiffPct": 11.614,
+    "lumaDiffPct": 11.569,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 701
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        117,
+        112
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        258,
+        262
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     },
+     {
+      "name": "Processing…",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        150.8,
+        156.3
+       ],
+       "y": [
+        736,
+        735
+       ],
+       "w": [
+        88.5,
+        77.5
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        150.8,
+        156.3
+       ],
+       "y": [
+        736,
+        735
+       ],
+       "w": [
+        88.5,
+        77.5
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        150,
+        156
+       ],
+       "w": [
+        90,
+        78
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "1",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Let’s start. Explain the term “Inspiration” out loud, in your own words.",
+      "rect": {
+       "y": [
+        150,
+        166
+       ]
+      }
+     },
+     {
+      "text": "Processing…",
+      "rect": {
+       "x": [
+        150.8,
+        156.3
+       ],
+       "w": [
+        88.5,
+        77.5
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "C07-t1-resultRecalled": {
+   "id": "C07-t1-resultRecalled",
+   "pixel": {
+    "rgbDiffPct": 14.082,
+    "lumaDiffPct": 13.96,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 327
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        232
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        232
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        117,
+        112
+       ],
+       "y": [
+        208,
+        232
+       ],
+       "w": [
+        258,
+        262
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "1",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Let’s start. Explain the term “Inspiration” out loud, in your own words.",
+      "rect": {
+       "y": [
+        150,
+        174
+       ]
+      }
+     },
+     {
+      "text": "Nice!",
+      "rect": {
+       "y": [
+        272,
+        308
+       ]
+      }
+     },
+     {
+      "text": "Unaided",
+      "color": [
+       "rgba(245, 243, 255, 0.68)",
+       "rgb(244, 242, 255)"
+      ],
+      "nominalRatio": [
+       7.26,
+       13.95
+      ],
+      "rect": {
+       "y": [
+        300,
+        334
+       ]
+      }
+     },
+     {
+      "text": "You said: 'It’s the spark that makes you want to create something'",
+      "rect": {
+       "y": [
+        319,
+        353
+       ],
+       "w": [
+        191.1,
+        230.6
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "C08-t2-idle": {
+   "id": "C08-t2-idle",
+   "pixel": {
+    "rgbDiffPct": 5.831,
+    "lumaDiffPct": 5.826,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 652.5
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Tap to speak",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        150,
+        156
+       ],
+       "w": [
+        90,
+        78
+       ]
+      }
+     },
+     {
+      "name": "Type instead",
+      "tag": "button",
+      "hasOnClick": [
+       true,
+       false
+      ],
+      "hotspotMarked": [
+       true,
+       false
+      ]
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ],
+       "w": [
+        137.1,
+        229.5
+       ]
+      }
+     },
+     {
+      "text": "Tap to speak",
+      "rect": {
+       "x": [
+        151,
+        157
+       ],
+       "w": [
+        88,
+        76
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "C09-t2-recording": {
+   "id": "C09-t2-recording",
+   "pixel": {
+    "rgbDiffPct": 5.525,
+    "lumaDiffPct": 5.517,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 146
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ],
+       "w": [
+        137.1,
+        229.5
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "C10-t2-readyToSend": {
+   "id": "C10-t2-readyToSend",
+   "pixel": {
+    "rgbDiffPct": 7.004,
+    "lumaDiffPct": 6.999,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 565
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        66.5,
+        63.8
+       ],
+       "y": [
+        647,
+        635
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        66.5,
+        63.8
+       ],
+       "y": [
+        647,
+        635
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "y": [
+        647,
+        636
+       ],
+       "w": [
+        258,
+        264
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ],
+       "w": [
+        137.1,
+        229.5
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "C11-t2-processing": {
+   "id": "C11-t2-processing",
+   "pixel": {
+    "rgbDiffPct": 11.615,
+    "lumaDiffPct": 11.571,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 701
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        117,
+        112
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        258,
+        262
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     },
+     {
+      "name": "Processing…",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        150.8,
+        156.3
+       ],
+       "y": [
+        736,
+        735
+       ],
+       "w": [
+        88.5,
+        77.5
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        150.8,
+        156.3
+       ],
+       "y": [
+        736,
+        735
+       ],
+       "w": [
+        88.5,
+        77.5
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        150,
+        156
+       ],
+       "w": [
+        90,
+        78
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        150,
+        166
+       ]
+      }
+     },
+     {
+      "text": "Processing…",
+      "rect": {
+       "x": [
+        150.8,
+        156.3
+       ],
+       "w": [
+        88.5,
+        77.5
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "C12-t2-resultHinted1": {
+   "id": "C12-t2-resultHinted1",
+   "pixel": {
+    "rgbDiffPct": 11.898,
+    "lumaDiffPct": 11.891,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 653
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        117,
+        112
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        258,
+        262
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     },
+     {
+      "name": "Try again",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        163.4,
+        167
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        63.2,
+        56
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        163.4,
+        167
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        63.2,
+        56
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        163,
+        168
+       ],
+       "w": [
+        64,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Type instead",
+      "tag": "button",
+      "hasOnClick": [
+       true,
+       false
+      ],
+      "hotspotMarked": [
+       true,
+       false
+      ]
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        150,
+        166
+       ]
+      }
+     },
+     {
+      "text": "Not quite yet.",
+      "rect": {
+       "y": [
+        272,
+        300
+       ]
+      }
+     },
+     {
+      "text": "Hint 1 of 2",
+      "color": [
+       "rgba(245, 243, 255, 0.68)",
+       "rgb(244, 242, 255)"
+      ],
+      "nominalRatio": [
+       7.26,
+       13.95
+      ],
+      "rect": {
+       "y": [
+        300,
+        326
+       ]
+      }
+     },
+     {
+      "text": "No worries. Think about the very first step, before you start narrowing down to ",
+      "rect": {
+       "y": [
+        317,
+        343
+       ],
+       "w": [
+        199.1,
+        231.7
+       ]
+      }
+     },
+     {
+      "text": "Try again",
+      "rect": {
+       "x": [
+        163.4,
+        167.9
+       ],
+       "w": [
+        63.2,
+        54.2
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "C12b-t2-hinted1-idontknow-tap-settled": {
+   "id": "C12b-t2-hinted1-idontknow-tap-settled",
+   "pixel": {
+    "rgbDiffPct": 11.898,
+    "lumaDiffPct": 11.891,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 653
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        117,
+        112
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        258,
+        262
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     },
+     {
+      "name": "Try again",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        163.4,
+        167
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        63.2,
+        56
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        163.4,
+        167
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        63.2,
+        56
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        163,
+        168
+       ],
+       "w": [
+        64,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Type instead",
+      "tag": "button",
+      "hasOnClick": [
+       true,
+       false
+      ],
+      "hotspotMarked": [
+       true,
+       false
+      ]
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        150,
+        166
+       ]
+      }
+     },
+     {
+      "text": "Not quite yet.",
+      "rect": {
+       "y": [
+        272,
+        300
+       ]
+      }
+     },
+     {
+      "text": "Hint 1 of 2",
+      "color": [
+       "rgba(245, 243, 255, 0.68)",
+       "rgb(244, 242, 255)"
+      ],
+      "nominalRatio": [
+       7.26,
+       13.95
+      ],
+      "rect": {
+       "y": [
+        300,
+        326
+       ]
+      }
+     },
+     {
+      "text": "No worries. Think about the very first step, before you start narrowing down to ",
+      "rect": {
+       "y": [
+        317,
+        343
+       ],
+       "w": [
+        199.1,
+        231.7
+       ]
+      }
+     },
+     {
+      "text": "Try again",
+      "rect": {
+       "x": [
+        163.4,
+        167.9
+       ],
+       "w": [
+        63.2,
+        54.2
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "C13-t2-Hinted1-recording": {
+   "id": "C13-t2-Hinted1-recording",
+   "pixel": {
+    "rgbDiffPct": 10.789,
+    "lumaDiffPct": 10.779,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 327
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        117,
+        112
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        258,
+        262
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        150,
+        166
+       ]
+      }
+     },
+     {
+      "text": "Not quite yet.",
+      "rect": {
+       "y": [
+        272,
+        300
+       ]
+      }
+     },
+     {
+      "text": "Hint 1 of 2",
+      "color": [
+       "rgba(245, 243, 255, 0.68)",
+       "rgb(244, 242, 255)"
+      ],
+      "nominalRatio": [
+       7.26,
+       13.95
+      ],
+      "rect": {
+       "y": [
+        300,
+        326
+       ]
+      }
+     },
+     {
+      "text": "No worries. Think about the very first step, before you start narrowing down to ",
+      "rect": {
+       "y": [
+        317,
+        343
+       ],
+       "w": [
+        199.1,
+        231.7
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "D01-t2-Hinted1-readyToSend": {
+   "id": "D01-t2-Hinted1-readyToSend",
+   "pixel": {
+    "rgbDiffPct": 13.12,
+    "lumaDiffPct": 13.112,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 565
+    }
+   },
+   "pixelFull": {
+    "rgbDiffPct": 13.12,
+    "lumaDiffPct": 13.112,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 565
+    }
+   },
+   "fullSize": {
+    "run1": "780x1688",
+    "run2": "780x1688"
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        117,
+        112
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        258,
+        262
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        66.5,
+        63.8
+       ],
+       "y": [
+        647,
+        635
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        66.5,
+        63.8
+       ],
+       "y": [
+        647,
+        635
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "y": [
+        647,
+        636
+       ],
+       "w": [
+        258,
+        264
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        150,
+        166
+       ]
+      }
+     },
+     {
+      "text": "Not quite yet.",
+      "rect": {
+       "y": [
+        272,
+        300
+       ]
+      }
+     },
+     {
+      "text": "Hint 1 of 2",
+      "color": [
+       "rgba(245, 243, 255, 0.68)",
+       "rgb(244, 242, 255)"
+      ],
+      "nominalRatio": [
+       7.26,
+       13.95
+      ],
+      "rect": {
+       "y": [
+        300,
+        326
+       ]
+      }
+     },
+     {
+      "text": "No worries. Think about the very first step, before you start narrowing down to ",
+      "rect": {
+       "y": [
+        317,
+        343
+       ],
+       "w": [
+        199.1,
+        231.7
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "D02-t2-Hinted1-readyToSend-resume-tap-settled": {
+   "id": "D02-t2-Hinted1-readyToSend-resume-tap-settled",
+   "pixel": {
+    "rgbDiffPct": 13.12,
+    "lumaDiffPct": 13.112,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 565
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        117,
+        112
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        258,
+        262
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        66.5,
+        63.8
+       ],
+       "y": [
+        647,
+        635
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        66.5,
+        63.8
+       ],
+       "y": [
+        647,
+        635
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "y": [
+        647,
+        636
+       ],
+       "w": [
+        258,
+        264
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        150,
+        166
+       ]
+      }
+     },
+     {
+      "text": "Not quite yet.",
+      "rect": {
+       "y": [
+        272,
+        300
+       ]
+      }
+     },
+     {
+      "text": "Hint 1 of 2",
+      "color": [
+       "rgba(245, 243, 255, 0.68)",
+       "rgb(244, 242, 255)"
+      ],
+      "nominalRatio": [
+       7.26,
+       13.95
+      ],
+      "rect": {
+       "y": [
+        300,
+        326
+       ]
+      }
+     },
+     {
+      "text": "No worries. Think about the very first step, before you start narrowing down to ",
+      "rect": {
+       "y": [
+        317,
+        343
+       ],
+       "w": [
+        199.1,
+        231.7
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "D03-t2-Hinted1-readyToSend-send-pressed": {
+   "id": "D03-t2-Hinted1-readyToSend-send-pressed",
+   "pixel": {
+    "rgbDiffPct": 13.12,
+    "lumaDiffPct": 13.112,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 565
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        117,
+        112
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        258,
+        262
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        66.5,
+        63.8
+       ],
+       "y": [
+        647,
+        635
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        66.5,
+        63.8
+       ],
+       "y": [
+        647,
+        635
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "y": [
+        647,
+        636
+       ],
+       "w": [
+        258,
+        264
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        150,
+        166
+       ]
+      }
+     },
+     {
+      "text": "Not quite yet.",
+      "rect": {
+       "y": [
+        272,
+        300
+       ]
+      }
+     },
+     {
+      "text": "Hint 1 of 2",
+      "color": [
+       "rgba(245, 243, 255, 0.68)",
+       "rgb(244, 242, 255)"
+      ],
+      "nominalRatio": [
+       7.26,
+       13.95
+      ],
+      "rect": {
+       "y": [
+        300,
+        326
+       ]
+      }
+     },
+     {
+      "text": "No worries. Think about the very first step, before you start narrowing down to ",
+      "rect": {
+       "y": [
+        317,
+        343
+       ],
+       "w": [
+        199.1,
+        231.7
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "D04-t2-Hinted1-readyToSend-redo-pressed": {
+   "id": "D04-t2-Hinted1-readyToSend-redo-pressed",
+   "pixel": {
+    "rgbDiffPct": 13.12,
+    "lumaDiffPct": 13.112,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 565
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        117,
+        112
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        258,
+        262
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        66.5,
+        63.8
+       ],
+       "y": [
+        647,
+        635
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        66.5,
+        63.8
+       ],
+       "y": [
+        647,
+        635
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "y": [
+        647,
+        636
+       ],
+       "w": [
+        258,
+        264
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        150,
+        166
+       ]
+      }
+     },
+     {
+      "text": "Not quite yet.",
+      "rect": {
+       "y": [
+        272,
+        300
+       ]
+      }
+     },
+     {
+      "text": "Hint 1 of 2",
+      "color": [
+       "rgba(245, 243, 255, 0.68)",
+       "rgb(244, 242, 255)"
+      ],
+      "nominalRatio": [
+       7.26,
+       13.95
+      ],
+      "rect": {
+       "y": [
+        300,
+        326
+       ]
+      }
+     },
+     {
+      "text": "No worries. Think about the very first step, before you start narrowing down to ",
+      "rect": {
+       "y": [
+        317,
+        343
+       ],
+       "w": [
+        199.1,
+        231.7
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "D05-t2-Hinted1-processing": {
+   "id": "D05-t2-Hinted1-processing",
+   "pixel": {
+    "rgbDiffPct": 20.552,
+    "lumaDiffPct": 20.466,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 701
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        117,
+        112
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        258,
+        262
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        377,
+        405
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        377,
+        405
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        117,
+        112
+       ],
+       "y": [
+        377,
+        406
+       ],
+       "w": [
+        258,
+        262
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     },
+     {
+      "name": "Processing…",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        150.8,
+        156.3
+       ],
+       "y": [
+        736,
+        735
+       ],
+       "w": [
+        88.5,
+        77.5
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        150.8,
+        156.3
+       ],
+       "y": [
+        736,
+        735
+       ],
+       "w": [
+        88.5,
+        77.5
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        150,
+        156
+       ],
+       "w": [
+        90,
+        78
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        150,
+        166
+       ]
+      }
+     },
+     {
+      "text": "Not quite yet.",
+      "rect": {
+       "y": [
+        256,
+        284
+       ]
+      }
+     },
+     {
+      "text": "Hint 1 of 2",
+      "rect": {
+       "y": [
+        282,
+        310
+       ]
+      }
+     },
+     {
+      "text": "No worries. Think about the very first step, before you start narrowing down to ",
+      "rect": {
+       "y": [
+        299,
+        327
+       ]
+      }
+     },
+     {
+      "text": "Processing…",
+      "rect": {
+       "x": [
+        150.8,
+        156.3
+       ],
+       "w": [
+        88.5,
+        77.5
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "E01-t2-Hinted1-recalled": {
+   "id": "E01-t2-Hinted1-recalled",
+   "pixel": {
+    "rgbDiffPct": 22.638,
+    "lumaDiffPct": 22.502,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 548
+    }
+   },
+   "pixelFull": {
+    "rgbDiffPct": 22.638,
+    "lumaDiffPct": 22.502,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 548
+    }
+   },
+   "fullSize": {
+    "run1": "780x1688",
+    "run2": "780x1688"
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        117,
+        112
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        258,
+        262
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        377,
+        405
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        377,
+        405
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        117,
+        112
+       ],
+       "y": [
+        377,
+        406
+       ],
+       "w": [
+        258,
+        262
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        150,
+        166
+       ]
+      }
+     },
+     {
+      "text": "Not quite yet.",
+      "rect": {
+       "y": [
+        256,
+        284
+       ]
+      }
+     },
+     {
+      "text": "Hint 1 of 2",
+      "rect": {
+       "y": [
+        282,
+        310
+       ]
+      }
+     },
+     {
+      "text": "No worries. Think about the very first step, before you start narrowing down to ",
+      "rect": {
+       "y": [
+        299,
+        327
+       ]
+      }
+     },
+     {
+      "text": "Nice!",
+      "rect": {
+       "y": [
+        441,
+        481
+       ]
+      }
+     },
+     {
+      "text": "Hint 1 of 2",
+      "color": [
+       "rgba(245, 243, 255, 0.68)",
+       "rgb(244, 242, 255)"
+      ],
+      "nominalRatio": [
+       7.26,
+       13.95
+      ],
+      "rect": {
+       "y": [
+        469,
+        507
+       ]
+      }
+     },
+     {
+      "text": "Divergent thinking is generating as many different ideas as possible before narr",
+      "rect": {
+       "y": [
+        488,
+        526
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "E02-t2-Hinted1-recalled-continue-pressed": {
+   "id": "E02-t2-Hinted1-recalled-continue-pressed",
+   "pixel": {
+    "rgbDiffPct": 22.638,
+    "lumaDiffPct": 22.502,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 548
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        117,
+        112
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        258,
+        262
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        377,
+        405
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        377,
+        405
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        117,
+        112
+       ],
+       "y": [
+        377,
+        406
+       ],
+       "w": [
+        258,
+        262
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        150,
+        166
+       ]
+      }
+     },
+     {
+      "text": "Not quite yet.",
+      "rect": {
+       "y": [
+        256,
+        284
+       ]
+      }
+     },
+     {
+      "text": "Hint 1 of 2",
+      "rect": {
+       "y": [
+        282,
+        310
+       ]
+      }
+     },
+     {
+      "text": "No worries. Think about the very first step, before you start narrowing down to ",
+      "rect": {
+       "y": [
+        299,
+        327
+       ]
+      }
+     },
+     {
+      "text": "Nice!",
+      "rect": {
+       "y": [
+        441,
+        481
+       ]
+      }
+     },
+     {
+      "text": "Hint 1 of 2",
+      "color": [
+       "rgba(245, 243, 255, 0.68)",
+       "rgb(244, 242, 255)"
+      ],
+      "nominalRatio": [
+       7.26,
+       13.95
+      ],
+      "rect": {
+       "y": [
+        469,
+        507
+       ]
+      }
+     },
+     {
+      "text": "Divergent thinking is generating as many different ideas as possible before narr",
+      "rect": {
+       "y": [
+        488,
+        526
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "F01-reload-after-Hinted1-recalled": {
+   "id": "F01-reload-after-Hinted1-recalled",
+   "pixel": {
+    "rgbDiffPct": 5.872,
+    "lumaDiffPct": 5.867,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 652.5
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Tap to speak",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        150,
+        156
+       ],
+       "w": [
+        90,
+        78
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "1",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Let’s start. Explain the term “Inspiration” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ],
+       "w": [
+        185.9,
+        230.6
+       ]
+      }
+     },
+     {
+      "text": "Tap to speak",
+      "rect": {
+       "x": [
+        151,
+        157
+       ],
+       "w": [
+        88,
+        76
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "C17-t3-idle": {
+   "id": "C17-t3-idle",
+   "pixel": {
+    "rgbDiffPct": 5.785,
+    "lumaDiffPct": 5.781,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 652.5
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Tap to speak",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        150,
+        156
+       ],
+       "w": [
+        90,
+        78
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "3",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Visual hierarchy” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ]
+      }
+     },
+     {
+      "text": "Tap to speak",
+      "rect": {
+       "x": [
+        151,
+        157
+       ],
+       "w": [
+        88,
+        76
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "C18-t3-resultRevealed": {
+   "id": "C18-t3-resultRevealed",
+   "pixel": {
+    "rgbDiffPct": 8.068,
+    "lumaDiffPct": 8.055,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 293
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "3",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Visual hierarchy” out loud, in your own words.",
+      "rect": {
+       "y": [
+        150,
+        166
+       ]
+      }
+     },
+     {
+      "text": "Here’s the answer.",
+      "rect": {
+       "y": [
+        224,
+        240
+       ]
+      }
+     },
+     {
+      "text": "Revealed",
+      "color": [
+       "rgba(245, 243, 255, 0.68)",
+       "rgb(244, 242, 255)"
+      ],
+      "nominalRatio": [
+       7.26,
+       13.95
+      ],
+      "rect": {
+       "y": [
+        252,
+        266
+       ]
+      }
+     },
+     {
+      "text": "Visual hierarchy arranges elements to guide attention and show what matters most",
+      "rect": {
+       "y": [
+        271,
+        285
+       ],
+       "w": [
+        134.3,
+        212.2
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "C19-t4-idle": {
+   "id": "C19-t4-idle",
+   "pixel": {
+    "rgbDiffPct": 5.774,
+    "lumaDiffPct": 5.77,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 652.5
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [
+     {
+      "name": "",
+      "tag": "span",
+      "own": {
+       "x": 334.4,
+       "y": 96,
+       "w": 48,
+       "h": 48
+      },
+      "hit": {
+       "x": 334,
+       "y": 96,
+       "w": 50,
+       "h": 48
+      },
+      "hasOnClick": false
+     }
+    ],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      },
+      "hotspotMarked": [
+       false,
+       true
+      ]
+     },
+     {
+      "name": "Tap to speak",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        150,
+        156
+       ],
+       "w": [
+        90,
+        78
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "4",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Visual research” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ]
+      }
+     },
+     {
+      "text": "Tap to speak",
+      "rect": {
+       "x": [
+        151,
+        157
+       ],
+       "w": [
+        88,
+        76
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "B10-summary-after-real-session": {
+   "id": "B10-summary-after-real-session",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "pixelFull": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "fullSize": {
+    "run1": "780x2432",
+    "run2": "780x2432"
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 1216,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 1216,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "F02-close-X-at-Hinted1": {
+   "id": "F02-close-X-at-Hinted1",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "F03-t2-idle-before-type": {
+   "id": "F03-t2-idle-before-type",
+   "pixel": {
+    "rgbDiffPct": 5.831,
+    "lumaDiffPct": 5.826,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 652.5
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Tap to speak",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        150,
+        156
+       ],
+       "w": [
+        90,
+        78
+       ]
+      }
+     },
+     {
+      "name": "Type instead",
+      "tag": "button",
+      "hasOnClick": [
+       true,
+       false
+      ],
+      "hotspotMarked": [
+       true,
+       false
+      ]
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ],
+       "w": [
+        137.1,
+        229.5
+       ]
+      }
+     },
+     {
+      "text": "Tap to speak",
+      "rect": {
+       "x": [
+        151,
+        157
+       ],
+       "w": [
+        88,
+        76
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "F04-t2-idle-idontknow-tap-settled": {
+   "id": "F04-t2-idle-idontknow-tap-settled",
+   "pixel": {
+    "rgbDiffPct": 5.831,
+    "lumaDiffPct": 5.826,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 652.5
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Tap to speak",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        150,
+        156
+       ],
+       "w": [
+        90,
+        78
+       ]
+      }
+     },
+     {
+      "name": "Type instead",
+      "tag": "button",
+      "hasOnClick": [
+       true,
+       false
+      ],
+      "hotspotMarked": [
+       true,
+       false
+      ]
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ],
+       "w": [
+        137.1,
+        229.5
+       ]
+      }
+     },
+     {
+      "text": "Tap to speak",
+      "rect": {
+       "x": [
+        151,
+        157
+       ],
+       "w": [
+        88,
+        76
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "F05-t2-typeInput": {
+   "id": "F05-t2-typeInput",
+   "pixel": {
+    "rgbDiffPct": 21.051,
+    "lumaDiffPct": 21.046,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 702
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": {
+    "run1": "09:41 | 8 | Topics 2 of 4 | Skip | Explain the term “Divergent thinking” out loud, in your own words. | Type a short answer... | A couple of sentences is enough, you don't need to retype the full explanation. | Submit | Switch to voice",
+    "run2": "09:41 | 8 | Topics 2 of 4 | Skip | Explain the term “Divergent thinking” out loud, in your own words. | Tap to speak | Type instead | I don’t know"
+   },
+   "interactive": {
+    "added": [
+     {
+      "name": "Tap to speak",
+      "tag": "button",
+      "own": {
+       "x": 157,
+       "y": 687,
+       "w": 76,
+       "h": 81
+      },
+      "hit": {
+       "x": 156,
+       "y": 688,
+       "w": 78,
+       "h": 80
+      },
+      "hasOnClick": true
+     },
+     {
+      "name": "Type instead",
+      "tag": "button",
+      "own": {
+       "x": 72,
+       "y": 784,
+       "w": 113.3,
+       "h": 32
+      },
+      "hit": {
+       "x": 72,
+       "y": 776,
+       "w": 114,
+       "h": 48
+      },
+      "hasOnClick": false
+     },
+     {
+      "name": "I don’t know",
+      "tag": "button",
+      "own": {
+       "x": 209.4,
+       "y": 784,
+       "w": 108.6,
+       "h": 32
+      },
+      "hit": {
+       "x": 210,
+       "y": 776,
+       "w": 108,
+       "h": 48
+      },
+      "hasOnClick": false
+     }
+    ],
+    "removed": [
+     {
+      "name": "Type a short answer",
+      "tag": "input",
+      "own": {
+       "x": 16,
+       "y": 260,
+       "w": 358,
+       "h": 42
+      },
+      "hit": {
+       "x": 16,
+       "y": 260,
+       "w": 358,
+       "h": 42
+      },
+      "hasOnClick": false
+     },
+     {
+      "name": "Submit",
+      "tag": "button",
+      "own": {
+       "x": 28,
+       "y": 696,
+       "w": 334,
+       "h": 56
+      },
+      "hit": {
+       "x": 28,
+       "y": 696,
+       "w": 334,
+       "h": 56
+      },
+      "hasOnClick": true
+     },
+     {
+      "name": "Switch to voice",
+      "tag": "button",
+      "own": {
+       "x": 28,
+       "y": 760,
+       "w": 334,
+       "h": 56
+      },
+      "hit": {
+       "x": 28,
+       "y": 760,
+       "w": 334,
+       "h": 56
+      },
+      "hasOnClick": true
+     }
+    ],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "Tap to speak",
+      "fontSize": 14,
+      "fontWeight": "600",
+      "nominalRatio": 8.4,
+      "y": 751
+     },
+     {
+      "text": "Type instead",
+      "fontSize": 14,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 790
+     },
+     {
+      "text": "I don’t know",
+      "fontSize": 14,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 790
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     },
+     {
+      "text": "Type a short answer...",
+      "fontSize": 14,
+      "fontWeight": "600",
+      "nominalRatio": 7.75,
+      "y": 272
+     },
+     {
+      "text": "A couple of sentences is enough, you don't need to retype the full explanation.",
+      "fontSize": 12,
+      "fontWeight": "400",
+      "nominalRatio": 4.65,
+      "y": 304
+     },
+     {
+      "text": "Submit",
+      "fontSize": 20,
+      "fontWeight": "700",
+      "nominalRatio": 17.63,
+      "y": 710
+     },
+     {
+      "text": "Switch to voice",
+      "fontSize": 20,
+      "fontWeight": "700",
+      "nominalRatio": 13.95,
+      "y": 774
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ],
+       "w": [
+        137.1,
+        229.5
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [
+     "  - paragraph: Type a short answer...",
+     "  - textbox \"Type a short answer\":",
+     "    - /placeholder: Type a short answer...",
+     "  - paragraph: A couple of sentences is enough, you don't need to retype the full explanation.",
+     "- button \"Submit\"",
+     "- button \"Switch to voice\""
+    ],
+    "linesOnlyRun2": [
+     "- button \"Tap to speak\":",
+     "  - paragraph: Tap to speak",
+     "- button \"Type instead\"",
+     "- button \"I don’t know\""
+    ]
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "F05b-t2-typeInput-filled": {
+   "id": "F05b-t2-typeInput-filled",
+   "pixel": {
+    "rgbDiffPct": 21.051,
+    "lumaDiffPct": 21.046,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 702
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": {
+    "run1": "09:41 | 8 | Topics 2 of 4 | Skip | Explain the term “Divergent thinking” out loud, in your own words. | Type a short answer... | A couple of sentences is enough, you don't need to retype the full explanation. | Submit | Switch to voice",
+    "run2": "09:41 | 8 | Topics 2 of 4 | Skip | Explain the term “Divergent thinking” out loud, in your own words. | Tap to speak | Type instead | I don’t know"
+   },
+   "interactive": {
+    "added": [
+     {
+      "name": "Tap to speak",
+      "tag": "button",
+      "own": {
+       "x": 157,
+       "y": 687,
+       "w": 76,
+       "h": 81
+      },
+      "hit": {
+       "x": 156,
+       "y": 688,
+       "w": 78,
+       "h": 80
+      },
+      "hasOnClick": true
+     },
+     {
+      "name": "Type instead",
+      "tag": "button",
+      "own": {
+       "x": 72,
+       "y": 784,
+       "w": 113.3,
+       "h": 32
+      },
+      "hit": {
+       "x": 72,
+       "y": 776,
+       "w": 114,
+       "h": 48
+      },
+      "hasOnClick": false
+     },
+     {
+      "name": "I don’t know",
+      "tag": "button",
+      "own": {
+       "x": 209.4,
+       "y": 784,
+       "w": 108.6,
+       "h": 32
+      },
+      "hit": {
+       "x": 210,
+       "y": 776,
+       "w": 108,
+       "h": 48
+      },
+      "hasOnClick": false
+     }
+    ],
+    "removed": [
+     {
+      "name": "Type a short answer",
+      "tag": "input",
+      "own": {
+       "x": 16,
+       "y": 260,
+       "w": 358,
+       "h": 42
+      },
+      "hit": {
+       "x": 16,
+       "y": 260,
+       "w": 358,
+       "h": 42
+      },
+      "hasOnClick": false
+     },
+     {
+      "name": "Submit",
+      "tag": "button",
+      "own": {
+       "x": 28,
+       "y": 696,
+       "w": 334,
+       "h": 56
+      },
+      "hit": {
+       "x": 28,
+       "y": 696,
+       "w": 334,
+       "h": 56
+      },
+      "hasOnClick": true
+     },
+     {
+      "name": "Switch to voice",
+      "tag": "button",
+      "own": {
+       "x": 28,
+       "y": 760,
+       "w": 334,
+       "h": 56
+      },
+      "hit": {
+       "x": 28,
+       "y": 760,
+       "w": 334,
+       "h": 56
+      },
+      "hasOnClick": true
+     }
+    ],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "Tap to speak",
+      "fontSize": 14,
+      "fontWeight": "600",
+      "nominalRatio": 8.4,
+      "y": 751
+     },
+     {
+      "text": "Type instead",
+      "fontSize": 14,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 790
+     },
+     {
+      "text": "I don’t know",
+      "fontSize": 14,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 790
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     },
+     {
+      "text": "Type a short answer...",
+      "fontSize": 14,
+      "fontWeight": "600",
+      "nominalRatio": 7.75,
+      "y": 272
+     },
+     {
+      "text": "A couple of sentences is enough, you don't need to retype the full explanation.",
+      "fontSize": 12,
+      "fontWeight": "400",
+      "nominalRatio": 4.65,
+      "y": 304
+     },
+     {
+      "text": "Submit",
+      "fontSize": 20,
+      "fontWeight": "700",
+      "nominalRatio": 17.63,
+      "y": 710
+     },
+     {
+      "text": "Switch to voice",
+      "fontSize": 20,
+      "fontWeight": "700",
+      "nominalRatio": 13.95,
+      "y": 774
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ],
+       "w": [
+        137.1,
+        229.5
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [
+     "  - paragraph: Type a short answer...",
+     "  - textbox \"Type a short answer\":",
+     "    - /placeholder: Type a short answer...",
+     "    - text: Divergent thinking is coming up with lots of ideas",
+     "  - paragraph: A couple of sentences is enough, you don't need to retype the full explanation.",
+     "- button \"Submit\"",
+     "- button \"Switch to voice\""
+    ],
+    "linesOnlyRun2": [
+     "- button \"Tap to speak\":",
+     "  - paragraph: Tap to speak",
+     "- button \"Type instead\"",
+     "- button \"I don’t know\""
+    ]
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "F06-t2-typeProcessing-0.5s": {
+   "id": "F06-t2-typeProcessing-0.5s",
+   "pixel": {
+    "rgbDiffPct": 26.549,
+    "lumaDiffPct": 26.446,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 702
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": {
+    "run1": "09:41 | 8 | Topics 2 of 4 | Skip | Explain the term “Divergent thinking” out loud, in your own words. | You typed | Divergent thinking is coming up with lots of ideas | A couple of sentences is enough, you don't need to retype the full explanation. | Submit | Switch to voice",
+    "run2": "09:41 | 8 | Topics 2 of 4 | Skip | Explain the term “Divergent thinking” out loud, in your own words. | Tap to speak | Type instead | I don’t know"
+   },
+   "interactive": {
+    "added": [
+     {
+      "name": "Tap to speak",
+      "tag": "button",
+      "own": {
+       "x": 157,
+       "y": 687,
+       "w": 76,
+       "h": 81
+      },
+      "hit": {
+       "x": 156,
+       "y": 688,
+       "w": 78,
+       "h": 80
+      },
+      "hasOnClick": true
+     },
+     {
+      "name": "Type instead",
+      "tag": "button",
+      "own": {
+       "x": 72,
+       "y": 784,
+       "w": 113.3,
+       "h": 32
+      },
+      "hit": {
+       "x": 72,
+       "y": 776,
+       "w": 114,
+       "h": 48
+      },
+      "hasOnClick": false
+     },
+     {
+      "name": "I don’t know",
+      "tag": "button",
+      "own": {
+       "x": 209.4,
+       "y": 784,
+       "w": 108.6,
+       "h": 32
+      },
+      "hit": {
+       "x": 210,
+       "y": 776,
+       "w": 108,
+       "h": 48
+      },
+      "hasOnClick": false
+     }
+    ],
+    "removed": [
+     {
+      "name": "Submit",
+      "tag": "button",
+      "own": {
+       "x": 28,
+       "y": 696,
+       "w": 334,
+       "h": 56
+      },
+      "hit": {
+       "x": 28,
+       "y": 696,
+       "w": 334,
+       "h": 56
+      },
+      "hasOnClick": false
+     },
+     {
+      "name": "Switch to voice",
+      "tag": "button",
+      "own": {
+       "x": 28,
+       "y": 760,
+       "w": 334,
+       "h": 56
+      },
+      "hit": {
+       "x": 28,
+       "y": 760,
+       "w": 334,
+       "h": 56
+      },
+      "hasOnClick": false
+     }
+    ],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "Tap to speak",
+      "fontSize": 14,
+      "fontWeight": "600",
+      "nominalRatio": 8.4,
+      "y": 751
+     },
+     {
+      "text": "Type instead",
+      "fontSize": 14,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 790
+     },
+     {
+      "text": "I don’t know",
+      "fontSize": 14,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 790
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     },
+     {
+      "text": "You typed",
+      "fontSize": 14,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 207
+     },
+     {
+      "text": "Divergent thinking is coming up with lots of ideas",
+      "fontSize": 14,
+      "fontWeight": "400",
+      "nominalRatio": 15.34,
+      "y": 245
+     },
+     {
+      "text": "A couple of sentences is enough, you don't need to retype the full explanation.",
+      "fontSize": 12,
+      "fontWeight": "400",
+      "nominalRatio": 4.65,
+      "y": 277
+     },
+     {
+      "text": "Submit",
+      "fontSize": 20,
+      "fontWeight": "700",
+      "nominalRatio": 3.69,
+      "y": 710
+     },
+     {
+      "text": "Switch to voice",
+      "fontSize": 20,
+      "fontWeight": "700",
+      "nominalRatio": 3.69,
+      "y": 774
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "nominalRatio": [
+       17.63,
+       13.95
+      ],
+      "rect": {
+       "x": [
+        16,
+        117
+       ],
+       "y": [
+        150,
+        182
+       ],
+       "w": [
+        341.6,
+        229.5
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [
+     "  - paragraph: You typed",
+     "  - paragraph: Divergent thinking is coming up with lots of ideas",
+     "  - paragraph: A couple of sentences is enough, you don't need to retype the full explanation.",
+     "- button \"Submit\" [disabled]",
+     "- button \"Switch to voice\" [disabled]"
+    ],
+    "linesOnlyRun2": [
+     "- button \"Tap to speak\":",
+     "  - paragraph: Tap to speak",
+     "- button \"Type instead\"",
+     "- button \"I don’t know\""
+    ]
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "F06b-t2-typeProcessing-7s": {
+   "id": "F06b-t2-typeProcessing-7s",
+   "pixel": {
+    "rgbDiffPct": 26.549,
+    "lumaDiffPct": 26.446,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 702
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": {
+    "run1": "09:41 | 8 | Topics 2 of 4 | Skip | Explain the term “Divergent thinking” out loud, in your own words. | You typed | Divergent thinking is coming up with lots of ideas | A couple of sentences is enough, you don't need to retype the full explanation. | Submit | Switch to voice",
+    "run2": "09:41 | 8 | Topics 2 of 4 | Skip | Explain the term “Divergent thinking” out loud, in your own words. | Tap to speak | Type instead | I don’t know"
+   },
+   "interactive": {
+    "added": [
+     {
+      "name": "Tap to speak",
+      "tag": "button",
+      "own": {
+       "x": 157,
+       "y": 687,
+       "w": 76,
+       "h": 81
+      },
+      "hit": {
+       "x": 156,
+       "y": 688,
+       "w": 78,
+       "h": 80
+      },
+      "hasOnClick": true
+     },
+     {
+      "name": "Type instead",
+      "tag": "button",
+      "own": {
+       "x": 72,
+       "y": 784,
+       "w": 113.3,
+       "h": 32
+      },
+      "hit": {
+       "x": 72,
+       "y": 776,
+       "w": 114,
+       "h": 48
+      },
+      "hasOnClick": false
+     },
+     {
+      "name": "I don’t know",
+      "tag": "button",
+      "own": {
+       "x": 209.4,
+       "y": 784,
+       "w": 108.6,
+       "h": 32
+      },
+      "hit": {
+       "x": 210,
+       "y": 776,
+       "w": 108,
+       "h": 48
+      },
+      "hasOnClick": false
+     }
+    ],
+    "removed": [
+     {
+      "name": "Submit",
+      "tag": "button",
+      "own": {
+       "x": 28,
+       "y": 696,
+       "w": 334,
+       "h": 56
+      },
+      "hit": {
+       "x": 28,
+       "y": 696,
+       "w": 334,
+       "h": 56
+      },
+      "hasOnClick": false
+     },
+     {
+      "name": "Switch to voice",
+      "tag": "button",
+      "own": {
+       "x": 28,
+       "y": 760,
+       "w": 334,
+       "h": 56
+      },
+      "hit": {
+       "x": 28,
+       "y": 760,
+       "w": 334,
+       "h": 56
+      },
+      "hasOnClick": false
+     }
+    ],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "Tap to speak",
+      "fontSize": 14,
+      "fontWeight": "600",
+      "nominalRatio": 8.4,
+      "y": 751
+     },
+     {
+      "text": "Type instead",
+      "fontSize": 14,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 790
+     },
+     {
+      "text": "I don’t know",
+      "fontSize": 14,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 790
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     },
+     {
+      "text": "You typed",
+      "fontSize": 14,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 207
+     },
+     {
+      "text": "Divergent thinking is coming up with lots of ideas",
+      "fontSize": 14,
+      "fontWeight": "400",
+      "nominalRatio": 15.34,
+      "y": 245
+     },
+     {
+      "text": "A couple of sentences is enough, you don't need to retype the full explanation.",
+      "fontSize": 12,
+      "fontWeight": "400",
+      "nominalRatio": 4.65,
+      "y": 277
+     },
+     {
+      "text": "Submit",
+      "fontSize": 20,
+      "fontWeight": "700",
+      "nominalRatio": 3.69,
+      "y": 710
+     },
+     {
+      "text": "Switch to voice",
+      "fontSize": 20,
+      "fontWeight": "700",
+      "nominalRatio": 3.69,
+      "y": 774
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "nominalRatio": [
+       17.63,
+       13.95
+      ],
+      "rect": {
+       "x": [
+        16,
+        117
+       ],
+       "y": [
+        150,
+        182
+       ],
+       "w": [
+        341.6,
+        229.5
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [
+     "  - paragraph: You typed",
+     "  - paragraph: Divergent thinking is coming up with lots of ideas",
+     "  - paragraph: A couple of sentences is enough, you don't need to retype the full explanation.",
+     "- button \"Submit\" [disabled]",
+     "- button \"Switch to voice\" [disabled]"
+    ],
+    "linesOnlyRun2": [
+     "- button \"Tap to speak\":",
+     "  - paragraph: Tap to speak",
+     "- button \"Type instead\"",
+     "- button \"I don’t know\""
+    ]
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "F07-t1-typeProcessing": {
+   "id": "F07-t1-typeProcessing",
+   "pixel": {
+    "rgbDiffPct": 10.667,
+    "lumaDiffPct": 10.656,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 300
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "1",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Let’s start. Explain the term “Inspiration” out loud, in your own words.",
+      "rect": {
+       "y": [
+        150,
+        166
+       ]
+      }
+     },
+     {
+      "text": "You typed",
+      "rect": {
+       "y": [
+        207,
+        223
+       ]
+      }
+     },
+     {
+      "text": "Inspiration is where ideas come from",
+      "rect": {
+       "y": [
+        245,
+        261
+       ]
+      }
+     },
+     {
+      "text": "A couple of sentences is enough, you don't need to retype the full explanation.",
+      "rect": {
+       "y": [
+        277,
+        293
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "F08-t1-typeResultRecalled": {
+   "id": "F08-t1-typeResultRecalled",
+   "pixel": {
+    "rgbDiffPct": 10.417,
+    "lumaDiffPct": 10.408,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 352
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "1",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Let’s start. Explain the term “Inspiration” out loud, in your own words.",
+      "rect": {
+       "y": [
+        150,
+        166
+       ]
+      }
+     },
+     {
+      "text": "You typed",
+      "color": [
+       "rgba(245, 243, 255, 0.68)",
+       "rgb(244, 242, 255)"
+      ],
+      "nominalRatio": [
+       7.26,
+       13.95
+      ],
+      "rect": {
+       "y": [
+        224,
+        240
+       ]
+      }
+     },
+     {
+      "text": "Inspiration is where ideas come from",
+      "rect": {
+       "y": [
+        241,
+        257
+       ],
+       "w": [
+        164,
+        308.9
+       ]
+      }
+     },
+     {
+      "text": "Nice!",
+      "rect": {
+       "y": [
+        331,
+        327
+       ]
+      }
+     },
+     {
+      "text": "Unaided",
+      "color": [
+       "rgba(245, 243, 255, 0.68)",
+       "rgb(244, 242, 255)"
+      ],
+      "nominalRatio": [
+       7.26,
+       13.95
+      ],
+      "rect": {
+       "y": [
+        359,
+        353
+       ]
+      }
+     },
+     {
+      "text": "You said: 'It’s the spark that makes you want to create something'",
+      "rect": {
+       "y": [
+        378,
+        372
+       ],
+       "w": [
+        191.1,
+        230.6
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "F09-t1-mic-denied-settled": {
+   "id": "F09-t1-mic-denied-settled",
+   "pixel": {
+    "rgbDiffPct": 5.872,
+    "lumaDiffPct": 5.867,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 652.5
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Tap to speak",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        150,
+        156
+       ],
+       "w": [
+        90,
+        78
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "1",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Let’s start. Explain the term “Inspiration” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ],
+       "w": [
+        185.9,
+        230.6
+       ]
+      }
+     },
+     {
+      "text": "Tap to speak",
+      "rect": {
+       "x": [
+        151,
+        157
+       ],
+       "w": [
+        88,
+        76
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "F10-t2-tryagain-mic-denied-settled": {
+   "id": "F10-t2-tryagain-mic-denied-settled",
+   "pixel": {
+    "rgbDiffPct": 11.898,
+    "lumaDiffPct": 11.891,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 653
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Play recording",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "unionRect": {
+       "x": [
+        117,
+        111.5
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        257,
+        262.5
+       ],
+       "h": [
+        32,
+        44
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        117,
+        112
+       ],
+       "y": [
+        208,
+        224
+       ],
+       "w": [
+        258,
+        262
+       ],
+       "h": [
+        32,
+        44
+       ]
+      }
+     },
+     {
+      "name": "Try again",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        163.4,
+        167
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        63.2,
+        56
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        163.4,
+        167
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        63.2,
+        56
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        163,
+        168
+       ],
+       "w": [
+        64,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Type instead",
+      "tag": "button",
+      "hasOnClick": [
+       true,
+       false
+      ],
+      "hotspotMarked": [
+       true,
+       false
+      ]
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        150,
+        166
+       ]
+      }
+     },
+     {
+      "text": "Not quite yet.",
+      "rect": {
+       "y": [
+        272,
+        300
+       ]
+      }
+     },
+     {
+      "text": "Hint 1 of 2",
+      "color": [
+       "rgba(245, 243, 255, 0.68)",
+       "rgb(244, 242, 255)"
+      ],
+      "nominalRatio": [
+       7.26,
+       13.95
+      ],
+      "rect": {
+       "y": [
+        300,
+        326
+       ]
+      }
+     },
+     {
+      "text": "No worries. Think about the very first step, before you start narrowing down to ",
+      "rect": {
+       "y": [
+        317,
+        343
+       ],
+       "w": [
+        199.1,
+        231.7
+       ]
+      }
+     },
+     {
+      "text": "Try again",
+      "rect": {
+       "x": [
+        163.4,
+        167.9
+       ],
+       "w": [
+        63.2,
+        54.2
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "F11-Hinted1-ready-Redo-result": {
+   "id": "F11-Hinted1-ready-Redo-result",
+   "pixel": {
+    "rgbDiffPct": 5.831,
+    "lumaDiffPct": 5.826,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 652.5
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Tap to speak",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        150,
+        156
+       ],
+       "w": [
+        90,
+        78
+       ]
+      }
+     },
+     {
+      "name": "Type instead",
+      "tag": "button",
+      "hasOnClick": [
+       true,
+       false
+      ],
+      "hotspotMarked": [
+       true,
+       false
+      ]
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "2",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ],
+       "w": [
+        137.1,
+        229.5
+       ]
+      }
+     },
+     {
+      "text": "Tap to speak",
+      "rect": {
+       "x": [
+        151,
+        157
+       ],
+       "w": [
+        88,
+        76
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  },
+  "F12-reload-at-Hinted1-ready": {
+   "id": "F12-reload-at-Hinted1-ready",
+   "pixel": {
+    "rgbDiffPct": 5.872,
+    "lumaDiffPct": 5.867,
+    "identical": false,
+    "hueShiftOnly": false,
+    "diffBoxCss": {
+     "x": 16,
+     "y": 114,
+     "w": 358,
+     "h": 652.5
+    }
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run1": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "Skip",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        342.8,
+        318.8
+       ],
+       "w": [
+        31.2,
+        55.2
+       ],
+       "h": [
+        16,
+        32
+       ]
+      },
+      "unionRect": {
+       "x": [
+        334.4,
+        318.8
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        48,
+        55.2
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        334,
+        318
+       ],
+       "y": [
+        96,
+        104
+       ],
+       "w": [
+        50,
+        56
+       ]
+      }
+     },
+     {
+      "name": "Tap to speak",
+      "tag": "button",
+      "ownRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "unionRect": {
+       "x": [
+        151,
+        157
+       ],
+       "y": [
+        688,
+        687
+       ],
+       "w": [
+        88,
+        76
+       ],
+       "h": [
+        80,
+        81
+       ]
+      },
+      "effectiveHit": {
+       "x": [
+        150,
+        156
+       ],
+       "w": [
+        90,
+        78
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [
+     {
+      "text": "of",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     },
+     {
+      "text": "4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 120
+     }
+    ],
+    "removed": [
+     {
+      "text": "of 4",
+      "fontSize": 12,
+      "fontWeight": "600",
+      "nominalRatio": 17.63,
+      "y": 112
+     }
+    ],
+    "changed": [
+     {
+      "text": "Topics",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "1",
+      "rect": {
+       "y": [
+        112,
+        120
+       ]
+      }
+     },
+     {
+      "text": "Skip",
+      "rect": {
+       "x": [
+        342.8,
+        330.8
+       ],
+       "y": [
+        111,
+        118
+       ]
+      }
+     },
+     {
+      "text": "Let’s start. Explain the term “Inspiration” out loud, in your own words.",
+      "rect": {
+       "y": [
+        166,
+        182
+       ],
+       "w": [
+        185.9,
+        230.6
+       ]
+      }
+     },
+     {
+      "text": "Tap to speak",
+      "rect": {
+       "x": [
+        151,
+        157
+       ],
+       "w": [
+        88,
+        76
+       ]
+      }
+     }
+    ]
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run1": 0,
+    "run2": 0
+   }
+  }
+ },
+ "onlyInRun1": [],
+ "onlyInRun2": [
+  "X01-t1-typeInput",
+  "X02-t1-typeInput-filled"
+ ]
+}

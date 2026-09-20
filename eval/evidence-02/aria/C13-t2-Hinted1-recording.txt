@@ -1,0 +1,24 @@
+- paragraph: 09:41
+- img
+- img
+- img
+- button "Close":
+  - img
+- progressbar "Topic progress"
+- img
+- text: "8"
+- main:
+  - text: Topics 2 of 4
+  - button "Skip"
+  - paragraph: Explain the term “Divergent thinking” out loud, in your own words.
+  - button "Play recording":
+    - img
+  - img
+  - img
+  - paragraph: Not quite yet.
+  - paragraph: Hint 1 of 2
+  - paragraph: No worries. Think about the very first step, before you start narrowing down to your favourite idea.
+- button "Tap to stop":
+  - paragraph: Recording…
+  - paragraph: Tap to stop
+- alert

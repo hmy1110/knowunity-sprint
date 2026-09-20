@@ -1,0 +1,8 @@
+{
+ "note": "G4 pair 'Primary button Default vs Disabled'. Crop of the Submit button box (x=28,y=696,334x56 css px) from two screenshots; per-channel tolerance 8. Run 2 uses term 1 (run 1 used term 2, where the typed path no longer exists).",
+ "default": "screens/X02-t1-typeInput-filled.png",
+ "disabled": "screens/F07-t1-typeProcessing.png",
+ "rgbDiffPct": 96.574,
+ "lumaDiffPct": 96.57,
+ "identical": false
+}

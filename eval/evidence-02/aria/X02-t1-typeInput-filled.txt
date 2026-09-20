@@ -1,0 +1,22 @@
+- paragraph: 09:41
+- img
+- img
+- img
+- button "Close":
+  - img
+- progressbar "Topic progress"
+- img
+- text: "8"
+- main:
+  - text: Topics 1 of 4
+  - button "Skip"
+  - img
+  - paragraph: Let’s start. Explain the term “Inspiration” out loud, in your own words.
+  - paragraph: Type a short answer...
+  - textbox "Type a short answer":
+    - /placeholder: Type a short answer...
+    - text: Inspiration is where ideas come from
+  - paragraph: A couple of sentences is enough, you don't need to retype the full explanation.
+- button "Submit"
+- button "Switch to voice"
+- alert

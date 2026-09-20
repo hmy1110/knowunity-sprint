@@ -1,0 +1,7 @@
+
+> knowunity-sprint@0.1.0 check:tokens
+> node scripts/check-tokens.mjs
+
+No token rule violations in src/.
+Known deviations still unmarked (grandfathered in scripts/check-tokens.baseline.json): 138 (color-fn 5, px-token 127, font-family 5, font-stretch 1).
+EXIT=0

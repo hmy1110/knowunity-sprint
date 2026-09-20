@@ -1,0 +1,7 @@
+{
+ "termTwoTyping": {
+  "inputsAfterTypeInsteadTap": 0,
+  "submitButtonsAfterTap": 0,
+  "url": "http://localhost:3000/session"
+ }
+}

@@ -1,0 +1,20 @@
+- paragraph: 09:41
+- img
+- img
+- img
+- button "Close":
+  - img
+- progressbar "Topic progress"
+- img
+- text: "8"
+- main:
+  - text: Topics 2 of 4
+  - button "Skip"
+  - paragraph: Explain the term “Divergent thinking” out loud, in your own words.
+  - button "Play recording":
+    - img
+  - img
+- button "Processing…" [disabled]:
+  - img
+  - paragraph: Processing…
+- alert

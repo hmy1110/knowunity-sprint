@@ -1,0 +1,455 @@
+{
+ "url": "/?state=bogus",
+ "scroll": {
+  "scrollWidth": 390,
+  "clientWidth": 390,
+  "scrollHeight": 844,
+  "clientHeight": 844,
+  "horizontalScroll": false,
+  "scrollY": 0
+ },
+ "bodyText": "09:41 | 🎨 | Art & Design | In 1 day | Grade Goal: A | Section 1: Finding Ideas | Finding Ideas | Choosing Subjects | 🔥 +20% exam score | Explain it to Knowie | Speak | Section 2: Mixed Media | Artwork Planning",
+ "interactive": [
+  {
+   "tag": "button",
+   "role": null,
+   "name": "More options",
+   "ariaLabel": "More options",
+   "native": true,
+   "disabled": false,
+   "hasOnClick": false,
+   "hotspotMarked": false,
+   "offscreen": false,
+   "ownRect": {
+    "x": 338,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   },
+   "unionRect": {
+    "x": 338,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   },
+   "effectiveHit": {
+    "x": 338,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "🔥 +20% exam score",
+   "ariaLabel": null,
+   "native": true,
+   "disabled": false,
+   "hasOnClick": false,
+   "hotspotMarked": false,
+   "offscreen": false,
+   "ownRect": {
+    "x": 28,
+    "y": 597,
+    "w": 102.8,
+    "h": 20
+   },
+   "unionRect": {
+    "x": 28,
+    "y": 597,
+    "w": 102.8,
+    "h": 20
+   },
+   "effectiveHit": {
+    "x": 28,
+    "y": 598,
+    "w": 104,
+    "h": 20
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Speak",
+   "ariaLabel": null,
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": true,
+   "offscreen": false,
+   "ownRect": {
+    "x": 272.4,
+    "y": 625,
+    "w": 89.6,
+    "h": 32
+   },
+   "unionRect": {
+    "x": 272.4,
+    "y": 625,
+    "w": 89.6,
+    "h": 32
+   },
+   "effectiveHit": {
+    "x": 272,
+    "y": 626,
+    "w": 90,
+    "h": 32
+   }
+  }
+ ],
+ "texts": [
+  {
+   "text": "09:41",
+   "tag": "p",
+   "fontSize": 15,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 30.234375,
+     "y": 17,
+     "w": 39.515625,
+     "h": 18
+    }
+   ]
+  },
+  {
+   "text": "🎨",
+   "tag": "span",
+   "fontSize": 48,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 171,
+     "y": 106,
+     "w": 48,
+     "h": 59
+    }
+   ]
+  },
+  {
+   "text": "Art & Design",
+   "tag": "span",
+   "fontSize": 32,
+   "fontWeight": "700",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 90.375,
+     "y": 170,
+     "w": 173.234375,
+     "h": 39
+    }
+   ]
+  },
+  {
+   "text": "In 1 day",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 114.9375,
+     "y": 219,
+     "w": 52.46875,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Grade Goal: A",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 197.40625,
+     "y": 219,
+     "w": 95.65625,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Section 1: Finding Ideas",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgba(245, 243, 255, 0.68)",
+   "nominalRatio": 8.4,
+   "nominalFg": [
+    169,
+    169,
+    181
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 112.140625,
+     "y": 259,
+     "w": 165.703125,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Finding Ideas",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 202.5625,
+     "y": 339,
+     "w": 92.859375,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Choosing Subjects",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 183.203125,
+     "y": 459,
+     "w": 131.578125,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "🔥 +20% exam score",
+   "tag": "span",
+   "fontSize": 8,
+   "fontWeight": "600",
+   "color": "rgb(42, 29, 4)",
+   "nominalRatio": 9.06,
+   "nominalFg": [
+    42,
+    29,
+    4
+   ],
+   "nominalBg": [
+    245,
+    181,
+    61
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 34,
+     "y": 602,
+     "w": 90.75,
+     "h": 9
+    }
+   ]
+  },
+  {
+   "text": "Explain it to Knowie",
+   "tag": "span",
+   "fontSize": 20,
+   "fontWeight": "700",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 13.95,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 28,
+     "y": 629,
+     "w": 170.875,
+     "h": 24
+    }
+   ]
+  },
+  {
+   "text": "Speak",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(9, 12, 24)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    9,
+    12,
+    24
+   ],
+   "nominalBg": [
+    244,
+    242,
+    255
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 284.421875,
+     "y": 631,
+     "w": 43.578125,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Section 2: Mixed Media",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgba(245, 243, 255, 0.68)",
+   "nominalRatio": 8.4,
+   "nominalFg": [
+    169,
+    169,
+    181
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 114.59375,
+     "y": 700,
+     "w": 160.8125,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Artwork Planning",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 188.25,
+     "y": 780,
+     "w": 121.5,
+     "h": 17
+    }
+   ]
+  }
+ ],
+ "animations": []
+}

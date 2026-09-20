@@ -1,0 +1,72 @@
+{
+ "tags": {
+  "Recalled": {
+   "size": "69x23 css px",
+   "fill": [
+    0,
+    195,
+    134
+   ],
+   "luminance": 0.4075
+  },
+  "Hinted": {
+   "size": "59x23 css px",
+   "fill": [
+    245,
+    181,
+    61
+   ],
+   "luminance": 0.528
+  },
+  "Revealed": {
+   "size": "72x23 css px",
+   "fill": [
+    255,
+    107,
+    107
+   ],
+   "luminance": 0.3284
+  },
+  "Skipped": {
+   "size": "67x23 css px",
+   "fill": [
+    56,
+    58,
+    68
+   ],
+   "luminance": 0.0428
+  }
+ },
+ "pairwise": [
+  {
+   "a": "Recalled",
+   "b": "Hinted",
+   "fillLuminanceRatio": 1.26
+  },
+  {
+   "a": "Recalled",
+   "b": "Revealed",
+   "fillLuminanceRatio": 1.21
+  },
+  {
+   "a": "Recalled",
+   "b": "Skipped",
+   "fillLuminanceRatio": 4.93
+  },
+  {
+   "a": "Hinted",
+   "b": "Revealed",
+   "fillLuminanceRatio": 1.53
+  },
+  {
+   "a": "Hinted",
+   "b": "Skipped",
+   "fillLuminanceRatio": 6.23
+  },
+  {
+   "a": "Revealed",
+   "b": "Skipped",
+   "fillLuminanceRatio": 4.08
+  }
+ ]
+}

@@ -1,0 +1,104 @@
+[
+ {
+  "scenario": "A studyplan",
+  "type": "warning",
+  "text": "Image with src \"/images/standby.svg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading",
+  "state": "A09-studyplan-speak-destination-primer"
+ },
+ {
+  "scenario": "B summary",
+  "type": "warning",
+  "text": "Image with src \"/images/standby.svg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading",
+  "state": "B03b-summary-continue-pressed-scrolled"
+ },
+ {
+  "scenario": "B summary",
+  "type": "warning",
+  "text": "Image with src \"/images/standby.svg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading",
+  "state": "B04-summary-all-recalled"
+ },
+ {
+  "scenario": "B summary",
+  "type": "warning",
+  "text": "Image with src \"/images/standby.svg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading",
+  "state": "B05-summary-variant-bogus"
+ },
+ {
+  "scenario": "B summary",
+  "type": "warning",
+  "text": "Image with src \"/images/standby.svg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading",
+  "state": "B06-summary-scrolled-bottom"
+ },
+ {
+  "scenario": "B summary",
+  "type": "warning",
+  "text": "Image with src \"/images/standby.svg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading",
+  "state": "B07-summary-back-destination"
+ },
+ {
+  "scenario": "B summary",
+  "type": "warning",
+  "text": "Image with src \"/images/standby.svg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading",
+  "state": "B08-summary-continue-destination"
+ },
+ {
+  "scenario": "C/D session happy path",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+  "state": "C05-t1-after-redo"
+ },
+ {
+  "scenario": "",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+  "state": null
+ },
+ {
+  "scenario": "",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+  "state": null
+ },
+ {
+  "scenario": "",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+  "state": null
+ },
+ {
+  "scenario": "F failure paths",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+  "state": "X02-t1-typeInput-filled"
+ },
+ {
+  "scenario": "",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+  "state": null
+ },
+ {
+  "scenario": "",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+  "state": null
+ },
+ {
+  "scenario": "",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+  "state": null
+ },
+ {
+  "scenario": "",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+  "state": null
+ },
+ {
+  "scenario": "",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+  "state": null
+ }
+]
