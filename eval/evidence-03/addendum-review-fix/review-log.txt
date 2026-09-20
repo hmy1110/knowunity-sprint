@@ -1,0 +1,8 @@
+MAIN t1 : 09:41 | 8 | Topics 1 of 4 | Skip | Let’s start. Explain the term “Inspiration” out loud, in your own words. | Tap to speak | Type instead | I don’t know
+REVIEW t2: 09:41 | 6 | Topics 1 of 3 | Skip | Explain the term “Divergent thinking” out loud, in your own words. | Tap to speak | Type instead | I don’t know
+REVIEW result t2: 09:41 | 6 | Topics 1 of 3 | Skip | Explain the term “Divergent thinking” out loud, in your own words. | Nice! | Unaided | Divergent thinking is generating as many different ideas as possible before na
+REVIEW result t3: 09:41 | 6 | Topics 2 of 3 | Skip | Explain the term “Visual hierarchy” out loud, in your own words. | Nice! | Unaided | Visual hierarchy arranges elements to guide attention and show what matters most
+REVIEW result t4: 09:41 | 6 | Topics 3 of 3 | Skip | Explain the term “Visual research” out loud, in your own words. | Nice! | Unaided | Visual research is the use of images and other visual media to collect, analyze, 
+END url: http://localhost:3000/summary?variant=all-recalled
+SUMMARY: 09:41 | Nice work, Mia! | XP | 6 | SCORE | 3/3 | BLAZING | 2:09 | 100% | recalled this session | 3 Recalled | 0 Hinted | 0 Revealed | 0 Skipped | Divergent thinking | Recalled | Visual hierarchy | Rec
+MIXED summary: 09:41 | Good session, Mia. | XP | 2 | SCORE | 1/4 | BLAZING | 1:09 | 25% | recalled this session | 1 Recalled | 1 Hinted | 1 Revealed | 1 Skipped | Inspiration | Recalled | Divergent thinking | Hinted
