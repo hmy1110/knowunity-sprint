@@ -1,0 +1,34 @@
+- paragraph: 09:41
+- img
+- img
+- img
+- button "Back":
+  - img
+- main:
+  - paragraph: Good session, Mia.
+  - text: XP
+  - img
+  - text: 4 SCORE
+  - img
+  - text: 2/4 BLAZING
+  - img
+  - text: 2:09 50% recalled this session 1 Recalled 1 Hinted 1 Revealed 1 Skipped
+  - paragraph: Inspiration
+  - text: Recalled
+  - paragraph: Divergent thinking
+  - text: Hinted
+  - paragraph: Visual hierarchy
+  - text: Revealed
+  - paragraph: Visual research
+  - text: Skipped
+  - paragraph: Recalled on your own
+  - paragraph: Inspiration, personal experience and the world around you, in your own words, first try.
+  - paragraph: Needed a hint
+  - paragraph: Divergent thinking, got there after a nudge toward "many ideas before narrowing."
+  - paragraph: Revealed
+  - paragraph: Visual hierarchy, answer shown after you said you didn't know it, worth a real attempt next time it comes up.
+  - paragraph: Skipped
+  - paragraph: Visual research, no attempt this time, worth a first pass before it comes up again.
+- button "Review what you missed"
+- button "Continue"
+- alert

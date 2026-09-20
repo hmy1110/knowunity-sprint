@@ -1,0 +1,57 @@
+[
+ {
+  "scenario": "B summary",
+  "type": "warning",
+  "text": "Image with src \"/images/standby.svg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading"
+ },
+ {
+  "scenario": "C/D session happy path",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio."
+ },
+ {
+  "scenario": "C/D session happy path",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio."
+ },
+ {
+  "scenario": "F failure paths",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio."
+ },
+ {
+  "scenario": "F failure paths",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio."
+ },
+ {
+  "scenario": "F failure paths",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio."
+ },
+ {
+  "scenario": "F failure paths",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio."
+ },
+ {
+  "scenario": "F failure paths",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio."
+ },
+ {
+  "scenario": "F failure paths",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio."
+ },
+ {
+  "scenario": "R reduced motion",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio."
+ },
+ {
+  "scenario": "R reduced motion",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio."
+ }
+]

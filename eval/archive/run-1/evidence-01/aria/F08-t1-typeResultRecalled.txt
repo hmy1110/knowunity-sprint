@@ -1,0 +1,23 @@
+- paragraph: 09:41
+- img
+- img
+- img
+- button "Close":
+  - img
+- progressbar "Topic progress"
+- img
+- text: "8"
+- main:
+  - text: Topics 1 of 4
+  - button "Skip"
+  - paragraph: Let’s start. Explain the term “Inspiration” out loud, in your own words.
+  - paragraph: You typed
+  - paragraph: Inspiration is where ideas come from
+  - img
+  - img
+  - paragraph: Nice!
+  - paragraph: Unaided
+  - paragraph: "You said: 'It’s the spark that makes you want to create something'"
+- button "Continue"
+- button "Switch to voice"
+- alert

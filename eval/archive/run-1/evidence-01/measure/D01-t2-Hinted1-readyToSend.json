@@ -1,0 +1,676 @@
+{
+ "url": "/session",
+ "scroll": {
+  "scrollWidth": 390,
+  "clientWidth": 390,
+  "scrollHeight": 844,
+  "clientHeight": 844,
+  "horizontalScroll": false
+ },
+ "bodyText": "09:41 | 8 | Topics 2 of 4 | Skip | Explain the term “Divergent thinking” out loud, in your own words. | Not quite yet. | Hint 1 of 2 | No worries. Think about the very first step, before you start narrowing down to your favourite idea. | Ready to send | Redo | Send | Resume",
+ "interactive": [
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Close",
+   "ariaLabel": "Close",
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": true,
+   "ownRect": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   },
+   "unionRect": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   },
+   "effectiveHit": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   }
+  },
+  {
+   "tag": "div",
+   "role": "progressbar",
+   "name": "Topic progress",
+   "ariaLabel": "Topic progress",
+   "native": false,
+   "disabled": false,
+   "hasOnClick": false,
+   "hotspotMarked": true,
+   "ownRect": {
+    "x": 56,
+    "y": 64,
+    "w": 269.4,
+    "h": 16
+   },
+   "unionRect": {
+    "x": 56,
+    "y": 64,
+    "w": 269.4,
+    "h": 16
+   },
+   "effectiveHit": {
+    "x": 56,
+    "y": 64,
+    "w": 270,
+    "h": 16
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Skip",
+   "ariaLabel": null,
+   "native": true,
+   "disabled": false,
+   "hasOnClick": false,
+   "hotspotMarked": false,
+   "ownRect": {
+    "x": 344.2,
+    "y": 112,
+    "w": 29.8,
+    "h": 16
+   },
+   "unionRect": {
+    "x": 335.1,
+    "y": 96,
+    "w": 48,
+    "h": 48
+   },
+   "effectiveHit": {
+    "x": 335,
+    "y": 96,
+    "w": 50,
+    "h": 48
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Play recording",
+   "ariaLabel": "Play recording",
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": true,
+   "ownRect": {
+    "x": 117,
+    "y": 208,
+    "w": 257,
+    "h": 32
+   },
+   "unionRect": {
+    "x": 117,
+    "y": 208,
+    "w": 257,
+    "h": 32
+   },
+   "effectiveHit": {
+    "x": 117,
+    "y": 208,
+    "w": 258,
+    "h": 32
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Play recording",
+   "ariaLabel": "Play recording",
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": true,
+   "ownRect": {
+    "x": 66.5,
+    "y": 647,
+    "w": 257,
+    "h": 32
+   },
+   "unionRect": {
+    "x": 66.5,
+    "y": 647,
+    "w": 257,
+    "h": 32
+   },
+   "effectiveHit": {
+    "x": 66,
+    "y": 647,
+    "w": 258,
+    "h": 32
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Redo",
+   "ariaLabel": "Redo",
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": true,
+   "ownRect": {
+    "x": 95,
+    "y": 728,
+    "w": 56,
+    "h": 56
+   },
+   "unionRect": {
+    "x": 95,
+    "y": 728,
+    "w": 56,
+    "h": 56
+   },
+   "effectiveHit": {
+    "x": 95,
+    "y": 728,
+    "w": 56,
+    "h": 56
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Send",
+   "ariaLabel": "Send",
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": true,
+   "ownRect": {
+    "x": 167,
+    "y": 728,
+    "w": 56,
+    "h": 56
+   },
+   "unionRect": {
+    "x": 167,
+    "y": 728,
+    "w": 56,
+    "h": 56
+   },
+   "effectiveHit": {
+    "x": 167,
+    "y": 728,
+    "w": 56,
+    "h": 56
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Resume",
+   "ariaLabel": "Resume",
+   "native": true,
+   "disabled": false,
+   "hasOnClick": false,
+   "hotspotMarked": false,
+   "ownRect": {
+    "x": 239,
+    "y": 728,
+    "w": 56,
+    "h": 56
+   },
+   "unionRect": {
+    "x": 239,
+    "y": 728,
+    "w": 56,
+    "h": 56
+   },
+   "effectiveHit": {
+    "x": 239,
+    "y": 728,
+    "w": 56,
+    "h": 56
+   }
+  }
+ ],
+ "texts": [
+  {
+   "text": "09:41",
+   "tag": "p",
+   "fontSize": 15,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 30.234375,
+     "y": 17,
+     "w": 39.515625,
+     "h": 18
+    }
+   ]
+  },
+  {
+   "text": "8",
+   "tag": "span",
+   "fontSize": 18,
+   "fontWeight": "600",
+   "color": "rgb(123, 168, 242)",
+   "nominalRatio": 8.1,
+   "nominalFg": [
+    123,
+    168,
+    242
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": true,
+   "rect": [
+    {
+     "x": 359.296875,
+     "y": 60,
+     "w": 10.703125,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Topics",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 16,
+     "y": 112,
+     "w": 36.734375,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "2",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 52.734375,
+     "y": 112,
+     "w": 6.84375,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "of 4",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 59.578125,
+     "y": 112,
+     "w": 23.25,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "Skip",
+   "tag": "button",
+   "fontSize": 15,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 344.234375,
+     "y": 110,
+     "w": 29.765625,
+     "h": 19
+    }
+   ]
+  },
+  {
+   "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+   "tag": "p",
+   "fontSize": 18,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 16,
+     "y": 150,
+     "w": 348.203125,
+     "h": 23
+    },
+    {
+     "x": 16,
+     "y": 170,
+     "w": 141.40625,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Not quite yet.",
+   "tag": "p",
+   "fontSize": 20,
+   "fontWeight": "700",
+   "color": "rgb(252, 211, 77)",
+   "nominalRatio": 10.7,
+   "nominalFg": [
+    252,
+    211,
+    77
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 145,
+     "y": 272,
+     "w": 119.0625,
+     "h": 24
+    }
+   ]
+  },
+  {
+   "text": "Hint 1 of 2",
+   "tag": "p",
+   "fontSize": 12,
+   "fontWeight": "400",
+   "color": "rgba(245, 243, 255, 0.68)",
+   "nominalRatio": 7.26,
+   "nominalFg": [
+    177,
+    177,
+    188
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 117,
+     "y": 300,
+     "w": 56.8125,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "No worries. Think about the very first step, before you start narrowing down to ",
+   "tag": "p",
+   "fontSize": 18,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 13.95,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 117,
+     "y": 317,
+     "w": 180.265625,
+     "h": 23
+    },
+    {
+     "x": 117,
+     "y": 337,
+     "w": 191.421875,
+     "h": 23
+    },
+    {
+     "x": 117,
+     "y": 357,
+     "w": 195,
+     "h": 23
+    },
+    {
+     "x": 117,
+     "y": 377,
+     "w": 165.609375,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Ready to send",
+   "tag": "p",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(0, 195, 134)",
+   "nominalRatio": 8.49,
+   "nominalFg": [
+    0,
+    195,
+    134
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 155.40625,
+     "y": 695,
+     "w": 96.171875,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Redo",
+   "tag": "span",
+   "fontSize": 15,
+   "fontWeight": "600",
+   "color": "rgba(245, 243, 255, 0.68)",
+   "nominalRatio": 8.4,
+   "nominalFg": [
+    169,
+    169,
+    181
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 105.90625,
+     "y": 798,
+     "w": 34.171875,
+     "h": 19
+    }
+   ]
+  },
+  {
+   "text": "Send",
+   "tag": "span",
+   "fontSize": 15,
+   "fontWeight": "600",
+   "color": "rgba(245, 243, 255, 0.68)",
+   "nominalRatio": 8.4,
+   "nominalFg": [
+    169,
+    169,
+    181
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 177.609375,
+     "y": 798,
+     "w": 34.765625,
+     "h": 19
+    }
+   ]
+  },
+  {
+   "text": "Resume",
+   "tag": "span",
+   "fontSize": 15,
+   "fontWeight": "600",
+   "color": "rgba(245, 243, 255, 0.68)",
+   "nominalRatio": 8.4,
+   "nominalFg": [
+    169,
+    169,
+    181
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 240.1875,
+     "y": 798,
+     "w": 53.625,
+     "h": 19
+    }
+   ]
+  }
+ ],
+ "animations": [],
+ "tabOrder": [
+  {
+   "tag": "button",
+   "name": "Play recording",
+   "y": 647,
+   "x": 67,
+   "outline": "auto 1px rgb(0, 95, 204)",
+   "boxShadow": "none"
+  },
+  {
+   "tag": "button",
+   "name": "Redo",
+   "y": 728,
+   "x": 95,
+   "outline": "auto 1px rgb(0, 95, 204)",
+   "boxShadow": "none"
+  },
+  {
+   "tag": "button",
+   "name": "Send",
+   "y": 728,
+   "x": 167,
+   "outline": "auto 1px rgb(0, 95, 204)",
+   "boxShadow": "rgba(0, 0, 0, 0.15) 0px -4px 0px 0px inset"
+  },
+  {
+   "tag": "button",
+   "name": "Resume",
+   "y": 728,
+   "x": 239,
+   "outline": "auto 1px rgb(0, 95, 204)",
+   "boxShadow": "rgba(0, 0, 0, 0.15) 0px -4px 0px 0px inset"
+  }
+ ]
+}
