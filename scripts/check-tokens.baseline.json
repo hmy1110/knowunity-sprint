@@ -1,0 +1,74 @@
+{
+  "_note": "Deviations that predate the deviation rules in scripts/check-tokens.mjs, counted per file and rule. A file may not exceed its count. Lower it with: npm run check:tokens -- --update-baseline",
+  "counts": {
+    "src/app/page.tsx": {
+      "color-fn": 1,
+      "px-token": 29
+    },
+    "src/app/primer/page.tsx": {
+      "px-token": 5
+    },
+    "src/app/session/page.tsx": {
+      "color-fn": 1,
+      "font-family": 1,
+      "px-token": 12
+    },
+    "src/app/summary/page.tsx": {
+      "font-stretch": 1,
+      "px-token": 8
+    },
+    "src/components/AppBar/AppBar.tsx": {
+      "px-token": 6
+    },
+    "src/components/AudioScrubber/AudioScrubber.tsx": {
+      "px-token": 35
+    },
+    "src/components/Button/Button.tsx": {
+      "color-fn": 1,
+      "px-token": 2
+    },
+    "src/components/ButtonIcon/ButtonIcon.tsx": {
+      "color-fn": 1
+    },
+    "src/components/InlineAlert/InlineAlert.tsx": {
+      "font-family": 1,
+      "px-token": 3
+    },
+    "src/components/MascotSlot/MascotSlot.tsx": {
+      "px-token": 1
+    },
+    "src/components/MicButton/MicButton.tsx": {
+      "px-token": 2
+    },
+    "src/components/ScoreBreakdown/ScoreBreakdown.tsx": {
+      "px-token": 4
+    },
+    "src/components/SpeechBubble/SpeechBubble.tsx": {
+      "font-family": 1,
+      "px-token": 6
+    },
+    "src/components/StatusBar/StatusBar.tsx": {
+      "font-family": 1,
+      "px-token": 5
+    },
+    "src/components/StatusIndicator/StatusIndicator.tsx": {
+      "font-family": 1,
+      "px-token": 2
+    },
+    "src/components/Table/Table.tsx": {
+      "px-token": 1
+    },
+    "src/components/TableCell/TableCell.tsx": {
+      "color-fn": 1
+    },
+    "src/components/Tag/Tag.tsx": {
+      "px-token": 4
+    },
+    "src/components/TextField/TextField.tsx": {
+      "px-token": 1
+    },
+    "src/components/TopicNode/TopicNode.tsx": {
+      "px-token": 5
+    }
+  }
+}

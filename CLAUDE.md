@@ -14,7 +14,7 @@ Mocked iOS prototype of a voice-in / text-out active-recall step, built in Next.
 - `build/css/tokens.css` is generated. Never edit it. Edit `tokens/tokens.json` and run `npm run tokens`.
 - Sentence case on every label, button, and heading.
 - Design a distinct visual for each of `idle → recording → processing → result`.
-- Run `npm run check:tokens` after building anything. It fails on a raw hex color, a `var()` fallback, or a `--color-primitives-*` read in `src/` outside comments.
+- Run `npm run check:tokens` after building anything. It fails on a raw hex color, a `var()` fallback, or a `--color-primitives-*` read in `src/` outside comments. It also fails on a new unrecorded deviation: an `rgba()`/`hsla()` literal, a hard-coded `font-family`, a `font-stretch` other than `normal`, or a px literal equal to a token value. Record a deliberate one with `[gap:<id>]` in a comment at the site and the same tag in its `component-gaps.md` entry.
 
 ## Never
 
@@ -42,5 +42,5 @@ When working on UI, use the storybook tools to read the component library before
 - `public/images/*.svg` — Knowie expressions. When a screen needs a mascot state.
 - `src/app/` — `page.tsx` root screen, `layout.tsx` shell and fonts, `globals.css` Tailwind entry and theme vars.
 - `.claude/skills/` — `ux-designer` flows, `ui-designer` visual craft, `ux-motion` transitions, `interactive-prototype` clickable build.
-- `package.json` — `npm run dev | build | start | lint | tokens | check:tokens`. `style-dictionary.config.mjs` — token build config. `scripts/check-tokens.mjs` — `check:tokens` fails on a raw hex color, a `var()` fallback, or a primitive color read in `src/` outside comments. `tsconfig.json` — `@/*` maps to `./src/*`.
+- `package.json` — `npm run dev | build | start | lint | tokens | check:tokens`. `style-dictionary.config.mjs` — token build config. `scripts/check-tokens.mjs` — `check:tokens` fails on a raw hex color, a `var()` fallback, or a primitive color read in `src/` outside comments, and on unrecorded deviations (see "Always true"). `scripts/check-tokens.baseline.json` counts the deviations that predate that check; a file may not exceed its count. `tsconfig.json` — `@/*` maps to `./src/*`.
 - Remaining root files are scaffold config. `README.md` is not project documentation.
