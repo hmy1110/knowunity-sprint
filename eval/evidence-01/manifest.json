@@ -1,0 +1,533 @@
+[
+ {
+  "id": "A01-studyplan-notStarted-default",
+  "group": "target",
+  "scenario": "A studyplan",
+  "url": "/",
+  "desc": "StudyPlan-notStarted, default (bare /)",
+  "file": "screens/A01-studyplan-notStarted-default.png",
+  "full": null
+ },
+ {
+  "id": "A02-studyplan-notStarted-speak-pressed",
+  "group": "target",
+  "scenario": "A studyplan",
+  "url": "/",
+  "desc": "Speak button held down (Pressed)",
+  "file": "screens/A02-studyplan-notStarted-speak-pressed.png",
+  "full": null
+ },
+ {
+  "id": "A03-studyplan-kebab-tap-settled",
+  "group": "target",
+  "scenario": "A studyplan",
+  "url": "/",
+  "desc": "tap kebab \"More options\" (settled 1.3s after tap)",
+  "file": "screens/A03-studyplan-kebab-tap-settled.png",
+  "full": null
+ },
+ {
+  "id": "A04-studyplan-topicnode-tap-settled",
+  "group": "target",
+  "scenario": "A studyplan",
+  "url": "/",
+  "desc": "tap topic node \"Finding Ideas\" (settled 1.3s after tap)",
+  "file": "screens/A04-studyplan-topicnode-tap-settled.png",
+  "full": null
+ },
+ {
+  "id": "A05-studyplan-bottomnav-tap-settled",
+  "group": "target",
+  "scenario": "A studyplan",
+  "url": "/",
+  "desc": "tap bottom-nav first icon (chat)",
+  "file": "screens/A05-studyplan-bottomnav-tap-settled.png",
+  "full": null
+ },
+ {
+  "id": "A06-studyplan-state-bogus",
+  "group": "target",
+  "scenario": "A studyplan",
+  "url": "/?state=bogus",
+  "desc": "StudyPlan with invalid ?state=bogus (failure path: bad deep link)",
+  "file": "screens/A06-studyplan-state-bogus.png",
+  "full": null
+ },
+ {
+  "id": "A07-studyplan-inProgress-REFERENCE",
+  "group": "reference",
+  "scenario": "A studyplan",
+  "url": "/?state=inProgress",
+  "desc": "StudyPlan-inProgress (reference only, not graded): for the Speak/Review/Redo button pair",
+  "file": "screens/A07-studyplan-inProgress-REFERENCE.png",
+  "full": null
+ },
+ {
+  "id": "A08-studyplan-finish-REFERENCE",
+  "group": "reference",
+  "scenario": "A studyplan",
+  "url": "/?state=finish",
+  "desc": "StudyPlan-finish (reference only, not graded)",
+  "file": "screens/A08-studyplan-finish-REFERENCE.png",
+  "full": null
+ },
+ {
+  "id": "A09-studyplan-speak-destination-primer",
+  "group": "reference",
+  "scenario": "A studyplan",
+  "url": "/primer",
+  "desc": "Destination of Speak: /primer",
+  "file": "screens/A09-studyplan-speak-destination-primer.png",
+  "full": null
+ },
+ {
+  "id": "B01-summary-mixed-default",
+  "group": "target",
+  "scenario": "B summary",
+  "url": "/summary",
+  "desc": "Summary, mixed outcomes, direct load (no session run)",
+  "file": "screens/B01-summary-mixed-default.png",
+  "full": "screens/B01-summary-mixed-default-full.png"
+ },
+ {
+  "id": "B02-summary-bottom-baseline",
+  "group": "target",
+  "scenario": "B summary",
+  "url": "/summary",
+  "desc": "Summary scrolled to the bottom: baseline for the Pressed pair",
+  "file": "screens/B02-summary-bottom-baseline.png",
+  "full": null
+ },
+ {
+  "id": "B02b-summary-review-pressed-scrolled",
+  "group": "target",
+  "scenario": "B summary",
+  "url": "/summary",
+  "desc": "\"Review what you missed\" held down (Pressed), same scroll as B02",
+  "file": "screens/B02b-summary-review-pressed-scrolled.png",
+  "full": null
+ },
+ {
+  "id": "B03b-summary-continue-pressed-scrolled",
+  "group": "target",
+  "scenario": "B summary",
+  "url": "/summary",
+  "desc": "\"Continue\" held down (Pressed), same scroll as B02",
+  "file": "screens/B03b-summary-continue-pressed-scrolled.png",
+  "full": null
+ },
+ {
+  "id": "B04-summary-all-recalled",
+  "group": "target",
+  "scenario": "B summary",
+  "url": "/summary?variant=all-recalled",
+  "desc": "Summary, all-recalled variant (?variant=all-recalled)",
+  "file": "screens/B04-summary-all-recalled.png",
+  "full": "screens/B04-summary-all-recalled-full.png"
+ },
+ {
+  "id": "B05-summary-variant-bogus",
+  "group": "target",
+  "scenario": "B summary",
+  "url": "/summary?variant=bogus",
+  "desc": "Summary with invalid ?variant=bogus (failure path)",
+  "file": "screens/B05-summary-variant-bogus.png",
+  "full": "screens/B05-summary-variant-bogus-full.png"
+ },
+ {
+  "id": "B06-summary-scrolled-bottom",
+  "group": "target",
+  "scenario": "B summary",
+  "url": "/summary",
+  "desc": "Summary scrolled to the bottom (buttons vs content overlap check)",
+  "file": "screens/B06-summary-scrolled-bottom.png",
+  "full": null
+ },
+ {
+  "id": "B07-summary-back-destination",
+  "group": "reference",
+  "scenario": "B summary",
+  "url": "/",
+  "desc": "Destination of Back: /",
+  "file": "screens/B07-summary-back-destination.png",
+  "full": null
+ },
+ {
+  "id": "B08-summary-continue-destination",
+  "group": "reference",
+  "scenario": "B summary",
+  "url": "/?state=inProgress",
+  "desc": "Destination of Continue: /?state=inProgress",
+  "file": "screens/B08-summary-continue-destination.png",
+  "full": null
+ },
+ {
+  "id": "B09-summary-review-destination",
+  "group": "reference",
+  "scenario": "B summary",
+  "url": "/session?review=1",
+  "desc": "Destination of \"Review what you missed\": /session?review=1",
+  "file": "screens/B09-summary-review-destination.png",
+  "full": null
+ },
+ {
+  "id": "C01-t1-idle",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "Session term 1, idle (path start)",
+  "file": "screens/C01-t1-idle.png",
+  "full": null
+ },
+ {
+  "id": "C02-t1-idle-mic-pressed",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "term 1 mic held down (MicButton Pressed)",
+  "file": "screens/C02-t1-idle-mic-pressed.png",
+  "full": null
+ },
+ {
+  "id": "C03-t1-recording-a",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "term 1 recording, 0.9s in",
+  "file": "screens/C03-t1-recording-a.png",
+  "full": null
+ },
+ {
+  "id": "C03-t1-recording-b",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "term 1 recording, 2.2s in (motion check vs -a)",
+  "file": "screens/C03-t1-recording-b.png",
+  "full": null
+ },
+ {
+  "id": "C04-t1-readyToSend",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "term 1 ready to send",
+  "file": "screens/C04-t1-readyToSend.png",
+  "full": null
+ },
+ {
+  "id": "C05-t1-after-redo",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "term 1 after Redo (should equal C01 idle)",
+  "file": "screens/C05-t1-after-redo.png",
+  "full": null
+ },
+ {
+  "id": "C06-t1-processing",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "term 1 processing, ~0.3s after Send",
+  "file": "screens/C06-t1-processing.png",
+  "full": null
+ },
+ {
+  "id": "C07-t1-resultRecalled",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "term 1 result: Recalled",
+  "file": "screens/C07-t1-resultRecalled.png",
+  "full": null
+ },
+ {
+  "id": "C08-t2-idle",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "term 2 idle",
+  "file": "screens/C08-t2-idle.png",
+  "full": null
+ },
+ {
+  "id": "C09-t2-recording",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "term 2 recording (first attempt)",
+  "file": "screens/C09-t2-recording.png",
+  "full": null
+ },
+ {
+  "id": "C10-t2-readyToSend",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "term 2 ready to send (first attempt)",
+  "file": "screens/C10-t2-readyToSend.png",
+  "full": null
+ },
+ {
+  "id": "C11-t2-processing",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "term 2 processing (first attempt)",
+  "file": "screens/C11-t2-processing.png",
+  "full": null
+ },
+ {
+  "id": "C12-t2-resultHinted1",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "term 2 result: Hinted1 (needs practice + hint)",
+  "file": "screens/C12-t2-resultHinted1.png",
+  "full": null
+ },
+ {
+  "id": "C12b-t2-hinted1-idontknow-tap-settled",
+  "group": "probe",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "tap \"I don’t know\" on Hinted1 (settled 1.3s after tap)",
+  "file": "screens/C12b-t2-hinted1-idontknow-tap-settled.png",
+  "full": null
+ },
+ {
+  "id": "C13-t2-Hinted1-recording",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "Learning-topic 2-result-Hinted1-recording (context for the two target states)",
+  "file": "screens/C13-t2-Hinted1-recording.png",
+  "full": null
+ },
+ {
+  "id": "D01-t2-Hinted1-readyToSend",
+  "group": "target",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "TARGET Learning-topic 2-result-Hinted1-ready to send",
+  "file": "screens/D01-t2-Hinted1-readyToSend.png",
+  "full": "screens/D01-t2-Hinted1-readyToSend-full.png"
+ },
+ {
+  "id": "D02-t2-Hinted1-readyToSend-resume-tap-settled",
+  "group": "probe",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "tap \"Resume\" (ButtonIcon Secondary, no handler in source) (settled 1.3s after tap)",
+  "file": "screens/D02-t2-Hinted1-readyToSend-resume-tap-settled.png",
+  "full": null
+ },
+ {
+  "id": "D03-t2-Hinted1-readyToSend-send-pressed",
+  "group": "probe",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "Send ButtonIcon held down (Pressed)",
+  "file": "screens/D03-t2-Hinted1-readyToSend-send-pressed.png",
+  "full": null
+ },
+ {
+  "id": "D04-t2-Hinted1-readyToSend-redo-pressed",
+  "group": "probe",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "Redo held down (Pressed)",
+  "file": "screens/D04-t2-Hinted1-readyToSend-redo-pressed.png",
+  "full": null
+ },
+ {
+  "id": "D05-t2-Hinted1-processing",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "Learning-topic 2-result-Hinted1-processing (context)",
+  "file": "screens/D05-t2-Hinted1-processing.png",
+  "full": null
+ },
+ {
+  "id": "E01-t2-Hinted1-recalled",
+  "group": "target",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "TARGET Learning-topic 2-result-Hinted1-recalled",
+  "file": "screens/E01-t2-Hinted1-recalled.png",
+  "full": "screens/E01-t2-Hinted1-recalled-full.png"
+ },
+ {
+  "id": "E02-t2-Hinted1-recalled-continue-pressed",
+  "group": "probe",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "Continue held down (Pressed)",
+  "file": "screens/E02-t2-Hinted1-recalled-continue-pressed.png",
+  "full": null
+ },
+ {
+  "id": "F01-reload-after-Hinted1-recalled",
+  "group": "failure",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "FAILURE PATH: reload at Hinted1-recalled (state is in React only)",
+  "file": "screens/F01-reload-after-Hinted1-recalled.png",
+  "full": null
+ },
+ {
+  "id": "C17-t3-idle",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "term 3 idle",
+  "file": "screens/C17-t3-idle.png",
+  "full": null
+ },
+ {
+  "id": "C18-t3-resultRevealed",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "term 3 result: Revealed",
+  "file": "screens/C18-t3-resultRevealed.png",
+  "full": null
+ },
+ {
+  "id": "C19-t4-idle",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/session",
+  "desc": "term 4 idle (Skip link is the live control)",
+  "file": "screens/C19-t4-idle.png",
+  "full": null
+ },
+ {
+  "id": "B10-summary-after-real-session",
+  "group": "context",
+  "scenario": "C/D session happy path",
+  "url": "/summary",
+  "desc": "Summary reached from a real session run (compare with B01 direct load)",
+  "file": "screens/B10-summary-after-real-session.png",
+  "full": "screens/B10-summary-after-real-session-full.png"
+ },
+ {
+  "id": "F02-close-X-at-Hinted1",
+  "group": "failure",
+  "scenario": "F failure paths",
+  "url": "/",
+  "desc": "FAILURE PATH: Close X on Hinted1 -> goes straight to / with no confirm",
+  "file": "screens/F02-close-X-at-Hinted1.png",
+  "full": null
+ },
+ {
+  "id": "F03-t2-idle-before-type",
+  "group": "failure",
+  "scenario": "F failure paths",
+  "url": "/session",
+  "desc": "term 2 idle (again)",
+  "file": "screens/F03-t2-idle-before-type.png",
+  "full": null
+ },
+ {
+  "id": "F04-t2-idle-idontknow-tap-settled",
+  "group": "failure",
+  "scenario": "F failure paths",
+  "url": "/session",
+  "desc": "tap \"I don’t know\" on term 2 idle (settled 1.3s after tap)",
+  "file": "screens/F04-t2-idle-idontknow-tap-settled.png",
+  "full": null
+ },
+ {
+  "id": "F05-t2-typeInput",
+  "group": "failure",
+  "scenario": "F failure paths",
+  "url": "/session",
+  "desc": "term 2 typeInput",
+  "file": "screens/F05-t2-typeInput.png",
+  "full": null
+ },
+ {
+  "id": "F05b-t2-typeInput-filled",
+  "group": "failure",
+  "scenario": "F failure paths",
+  "url": "/session",
+  "desc": "term 2 typeInput with text entered",
+  "file": "screens/F05b-t2-typeInput-filled.png",
+  "full": null
+ },
+ {
+  "id": "F06-t2-typeProcessing-0.5s",
+  "group": "failure",
+  "scenario": "F failure paths",
+  "url": "/session",
+  "desc": "term 2 typeProcessing, 0.5s after Submit",
+  "file": "screens/F06-t2-typeProcessing-0.5s.png",
+  "full": null
+ },
+ {
+  "id": "F06b-t2-typeProcessing-7s",
+  "group": "failure",
+  "scenario": "F failure paths",
+  "url": "/session",
+  "desc": "term 2 typeProcessing, 7s after Submit (does it ever resolve?)",
+  "file": "screens/F06b-t2-typeProcessing-7s.png",
+  "full": null
+ },
+ {
+  "id": "F07-t1-typeProcessing",
+  "group": "context",
+  "scenario": "F failure paths",
+  "url": "/session",
+  "desc": "term 1 typeProcessing (control)",
+  "file": "screens/F07-t1-typeProcessing.png",
+  "full": null
+ },
+ {
+  "id": "F08-t1-typeResultRecalled",
+  "group": "context",
+  "scenario": "F failure paths",
+  "url": "/session",
+  "desc": "term 1 typeResultRecalled (control)",
+  "file": "screens/F08-t1-typeResultRecalled.png",
+  "full": null
+ },
+ {
+  "id": "F09-t1-mic-denied-settled",
+  "group": "failure",
+  "scenario": "F failure paths",
+  "url": "/session",
+  "desc": "FAILURE PATH: mic tap with getUserMedia rejecting (NotAllowedError)",
+  "file": "screens/F09-t1-mic-denied-settled.png",
+  "full": null
+ },
+ {
+  "id": "F10-t2-tryagain-mic-denied-settled",
+  "group": "failure",
+  "scenario": "F failure paths",
+  "url": "/session",
+  "desc": "FAILURE PATH: \"Try again\" with mic revoked",
+  "file": "screens/F10-t2-tryagain-mic-denied-settled.png",
+  "full": null
+ },
+ {
+  "id": "F11-Hinted1-ready-Redo-result",
+  "group": "failure",
+  "scenario": "F failure paths",
+  "url": "/session",
+  "desc": "FAILURE PATH: Redo from Hinted1-ready-to-send (is Hinted1 history kept?)",
+  "file": "screens/F11-Hinted1-ready-Redo-result.png",
+  "full": null
+ },
+ {
+  "id": "F12-reload-at-Hinted1-ready",
+  "group": "failure",
+  "scenario": "F failure paths",
+  "url": "/session",
+  "desc": "FAILURE PATH: reload at Hinted1-ready-to-send",
+  "file": "screens/F12-reload-at-Hinted1-ready.png",
+  "full": null
+ }
+]

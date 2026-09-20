@@ -1,0 +1,20 @@
+- paragraph: 09:41
+- img
+- img
+- img
+- button "Close":
+  - img
+- progressbar "Topic progress"
+- img
+- text: "8"
+- main:
+  - text: Topics 2 of 4
+  - button "Skip"
+  - paragraph: Explain the term “Divergent thinking” out loud, in your own words.
+  - paragraph: You typed
+  - paragraph: Divergent thinking is coming up with lots of ideas
+  - paragraph: A couple of sentences is enough, you don't need to retype the full explanation.
+  - img
+- button "Submit" [disabled]
+- button "Switch to voice" [disabled]
+- alert

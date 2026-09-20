@@ -1,0 +1,301 @@
+{
+ "url": "/primer",
+ "scroll": {
+  "scrollWidth": 390,
+  "clientWidth": 390,
+  "scrollHeight": 844,
+  "clientHeight": 844,
+  "horizontalScroll": false
+ },
+ "bodyText": "09:41 | Explain it to Knowie | Explain 4 topics from section 1 | Stuck? Knowie guides you | Explain out loud helps you score up to 20% higher on exams | Start learning | I can't talk right now",
+ "interactive": [
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Back",
+   "ariaLabel": "Back",
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": true,
+   "ownRect": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   },
+   "unionRect": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   },
+   "effectiveHit": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Start learning",
+   "ariaLabel": null,
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": true,
+   "ownRect": {
+    "x": 28,
+    "y": 696,
+    "w": 334,
+    "h": 56
+   },
+   "unionRect": {
+    "x": 28,
+    "y": 696,
+    "w": 334,
+    "h": 56
+   },
+   "effectiveHit": {
+    "x": 28,
+    "y": 696,
+    "w": 334,
+    "h": 56
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "I can't talk right now",
+   "ariaLabel": null,
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": true,
+   "ownRect": {
+    "x": 28,
+    "y": 760,
+    "w": 334,
+    "h": 56
+   },
+   "unionRect": {
+    "x": 28,
+    "y": 760,
+    "w": 334,
+    "h": 56
+   },
+   "effectiveHit": {
+    "x": 28,
+    "y": 760,
+    "w": 334,
+    "h": 56
+   }
+  }
+ ],
+ "texts": [
+  {
+   "text": "09:41",
+   "tag": "p",
+   "fontSize": 15,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 30.234375,
+     "y": 17,
+     "w": 39.515625,
+     "h": 18
+    }
+   ]
+  },
+  {
+   "text": "Explain it to Knowie",
+   "tag": "p",
+   "fontSize": 44,
+   "fontWeight": "700",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 85.3125,
+     "y": 341,
+     "w": 219.359375,
+     "h": 54
+    },
+    {
+     "x": 124.71875,
+     "y": 385,
+     "w": 140.5625,
+     "h": 54
+    }
+   ]
+  },
+  {
+   "text": "Explain 4 topics from section 1",
+   "tag": "span",
+   "fontSize": 18,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 44,
+     "y": 450,
+     "w": 255.5625,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Stuck? Knowie guides you",
+   "tag": "span",
+   "fontSize": 18,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 44,
+     "y": 490,
+     "w": 218.9375,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Explain out loud helps you score up to 20% higher on exams",
+   "tag": "span",
+   "fontSize": 18,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 44,
+     "y": 530,
+     "w": 318.390625,
+     "h": 23
+    },
+    {
+     "x": 44,
+     "y": 554,
+     "w": 178.21875,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Start learning",
+   "tag": "span",
+   "fontSize": 20,
+   "fontWeight": "700",
+   "color": "rgb(9, 12, 24)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    9,
+    12,
+    24
+   ],
+   "nominalBg": [
+    244,
+    242,
+    255
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 133.578125,
+     "y": 710,
+     "w": 122.84375,
+     "h": 24
+    }
+   ]
+  },
+  {
+   "text": "I can't talk right now",
+   "tag": "span",
+   "fontSize": 20,
+   "fontWeight": "700",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 13.95,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 107.046875,
+     "y": 774,
+     "w": 175.90625,
+     "h": 24
+    }
+   ]
+  }
+ ],
+ "animations": []
+}

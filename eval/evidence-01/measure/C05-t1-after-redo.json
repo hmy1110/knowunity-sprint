@@ -1,0 +1,466 @@
+{
+ "url": "/session",
+ "scroll": {
+  "scrollWidth": 390,
+  "clientWidth": 390,
+  "scrollHeight": 844,
+  "clientHeight": 844,
+  "horizontalScroll": false
+ },
+ "bodyText": "09:41 | 8 | Topics 1 of 4 | Skip | Let’s start. Explain the term “Inspiration” out loud, in your own words. | Tap to speak | Type instead | I don’t know",
+ "interactive": [
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Close",
+   "ariaLabel": "Close",
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": true,
+   "ownRect": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   },
+   "unionRect": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   },
+   "effectiveHit": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   }
+  },
+  {
+   "tag": "div",
+   "role": "progressbar",
+   "name": "Topic progress",
+   "ariaLabel": "Topic progress",
+   "native": false,
+   "disabled": false,
+   "hasOnClick": false,
+   "hotspotMarked": true,
+   "ownRect": {
+    "x": 56,
+    "y": 64,
+    "w": 268.5,
+    "h": 16
+   },
+   "unionRect": {
+    "x": 56,
+    "y": 64,
+    "w": 268.5,
+    "h": 16
+   },
+   "effectiveHit": {
+    "x": 56,
+    "y": 64,
+    "w": 270,
+    "h": 16
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Skip",
+   "ariaLabel": null,
+   "native": true,
+   "disabled": false,
+   "hasOnClick": false,
+   "hotspotMarked": false,
+   "ownRect": {
+    "x": 342.8,
+    "y": 112,
+    "w": 31.2,
+    "h": 16
+   },
+   "unionRect": {
+    "x": 334.4,
+    "y": 96,
+    "w": 48,
+    "h": 48
+   },
+   "effectiveHit": {
+    "x": 334,
+    "y": 96,
+    "w": 50,
+    "h": 48
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Tap to speak",
+   "ariaLabel": "Tap to speak",
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": true,
+   "ownRect": {
+    "x": 151,
+    "y": 688,
+    "w": 88,
+    "h": 80
+   },
+   "unionRect": {
+    "x": 151,
+    "y": 688,
+    "w": 88,
+    "h": 80
+   },
+   "effectiveHit": {
+    "x": 150,
+    "y": 688,
+    "w": 90,
+    "h": 80
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Type instead",
+   "ariaLabel": null,
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": true,
+   "ownRect": {
+    "x": 72,
+    "y": 784,
+    "w": 113.3,
+    "h": 32
+   },
+   "unionRect": {
+    "x": 72,
+    "y": 776,
+    "w": 113.3,
+    "h": 48
+   },
+   "effectiveHit": {
+    "x": 72,
+    "y": 776,
+    "w": 114,
+    "h": 48
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "I don’t know",
+   "ariaLabel": null,
+   "native": true,
+   "disabled": false,
+   "hasOnClick": false,
+   "hotspotMarked": false,
+   "ownRect": {
+    "x": 209.4,
+    "y": 784,
+    "w": 108.6,
+    "h": 32
+   },
+   "unionRect": {
+    "x": 209.4,
+    "y": 776,
+    "w": 108.6,
+    "h": 48
+   },
+   "effectiveHit": {
+    "x": 209,
+    "y": 776,
+    "w": 110,
+    "h": 48
+   }
+  }
+ ],
+ "texts": [
+  {
+   "text": "09:41",
+   "tag": "p",
+   "fontSize": 15,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 30.234375,
+     "y": 17,
+     "w": 39.515625,
+     "h": 18
+    }
+   ]
+  },
+  {
+   "text": "8",
+   "tag": "span",
+   "fontSize": 18,
+   "fontWeight": "600",
+   "color": "rgb(123, 168, 242)",
+   "nominalRatio": 8.1,
+   "nominalFg": [
+    123,
+    168,
+    242
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": true,
+   "rect": [
+    {
+     "x": 358.46875,
+     "y": 60,
+     "w": 11.53125,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Topics",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 16,
+     "y": 112,
+     "w": 42.90625,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "1",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 58.90625,
+     "y": 112,
+     "w": 6.1875,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "of 4",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 65.09375,
+     "y": 112,
+     "w": 27.65625,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "Skip",
+   "tag": "button",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 342.78125,
+     "y": 111,
+     "w": 31.21875,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Let’s start. Explain the term “Inspiration” out loud, in your own words.",
+   "tag": "p",
+   "fontSize": 18,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 13.95,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 117,
+     "y": 166,
+     "w": 185.890625,
+     "h": 23
+    },
+    {
+     "x": 117,
+     "y": 186,
+     "w": 180.453125,
+     "h": 23
+    },
+    {
+     "x": 117,
+     "y": 206,
+     "w": 201.28125,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Tap to speak",
+   "tag": "p",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgba(245, 243, 255, 0.68)",
+   "nominalRatio": 8.4,
+   "nominalFg": [
+    169,
+    169,
+    181
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 150.984375,
+     "y": 751,
+     "w": 88.03125,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Type instead",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 84.046875,
+     "y": 790,
+     "w": 89.34375,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "I don’t know",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 221.390625,
+     "y": 790,
+     "w": 84.5625,
+     "h": 17
+    }
+   ]
+  }
+ ],
+ "animations": []
+}

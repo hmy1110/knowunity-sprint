@@ -1,0 +1,8 @@
+{
+  "note": "G4 pair 'Primary button Default vs Disabled'. Crop of the Submit button box (x=28,y=696,334x56 css px) from two screenshots; per-channel tolerance 8.",
+  "default": "screens/F05b-t2-typeInput-filled.png",
+  "disabled": "screens/F06-t2-typeProcessing-0.5s.png",
+  "rgbDiffPct": 96.6,
+  "lumaDiffPct": 96.6,
+  "identical": false
+}

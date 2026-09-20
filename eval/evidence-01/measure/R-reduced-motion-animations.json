@@ -1,0 +1,26 @@
+{
+ "no-preference": {
+  "t1-idle": [],
+  "t1-recording": [],
+  "t1-readyToSend": [],
+  "t1-processing": [],
+  "t1-resultRecalled": [],
+  "t2-resultHinted1": [],
+  "t2-Hinted1-recording": [],
+  "t2-Hinted1-readyToSend": [],
+  "t2-Hinted1-processing": [],
+  "t2-Hinted1-recalled": []
+ },
+ "reduce": {
+  "t1-idle": [],
+  "t1-recording": [],
+  "t1-readyToSend": [],
+  "t1-processing": [],
+  "t1-resultRecalled": [],
+  "t2-resultHinted1": [],
+  "t2-Hinted1-recording": [],
+  "t2-Hinted1-readyToSend": [],
+  "t2-Hinted1-processing": [],
+  "t2-Hinted1-recalled": []
+ }
+}
