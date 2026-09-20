@@ -227,7 +227,9 @@ function SessionContent() {
   // review run every term needs a real attempt, and only by voice: the
   // unaided frames have no typed-answer equivalent.
   const canAttempt = isReview || term.outcome === 'Recalled' || term.outcome === 'Hinted'
-  const canType = !isReview && canAttempt
+  // Typing is offered on term 1 only: term 2 (Hinted) has no built
+  // `typeResult` frame, so its typed path would stall on `typeProcessing`.
+  const canType = !isReview && term.outcome === 'Recalled'
   const [isPlaying, setIsPlaying] = useState(false)
   const [audioUrl, setAudioUrl] = useState<string | null>(null)
   // SPEC.md: Hinted1's "Try again" re-attempt keeps the first attempt's
@@ -1364,7 +1366,7 @@ function SessionContent() {
                   `resultHinted1Recalled` instead of looping back here. */}
               <MicButton data-hotspot data-hotspot-pad="200" state="Idle" showLabel label="Try again" onClick={handleRetry} />
               <div className="flex items-start" style={{ gap: 'var(--size-space-600)' }}>
-                <Button data-hotspot variant="Tertiary" size="S" cta="Type instead" onClick={() => setSubState('typeInput')} />
+                <Button variant="Tertiary" size="S" cta="Type instead" />
                 <Button variant="Tertiary" size="S" cta="I don’t know" />
               </div>
             </>
