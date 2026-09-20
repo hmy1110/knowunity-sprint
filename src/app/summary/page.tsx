@@ -15,20 +15,13 @@ import { TermResultList, type TermResultRow } from '@/components/TermResultList/
 import type { TagStatus } from '@/components/Tag/Tag'
 
 // `Summary-all recalled` (node 13669:17569) — the second real Summary
-// instance, shown when all 4 terms resolve Recalled. Deliberately
-// unreachable, same reasoning as Session's `topic2ResultUnaided`/
-// `topic3ResultUnaided`: this sprint's fixed script always produces one
-// of each outcome, so this variant is never actually reached by a real
-// run. Built for visual completeness only, gated behind `?variant=
-// all-recalled` (nothing in the app sets this — reached only by typing
-// the URL directly) rather than a bare unconditional branch, so it's at
-// least previewable without editing code, unlike the Session variants.
+// instance, shown at the end of the review run (`/session?review=1`),
+// which covers terms 2-4 only. Live Figma (2026-09-20) counts just those
+// three: SCORE 3/3, XP 6, three rows, no Inspiration (term 1 is never
+// attempted in the run, so it can't claim a Recalled tag or its 2 XP).
+// The main run's fixed script never reaches it; it's also gated behind
+// `?variant=all-recalled` so it stays previewable by URL.
 const ALL_RECALLED_RESULTS: TermResultRow[] = [
-  {
-    term: 'Inspiration',
-    status: 'Recalled',
-    reflection: 'personal experience and the world around you, in your own words, first try.',
-  },
   {
     term: 'Divergent thinking',
     status: 'Recalled',
@@ -46,8 +39,8 @@ const ALL_RECALLED_RESULTS: TermResultRow[] = [
   },
 ]
 
-// Mia, 2026-09-19: 2 XP for every term recalled on its own, so 4 of 4 is
-// 8 XP. A Hinted, Revealed or Skipped term earns none (the live mixed
+// Mia, 2026-09-19: 2 XP for every term recalled on its own, so the
+// review run's 3 of 3 is 6 XP. A Hinted, Revealed or Skipped term earns none (the live mixed
 // Summary reads 2 XP for its one Recalled term).
 const XP_PER_RECALLED = 2
 
@@ -260,7 +253,7 @@ function countByStatus(rows: TermResultRow[]): Record<TagStatus, number> {
 
 // Only a Recalled term counts toward the score and the headline percent;
 // Hinted does not. Live Figma (checked 2026-09-19): mixed run 1 of 4 =
-// 25% and 1/4, all-recalled 4 of 4 = 100% and 4/4 — both fit
+// 25% and 1/4, review run 3 of 3 = 100% and 3/3 (2026-09-20) — both fit
 // Recalled ÷ total. Replaces the earlier 50% / 2/4, which counted Hinted.
 const SESSION_COUNTS = countByStatus(TERM_RESULTS)
 const SESSION_XP = String(XP_PER_RECALLED * SESSION_COUNTS.Recalled)
@@ -358,17 +351,12 @@ function SummaryContent() {
 
           {isAllRecalled ? (
             <>
-              {/* The live frame's own segbar/legend literally reads "4
-                  Recalled, 1 Hinted, 0 Revealed, 0 Skipped" — 5 counted
-                  terms in a 4-term session, and directly contradicted by
-                  this same frame's own table (all 4 rows Recalled) and
-                  TermResultList (all 4 under "Recalled on your own").
-                  Reads as a leftover/copy-paste artifact from the mixed
-                  Summary's own real 1-1-1-1 data, not edited for this
-                  variant — built as the internally-consistent 4/0/0/0 +
-                  100% instead of reproducing the stray count, per
-                  component-gaps.md's own entry for this screen. */}
-              <ScoreBreakdown percent={100} counts={{ Recalled: 4, Hinted: 0, Revealed: 0, Skipped: 0 }} style={{ width: '100%' }} />
+              {/* The live frame's segbar legend still reads "4 Recalled" over its own
+                  3/3 score and three rows (checked 2026-09-20) — a leftover
+                  from the 4-term version. Counted from the rows here so the
+                  legend can't disagree with the table; flagged in
+                  component-gaps.md for Mia to fix in Figma. */}
+              <ScoreBreakdown percent={100} counts={countByStatus(ALL_RECALLED_RESULTS)} style={{ width: '100%' }} />
 
               {/* `Table`/`TableCell`'s own status-driven divider (see
                   TableCell.tsx's doc comment: Skipped alone omits the
@@ -395,7 +383,7 @@ function SummaryContent() {
               </div>
 
               {/* The live frame shows one "Recalled on your own" title
-                  followed by all 4 reflection sentences, not 4 repeated
+                  followed by all 3 reflection sentences, not 3 repeated
                   identical titles the way `TermResultList` renders when
                   every row shares one status — that component always
                   pairs a title with each row (see its own doc comment),

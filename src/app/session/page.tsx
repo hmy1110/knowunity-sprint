@@ -218,6 +218,13 @@ function SessionContent() {
   // "Continue" ends at `Summary-all recalled`. Replaces the earlier call to
   // leave those three screens unreachable.
   const isReview = searchParams.get('review') === '1'
+  // Live Figma (2026-09-20): the three review-run frames read "Topics 1 of
+  // 3" / "2 of 3" / "3 of 3" and carry a "6" badge, since the run skips
+  // term 1 — the count states its own scope instead of "2 of 4", and the
+  // XP goal is 2 per term of the 3 it covers (Mia, 2026-09-19: 2 XP per
+  // Recalled term; the badge is that goal, static).
+  const runTermCount = isReview ? TERMS.length - 1 : TERMS.length
+  const xpGoal = 2 * runTermCount
   const [termIndex, setTermIndex] = useState(isReview ? 1 : 0)
   const term = TERMS[termIndex]
   const hasNextTerm = termIndex + 1 < TERMS.length
@@ -640,7 +647,7 @@ function SessionContent() {
                     color: 'var(--semantic-color-accent-blue-on-subtle)',
                   }}
                 >
-                  8
+                  {xpGoal}
                 </span>
               </div>
             </div>
@@ -661,8 +668,8 @@ function SessionContent() {
                 `/summary`, corrected 2026-09-18, per Mia); terms 1-3 show it
                 to match the frame but leave it inert. */}
             <Steps
-              current={termIndex + 1}
-              total={4}
+              current={isReview ? termIndex : termIndex + 1}
+              total={runTermCount}
               onSkip={subState === 'idle' && !hasNextTerm && !isReview ? () => router.push('/summary') : undefined}
               skipHotspot={subState === 'idle' && !hasNextTerm && !isReview}
             />
