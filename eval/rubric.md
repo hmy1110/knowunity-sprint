@@ -16,8 +16,9 @@ Each dimension is scored 0–10 as a whole number. Anchors are given at 4, 6 and
 | UX judgment | Are the states handled, the hierarchy clear, the failure paths designed | High |
 | Accessibility | Contrast, touch targets, whether meaning ever rests on color alone | Medium |
 | Structure | Does the layout hold together and the thing render | Low |
+| Feedback honesty | Does every label, count and score claim only what happened | Medium |
 
-**Weighted total.** The table gives weights as High / Medium / Low, not numbers. Until you set numbers, the total uses High = 3, Medium = 2, Low = 1 (denominator 15): `(3·SF + 3·Co + 3·Cr + 3·UX + 2·A11y + 1·St) / 15`. Change the mapping here if you meant something else.
+**Weighted total.** The table gives weights as High / Medium / Low, not numbers. Until you set numbers, the total uses High = 3, Medium = 2, Low = 1 (denominator 17): `(3·SF + 3·Co + 3·Cr + 3·UX + 2·A11y + 2·FH + 1·St) / 17`. Change the mapping here if you meant something else.
 
 ## Scoring rules
 
@@ -25,6 +26,20 @@ Each dimension is scored 0–10 as a whole number. Anchors are given at 4, 6 and
 2. **A dimension scores 8 or above only if it was verified by rendering, measuring or testing. Never from reading code.** Acceptable verification: a screenshot of the running app at 390px, a measured value (computed contrast, bounding box, pixel diff), or a test or command output. Every score of 8 or more must cite its evidence (screenshot path, measured number, command output). No cited evidence means the score is capped at 7, however good the code reads.
 
 Gates (below) are reported separately and are not averaged into the score.
+
+## Calibration (reference set)
+
+Mia's hand scores for one set of four screens: `/`, `/summary`, `/session` hinted2ReadyToSend, `/session` resultHinted1Recalled. When unsure between two scores, compare the screen against these and take the nearer one.
+
+| Dimension | Score | Reason |
+| --- | --- | --- |
+| System fidelity | 7 | `check:tokens` clean, two bindings traced to Figma; baseline and five `rgba()` bevels remain. |
+| Coherence | 7 | One scaffold, tokens and voice across all four; only small seams (mascot size, scripted Summary). |
+| Craft | 6 | Looks right, four loop states differ; no motion, no Pressed feedback, no Figma pixel diff. |
+| UX judgment | 7 | Hard constraints hold, every result has a next step; inert Skip and "Type instead" are covered by the hotspot hint. |
+| Accessibility | 7 | Text at least 4.5:1 on all four, statuses labelled; scrim-state contrast and duplicate "Play recording" names remain. |
+| Structure | 8 | All routes render at 390px, no scroll; build, lint and `check:tokens` pass; safe area untested. |
+| Feedback honesty | not scored | New dimension. |
 
 ---
 
@@ -39,7 +54,7 @@ Gates (below) are reported separately and are not averaged into the score.
 - Gaps are filled quietly instead of logged.
 
 **6:**
-- `check:tokens` is clean.
+- `check:tokens` is clean and the grandfathered-baseline count is stated. An undisclosed baseline caps this at 5.
 - Library components are used, and inline builds have a `component-gaps.md` entry.
 - Bindings were chosen by role and by reading the token's USE / DON'T / PAIR description, but not confirmed against the live Figma bound variable.
 - Variants with no real Figma instance (MicButton Pressed, AudioScrubber Playing, Button Disabled) are used without being screenshotted first.
@@ -65,7 +80,7 @@ Gates (below) are reported separately and are not averaged into the score.
 - Routes look like separate builds.
 - The same role is rendered at different sizes (mascot hero at different dimensions per route).
 - The XP badge has different spacing on each screen.
-- Copy voice shifts between screens, and casing drifts from sentence case.
+- Copy voice shifts between screens, and casing drifts from sentence case (copy that matches Figma is exempt).
 - The appBar shape (X + progress vs plain back arrow) is used arbitrarily.
 
 **6:**
@@ -79,7 +94,6 @@ Gates (below) are reported separately and are not averaged into the score.
 - The XP badge is pixel-identical wherever it appears.
 - Sentence case and Knowie's text-only voice hold on every label.
 - In the loop, the mic and the mascot stay put across idle → recording → processing → result, so only the state changes.
-- Numbers reconcile across screens: Summary's per-term tags, `ScoreBreakdown` and XP match what happened in the session, and the study-plan card's state after Continue matches the outcome.
 
 **Verify by:** screenshots of all routes and loop states side by side, measured positions of mic and mascot across states, a full scripted run start to finish (SPEC.md step 6).
 
@@ -112,6 +126,7 @@ Gates (below) are reported separately and are not averaged into the score.
 - Long content wraps cleanly.
 - Row dividers follow the position rule (every row except the last), not the status.
 - Every icon was screenshotted and checked.
+- Every tap gets visible acknowledgement (pressed state or a loading beat).
 - The small decisions are deliberate: the "one beat of acknowledgment, then next prompt" rhythm, and Continue as the primary action on Summary.
 
 **Verify by:** screenshot + pixel-diff per screen, a recording or frame sequence of state transitions, a run with an over-long term and transcript, a reduced-motion emulation pass.
@@ -135,6 +150,7 @@ Gates (below) are reported separately and are not averaged into the score.
 - A text fallback and a mic primer exist.
 - The result offers a next step.
 - Gaps against the "Must" rows remain: cancel-and-re-record before send is hard to find; Skip is missing on some states; the verdict reads as a grade instead of a nudge; the transcript is not shown back; the summary's claim is not derived from what the student did.
+- A control that looks live but does nothing is acceptable only if tapping it fires the hotspot hint (`HotspotHints`) and a live way forward exists. With no feedback, or no live route, it counts as missing and caps this at 5.
 
 **9:**
 - Every "Must" row in the triage table is reachable and demonstrated: idle, recording, processing, result, cancel and re-record before send, text fallback in one tap, mic primer, denied → text with what to do next, skip.
@@ -162,6 +178,8 @@ Gates (below) are reported separately and are not averaged into the score.
 
 **6:**
 - Main-path text and targets clear the gates.
+- A failed G1 or G2 caps this at 5.
+- The main-path entry is at least 44×44.
 - Statuses carry a text label as well as color.
 - Icon-only buttons are named.
 - Semi-transparent text tokens (`text/secondary`, `text/tertiary`) were checked by eye, not composited and measured.
@@ -201,8 +219,33 @@ Gates (below) are reported separately and are not averaged into the score.
 - Deep-linking and reloading mid-session work.
 - There are no console errors or hydration warnings on any path.
 - The layout holds with the longest term and transcript.
+- Checked at 390 wide and at a short real viewport (about 664 tall) with the safe area.
+- Any 8 or above cites the measurement.
 
 **Verify by:** `npm run build`, `npm run lint`, and a scripted browser pass at 390px over every route and state with console capture and a scroll-width check.
+
+---
+
+## 7. Feedback honesty (Medium)
+
+**Scoring:** whether every label, tag, count and headline claims only what happened in the session, and whether a score reflects what the student knew, not what the prototype failed to do.
+
+**4:**
+- A label claims more than happened ("first try" after a hint).
+- A control failure is scored as not knowing.
+- A counter's scope is unclear ("2 of 4" on review entry).
+
+**6:**
+- Numbers come from the session.
+- Small mismatches remain (a hinted pass reads like an unaided one).
+
+**9:**
+- Every label, tag, count and headline is derived from the session.
+- Hinted and revealed terms visibly count for less than recalled ones.
+- A skip is labelled a skip.
+- Counters state their scope.
+
+**Verify by:** a scripted mixed-outcome run, then compare Summary to the session log.
 
 ---
 
