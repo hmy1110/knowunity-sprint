@@ -316,7 +316,20 @@ function StudyPlanEntryContent() {
                   background: 'var(--semantic-color-background-surface)',
                 }}
               >
-                <Chips color="pro" active text="🔥 +20% exam score" size="XXS" showLeftIcon={false} showRightIcon={false} />
+                {/* Non-interactive label (Mia, 2026-09-20). `Chips` always renders a
+                    `<button>` and has no static mode, so it is taken out of the tab
+                    order and pointer events here. See component-gaps.md. */}
+                <Chips
+                  color="pro"
+                  active
+                  text="🔥 +20% exam score"
+                  size="XXS"
+                  showLeftIcon={false}
+                  showRightIcon={false}
+                  className="pointer-events-none"
+                  tabIndex={-1}
+                  role="note"
+                />
 
                 {/* Figma's title row (`Frame 2147207767`, all three states) is
                     a fixed 48px, the button instance filling it, so a 32px

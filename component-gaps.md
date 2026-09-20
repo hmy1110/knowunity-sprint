@@ -306,3 +306,7 @@ Read from live Figma through the Desktop Bridge plugin and `get_design_context`,
 - **`micButton`'s Idle/Pressed/Processing captions are unbound text in Figma: 0% tracking, auto line height (17px), no text style.** The component is 77×81 there (Processing 78×81); Recording's caption keeps the bound Headline XXS Bold with 1px tracking (105×113). Code had bound all four to Headline XXS Bold, which made Idle 88×80. Family, weight and size still bind that style (same values); tracking is now `0` and line height `normal`.
 - **Left as they are, 1px or less off Figma:** Greed's `normal` line height is 25px in Figma and 24px in the browser, so `inlineAlert` renders 24px tall (Figma 25) and the bubbles with a header render 1px short (149 vs 150 on Success). Text widths match to within 3px.
 - **Not fixed, already logged above:** the mascot renders larger than the Figma slot (the `MascotSlot` padding is ignored by the `fill` image), which is why the mascot in the local Learning idle screen is 64px where Figma draws a 40px sprite.
+
+## `Chips` has no non-interactive mode (2026-09-20)
+
+- **`Chips` always renders a `<button>`.** The "🔥 +20% exam score" label on `/` is not interactive (Mia, 2026-09-20), so it is taken out of the tab order (`tabIndex={-1}`), given `pointer-events-none` and `role="note"` at the call site in `page.tsx`. A static variant, or a `Tag`-like label component, would be the proper fix. Mia to decide.

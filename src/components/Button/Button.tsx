@@ -151,12 +151,13 @@ export function Button({
   const isLoading = state === 'Loading'
   const isDisabled = state === 'Disabled' || isLoading
   const hasFill = variant !== 'Tertiary'
-  // Figma's Tertiary/S frame is 48px tall around the 32px visible label
-  // row (confirmed by Mia, 2026-09-19); the extra 16px is tap area, not
+  // Figma's S frame is 48px tall around the 32px visible button, in every
+  // variant (Tertiary confirmed by Mia 2026-09-19; Speak's frame is
+  // 89×48 Hug, confirmed 2026-09-20); the extra 16px is tap area, not
   // layout. Reproduced as an absolutely positioned child so the visible
   // size and the surrounding layout don't move, same as the Skip link in
   // session/page.tsx. The 48px is an unbound literal in Figma too.
-  const hasOuterTapArea = variant === 'Tertiary' && size === 'S'
+  const hasOuterTapArea = size === 'S'
 
   return (
     <button
