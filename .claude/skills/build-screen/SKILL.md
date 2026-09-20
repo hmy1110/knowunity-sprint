@@ -32,6 +32,8 @@ A screen is a page at its own route in `src/app/`, reached by clicking from the 
 
 9. **Screenshot before calling a state done.** Per CLAUDE.md, never ship an untested state pairing without screenshotting it first — this applies doubly to any state SPEC.md or design-system.md already flags as untested/unconfirmed (e.g. `ProgressIndicator` progress="0", `MicButton` Pressed, `ButtonGroup` Vertical). Use the Storybook `test-run` tool after any visual change, and `stories-preview` to get a real preview URL.
 
+10. **Every interactive element has a hit area of at least 44×44 CSS px** (use the Figma frame's size when it is larger, e.g. 48), measured on the rendered tappable area including any padded child, not the glyph or visible shape; a smaller visible size is fine if the hit area is padded.
+
 ## When you're done
 
 - **If the screen had a Figma frame:** list every difference between what you built and the frame — anything you couldn't match exactly, any prop Storybook didn't support, any spacing/copy you had to infer.
