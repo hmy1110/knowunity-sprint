@@ -1,0 +1,3068 @@
+{
+ "generated": "2026-09-20T17:55:26.853Z",
+ "states": {
+  "A01-studyplan-notStarted-default": {
+   "id": "A01-studyplan-notStarted-default",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "🔥 +20% exam score",
+      "tag": "button",
+      "effectiveHit": {
+       "x": [
+        28,
+        0
+       ],
+       "y": [
+        598,
+        0
+       ],
+       "w": [
+        104,
+        0
+       ],
+       "h": [
+        20,
+        0
+       ]
+      }
+     },
+     {
+      "name": "Speak",
+      "tag": "button",
+      "unionRect": {
+       "y": [
+        625,
+        617
+       ],
+       "h": [
+        32,
+        48
+       ]
+      },
+      "effectiveHit": {
+       "y": [
+        626,
+        618
+       ],
+       "h": [
+        32,
+        48
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [
+     "  - button \"🔥 +20% exam score\""
+    ],
+    "linesOnlyRun2": [
+     "  - note: 🔥 +20% exam score"
+    ]
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "A02-studyplan-notStarted-speak-pressed": {
+   "id": "A02-studyplan-notStarted-speak-pressed",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "🔥 +20% exam score",
+      "tag": "button",
+      "effectiveHit": {
+       "x": [
+        28,
+        0
+       ],
+       "y": [
+        598,
+        0
+       ],
+       "w": [
+        104,
+        0
+       ],
+       "h": [
+        20,
+        0
+       ]
+      }
+     },
+     {
+      "name": "Speak",
+      "tag": "button",
+      "unionRect": {
+       "y": [
+        625,
+        617
+       ],
+       "h": [
+        32,
+        48
+       ]
+      },
+      "effectiveHit": {
+       "y": [
+        626,
+        618
+       ],
+       "h": [
+        32,
+        48
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [
+     "  - button \"🔥 +20% exam score\""
+    ],
+    "linesOnlyRun2": [
+     "  - note: 🔥 +20% exam score"
+    ]
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "A03-studyplan-kebab-tap-settled": {
+   "id": "A03-studyplan-kebab-tap-settled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "🔥 +20% exam score",
+      "tag": "button",
+      "effectiveHit": {
+       "x": [
+        28,
+        0
+       ],
+       "y": [
+        598,
+        0
+       ],
+       "w": [
+        104,
+        0
+       ],
+       "h": [
+        20,
+        0
+       ]
+      }
+     },
+     {
+      "name": "Speak",
+      "tag": "button",
+      "unionRect": {
+       "y": [
+        625,
+        617
+       ],
+       "h": [
+        32,
+        48
+       ]
+      },
+      "effectiveHit": {
+       "y": [
+        626,
+        618
+       ],
+       "h": [
+        32,
+        48
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [
+     "  - button \"🔥 +20% exam score\""
+    ],
+    "linesOnlyRun2": [
+     "  - note: 🔥 +20% exam score"
+    ]
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "A04-studyplan-topicnode-tap-settled": {
+   "id": "A04-studyplan-topicnode-tap-settled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "🔥 +20% exam score",
+      "tag": "button",
+      "effectiveHit": {
+       "x": [
+        28,
+        0
+       ],
+       "y": [
+        598,
+        0
+       ],
+       "w": [
+        104,
+        0
+       ],
+       "h": [
+        20,
+        0
+       ]
+      }
+     },
+     {
+      "name": "Speak",
+      "tag": "button",
+      "unionRect": {
+       "y": [
+        625,
+        617
+       ],
+       "h": [
+        32,
+        48
+       ]
+      },
+      "effectiveHit": {
+       "y": [
+        626,
+        618
+       ],
+       "h": [
+        32,
+        48
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [
+     "  - button \"🔥 +20% exam score\""
+    ],
+    "linesOnlyRun2": [
+     "  - note: 🔥 +20% exam score"
+    ]
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "A05-studyplan-bottomnav-tap-settled": {
+   "id": "A05-studyplan-bottomnav-tap-settled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "🔥 +20% exam score",
+      "tag": "button",
+      "effectiveHit": {
+       "x": [
+        28,
+        0
+       ],
+       "y": [
+        598,
+        0
+       ],
+       "w": [
+        104,
+        0
+       ],
+       "h": [
+        20,
+        0
+       ]
+      }
+     },
+     {
+      "name": "Speak",
+      "tag": "button",
+      "unionRect": {
+       "y": [
+        625,
+        617
+       ],
+       "h": [
+        32,
+        48
+       ]
+      },
+      "effectiveHit": {
+       "y": [
+        626,
+        618
+       ],
+       "h": [
+        32,
+        48
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [
+     "  - button \"🔥 +20% exam score\""
+    ],
+    "linesOnlyRun2": [
+     "  - note: 🔥 +20% exam score"
+    ]
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "A06-studyplan-state-bogus": {
+   "id": "A06-studyplan-state-bogus",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "🔥 +20% exam score",
+      "tag": "button",
+      "effectiveHit": {
+       "x": [
+        28,
+        0
+       ],
+       "y": [
+        598,
+        0
+       ],
+       "w": [
+        104,
+        0
+       ],
+       "h": [
+        20,
+        0
+       ]
+      }
+     },
+     {
+      "name": "Speak",
+      "tag": "button",
+      "unionRect": {
+       "y": [
+        625,
+        617
+       ],
+       "h": [
+        32,
+        48
+       ]
+      },
+      "effectiveHit": {
+       "y": [
+        626,
+        618
+       ],
+       "h": [
+        32,
+        48
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [
+     "  - button \"🔥 +20% exam score\""
+    ],
+    "linesOnlyRun2": [
+     "  - note: 🔥 +20% exam score"
+    ]
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "A07-studyplan-inProgress-REFERENCE": {
+   "id": "A07-studyplan-inProgress-REFERENCE",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "🔥 +20% exam score",
+      "tag": "button",
+      "effectiveHit": {
+       "x": [
+        28,
+        0
+       ],
+       "y": [
+        598,
+        0
+       ],
+       "w": [
+        104,
+        0
+       ],
+       "h": [
+        20,
+        0
+       ]
+      }
+     },
+     {
+      "name": "Review",
+      "tag": "button",
+      "unionRect": {
+       "y": [
+        625,
+        617
+       ],
+       "h": [
+        32,
+        48
+       ]
+      },
+      "effectiveHit": {
+       "y": [
+        626,
+        618
+       ],
+       "h": [
+        32,
+        48
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [
+     "  - button \"🔥 +20% exam score\""
+    ],
+    "linesOnlyRun2": [
+     "  - note: 🔥 +20% exam score"
+    ]
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "A08-studyplan-finish-REFERENCE": {
+   "id": "A08-studyplan-finish-REFERENCE",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "🔥 +20% exam score",
+      "tag": "button",
+      "effectiveHit": {
+       "x": [
+        28,
+        0
+       ],
+       "y": [
+        598,
+        0
+       ],
+       "w": [
+        104,
+        0
+       ],
+       "h": [
+        20,
+        0
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [
+     "  - button \"🔥 +20% exam score\""
+    ],
+    "linesOnlyRun2": [
+     "  - note: 🔥 +20% exam score"
+    ]
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "A09-studyplan-speak-destination-primer": {
+   "id": "A09-studyplan-speak-destination-primer",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "B01-summary-mixed-default": {
+   "id": "B01-summary-mixed-default",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "pixelFull": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "fullSize": {
+    "run2": "780x2432",
+    "run3": "780x2432"
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 1216,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 1216,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "B02-summary-bottom-baseline": {
+   "id": "B02-summary-bottom-baseline",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 1216,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 1216,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "B02b-summary-review-pressed-scrolled": {
+   "id": "B02b-summary-review-pressed-scrolled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 1216,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 1216,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "B03b-summary-continue-pressed-scrolled": {
+   "id": "B03b-summary-continue-pressed-scrolled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 1216,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 1216,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "B04-summary-all-recalled": {
+   "id": "B04-summary-all-recalled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "pixelFull": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "fullSize": {
+    "run2": "780x2208",
+    "run3": "780x2208"
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 1104,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 1104,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "B05-summary-variant-bogus": {
+   "id": "B05-summary-variant-bogus",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "pixelFull": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "fullSize": {
+    "run2": "780x2432",
+    "run3": "780x2432"
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 1216,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 1216,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "B06-summary-scrolled-bottom": {
+   "id": "B06-summary-scrolled-bottom",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 1216,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 1216,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "B07-summary-back-destination": {
+   "id": "B07-summary-back-destination",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "🔥 +20% exam score",
+      "tag": "button",
+      "effectiveHit": {
+       "x": [
+        28,
+        0
+       ],
+       "y": [
+        598,
+        0
+       ],
+       "w": [
+        104,
+        0
+       ],
+       "h": [
+        20,
+        0
+       ]
+      }
+     },
+     {
+      "name": "Speak",
+      "tag": "button",
+      "unionRect": {
+       "y": [
+        625,
+        617
+       ],
+       "h": [
+        32,
+        48
+       ]
+      },
+      "effectiveHit": {
+       "y": [
+        626,
+        618
+       ],
+       "h": [
+        32,
+        48
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [
+     "  - button \"🔥 +20% exam score\""
+    ],
+    "linesOnlyRun2": [
+     "  - note: 🔥 +20% exam score"
+    ]
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "B08-summary-continue-destination": {
+   "id": "B08-summary-continue-destination",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "🔥 +20% exam score",
+      "tag": "button",
+      "effectiveHit": {
+       "x": [
+        28,
+        0
+       ],
+       "y": [
+        598,
+        0
+       ],
+       "w": [
+        104,
+        0
+       ],
+       "h": [
+        20,
+        0
+       ]
+      }
+     },
+     {
+      "name": "Review",
+      "tag": "button",
+      "unionRect": {
+       "y": [
+        625,
+        617
+       ],
+       "h": [
+        32,
+        48
+       ]
+      },
+      "effectiveHit": {
+       "y": [
+        626,
+        618
+       ],
+       "h": [
+        32,
+        48
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [
+     "  - button \"🔥 +20% exam score\""
+    ],
+    "linesOnlyRun2": [
+     "  - note: 🔥 +20% exam score"
+    ]
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "B09-summary-review-destination": {
+   "id": "B09-summary-review-destination",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "C01-t1-idle": {
+   "id": "C01-t1-idle",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "C02-t1-idle-mic-pressed": {
+   "id": "C02-t1-idle-mic-pressed",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "C03-t1-recording-a": {
+   "id": "C03-t1-recording-a",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "C03-t1-recording-b": {
+   "id": "C03-t1-recording-b",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "C04-t1-readyToSend": {
+   "id": "C04-t1-readyToSend",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "C05-t1-after-redo": {
+   "id": "C05-t1-after-redo",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "C06-t1-processing": {
+   "id": "C06-t1-processing",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "C07-t1-resultRecalled": {
+   "id": "C07-t1-resultRecalled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "C08-t2-idle": {
+   "id": "C08-t2-idle",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "C09-t2-recording": {
+   "id": "C09-t2-recording",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "C10-t2-readyToSend": {
+   "id": "C10-t2-readyToSend",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "C11-t2-processing": {
+   "id": "C11-t2-processing",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "C12-t2-resultHinted1": {
+   "id": "C12-t2-resultHinted1",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "C12b-t2-hinted1-idontknow-tap-settled": {
+   "id": "C12b-t2-hinted1-idontknow-tap-settled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "C13-t2-Hinted1-recording": {
+   "id": "C13-t2-Hinted1-recording",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "D01-t2-Hinted1-readyToSend": {
+   "id": "D01-t2-Hinted1-readyToSend",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "pixelFull": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "fullSize": {
+    "run2": "780x1688",
+    "run3": "780x1688"
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "D02-t2-Hinted1-readyToSend-resume-tap-settled": {
+   "id": "D02-t2-Hinted1-readyToSend-resume-tap-settled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "D03-t2-Hinted1-readyToSend-send-pressed": {
+   "id": "D03-t2-Hinted1-readyToSend-send-pressed",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "D04-t2-Hinted1-readyToSend-redo-pressed": {
+   "id": "D04-t2-Hinted1-readyToSend-redo-pressed",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "D05-t2-Hinted1-processing": {
+   "id": "D05-t2-Hinted1-processing",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "E01-t2-Hinted1-recalled": {
+   "id": "E01-t2-Hinted1-recalled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "pixelFull": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "fullSize": {
+    "run2": "780x1688",
+    "run3": "780x1688"
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "E02-t2-Hinted1-recalled-continue-pressed": {
+   "id": "E02-t2-Hinted1-recalled-continue-pressed",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "F01-reload-after-Hinted1-recalled": {
+   "id": "F01-reload-after-Hinted1-recalled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "C17-t3-idle": {
+   "id": "C17-t3-idle",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "C18-t3-resultRevealed": {
+   "id": "C18-t3-resultRevealed",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "C19-t4-idle": {
+   "id": "C19-t4-idle",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "B10-summary-after-real-session": {
+   "id": "B10-summary-after-real-session",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "pixelFull": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "fullSize": {
+    "run2": "780x2432",
+    "run3": "780x2432"
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 1216,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 1216,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "F02-close-X-at-Hinted1": {
+   "id": "F02-close-X-at-Hinted1",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": [
+     {
+      "name": "🔥 +20% exam score",
+      "tag": "button",
+      "effectiveHit": {
+       "x": [
+        28,
+        0
+       ],
+       "y": [
+        598,
+        0
+       ],
+       "w": [
+        104,
+        0
+       ],
+       "h": [
+        20,
+        0
+       ]
+      }
+     },
+     {
+      "name": "Speak",
+      "tag": "button",
+      "unionRect": {
+       "y": [
+        625,
+        617
+       ],
+       "h": [
+        32,
+        48
+       ]
+      },
+      "effectiveHit": {
+       "y": [
+        626,
+        618
+       ],
+       "h": [
+        32,
+        48
+       ]
+      }
+     }
+    ]
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [
+     "  - button \"🔥 +20% exam score\""
+    ],
+    "linesOnlyRun2": [
+     "  - note: 🔥 +20% exam score"
+    ]
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "F03-t2-idle-before-type": {
+   "id": "F03-t2-idle-before-type",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "F04-t2-idle-idontknow-tap-settled": {
+   "id": "F04-t2-idle-idontknow-tap-settled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "F05-t2-typeInput": {
+   "id": "F05-t2-typeInput",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "F05b-t2-typeInput-filled": {
+   "id": "F05b-t2-typeInput-filled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "F06-t2-typeProcessing-0.5s": {
+   "id": "F06-t2-typeProcessing-0.5s",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "F06b-t2-typeProcessing-7s": {
+   "id": "F06b-t2-typeProcessing-7s",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "F07-t1-typeProcessing": {
+   "id": "F07-t1-typeProcessing",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "F08-t1-typeResultRecalled": {
+   "id": "F08-t1-typeResultRecalled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "F09-t1-mic-denied-settled": {
+   "id": "F09-t1-mic-denied-settled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "F10-t2-tryagain-mic-denied-settled": {
+   "id": "F10-t2-tryagain-mic-denied-settled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "F11-Hinted1-ready-Redo-result": {
+   "id": "F11-Hinted1-ready-Redo-result",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "F12-reload-at-Hinted1-ready": {
+   "id": "F12-reload-at-Hinted1-ready",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "X01-t1-typeInput": {
+   "id": "X01-t1-typeInput",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  },
+  "X02-t1-typeInput-filled": {
+   "id": "X02-t1-typeInput-filled",
+   "pixel": {
+    "rgbDiffPct": 0,
+    "lumaDiffPct": 0,
+    "identical": true,
+    "hueShiftOnly": false,
+    "diffBoxCss": null
+   },
+   "urlChanged": null,
+   "scroll": {
+    "run2": {
+     "sh": 844,
+     "sw": 390
+    },
+    "run3": {
+     "sh": 844,
+     "sw": 390
+    }
+   },
+   "bodyText": null,
+   "interactive": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "texts": {
+    "added": [],
+    "removed": [],
+    "changed": []
+   },
+   "aria": {
+    "linesOnlyRun1": [],
+    "linesOnlyRun2": []
+   },
+   "animations": {
+    "run2": 0,
+    "run3": 0
+   }
+  }
+ },
+ "onlyInRun1": [],
+ "onlyInRun2": [
+  "H01-t1-result",
+  "H02-t2-result-hinted",
+  "H03-t2-hinted-retry-result",
+  "H04-t3-result-revealed",
+  "H05-t4-idle",
+  "H06-summary-after-mixed-run",
+  "R01-review-entry",
+  "R02-review-t2-result",
+  "R03-review-t3-idle",
+  "R04-review-t3-result",
+  "R05-review-t4-idle",
+  "R06-review-t4-result",
+  "R07-review-summary-all-recalled",
+  "A01-studyplan-notStarted-default-664",
+  "B01-summary-mixed-default-664",
+  "D01-t2-Hinted1-readyToSend-664",
+  "E01-t2-Hinted1-recalled-664"
+ ]
+}

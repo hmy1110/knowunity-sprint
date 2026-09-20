@@ -1,0 +1,3 @@
+src/app/page.tsx:484:                2026-09-19). Replaces the literal `#A684FF` this used to
+src/app/session/page.tsx:1188:            fallback hex reads opaque `#0a0a0a`, but the real bound
+EXIT(grep)=0

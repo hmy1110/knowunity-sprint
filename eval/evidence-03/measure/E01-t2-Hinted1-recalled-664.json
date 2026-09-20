@@ -1,0 +1,623 @@
+{
+ "url": "/session",
+ "scroll": {
+  "scrollWidth": 390,
+  "clientWidth": 390,
+  "scrollHeight": 844,
+  "clientHeight": 664,
+  "horizontalScroll": false,
+  "scrollY": 172
+ },
+ "bodyText": "09:41 | 8 | Topics 2 of 4 | Skip | Explain the term “Divergent thinking” out loud, in your own words. | Not quite yet. | Hint 1 of 2 | No worries. Think about the very first step, before you start narrowing down to your favourite idea. | Nice! | Hint 1 of 2 | Divergent thinking is generating as many different ideas as possible before narrowing down to one. | Continue",
+ "interactive": [
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Close",
+   "ariaLabel": "Close",
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": true,
+   "offscreen": true,
+   "ownRect": {
+    "x": 4,
+    "y": -124,
+    "w": 48,
+    "h": 48
+   },
+   "unionRect": {
+    "x": 4,
+    "y": -124,
+    "w": 48,
+    "h": 48
+   },
+   "effectiveHit": null
+  },
+  {
+   "tag": "div",
+   "role": "progressbar",
+   "name": "Topic progress",
+   "ariaLabel": "Topic progress",
+   "native": false,
+   "disabled": false,
+   "hasOnClick": false,
+   "hotspotMarked": true,
+   "offscreen": true,
+   "ownRect": {
+    "x": 56,
+    "y": -108,
+    "w": 268.5,
+    "h": 16
+   },
+   "unionRect": {
+    "x": 56,
+    "y": -108,
+    "w": 268.5,
+    "h": 16
+   },
+   "effectiveHit": null
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Skip",
+   "ariaLabel": null,
+   "native": true,
+   "disabled": false,
+   "hasOnClick": false,
+   "hotspotMarked": false,
+   "offscreen": true,
+   "ownRect": {
+    "x": 318.8,
+    "y": -60,
+    "w": 55.2,
+    "h": 32
+   },
+   "unionRect": {
+    "x": 318.8,
+    "y": -68,
+    "w": 55.2,
+    "h": 48
+   },
+   "effectiveHit": null
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Play recording",
+   "ariaLabel": "Play recording",
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": true,
+   "offscreen": false,
+   "ownRect": {
+    "x": 111.5,
+    "y": 52,
+    "w": 262.5,
+    "h": 44
+   },
+   "unionRect": {
+    "x": 111.5,
+    "y": 52,
+    "w": 262.5,
+    "h": 44
+   },
+   "effectiveHit": {
+    "x": 112,
+    "y": 52,
+    "w": 262,
+    "h": 44
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Play recording",
+   "ariaLabel": "Play recording",
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": true,
+   "offscreen": false,
+   "ownRect": {
+    "x": 111.5,
+    "y": 233,
+    "w": 262.5,
+    "h": 44
+   },
+   "unionRect": {
+    "x": 111.5,
+    "y": 233,
+    "w": 262.5,
+    "h": 44
+   },
+   "effectiveHit": {
+    "x": 112,
+    "y": 234,
+    "w": 262,
+    "h": 44
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Continue",
+   "ariaLabel": null,
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": true,
+   "offscreen": false,
+   "ownRect": {
+    "x": 28,
+    "y": 588,
+    "w": 334,
+    "h": 56
+   },
+   "unionRect": {
+    "x": 28,
+    "y": 588,
+    "w": 334,
+    "h": 56
+   },
+   "effectiveHit": {
+    "x": 28,
+    "y": 588,
+    "w": 334,
+    "h": 56
+   }
+  }
+ ],
+ "texts": [
+  {
+   "text": "09:41",
+   "tag": "p",
+   "fontSize": 15,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 30.234375,
+     "y": -155,
+     "w": 39.515625,
+     "h": 18
+    }
+   ]
+  },
+  {
+   "text": "8",
+   "tag": "span",
+   "fontSize": 18,
+   "fontWeight": "600",
+   "color": "rgb(123, 168, 242)",
+   "nominalRatio": 8.1,
+   "nominalFg": [
+    123,
+    168,
+    242
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": true,
+   "rect": [
+    {
+     "x": 358.46875,
+     "y": -112,
+     "w": 11.53125,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Topics",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 16,
+     "y": -52,
+     "w": 42.90625,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "2",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 58.90625,
+     "y": -52,
+     "w": 7.734375,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "of",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 66.640625,
+     "y": -52,
+     "w": 19.609375,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "4",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 86.25,
+     "y": -52,
+     "w": 8.0625,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "Skip",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 330.78125,
+     "y": -54,
+     "w": 31.21875,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Explain the term “Divergent thinking” out loud, in your own words.",
+   "tag": "p",
+   "fontSize": 18,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 16,
+     "y": -6,
+     "w": 341.625,
+     "h": 23
+    },
+    {
+     "x": 16,
+     "y": 14,
+     "w": 201.28125,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Not quite yet.",
+   "tag": "p",
+   "fontSize": 20,
+   "fontWeight": "700",
+   "color": "rgb(252, 211, 77)",
+   "nominalRatio": 13.52,
+   "nominalFg": [
+    252,
+    211,
+    77
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 44,
+     "y": 112,
+     "w": 119.0625,
+     "h": 24
+    }
+   ]
+  },
+  {
+   "text": "Hint 1 of 2",
+   "tag": "p",
+   "fontSize": 12,
+   "fontWeight": "400",
+   "color": "rgba(245, 243, 255, 0.68)",
+   "nominalRatio": 8.4,
+   "nominalFg": [
+    169,
+    169,
+    181
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 16,
+     "y": 138,
+     "w": 56.8125,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "No worries. Think about the very first step, before you start narrowing down to your favourite idea.",
+   "tag": "p",
+   "fontSize": 18,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 16,
+     "y": 155,
+     "w": 357.375,
+     "h": 23
+    },
+    {
+     "x": 16,
+     "y": 175,
+     "w": 337.609375,
+     "h": 23
+    },
+    {
+     "x": 16,
+     "y": 195,
+     "w": 120.6875,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Nice!",
+   "tag": "p",
+   "fontSize": 20,
+   "fontWeight": "700",
+   "color": "rgb(0, 195, 134)",
+   "nominalRatio": 6.72,
+   "nominalFg": [
+    0,
+    195,
+    134
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 145,
+     "y": 309,
+     "w": 45.96875,
+     "h": 24
+    }
+   ]
+  },
+  {
+   "text": "Hint 1 of 2",
+   "tag": "p",
+   "fontSize": 12,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 13.95,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 117,
+     "y": 335,
+     "w": 56.8125,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "Divergent thinking is generating as many different ideas as possible before narrowing down to one.",
+   "tag": "p",
+   "fontSize": 18,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 13.95,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 117,
+     "y": 354,
+     "w": 172.015625,
+     "h": 23
+    },
+    {
+     "x": 117,
+     "y": 378,
+     "w": 163.125,
+     "h": 23
+    },
+    {
+     "x": 117,
+     "y": 402,
+     "w": 221.171875,
+     "h": 23
+    },
+    {
+     "x": 117,
+     "y": 426,
+     "w": 215.296875,
+     "h": 23
+    },
+    {
+     "x": 117,
+     "y": 450,
+     "w": 35.9375,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Continue",
+   "tag": "span",
+   "fontSize": 20,
+   "fontWeight": "700",
+   "color": "rgb(9, 12, 24)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    9,
+    12,
+    24
+   ],
+   "nominalBg": [
+    244,
+    242,
+    255
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 153.75,
+     "y": 602,
+     "w": 82.484375,
+     "h": 24
+    }
+   ]
+  }
+ ],
+ "animations": []
+}

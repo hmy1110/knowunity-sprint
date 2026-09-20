@@ -1,0 +1,30 @@
+Session log for the feedback-honesty run (rubric section 7). Driven through the real UI on http://localhost:3000/session, 390x844.
+Each STEP lists the action taken, the screen it produced (state named from which controls were on screen) and every visible text line on it, in DOM order, separated by " | ".
+
+Actions taken per term, in order:
+  term 1: one voice attempt (fake microphone), Send
+  term 2: one voice attempt, Send, Try again, one voice attempt, Send
+  term 3: "I don’t know"
+  term 4: Skip
+
+STEP 01 | action: open /session | screen: term 1 idle | url: /session
+         visible text: 09:41 | 8 | Topics 1 of 4 | Skip | Let’s start. Explain the term “Inspiration” out loud, in your own words. | Tap to speak | Type instead | I don’t know
+STEP 02 | action: term 1: record, Send | screen: term 1 result (Recalled path; Continue shown) | url: /session
+         visible text: 09:41 | 8 | Topics 1 of 4 | Skip | Let’s start. Explain the term “Inspiration” out loud, in your own words. | Nice! | Unaided | You said: 'It’s the spark that makes you want to create something' | Continue
+STEP 03 | action: Continue | screen: term 2 idle | url: /session
+         visible text: 09:41 | 8 | Topics 2 of 4 | Skip | Explain the term “Divergent thinking” out loud, in your own words. | Tap to speak | Type instead | I don’t know
+STEP 04 | action: term 2: record, Send | screen: term 2 result (Hinted path; Try again shown) | url: /session
+         visible text: 09:41 | 8 | Topics 2 of 4 | Skip | Explain the term “Divergent thinking” out loud, in your own words. | Not quite yet. | Hint 1 of 2 | No worries. Think about the very first step, before you start narrowing down to your favourite idea. | Try again | Type instead | I don’t know
+STEP 05 | action: term 2: Try again, record, Send | screen: term 2 Hinted1-recalled (retry result; Continue shown) | url: /session
+         visible text: 09:41 | 8 | Topics 2 of 4 | Skip | Explain the term “Divergent thinking” out loud, in your own words. | Not quite yet. | Hint 1 of 2 | No worries. Think about the very first step, before you start narrowing down to your favourite idea. | Nice! | Hint 1 of 2 | Divergent thinking is generating as many different ideas as possible before narrowing down to one. | Continue
+STEP 06 | action: Continue | screen: term 3 idle | url: /session
+         visible text: 09:41 | 8 | Topics 3 of 4 | Skip | Explain the term “Visual hierarchy” out loud, in your own words. | Tap to speak | Type instead | I don’t know
+STEP 07 | action: term 3: I don’t know | screen: term 3 result (Revealed path) | url: /session
+         visible text: 09:41 | 8 | Topics 3 of 4 | Skip | Explain the term “Visual hierarchy” out loud, in your own words. | Here’s the answer. | Revealed | Visual hierarchy arranges elements to guide attention and show what matters most. | Continue
+STEP 08 | action: Continue | screen: term 4 idle | url: /session
+         visible text: 09:41 | 8 | Topics 4 of 4 | Skip | Explain the term “Visual research” out loud, in your own words. | Tap to speak | Type instead | I don’t know
+STEP 09 | action: term 4: Skip | screen: Summary | url: /summary
+         visible text: 09:41 | Good session, Mia. | XP | 2 | SCORE | 1/4 | BLAZING | 1:09 | 25% | recalled this session | 1 Recalled | 1 Hinted | 1 Revealed | 1 Skipped | Inspiration | Recalled | Divergent thinking | Hinted | Visual hierarchy | Revealed | Visual research | Skipped | Recalled on your own | Inspiration, personal experience and the world around you, in your own words, first try. | Needed a hint | Divergent thinking, got there after a nudge toward "many ideas before narrowing." | Revealed | Visual hierarchy, answer shown after you said you didn't know it, worth a real attempt next time it comes up. | Skipped | Visual research, no attempt this time, worth a first pass before it comes up again. | Review what you missed | Continue
+
+SUMMARY REACHED (H06), visible text:
+09:41 | Good session, Mia. | XP | 2 | SCORE | 1/4 | BLAZING | 1:09 | 25% | recalled this session | 1 Recalled | 1 Hinted | 1 Revealed | 1 Skipped | Inspiration | Recalled | Divergent thinking | Hinted | Visual hierarchy | Revealed | Visual research | Skipped | Recalled on your own | Inspiration, personal experience and the world around you, in your own words, first try. | Needed a hint | Divergent thinking, got there after a nudge toward "many ideas before narrowing." | Revealed | Visual hierarchy, answer shown after you said you didn't know it, worth a real attempt next time it comes up. | Skipped | Visual research, no attempt this time, worth a first pass before it comes up again. | Review what you missed | Continue

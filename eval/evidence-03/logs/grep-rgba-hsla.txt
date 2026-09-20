@@ -1,0 +1,17 @@
+src/app/page.tsx:372:                        boxShadow: 'inset 0 -2px 0 0 rgba(0,0,0,0.15)',
+src/app/session/page.tsx:1189:            token is `rgba(10,10,10,0.5)` — bound to that, not the
+src/app/session/page.tsx:1283:                      style={{ boxShadow: 'inset 0 -4px 0 0 rgba(0,0,0,0.15)' }}
+src/components/AppBar/AppBar.tsx:101: *   color" — rather than hardcoding Figma's literal `rgba(9,12,24,0)`.
+src/components/TableCell/TableCell.tsx:50: * matches `border/default` (`rgba(255, 255, 255, 0.1)`) — reproduced as
+src/components/TableCell/TableCell.tsx:114:        borderBottom: SHOWS_DIVIDER[status] ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
+src/components/TopicNode/TopicNode.tsx:21: * (`rgba(255,255,255,0.1)`) instead. Reproduced exactly that way here —
+src/components/ButtonIcon/ButtonIcon.tsx:49: *   shadow (rgba(0,0,0,0.15), matching no color in tokens.json) are
+src/components/ButtonIcon/ButtonIcon.tsx:130:        // Bottom-edge bevel on Primary/Secondary. rgba(0,0,0,0.15) matches
+src/components/ButtonIcon/ButtonIcon.tsx:134:          ? `inset 0 ${size === 'L' ? '-4px' : '-2px'} 0 0 rgba(0,0,0,0.15)`
+src/components/shared/buttonVariants.ts:38:// and interactive/disabled are all rgba(255,255,255,0.1)), so color
+src/components/Button/Button.tsx:42: * shadow (rgba(0,0,0,0.15), which matches no color in tokens.json — the
+src/components/Button/Button.tsx:177:        // Bottom-edge bevel on Primary/Secondary. rgba(0,0,0,0.15) matches
+src/components/Button/Button.tsx:181:          ? `inset 0 ${size === 'L' ? '-4px' : '-2px'} 0 0 rgba(0,0,0,0.15)`
+src/stories/Foundations/tokenData.ts:51:  /** Resolved value exactly as build/css/tokens.css would emit it: a hex string, or rgba() when the primitive carries alpha. */
+src/stories/Foundations/tokenData.ts:71:    return `rgba(${r}, ${g}, ${b}, ${resolved.alpha})`
+EXIT(grep)=0

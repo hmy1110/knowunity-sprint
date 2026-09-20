@@ -1,0 +1,481 @@
+{
+ "url": "/session",
+ "scroll": {
+  "scrollWidth": 390,
+  "clientWidth": 390,
+  "scrollHeight": 844,
+  "clientHeight": 844,
+  "horizontalScroll": false,
+  "scrollY": 0
+ },
+ "bodyText": "09:41 | 8 | Topics 3 of 4 | Skip | Explain the term “Visual hierarchy” out loud, in your own words. | Here’s the answer. | Revealed | Visual hierarchy arranges elements to guide attention and show what matters most. | Continue",
+ "interactive": [
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Close",
+   "ariaLabel": "Close",
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": true,
+   "offscreen": false,
+   "ownRect": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   },
+   "unionRect": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   },
+   "effectiveHit": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   }
+  },
+  {
+   "tag": "div",
+   "role": "progressbar",
+   "name": "Topic progress",
+   "ariaLabel": "Topic progress",
+   "native": false,
+   "disabled": false,
+   "hasOnClick": false,
+   "hotspotMarked": true,
+   "offscreen": false,
+   "ownRect": {
+    "x": 56,
+    "y": 64,
+    "w": 268.5,
+    "h": 16
+   },
+   "unionRect": {
+    "x": 56,
+    "y": 64,
+    "w": 268.5,
+    "h": 16
+   },
+   "effectiveHit": {
+    "x": 56,
+    "y": 64,
+    "w": 270,
+    "h": 16
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Skip",
+   "ariaLabel": null,
+   "native": true,
+   "disabled": false,
+   "hasOnClick": false,
+   "hotspotMarked": false,
+   "offscreen": false,
+   "ownRect": {
+    "x": 318.8,
+    "y": 112,
+    "w": 55.2,
+    "h": 32
+   },
+   "unionRect": {
+    "x": 318.8,
+    "y": 104,
+    "w": 55.2,
+    "h": 48
+   },
+   "effectiveHit": {
+    "x": 318,
+    "y": 104,
+    "w": 56,
+    "h": 48
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Continue",
+   "ariaLabel": null,
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": true,
+   "offscreen": false,
+   "ownRect": {
+    "x": 28,
+    "y": 760,
+    "w": 334,
+    "h": 56
+   },
+   "unionRect": {
+    "x": 28,
+    "y": 760,
+    "w": 334,
+    "h": 56
+   },
+   "effectiveHit": {
+    "x": 28,
+    "y": 760,
+    "w": 334,
+    "h": 56
+   }
+  }
+ ],
+ "texts": [
+  {
+   "text": "09:41",
+   "tag": "p",
+   "fontSize": 15,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 30.234375,
+     "y": 17,
+     "w": 39.515625,
+     "h": 18
+    }
+   ]
+  },
+  {
+   "text": "8",
+   "tag": "span",
+   "fontSize": 18,
+   "fontWeight": "600",
+   "color": "rgb(123, 168, 242)",
+   "nominalRatio": 8.1,
+   "nominalFg": [
+    123,
+    168,
+    242
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": true,
+   "rect": [
+    {
+     "x": 358.46875,
+     "y": 60,
+     "w": 11.53125,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Topics",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 16,
+     "y": 120,
+     "w": 42.90625,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "3",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 58.90625,
+     "y": 120,
+     "w": 7.921875,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "of",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 66.828125,
+     "y": 120,
+     "w": 19.609375,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "4",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 86.4375,
+     "y": 120,
+     "w": 8.0625,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "Skip",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 330.78125,
+     "y": 118,
+     "w": 31.21875,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Explain the term “Visual hierarchy” out loud, in your own words.",
+   "tag": "p",
+   "fontSize": 18,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 16,
+     "y": 166,
+     "w": 322.375,
+     "h": 23
+    },
+    {
+     "x": 16,
+     "y": 186,
+     "w": 201.28125,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Here’s the answer.",
+   "tag": "p",
+   "fontSize": 20,
+   "fontWeight": "700",
+   "color": "rgb(255, 107, 107)",
+   "nominalRatio": 5.56,
+   "nominalFg": [
+    255,
+    107,
+    107
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 145,
+     "y": 240,
+     "w": 160.140625,
+     "h": 24
+    }
+   ]
+  },
+  {
+   "text": "Revealed",
+   "tag": "p",
+   "fontSize": 12,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 13.95,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 117,
+     "y": 266,
+     "w": 51.921875,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "Visual hierarchy arranges elements to guide attention and show what matters most.",
+   "tag": "p",
+   "fontSize": 18,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 13.95,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 117,
+     "y": 285,
+     "w": 212.21875,
+     "h": 23
+    },
+    {
+     "x": 117,
+     "y": 309,
+     "w": 232.59375,
+     "h": 23
+    },
+    {
+     "x": 117,
+     "y": 333,
+     "w": 196.421875,
+     "h": 23
+    },
+    {
+     "x": 117,
+     "y": 357,
+     "w": 47.3125,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Continue",
+   "tag": "span",
+   "fontSize": 20,
+   "fontWeight": "700",
+   "color": "rgb(9, 12, 24)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    9,
+    12,
+    24
+   ],
+   "nominalBg": [
+    244,
+    242,
+    255
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 153.75,
+     "y": 774,
+     "w": 82.484375,
+     "h": 24
+    }
+   ]
+  }
+ ],
+ "animations": []
+}

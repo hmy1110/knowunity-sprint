@@ -1,0 +1,862 @@
+{
+ "tolerancePerChannel": 8,
+ "note": "rgbDiffPct = % of pixels differing by >tol in any channel; lumaDiffPct = same on luma only (0.299R+0.587G+0.114B); hueShiftOnly = many RGB diffs but almost no luma diff",
+ "diffs": [
+  {
+   "a": "C01-t1-idle",
+   "b": "C03-t1-recording-a",
+   "tag": "loop-states t1",
+   "rgbDiffPct": 12.363,
+   "lumaDiffPct": 12.316,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 18,
+    "w": 358,
+    "h": 796.5
+   }
+  },
+  {
+   "a": "C01-t1-idle",
+   "b": "C06-t1-processing",
+   "tag": "loop-states t1",
+   "rgbDiffPct": 15.595,
+   "lumaDiffPct": 15.488,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 168,
+    "w": 358,
+    "h": 647
+   }
+  },
+  {
+   "a": "C01-t1-idle",
+   "b": "C07-t1-resultRecalled",
+   "tag": "loop-states t1",
+   "rgbDiffPct": 28.683,
+   "lumaDiffPct": 28.569,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16.5,
+    "y": 168,
+    "w": 357.5,
+    "h": 648
+   }
+  },
+  {
+   "a": "C03-t1-recording-a",
+   "b": "C04-t1-readyToSend",
+   "tag": "loop-states t1",
+   "rgbDiffPct": 16.797,
+   "lumaDiffPct": 16.085,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 18,
+    "w": 358,
+    "h": 796.5
+   }
+  },
+  {
+   "a": "C03-t1-recording-a",
+   "b": "C06-t1-processing",
+   "tag": "loop-states t1",
+   "rgbDiffPct": 17.213,
+   "lumaDiffPct": 14.726,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 18,
+    "w": 358,
+    "h": 797
+   }
+  },
+  {
+   "a": "C04-t1-readyToSend",
+   "b": "C06-t1-processing",
+   "tag": "loop-states t1",
+   "rgbDiffPct": 19.957,
+   "lumaDiffPct": 19.148,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 168,
+    "w": 358,
+    "h": 647
+   }
+  },
+  {
+   "a": "C06-t1-processing",
+   "b": "C07-t1-resultRecalled",
+   "tag": "loop-states t1",
+   "rgbDiffPct": 19.078,
+   "lumaDiffPct": 18.96,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 170,
+    "w": 358,
+    "h": 646
+   }
+  },
+  {
+   "a": "C08-t2-idle",
+   "b": "C09-t2-recording",
+   "tag": "loop-states t2",
+   "rgbDiffPct": 12.368,
+   "lumaDiffPct": 12.321,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 18,
+    "w": 358,
+    "h": 796.5
+   }
+  },
+  {
+   "a": "C09-t2-recording",
+   "b": "C10-t2-readyToSend",
+   "tag": "loop-states t2",
+   "rgbDiffPct": 16.802,
+   "lumaDiffPct": 16.089,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 18,
+    "w": 358,
+    "h": 796.5
+   }
+  },
+  {
+   "a": "C10-t2-readyToSend",
+   "b": "C11-t2-processing",
+   "tag": "loop-states t2",
+   "rgbDiffPct": 19.967,
+   "lumaDiffPct": 19.16,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 168,
+    "w": 358,
+    "h": 647
+   }
+  },
+  {
+   "a": "C11-t2-processing",
+   "b": "C12-t2-resultHinted1",
+   "tag": "loop-states t2",
+   "rgbDiffPct": 12.918,
+   "lumaDiffPct": 12.812,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 284,
+    "w": 358,
+    "h": 531
+   }
+  },
+  {
+   "a": "C12-t2-resultHinted1",
+   "b": "C13-t2-Hinted1-recording",
+   "tag": "loop-states t2",
+   "rgbDiffPct": 21.809,
+   "lumaDiffPct": 21.724,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 18,
+    "w": 358,
+    "h": 796.5
+   }
+  },
+  {
+   "a": "C13-t2-Hinted1-recording",
+   "b": "D01-t2-Hinted1-readyToSend",
+   "tag": "loop-states t2",
+   "rgbDiffPct": 26.249,
+   "lumaDiffPct": 25.497,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 18,
+    "w": 358,
+    "h": 796.5
+   }
+  },
+  {
+   "a": "D01-t2-Hinted1-readyToSend",
+   "b": "D05-t2-Hinted1-processing",
+   "tag": "loop-states t2",
+   "rgbDiffPct": 25.565,
+   "lumaDiffPct": 24.768,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 284,
+    "w": 358,
+    "h": 531
+   }
+  },
+  {
+   "a": "D05-t2-Hinted1-processing",
+   "b": "E01-t2-Hinted1-recalled",
+   "tag": "loop-states t2",
+   "rgbDiffPct": 20.235,
+   "lumaDiffPct": 20.126,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 465,
+    "w": 358,
+    "h": 351
+   }
+  },
+  {
+   "a": "C12-t2-resultHinted1",
+   "b": "E01-t2-Hinted1-recalled",
+   "tag": "loop-states t2",
+   "rgbDiffPct": 37.65,
+   "lumaDiffPct": 37.532,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 284,
+    "w": 358,
+    "h": 532
+   }
+  },
+  {
+   "a": "C08-t2-idle",
+   "b": "E01-t2-Hinted1-recalled",
+   "tag": "loop-states t2",
+   "rgbDiffPct": 36.813,
+   "lumaDiffPct": 36.683,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 168,
+    "w": 358,
+    "h": 648
+   }
+  },
+  {
+   "a": "D01-t2-Hinted1-readyToSend",
+   "b": "C10-t2-readyToSend",
+   "tag": "ready-to-send siblings",
+   "rgbDiffPct": 22.743,
+   "lumaDiffPct": 22.615,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 17,
+    "y": 168,
+    "w": 357,
+    "h": 273
+   }
+  },
+  {
+   "a": "D01-t2-Hinted1-readyToSend",
+   "b": "C04-t1-readyToSend",
+   "tag": "ready-to-send siblings",
+   "rgbDiffPct": 23.121,
+   "lumaDiffPct": 22.993,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 17,
+    "y": 64,
+    "w": 357,
+    "h": 377
+   }
+  },
+  {
+   "a": "C07-t1-resultRecalled",
+   "b": "C12-t2-resultHinted1",
+   "tag": "result outcomes",
+   "rgbDiffPct": 12.464,
+   "lumaDiffPct": 12.455,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16.5,
+    "y": 64,
+    "w": 357.5,
+    "h": 752
+   }
+  },
+  {
+   "a": "C07-t1-resultRecalled",
+   "b": "E01-t2-Hinted1-recalled",
+   "tag": "result outcomes",
+   "rgbDiffPct": 34.411,
+   "lumaDiffPct": 34.284,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 64,
+    "w": 358,
+    "h": 598
+   }
+  },
+  {
+   "a": "C07-t1-resultRecalled",
+   "b": "C18-t3-resultRevealed",
+   "tag": "result outcomes",
+   "rgbDiffPct": 14.261,
+   "lumaDiffPct": 14.129,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16.5,
+    "y": 64,
+    "w": 357.5,
+    "h": 377
+   }
+  },
+  {
+   "a": "C12-t2-resultHinted1",
+   "b": "C18-t3-resultRevealed",
+   "tag": "result outcomes",
+   "rgbDiffPct": 18.715,
+   "lumaDiffPct": 18.584,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 19,
+    "y": 64,
+    "w": 355,
+    "h": 752
+   }
+  },
+  {
+   "a": "E01-t2-Hinted1-recalled",
+   "b": "C18-t3-resultRevealed",
+   "tag": "result outcomes",
+   "rgbDiffPct": 36.5,
+   "lumaDiffPct": 36.367,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 64,
+    "w": 358,
+    "h": 598
+   }
+  },
+  {
+   "a": "F08-t1-typeResultRecalled",
+   "b": "C07-t1-resultRecalled",
+   "tag": "result outcomes",
+   "rgbDiffPct": 24.862,
+   "lumaDiffPct": 24.843,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 170,
+    "w": 358,
+    "h": 646
+   }
+  },
+  {
+   "a": "C01-t1-idle",
+   "b": "C02-t1-idle-mic-pressed",
+   "tag": "micButton",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "C01-t1-idle",
+   "b": "C03-t1-recording-a",
+   "tag": "micButton",
+   "rgbDiffPct": 12.363,
+   "lumaDiffPct": 12.316,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 18,
+    "w": 358,
+    "h": 796.5
+   }
+  },
+  {
+   "a": "C01-t1-idle",
+   "b": "C06-t1-processing",
+   "tag": "micButton",
+   "rgbDiffPct": 15.595,
+   "lumaDiffPct": 15.488,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 168,
+    "w": 358,
+    "h": 647
+   }
+  },
+  {
+   "a": "C02-t1-idle-mic-pressed",
+   "b": "C03-t1-recording-a",
+   "tag": "micButton",
+   "rgbDiffPct": 12.363,
+   "lumaDiffPct": 12.316,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 18,
+    "w": 358,
+    "h": 796.5
+   }
+  },
+  {
+   "a": "C06-t1-processing",
+   "b": "F07-t1-typeProcessing",
+   "tag": "voice vs text path",
+   "rgbDiffPct": 25.232,
+   "lumaDiffPct": 25.154,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 224,
+    "w": 358,
+    "h": 592
+   }
+  },
+  {
+   "a": "C01-t1-idle",
+   "b": "F07-t1-typeProcessing",
+   "tag": "voice vs text path",
+   "rgbDiffPct": 28.363,
+   "lumaDiffPct": 28.256,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 168,
+    "w": 358,
+    "h": 648
+   }
+  },
+  {
+   "a": "C01-t1-idle",
+   "b": "F05-t2-typeInput",
+   "tag": "voice vs text path",
+   "rgbDiffPct": 1.377,
+   "lumaDiffPct": 1.376,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 59,
+    "y": 64,
+    "w": 287,
+    "h": 178.5
+   }
+  },
+  {
+   "a": "F05-t2-typeInput",
+   "b": "F05b-t2-typeInput-filled",
+   "tag": "voice vs text path",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "F05b-t2-typeInput-filled",
+   "b": "F06-t2-typeProcessing-0.5s",
+   "tag": "voice vs text path",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "A01-studyplan-notStarted-default",
+   "b": "A02-studyplan-notStarted-speak-pressed",
+   "tag": "primary button",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "B02-summary-bottom-baseline",
+   "b": "B02b-summary-review-pressed-scrolled",
+   "tag": "primary button",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "B02-summary-bottom-baseline",
+   "b": "B03b-summary-continue-pressed-scrolled",
+   "tag": "primary button",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "E01-t2-Hinted1-recalled",
+   "b": "E02-t2-Hinted1-recalled-continue-pressed",
+   "tag": "primary button",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "D01-t2-Hinted1-readyToSend",
+   "b": "D03-t2-Hinted1-readyToSend-send-pressed",
+   "tag": "primary button",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "D01-t2-Hinted1-readyToSend",
+   "b": "D04-t2-Hinted1-readyToSend-redo-pressed",
+   "tag": "primary button",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "F05b-t2-typeInput-filled",
+   "b": "F06-t2-typeProcessing-0.5s",
+   "tag": "primary button",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "A01-studyplan-notStarted-default",
+   "b": "A07-studyplan-inProgress-REFERENCE",
+   "tag": "studyplan states",
+   "rgbDiffPct": 3.358,
+   "lumaDiffPct": 3.358,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 625,
+    "w": 358,
+    "h": 137
+   }
+  },
+  {
+   "a": "A01-studyplan-notStarted-default",
+   "b": "A08-studyplan-finish-REFERENCE",
+   "tag": "studyplan states",
+   "rgbDiffPct": 3.991,
+   "lumaDiffPct": 3.991,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 625,
+    "w": 358,
+    "h": 137
+   }
+  },
+  {
+   "a": "A07-studyplan-inProgress-REFERENCE",
+   "b": "A08-studyplan-finish-REFERENCE",
+   "tag": "studyplan states",
+   "rgbDiffPct": 1.542,
+   "lumaDiffPct": 1.54,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 30,
+    "y": 625,
+    "w": 332,
+    "h": 52
+   }
+  },
+  {
+   "a": "B01-summary-mixed-default-full",
+   "b": "B04-summary-all-recalled-full",
+   "tag": "summary variants",
+   "sizeMismatch": "780x2432 vs 780x2208"
+  },
+  {
+   "a": "A01-studyplan-notStarted-default",
+   "b": "A03-studyplan-kebab-tap-settled",
+   "tag": "tap: kebab",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "A01-studyplan-notStarted-default",
+   "b": "A04-studyplan-topicnode-tap-settled",
+   "tag": "tap: topic node",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "A01-studyplan-notStarted-default",
+   "b": "A05-studyplan-bottomnav-tap-settled",
+   "tag": "tap: bottom nav",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "C12-t2-resultHinted1",
+   "b": "C12b-t2-hinted1-idontknow-tap-settled",
+   "tag": "tap: \"I don’t know\" on Hinted1",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "D01-t2-Hinted1-readyToSend",
+   "b": "D02-t2-Hinted1-readyToSend-resume-tap-settled",
+   "tag": "tap: Resume on Hinted1 ready-to-send",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "F03-t2-idle-before-type",
+   "b": "F04-t2-idle-idontknow-tap-settled",
+   "tag": "tap: \"I don’t know\" on term 2 idle",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "A01-studyplan-notStarted-default",
+   "b": "A06-studyplan-state-bogus",
+   "tag": "invalid param",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "B01-summary-mixed-default-full",
+   "b": "B05-summary-variant-bogus-full",
+   "tag": "invalid param",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "B01-summary-mixed-default-full",
+   "b": "B10-summary-after-real-session-full",
+   "tag": "summary derivation",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "C01-t1-idle",
+   "b": "F01-reload-after-Hinted1-recalled",
+   "tag": "failure: reload",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "C01-t1-idle",
+   "b": "F12-reload-at-Hinted1-ready",
+   "tag": "failure: reload",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "C01-t1-idle",
+   "b": "F09-t1-mic-denied-settled",
+   "tag": "failure: mic denied t1",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "C12-t2-resultHinted1",
+   "b": "F10-t2-tryagain-mic-denied-settled",
+   "tag": "failure: mic denied Try again",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "F06-t2-typeProcessing-0.5s",
+   "b": "F06b-t2-typeProcessing-7s",
+   "tag": "failure: text path stuck",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "C08-t2-idle",
+   "b": "F11-Hinted1-ready-Redo-result",
+   "tag": "failure: Redo from Hinted1 ready",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "C12-t2-resultHinted1",
+   "b": "F11-Hinted1-ready-Redo-result",
+   "tag": "failure: Redo from Hinted1 ready",
+   "rgbDiffPct": 22.876,
+   "lumaDiffPct": 22.749,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 17,
+    "y": 168,
+    "w": 357,
+    "h": 599
+   }
+  },
+  {
+   "a": "C03-t1-recording-a",
+   "b": "C03-t1-recording-b",
+   "tag": "motion (same state, time apart)",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "X01-t1-typeInput",
+   "b": "X02-t1-typeInput-filled",
+   "tag": "run-2 addition: term 1 typeInput vs filled",
+   "rgbDiffPct": 0.458,
+   "lumaDiffPct": 0.458,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 29.5,
+    "y": 291,
+    "w": 282.5,
+    "h": 14
+   }
+  },
+  {
+   "a": "X02-t1-typeInput-filled",
+   "b": "F07-t1-typeProcessing",
+   "tag": "run-2 addition: term 1 Submit Default vs Disabled",
+   "rgbDiffPct": 24.641,
+   "lumaDiffPct": 24.53,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 168,
+    "w": 358,
+    "h": 624.5
+   }
+  },
+  {
+   "a": "C01-t1-idle",
+   "b": "X01-t1-typeInput",
+   "tag": "run-2 addition: term 1 idle vs typeInput",
+   "rgbDiffPct": 15.466,
+   "lumaDiffPct": 15.466,
+   "identical": false,
+   "hueShiftOnly": false,
+   "diffBoxCss": {
+    "x": 16,
+    "y": 276,
+    "w": 358,
+    "h": 540
+   }
+  },
+  {
+   "a": "F03-t2-idle-before-type",
+   "b": "F05-t2-typeInput",
+   "tag": "run-2 addition: term 2 idle vs after \"Type instead\" tap",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  },
+  {
+   "a": "F03-t2-idle-before-type",
+   "b": "F06b-t2-typeProcessing-7s",
+   "tag": "run-2 addition: term 2 idle vs 7s after \"Type instead\" tap",
+   "rgbDiffPct": 0,
+   "lumaDiffPct": 0,
+   "identical": true,
+   "hueShiftOnly": false,
+   "diffBoxCss": null
+  }
+ ]
+}

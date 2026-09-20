@@ -1,0 +1,17 @@
+Review entry run (?review=1), driven through the real UI. Counter-like = any visible text line matching "N of M" or "N/M".
+
+R01 /session?review=1 entry | counter-like text lines: ["Topics 2 of 4"]
+    visible text: 09:41 | 8 | Topics 2 of 4 | Skip | Explain the term “Divergent thinking” out loud, in your own words. | Tap to speak | Type instead | I don’t know
+    text node starting "Topic": "Topics 2 of 4"
+R02 review t2 result | counter-like: ["Topics 2 of 4"]
+    visible text: 09:41 | 8 | Topics 2 of 4 | Skip | Explain the term “Divergent thinking” out loud, in your own words. | Nice! | Unaided | Divergent thinking is generating as many different ideas as possible before narrowing down to one. | Continue
+R03 review next term idle | counter-like: ["Topics 3 of 4"]
+    visible text: 09:41 | 8 | Topics 3 of 4 | Skip | Explain the term “Visual hierarchy” out loud, in your own words. | Tap to speak | Type instead | I don’t know
+R04 review t3 result | counter-like: ["Topics 3 of 4"]
+    visible text: 09:41 | 8 | Topics 3 of 4 | Skip | Explain the term “Visual hierarchy” out loud, in your own words. | Nice! | Unaided | Visual hierarchy arranges elements to guide attention and show what matters most. | Continue
+R05 review next term idle | counter-like: ["Topics 4 of 4"]
+    visible text: 09:41 | 8 | Topics 4 of 4 | Skip | Explain the term “Visual research” out loud, in your own words. | Tap to speak | Type instead | I don’t know
+R06 review t4 result | counter-like: ["Topics 4 of 4"]
+    visible text: 09:41 | 8 | Topics 4 of 4 | Skip | Explain the term “Visual research” out loud, in your own words. | Nice! | Unaided | Visual research is the use of images and other visual media to collect, analyze, and present research data. | Continue
+R07 summary at end of review run | url /summary?variant=all-recalled
+    visible text: 09:41 | Nice work, Mia! | XP | 8 | SCORE | 4/4 | BLAZING | 2:09 | 100% | recalled this session | 4 Recalled | 0 Hinted | 0 Revealed | 0 Skipped | Inspiration | Recalled | Divergent thinking | Recalled | Visual hierarchy | Recalled | Visual research | Recalled | Recalled on your own | Inspiration, personal experience and the world around you, in your own words, first try. | Divergent thinking, many possible ideas before narrowing to one, in your own words, first try. | Visual hierarchy, arranging elements to guide attention and show what matters most, in your own words, first try. | Visual research, uses visual media (images, video, diagrams) as data for research, in your own words, first try. | Continue

@@ -1,0 +1,20 @@
+- paragraph: 09:41
+- img
+- img
+- img
+- button "Close":
+  - img
+- progressbar "Topic progress"
+- img
+- text: "8"
+- main:
+  - text: Topics 3 of 4
+  - button "Skip"
+  - paragraph: Explain the term “Visual hierarchy” out loud, in your own words.
+  - img
+  - img
+  - paragraph: Here’s the answer.
+  - paragraph: Revealed
+  - paragraph: Visual hierarchy arranges elements to guide attention and show what matters most.
+- button "Continue"
+- alert
