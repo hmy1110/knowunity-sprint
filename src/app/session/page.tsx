@@ -1355,7 +1355,12 @@ function SessionContent() {
             <ButtonGroup
               variant="Vertical"
               size="L"
-              primary={{ cta: 'Submit', onClick: handleSubmitTyped }}
+              primary={{
+                cta: 'Submit',
+                onClick: handleSubmitTyped,
+                // Mia 2026-09-21: an empty answer can't be submitted.
+                state: typedAnswer.trim() === '' ? 'Disabled' : 'Default',
+              }}
               secondary={{ cta: 'Switch to voice', onClick: handleSwitchToVoice }}
             />
           )}
@@ -1364,7 +1369,11 @@ function SessionContent() {
             <ButtonGroup
               variant="Vertical"
               size="L"
-              primary={{ cta: 'Submit', onClick: handleSubmitTypedRetry }}
+              primary={{
+                cta: 'Submit',
+                onClick: handleSubmitTypedRetry,
+                state: typedAnswer.trim() === '' ? 'Disabled' : 'Default',
+              }}
               secondary={{ cta: 'Switch to voice', onClick: handleSwitchToVoiceFromRetry }}
             />
           )}
