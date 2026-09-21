@@ -25,15 +25,11 @@ import { TableCell, type TableCellStatus } from '../TableCell/TableCell'
  *
  * **Rows are always displayed Recalled → Hinted → Revealed → Skipped
  * (good to bad), regardless of the order passed in `rows`** — Mia's
- * explicit call, not a Figma-modeled property. This also resolves most
- * of `tableCell`'s own status/divider coupling in practice: since
- * Skipped is always sorted last, its divider-less variant naturally
- * lands on the true last row whenever a Skipped row exists. When there is
- * no Skipped entry the true last row is Revealed, Hinted or Recalled, whose
- * `tableCell` variant carries a bottom divider (see that component's doc
- * comment); `Table` clears the last row's divider itself (Mia's rule of
- * 2026-09-18: the divider follows position), so no stray trailing line
- * shows. `tableCell` still keys its own divider to status.
+ * explicit call, not a Figma-modeled property. Since 2026-09-21
+ * the divider follows row position, per Mia's rule: `Table` sets
+ * `showDivider` on every row but the last, whatever its status, so a Skipped
+ * row that isn't last keeps its divider and a last row that isn't Skipped
+ * has none.
  *
  * The outer frame's 16px corner radius is an unbound literal in Figma
  * (numerically equal to `radius/400`, but Figma's own reference code
@@ -89,10 +85,9 @@ export function Table({ rows = DEFAULT_ROWS, className, style }: TableProps) {
           key={index}
           label={row.label}
           status={row.status}
-          // Mia, 2026-09-18: the divider follows row position, so the last row
-          // never has one, whatever its status. TableCell still keys its own
-          // divider to status, so the last row's is cleared here.
-          style={index === sortedRows.length - 1 ? { borderBottom: 'none' } : undefined}
+          // Mia, 2026-09-18/21: the divider separates two cells, so every row
+          // has one except the last, whatever its status.
+          showDivider={index < sortedRows.length - 1}
         />
       ))}
     </div>

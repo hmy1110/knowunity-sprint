@@ -12,7 +12,7 @@ const FIGMA_DESCRIPTION = `Figma's own component description is empty for this c
 **Gaps found building this (see Table.tsx for full detail):**
 
 - Figma only models one fixed 4-row instance, not a repeater with a real row-count property. \`rows\` is exposed as a content-only override, defaulting to that one real instance's exact rows.
-- Rows always display Recalled → Hinted → Revealed → Skipped (good to bad), regardless of input order — Mia's explicit call. This resolves TableCell's own status/divider coupling whenever a Skipped row exists, since Skipped then always lands last. If \`rows\` has no Skipped entry at all, the last row (Revealed) would carry TableCell's own baked-in divider, so Table clears the last row's divider itself (Mia's 2026-09-18 rule: the divider follows position).
+- Rows always display Recalled → Hinted → Revealed → Skipped (good to bad), regardless of input order — Mia's explicit call. Every row but the last gets a divider whatever its status (Mia's rule: the divider separates two cells, so it follows position, not status), so a Skipped row that isn't last keeps its divider and a last row that isn't Skipped has none.
 - The outer frame's 16px corner radius is an unbound literal in Figma, though it numerically matches \`radius/400\`. Its fill, \`background/surface\`, is a real bound variable and is bound here too.`
 
 const meta = {
@@ -53,8 +53,8 @@ export const RowsPassedOutOfOrder: Story = {
   args: { rows: REORDERED_ROWS },
 }
 
-// With no Skipped row at all the last row (Revealed) is not divider-less by
-// status, so this checks Table clears the last row's divider itself.
+// With no Skipped row at all, this checks the last row (Revealed) still has no
+// divider: Table only draws one between two rows, whatever their status.
 const NO_SKIPPED_ROWS: TableRow[] = [
   { label: 'Inspiration', status: 'Recalled' },
   { label: 'Divergent thinking', status: 'Hinted' },

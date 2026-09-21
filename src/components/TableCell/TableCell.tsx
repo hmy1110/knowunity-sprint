@@ -45,6 +45,14 @@ import { Tag, type TagStatus } from '../Tag/Tag'
  * divider. Worth a real position-based property in Figma; flagging for
  * Mia rather than deciding it here.
  *
+ * **Update 2026-09-21 (Mia): the divider separates two cells, so it
+ * follows position, not status.** Figma's baked-in "Skipped has none" made
+ * a Skipped row that isn't last lose its divider, and a last row that isn't
+ * Skipped keep a stray one. A `tableCell` now has no divider of its own
+ * (a lone cell has nothing to separate from); `showDivider` draws the
+ * bottom one, and `Table` sets it on every row but the last. This differs
+ * from Figma's Recalled/Hinted/Revealed variants, which bake the line in.
+ *
  * **The divider's own color (white at ~10% opacity) is an unbound
  * literal in Figma**, not a bound variable, even though it numerically
  * matches `border/default` (`rgba(255, 255, 255, 0.1)`) — reproduced as
@@ -73,22 +81,14 @@ import { Tag, type TagStatus } from '../Tag/Tag'
 export type TableCellStatus = TagStatus
 
 export interface TableCellProps {
-  /** Which of the four statuses this row shows — also drives the bottom divider, see doc comment above. */
+  /** Which of the four statuses this row shows. */
   status?: TableCellStatus
+  /** Draws the bottom divider that separates this cell from the next one. Off by default: a lone cell has nothing to separate from. */
+  showDivider?: boolean
   /** The row's label text. No backing Figma property — see doc comment above. */
   label?: string
   className?: string
   style?: CSSProperties
-}
-
-// Matches Figma's own real stroke-weight audit: every status except
-// Skipped carries the row divider. See doc comment above for why this
-// is flagged as a status/position gap rather than a boolean prop.
-const SHOWS_DIVIDER: Record<TableCellStatus, boolean> = {
-  Recalled: true,
-  Hinted: true,
-  Revealed: true,
-  Skipped: false,
 }
 
 const LABEL_TEXT_STYLE: CSSProperties = {
@@ -99,7 +99,7 @@ const LABEL_TEXT_STYLE: CSSProperties = {
   letterSpacing: 'var(--type-scale-body-s-bold-letter-spacing)',
 }
 
-export function TableCell({ status = 'Recalled', label = 'Inspiration', className, style }: TableCellProps) {
+export function TableCell({ status = 'Recalled', label = 'Inspiration', showDivider = false, className, style }: TableCellProps) {
   return (
     <div
       className={`flex items-center justify-between ${className ?? ''}`}
@@ -111,7 +111,7 @@ export function TableCell({ status = 'Recalled', label = 'Inspiration', classNam
         paddingBottom: 'var(--size-space-300)',
         // Unbound literal in Figma even though it numerically matches
         // border/default — see doc comment above.
-        borderBottom: SHOWS_DIVIDER[status] ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
+        borderBottom: showDivider ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
         ...style,
       }}
     >

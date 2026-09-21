@@ -12,7 +12,7 @@ const FIGMA_DESCRIPTION = `Figma's own component-set description is empty for th
 **Gaps found building this (see TableCell.tsx for full detail):**
 
 - Wraps this codebase's own \`Tag\` for the status pill rather than reimplementing it. \`label\` is a free-text override with no backing Figma property, the same class of gap TextField's own \`titleText\` flags.
-- The bottom divider has no real Figma property — it's baked per status instead of row position. Recalled, Hinted and Revealed carry it; Skipped doesn't, confirmed via a real stroke-weight audit on all four variants. That's really a position concern (last row vs. not), not a status one — flagged for Mia, not silently turned into an unmodeled \`isLast\` prop.
+- The bottom divider has no real Figma property; Figma bakes it per status (Skipped has none). Mia's rule (2026-09-21) is that it separates two cells, so it follows row position, not status: a \`tableCell\` has no divider of its own (a lone cell has nothing to separate from), the optional \`showDivider\` draws the bottom one, and \`Table\` sets it on every row but the last.
 - The divider's own color is an unbound literal in Figma even though it numerically matches \`border/default\`. The label is bound to a real named style, "Greed/Body S Bold," used here in full — though the live Figma style (14px/20px/1px) and tokens.json's exported values for that same style (15px/20px/0.01em) disagree, a tokens.json source-data issue, not fixed here.`
 
 const meta = {
@@ -53,3 +53,8 @@ export const RecalledStatus = variantStory('Recalled', 'Inspiration')
 export const HintedStatus = variantStory('Hinted', 'Divergent thinking')
 export const RevealedStatus = variantStory('Revealed', 'Visual hierarchy')
 export const SkippedStatus = variantStory('Skipped', 'Visual research')
+
+export const WithDivider: Story = {
+  tags: ['ai-generated'],
+  args: { status: 'Recalled', label: 'Inspiration', showDivider: true },
+}
