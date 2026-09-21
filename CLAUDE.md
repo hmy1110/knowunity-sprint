@@ -7,6 +7,7 @@ Mocked iOS prototype of a voice-in / text-out active-recall step, built in Next.
 ## Always true
 
 - The recall is mocked. No speech-to-text, no audio, no model calls.
+- The flow is scripted: term 1 recalled, term 2 hinted, term 3 revealed, term 4 skipped, and Summary is fixed data. A control that does nothing, a state that doesn't persist, or a screen that doesn't read the session because of that script is by design. Never report it as a defect or a finding. Only a state Figma designs that the prototype fails to show counts.
 - Knowie replies in text and never speaks. Voice is input only.
 - Mobile only. 390px, dark mode only.
 - Build from the components that already exist. A gap gets named and flagged, not filled.

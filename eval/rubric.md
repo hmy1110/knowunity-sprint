@@ -4,6 +4,10 @@ Grades the voice active-recall prototype (`/`, `/primer`, `/session`, `/summary`
 
 Sources for the anchors: `docs/design-brief.md` (hard constraints, mandate), `docs/voice-ux-reference.md` (six principles, states triage table), `docs/design-system.md` (component selection, naming, §4 never-do list), `docs/sprint-context.md` (logged decisions), `CLAUDE.md`, `component-gaps.md`.
 
+## Scope
+
+The prototype is a scripted flow, not a working MVP: term 1 recalled, term 2 hinted, term 3 revealed, term 4 skipped, and Summary is fixed data. Grade the designed flow. A control that does nothing, a state that doesn't persist, or a screen that doesn't read the session because of that script is by design. Do not list it as a finding or let it lower a score. Only a state that Figma designs and the prototype fails to show counts against it.
+
 ## Dimensions
 
 Each dimension is scored 0–10 as a whole number. Anchors are given at 4, 6 and 9. Scores between anchors are interpolated. A 7 is a 6 with a specific, named strength beyond it. An 8 is a 9 with one named flaw.
