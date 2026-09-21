@@ -174,6 +174,7 @@ export const MEASURE_FN = () => {
       native: ['BUTTON', 'A', 'INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName),
       disabled: el.disabled === true || el.getAttribute('aria-disabled') === 'true',
       hasOnClick: !!(p && p.onClick),
+      // Obsolete since 2026-09-21: the hotspot layer and every data-hotspot attribute were removed, so this reads false.
       hotspotMarked: !!el.closest('[data-hotspot], [data-hotspot-within]'),
       offscreen,
       ownRect: { x: round(own.left), y: round(own.top), w: round(own.width), h: round(own.height) },

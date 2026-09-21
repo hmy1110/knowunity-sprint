@@ -7,7 +7,7 @@ Mocked iOS prototype of a voice-in / text-out active-recall step, built in Next.
 ## Always true
 
 - The recall is mocked. No speech-to-text, no audio, no model calls.
-- The flow is scripted: term 1 recalled, term 2 hinted, term 3 revealed, term 4 skipped, and Summary is fixed data. A control that does nothing, a state that doesn't persist, or a screen that doesn't read the session because of that script is by design. Never report it as a defect or a finding. Only a state Figma designs that the prototype fails to show counts.
+- The flow reacts to what the person does, and every control is live. Each term can be answered by voice or by typing, and the input mode sticks until they switch. A normal attempt resolves by term number: 1 Recalled, 2 Hinted, 3 Revealed, 4 Recalled. "I don't know" is Revealed, and Skip (only before an attempt) is Skipped. "Review what you missed" covers the terms not yet recalled; a normal attempt in it is Recalled, and Skip and "I don't know" still work. Summary, its BLAZING time (derived per status) and the study plan state all read what was recorded (`src/lib/recall-session.ts`, sessionStorage). By design: the outcome of an attempt is scripted by term number, not judged from what was said or typed. Never report that as a defect. A control that does nothing is a defect. A state without a Figma frame (the typed Hinted, retry and Revealed screens) is flagged in `component-gaps.md`, not silently filled. Only a state Figma designs that the prototype fails to show counts as a finding.
 - Knowie replies in text and never speaks. Voice is input only.
 - Mobile only. 390px, dark mode only.
 - Build from the components that already exist. A gap gets named and flagged, not filled.
@@ -42,6 +42,7 @@ When working on UI, use the storybook tools to read the component library before
 - `reference/*.PNG` — 30 screenshots of the real flow, explain-out-loud is 20-28. When matching real behavior or copy.
 - `public/images/*.svg` — Knowie expressions. When a screen needs a mascot state.
 - `src/app/` — `page.tsx` root screen, `layout.tsx` shell and fonts, `globals.css` Tailwind entry and theme vars.
+- `src/lib/recall-session.ts` — the recorded session (results per term, review results), the term data, and the rules that derive Summary, BLAZING and the study plan state from it.
 - `.claude/skills/` — `ux-designer` flows, `ui-designer` visual craft, `ux-motion` transitions, `interactive-prototype` clickable build.
 - `package.json` — `npm run dev | build | start | lint | tokens | check:tokens`. `style-dictionary.config.mjs` — token build config. `scripts/check-tokens.mjs` — `check:tokens` fails on a raw hex color, a `var()` fallback, or a primitive color read in `src/` outside comments, and on unrecorded deviations (see "Always true"). `scripts/check-tokens.baseline.json` counts the deviations that predate that check; a file may not exceed its count. `tsconfig.json` — `@/*` maps to `./src/*`.
 - Remaining root files are scaffold config. `README.md` is not project documentation.

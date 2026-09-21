@@ -6,7 +6,7 @@ Sources for the anchors: `docs/design-brief.md` (hard constraints, mandate), `do
 
 ## Scope
 
-The prototype is a scripted flow, not a working MVP: term 1 recalled, term 2 hinted, term 3 revealed, term 4 skipped, and Summary is fixed data. Grade the designed flow. A control that does nothing, a state that doesn't persist, or a screen that doesn't read the session because of that script is by design. Do not list it as a finding or let it lower a score. Only a state that Figma designs and the prototype fails to show counts against it.
+The prototype is a mocked recall that reacts to what the person does (rewritten 2026-09-21; earlier grading runs judged the old fixed script). Every control is live, each term can be answered by voice or by typing, and Summary, its BLAZING time and the study plan state read the recorded session. By design: an attempt's outcome is scripted by term number (1 Recalled, 2 Hinted, 3 Revealed, 4 Recalled), not judged from what was said or typed; "I don't know" is Revealed and Skip is Skipped. Do not list the scripted outcome as a finding. A control that does nothing is a finding. A typed state Figma has no frame for is judged as a flagged gap in `component-gaps.md`, not as a defect. Only a state that Figma designs and the prototype fails to show counts against it.
 
 ## Dimensions
 
@@ -40,7 +40,7 @@ Mia's hand scores for one set of four screens: `/`, `/summary`, `/session` hinte
 | System fidelity | 7 | `check:tokens` clean, two bindings traced to Figma; baseline and five `rgba()` bevels remain. |
 | Coherence | 7 | One scaffold, tokens and voice across all four; only small seams (mascot size, scripted Summary). |
 | Craft | 6 | Looks right, four loop states differ; no motion, no Pressed feedback, no Figma pixel diff. |
-| UX judgment | 7 | Hard constraints hold, every result has a next step; inert Skip and "Type instead" are covered by the hotspot hint. |
+| UX judgment | 7 | Hard constraints hold, every result has a next step; every control is live, and Skip is Disabled where it isn't available. |
 | Accessibility | 7 | Text at least 4.5:1 on all four, statuses labelled; scrim-state contrast and duplicate "Play recording" names remain. |
 | Structure | 8 | All routes render at 390px, no scroll; build, lint and `check:tokens` pass; safe area untested. |
 | Feedback honesty | not scored | New dimension. |
@@ -99,7 +99,7 @@ Mia's hand scores for one set of four screens: `/`, `/summary`, `/session` hinte
 - Sentence case and Knowie's text-only voice hold on every label.
 - In the loop, the mic and the mascot stay put across idle → recording → processing → result, so only the state changes.
 
-**Verify by:** screenshots of all routes and loop states side by side, measured positions of mic and mascot across states, a full scripted run start to finish (SPEC.md step 6).
+**Verify by:** screenshots of all routes and loop states side by side, measured positions of mic and mascot across states, a full run start to finish that includes a Skip, an "I don't know", typed and voice answers, a Resume and a review (SPEC.md step 6).
 
 ---
 
@@ -154,7 +154,7 @@ Mia's hand scores for one set of four screens: `/`, `/summary`, `/session` hinte
 - A text fallback and a mic primer exist.
 - The result offers a next step.
 - Gaps against the "Must" rows remain: cancel-and-re-record before send is hard to find; Skip is missing on some states; the verdict reads as a grade instead of a nudge; the transcript is not shown back; the summary's claim is not derived from what the student did.
-- A control that looks live but does nothing is acceptable only if tapping it fires the hotspot hint (`HotspotHints`) and a live way forward exists. With no feedback, or no live route, it counts as missing and caps this at 5.
+- A control that looks live but does nothing counts as missing and caps this at 5. (The hotspot hint that used to excuse inert controls was removed on 2026-09-21; every control is live.)
 
 **9:**
 - Every "Must" row in the triage table is reachable and demonstrated: idle, recording, processing, result, cancel and re-record before send, text fallback in one tap, mic primer, denied → text with what to do next, skip.
@@ -249,7 +249,7 @@ Mia's hand scores for one set of four screens: `/`, `/summary`, `/session` hinte
 - A skip is labelled a skip.
 - Counters state their scope.
 
-**Verify by:** a scripted mixed-outcome run, then compare Summary to the session log.
+**Verify by:** a run that mixes outcomes (a Skip, an "I don't know", a hint retry, a review), then compare Summary to what was actually done.
 
 ---
 
