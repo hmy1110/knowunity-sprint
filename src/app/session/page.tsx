@@ -17,35 +17,38 @@ import { StatusBar } from '@/components/StatusBar/StatusBar'
 import { StatusIndicator } from '@/components/StatusIndicator/StatusIndicator'
 import { Steps } from '@/components/Steps/Steps'
 import { TextField } from '@/components/TextField/TextField'
+import {
+  TERMS,
+  finishFirstRun,
+  missedTerms,
+  readStore,
+  recordResult,
+  recordReviewResult,
+  resetStore,
+  startReview,
+  useMounted,
+  type ScriptedOutcome,
+  type Status,
+} from '@/lib/recall-session'
 
-// `Learning-idle`, `Learning-recording`, `Learning-ready to send`,
-// `Learning-processing`, `Learning-result-Recalled`,
-// `Learning-result-Hinted1`, `Learning-topic 2-result-Hinted1-recording`,
-// `Learning-topic 2-result-Hinted1-ready to send`,
-// `Learning-topic 2-result-Hinted1-processing`,
-// `Learning-topic 2-result-Hinted1-recalled` (node 13673:13893 — corrected
-// 2026-09-17, per Mia, from this doc's earlier `Learning-result-Hinted2-
-// succeed`; see the `resultHinted1Recalled` block below), `Learning-result-Revealed`,
-// `Learning-skipped`, `Learning-topic 1-typeInput`,
-// `Learning-topic 1-typeProcessing`, and
-// `Learning-topic 1-typeResult-Recalled` are built so far — Session is
-// one route with many internal sub-states per SPEC.md ({ termIndex,
-// mode, subState }); the Hinted/Revealed/Skipped `typeResult`
-// equivalents aren't built yet. `typeProcessing`'s own auto-advance
-// timer only branches on `term.outcome === 'Recalled'` for the same
-// reason — term 1 is the only outcome with a built `typeResult`
-// destination so far.
+// Session is one route with many internal sub-states. Every term, in both a
+// first run and a review run, can be answered by voice or by typing, and the
+// two can be mixed inside one term (a voice first attempt, a typed retry).
 //
-// `topic2ResultUnaided`, `topic3ResultUnaided`, and `topic4ResultUnaided`
-// (`Learning-topic 2-result-unaided`, node 13737:17173; `Learning-topic
-// 3-result-unaided`, node 13737:17370; `Learning-topic 4-result-unaided`,
-// node 13737:17501) are the alternate "everything recalled" chain, which
-// skips term 1 and ends at `Summary-all recalled`. Reached by `?review=1`
-// (Summary's "Review what you missed", StudyPlan-inProgress's "Review") —
-// wired 2026-09-18, per Mia, replacing her 2026-09-17 call to leave them
-// unreachable. In a review run the scripted outcomes below don't apply:
-// each term starts at `idle`, needs a real voice attempt, and resolves to
-// its own unaided frame.
+// What a term ends on is scripted (see `TERMS` in `@/lib/recall-session`): a
+// normal attempt resolves by term number, 1 Recalled, 2 Hinted, 3 Revealed,
+// 4 Recalled; "I don't know" is Revealed; the top-right Skip, live on `idle`
+// only, is Skipped. A review run covers the terms not yet recalled; a normal
+// attempt in it is Recalled, and Skip and "I don't know" work as in a first
+// run, so its Summary shows what was really done. Each result is recorded as its screen appears, so
+// Summary and the study plan read the real session.
+//
+// Frames that come from live Figma: idle, recording, readyToSend, processing,
+// resultRecalled, resultHinted1 and its retry chain, resultRevealed,
+// typeInput, typeProcessing, typeResultRecalled. The typed Hinted / retry /
+// Revealed states have no Figma frame; they are the voice frames with the
+// typed text in place of the audio (Mia reviewed them as a preview sheet on
+// 2026-09-21; the sheet was deleted once they were built here).
 type SubState =
   | 'idle'
   | 'recording'
@@ -61,46 +64,11 @@ type SubState =
   | 'typeInput'
   | 'typeProcessing'
   | 'typeResultRecalled'
-  | 'topic2ResultUnaided'
-  | 'topic3ResultUnaided'
-  | 'topic4ResultUnaided'
-
-// SPEC.md: "The 4 terms are scripted by index, not by content: term 1
-// resolves Recalled, term 2 Hinted, term 3 Revealed, term 4 Skipped."
-// Prompt copy confirmed per-term from each term's own live Figma frame,
-// not assumed to repeat an earlier term's. Term 3's own real frame
-// (Learning-result-Revealed, node 13669:17091) shows no cold-skip
-// variant reached from `idle`'s own "I don't know" — its prompt has
-// already dropped out of the `Prompt` `SpeechBubble`'s bubble chrome
-// into the same bare plain-text treatment `processing`/`resultRecalled`
-// use, confirming term 3 really does attempt once via the normal
-// `recording` → `readyToSend` → `processing` chain and gets revealed
-// directly from there, never offered a hint first — not a separate
-// cold-skip mechanic.
-//
-// **Term 4 ("Visual research," Skipped) turned out to supersede SPEC.md's
-// own description, not just extend it.** SPEC.md's Hinted1 section says
-// term 4 "attempts once, lands on the hint-shown state, then skips from
-// there" via `Learning-result-Hinted1`'s own "I don't know" button,
-// landing on a `Learning-result-I don't know` result screen (node
-// `13674:14198`) that still exists in Figma with its own connector from
-// Hinted1. But a separate, newer frame literally named `Learning-skipped`
-// (node `13734:16233`) sits right after `Learning-result-Revealed` in the
-// canvas's own term-by-term sequence, with its own explicit connectors:
-// `Learning-result-Revealed -> Learning-skipped -> Summary`. Structurally
-// it's identical to `Learning-idle` (MicButton Idle, tailed `SpeechBubble
-// state="Prompt"`, "Type instead"/"I don't know") — it's term 4's own
-// cold-start `idle`, not a post-attempt result screen, and it skips
-// straight to Summary with no distinct result frame in between. Built to
-// match this newer, positionally-canonical frame: term 4 never routes
-// through Hinted1 at all. Flagged in component-gaps.md rather than
-// silently picking one, since both frames are real and still connected.
-const TERMS: { name: string; outcome: 'Recalled' | 'Hinted' | 'Revealed' | 'Skipped'; prompt: string }[] = [
-  { name: 'Inspiration', outcome: 'Recalled', prompt: 'Let’s start. Explain the term “Inspiration” out loud, in your own words.' },
-  { name: 'Divergent thinking', outcome: 'Hinted', prompt: 'Explain the term “Divergent thinking” out loud, in your own words.' },
-  { name: 'Visual hierarchy', outcome: 'Revealed', prompt: 'Explain the term “Visual hierarchy” out loud, in your own words.' },
-  { name: 'Visual research', outcome: 'Skipped', prompt: 'Explain the term “Visual research” out loud, in your own words.' },
-]
+  | 'typeResultHinted'
+  | 'typeRetryInput'
+  | 'typeRetryProcessing'
+  | 'typeResultHinted1Recalled'
+  | 'typeResultRevealed'
 
 // Real "x-close" asset (component 3248:81244), confirmed via
 // `get_design_context` on the live Learning-idle frame — this screen
@@ -197,99 +165,141 @@ function PlayPauseIcon() {
   )
 }
 
+// Which status a result screen records for its term. A Hinted term that then
+// succeeds on the retry stays Hinted; giving up from the hint overwrites it
+// with Revealed (resultRevealed).
+const RESULT_STATUS: Partial<Record<SubState, Status>> = {
+  resultRecalled: 'Recalled',
+  typeResultRecalled: 'Recalled',
+  resultHinted1: 'Hinted',
+  typeResultHinted: 'Hinted',
+  resultHinted1Recalled: 'Hinted',
+  typeResultHinted1Recalled: 'Hinted',
+  resultRevealed: 'Revealed',
+  typeResultRevealed: 'Revealed',
+}
+
 function SessionContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
+  // `?review=1` (Summary's "Review what you missed", the study plan's
+  // "Review"/"Continue"): the run over every term not recalled yet, per Mia
+  // (2026-09-21). A normal attempt in it is Recalled (unaided), while Skip and
+  // "I don't know" still work and record what they are, so its Summary shows
+  // what the person actually did. The list is fixed at
+  // mount, since recording a result shrinks what is "missed" mid-run. With
+  // nothing recorded it is terms 2-4, the frames Figma draws.
+  const isReview = searchParams.get('review') === '1'
+  const [run] = useState<number[]>(() => (isReview ? missedTerms(readStore()) : TERMS.map((_, i) => i)))
+  const [pos, setPos] = useState(0)
+  // Mia, 2026-09-21: the input mode sticks. Typing on one term means the next
+  // term opens on the typing screen too, until the person switches to voice
+  // (or records). Set by "Type instead" / "Switch to voice" / a recording.
+  const [inputMode, setInputMode] = useState<'voice' | 'text'>(() => (searchParams.get('entry') === 'text' ? 'text' : 'voice'))
   // SPEC.md: "Tap 'I can't talk right now' (on Primer-intro) → /session
   // (term 1, text mode), bypassing the mic-permission prompt entirely."
   // Same landing for micDenied's own "Continue with text." Primer links
-  // here with `?entry=text` (see its own two buttons) rather than a
-  // generic bare `/session`, now that `typeInput` is a real destination
-  // to land on instead of the voice-mode `idle` both buttons used to
-  // fall back to (previously flagged in component-gaps.md as "SPEC.md's
-  // own voice/text distinction isn't wired").
+  // here with `?entry=text`.
   const [subState, setSubState] = useState<SubState>(() =>
     searchParams.get('entry') === 'text' ? 'typeInput' : 'idle',
   )
-  // `?review=1` (Summary's "Review what you missed", StudyPlan-inProgress's
-  // "Review"): the alternate "everything recalled" chain, per Mia
-  // (2026-09-18) — starts at term 2 (`Learning-topic 2`), every attempt
-  // resolves to that term's `Learning-topic N-result-unaided`, and term 4's
-  // "Continue" ends at `Summary-all recalled`. Replaces the earlier call to
-  // leave those three screens unreachable.
-  const isReview = searchParams.get('review') === '1'
-  // Live Figma (2026-09-20): the three review-run frames read "Topics 1 of
-  // 3" / "2 of 3" / "3 of 3" and carry a "6" badge, since the run skips
-  // term 1 — the count states its own scope instead of "2 of 4", and the
-  // XP goal is 2 per term of the 3 it covers (Mia, 2026-09-19: 2 XP per
-  // Recalled term; the badge is that goal, static).
-  const runTermCount = isReview ? TERMS.length - 1 : TERMS.length
+  // Live Figma (2026-09-20): the review frames read "Topics 1 of 3" / "2 of 3"
+  // / "3 of 3" and carry a "6" badge, since the run skips term 1 — the count
+  // states its own scope, and the XP goal is 2 per term the run covers (Mia,
+  // 2026-09-19: 2 XP per Recalled term; the badge is that goal, static).
+  const runTermCount = run.length
   const xpGoal = 2 * runTermCount
-  const [termIndex, setTermIndex] = useState(isReview ? 1 : 0)
+  const termIndex = run[pos] ?? 0
   const term = TERMS[termIndex]
-  // The text-path frames (typeInput, typeProcessing, typeResultRecalled) drop
-  // "out loud" from the prompt in live Figma (2026-09-20): "Explain the term
+  // Mia, 2026-09-21: a normal attempt resolves by term number, 1 Recalled, 2
+  // Hinted, 3 Revealed, 4 Recalled; a review attempt is always Recalled.
+  const outcome: ScriptedOutcome = isReview ? 'Recalled' : term.scriptedOutcome
+  // The text-path frames (typeInput, typeProcessing, typeResult…) drop "out
+  // loud" from the prompt in live Figma (2026-09-20): "Explain the term
   // “Inspiration”, in your own words." — no one is speaking on that path.
   const textPrompt = term.prompt.replace(' out loud', '')
-  const hasNextTerm = termIndex + 1 < TERMS.length
-  // Terms 1-2 (Recalled/Hinted) still need a real attempt on `idle`;
-  // terms 3-4 (Revealed/Skipped) are cold-skip only — see `idle`'s own
-  // render block below for the 2026-09-17 correction this drives. In a
-  // review run every term needs a real attempt, and only by voice: the
-  // unaided frames have no typed-answer equivalent.
-  const canAttempt = isReview || term.outcome === 'Recalled' || term.outcome === 'Hinted'
-  // Typing is offered on term 1 only: term 2 (Hinted) has no built
-  // `typeResult` frame, so its typed path would stall on `typeProcessing`.
-  const canType = !isReview && term.outcome === 'Recalled'
+  const hasNextTerm = pos + 1 < runTermCount
+  // Skip is live before an attempt starts: the voice `idle` and the typing screen.
+  const isBeforeAttempt = subState === 'idle' || subState === 'typeInput'
+  const isFinalReviewResult = isReview && !hasNextTerm && RESULT_STATUS[subState] !== undefined
   const [isPlaying, setIsPlaying] = useState(false)
   const [audioUrl, setAudioUrl] = useState<string | null>(null)
-  // SPEC.md: Hinted1's "Try again" re-attempt keeps the first attempt's
-  // recording around — `Learning-topic 2-result-Hinted1-recalled` plays
-  // back both. Only ever set via `handleRetry`, below.
+  // SPEC.md: Hinted1's "Try again" re-attempt keeps the first attempt around —
+  // `Learning-topic 2-result-Hinted1-recalled` shows both. A first attempt is
+  // either a recording (`firstAttemptAudioUrl`) or typed text
+  // (`firstAttemptText`); the retry can then be either too, so a term's
+  // history renders per attempt rather than per screen.
   const [isPlayingFirstAttempt, setIsPlayingFirstAttempt] = useState(false)
   const [firstAttemptAudioUrl, setFirstAttemptAudioUrl] = useState<string | null>(null)
-  // True once "Try again" has been tapped for this term — tells the
-  // `processing` timer to resolve to `resultHinted1Recalled` instead of
-  // looping back to `resultHinted1`.
+  const [firstAttemptText, setFirstAttemptText] = useState<string | null>(null)
+  // True once a voice "Try again" has been tapped for this term — tells the
+  // recorder to route to the hinted2 screens instead of the first-attempt ones.
   const [isRetry, setIsRetry] = useState(false)
-  // `typeInput`'s own real captured keystrokes — SPEC.md: "TextField has
-  // no value/onChange... this screen needs its own plain native
-  // input/textarea as the actual typing surface, held in local component
-  // state... TextField supplies the chrome, not the capture." Not yet
-  // consumed anywhere (SpeechBubble's `Input` state at `typeProcessing`/
-  // `typeResult` isn't built), but captured now so it's ready once those
-  // screens exist.
+  // The typed answer for the current attempt. SPEC.md: "TextField has no
+  // value/onChange... this screen needs its own plain native input/textarea as
+  // the actual typing surface... TextField supplies the chrome, not the
+  // capture."
   const [typedAnswer, setTypedAnswer] = useState('')
   const streamRef = useRef<MediaStream | null>(null)
   const recorderRef = useRef<MediaRecorder | null>(null)
   const chunksRef = useRef<Blob[]>([])
   const audioElRef = useRef<HTMLAudioElement | null>(null)
   const firstAttemptAudioElRef = useRef<HTMLAudioElement | null>(null)
+  // The URL built from the current take so far. "Resume" adds to the same take,
+  // so each stop replaces (and revokes) the previous snapshot of it.
+  const takeUrlRef = useRef<string | null>(null)
+  const scrollRef = useRef<HTMLElement | null>(null)
+  // Set by a stop tap: runs once the recorder has flushed what it has captured.
+  const flushRef = useRef<(() => void) | null>(null)
+
+  // The middle scrolls (Mia, 2026-09-21); each new screen shows its newest row,
+  // and a new term starts at the top.
+  useEffect(() => {
+    const el = scrollRef.current
+    if (el) el.scrollTop = subState === 'idle' || subState === 'typeInput' ? 0 : el.scrollHeight
+  }, [subState, pos])
+
+  // A first run starts from nothing; a review keeps what the first run left.
+  // A review with nothing left to review has nowhere to go but back.
+  useEffect(() => {
+    if (run.length === 0) router.replace('/')
+    else if (isReview) startReview(run)
+    else resetStore()
+  }, [isReview, run, router])
+
+  // Records each term's status as its result screen appears, so leaving the
+  // session anywhere (Close included) leaves the study plan an accurate count.
+  useEffect(() => {
+    const status = RESULT_STATUS[subState]
+    if (!status) return
+    if (isReview) recordReviewResult(termIndex, status)
+    else recordResult(termIndex, status)
+  }, [subState, termIndex, isReview])
 
   // SPEC.md: "The mic really requests OS permission via getUserMedia
   // and really records; AudioScrubber plays back that real audio."
   // Requests the real stream, then really records into it with
   // MediaRecorder — denial isn't handled here since Primer's own
   // mic-permission gate already covers that path before a student ever
-  // reaches Session; see SPEC.md's Primer section. Shared by the first
-  // attempt (`handleMicTap`, → the generic `recording`) and Hinted1's
-  // re-attempt (`handleRetry`, → the real `Learning-topic 2-result-
-  // Hinted1-recording` frame instead, confirmed as its own distinct
-  // screen — node 13728:15704, keeping the first attempt's history on
-  // screen rather than reusing the plain `recording` layout).
+  // reaches Session. Shared by the first attempt (`handleMicTap`, → the
+  // generic `recording`) and Hinted1's re-attempt (`handleRetry`, → the real
+  // `Learning-topic 2-result-Hinted1-recording` frame instead).
   async function startRecording(isRetryAttempt: boolean) {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
       streamRef.current = stream
       chunksRef.current = []
+      takeUrlRef.current = null
       const recorder = new MediaRecorder(stream)
       recorder.ondataavailable = (event) => {
         if (event.data.size > 0) chunksRef.current.push(event.data)
+        flushRef.current?.()
+        flushRef.current = null
       }
       recorder.start()
       recorderRef.current = recorder
       if (isRetryAttempt) {
-        setFirstAttemptAudioUrl(audioUrl)
+        keepFirstAttempt()
         setIsRetry(true)
       }
       setSubState(isRetryAttempt ? 'hinted2Recording' : 'recording')
@@ -298,55 +308,112 @@ function SessionContent() {
     }
   }
 
+  // Moves whatever the first attempt was (a recording, or typed text) into the
+  // history slot the retry screens read, leaving the current-attempt slots free.
+  function keepFirstAttempt() {
+    if (subState === 'typeResultHinted') {
+      setFirstAttemptText(typedAnswer)
+      setFirstAttemptAudioUrl(null)
+    } else {
+      setFirstAttemptText(null)
+      setFirstAttemptAudioUrl(audioUrl)
+    }
+  }
+
   function handleMicTap() {
+    setInputMode('voice')
     void startRecording(false)
   }
 
   // SPEC.md: Hinted1's "Try again" → real re-attempt, looping back
   // through `hinted2Recording` → `hinted2ReadyToSend` → `hinted2Processing`.
   function handleRetry() {
+    setInputMode('voice')
     void startRecording(true)
   }
 
-  // `recording`'s own mic tap stops the real recorder and stream, turns
-  // the captured chunks into a real playable URL, and moves to
-  // `readyToSend` (or, on a re-attempt, the real
-  // `Learning-topic 2-result-Hinted1-ready to send` frame — node
-  // 13728:15886, confirmed as its own distinct screen, not a reuse of
-  // the generic one) — the SPEC.md-documented transition, now that a
-  // screen exists to receive it. Doesn't revoke the previous `audioUrl`
-  // here (unlike a plain overwrite) — on a Hinted1 re-attempt, that
-  // previous URL is the first attempt's own recording, already moved to
-  // `firstAttemptAudioUrl` by `handleRetry` and still needed for
-  // `resultHinted1Recalled`'s two-scrubber playback. Explicit discards
-  // (`handleRedo`, `handleContinue`) revoke instead.
+  // Mia, 2026-09-21: a hint can be retried by typing too, after either kind of
+  // first attempt.
+  function handleTypeRetry() {
+    setInputMode('text')
+    keepFirstAttempt()
+    setTypedAnswer('')
+    setSubState('typeRetryInput')
+  }
+
+  // "Switch to voice" on the typed retry goes back to the Hinted screen the
+  // first attempt came from, which is where the mic's "Try again" lives.
+  function handleSwitchToVoiceFromRetry() {
+    setInputMode('voice')
+    if (firstAttemptText !== null) {
+      setTypedAnswer(firstAttemptText)
+      setFirstAttemptText(null)
+      setSubState('typeResultHinted')
+    } else {
+      setSubState('resultHinted1')
+    }
+  }
+
+  // `recording`'s own mic tap ends the take for now: the recorder is paused
+  // (not stopped, so "Resume" can carry on the same take), what it has
+  // captured is flushed into one playable URL, and the screen moves to
+  // `readyToSend` (or, on a re-attempt, `hinted2ReadyToSend`). Doesn't revoke
+  // the previous `audioUrl` — on a Hinted1 re-attempt that is the first
+  // attempt's own recording, already kept in `firstAttemptAudioUrl`. The
+  // stream stays open until the take is sent, redone or left (`stopCapture`).
   function handleStopRecording() {
     const recorder = recorderRef.current
     if (!recorder) return
-    recorder.onstop = () => {
+    flushRef.current = () => {
       const blob = new Blob(chunksRef.current, { type: recorder.mimeType })
-      setAudioUrl(URL.createObjectURL(blob))
-      streamRef.current?.getTracks().forEach((track) => track.stop())
-      streamRef.current = null
+      if (takeUrlRef.current) URL.revokeObjectURL(takeUrlRef.current)
+      takeUrlRef.current = URL.createObjectURL(blob)
+      setAudioUrl(takeUrlRef.current)
       setSubState(isRetry ? 'hinted2ReadyToSend' : 'readyToSend')
     }
-    recorder.stop()
+    recorder.pause()
+    recorder.requestData()
+  }
+
+  // Mia, 2026-09-21: "Resume" carries the same take on. Same `recording`
+  // screen as the first press, no new visual; stopping again replaces the
+  // snapshot with the longer take.
+  function handleResume() {
+    const recorder = recorderRef.current
+    if (!recorder || recorder.state !== 'paused') return
+    audioElRef.current?.pause()
+    setIsPlaying(false)
+    recorder.resume()
+    setSubState(isRetry ? 'hinted2Recording' : 'recording')
+  }
+
+  // Releases the recorder and the microphone once a take is finished with.
+  function stopCapture() {
+    const recorder = recorderRef.current
+    if (recorder && recorder.state !== 'inactive') recorder.stop()
+    streamRef.current?.getTracks().forEach((track) => track.stop())
+    recorderRef.current = null
+    streamRef.current = null
   }
 
   // SPEC.md: tap "Switch to voice" → `idle` (voice mode, same term).
   // Clears whatever was typed so far, since going back to `idle` re-offers
   // both entry points fresh rather than leaving a stale draft behind.
   function handleSwitchToVoice() {
+    setInputMode('voice')
     setTypedAnswer('')
     setSubState('idle')
   }
 
   // SPEC.md: tap "Submit" (on `typeInput`) → `typeProcessing`. No
   // minimum-length or content check, same as the voice path's own
-  // recording — the outcome is scripted by term position, not by what
-  // was actually typed.
+  // recording — the outcome is scripted, not read from what was typed.
   function handleSubmitTyped() {
     setSubState('typeProcessing')
+  }
+
+  function handleSubmitTypedRetry() {
+    setSubState('typeRetryProcessing')
   }
 
   function handleTogglePlayback() {
@@ -359,9 +426,8 @@ function SessionContent() {
     }
   }
 
-  // `resultHinted1Recalled` plays back the first attempt through its own
-  // separate hidden `<audio>` element, independent of the one above
-  // (which plays the second/current attempt).
+  // The first attempt plays back through its own hidden `<audio>` element,
+  // independent of the one above (which plays the second/current attempt).
   function handleToggleFirstAttemptPlayback() {
     const audioEl = firstAttemptAudioElRef.current
     if (!audioEl) return
@@ -372,54 +438,74 @@ function SessionContent() {
     }
   }
 
-  // SPEC.md: tap Redo → back to `idle` (re-record) — discards this
-  // take's audio rather than keeping it around for a re-attempt. Also
-  // discards a first attempt kept around by `handleRetry`, if any —
-  // Redo restarts the term from scratch, so a subsequent first-attempt
-  // recording shouldn't still resolve as a Hinted2 re-attempt.
-  function handleRedo() {
+  // Discards the term's captured audio and typed text so the next term (or a
+  // restart of this one) starts clean.
+  function resetAttempt() {
+    stopCapture()
     if (audioUrl) URL.revokeObjectURL(audioUrl)
     if (firstAttemptAudioUrl) URL.revokeObjectURL(firstAttemptAudioUrl)
     setAudioUrl(null)
     setFirstAttemptAudioUrl(null)
-    setIsPlaying(false)
-    setIsPlayingFirstAttempt(false)
-    setIsRetry(false)
-    setSubState('idle')
-  }
-
-  // SPEC.md: tap "Submit"/"Send" → `processing`. A re-attempt (after
-  // Hinted1's "Try again") goes to the real `Learning-result-Hinted1-
-  // processing` frame instead — same idea, but it keeps the first
-  // attempt's history on screen (node 13727:15363), confirmed as its
-  // own distinct live frame rather than assumed to reuse `processing`'s.
-  function handleSend() {
-    setSubState(isRetry ? 'hinted2Processing' : 'processing')
-  }
-
-  // SPEC.md: Recalled's and Hinted1-recalled's "Continue" → the next
-  // term's `idle` (the last term's would go to `/summary` instead — not
-  // reachable yet, since `TERMS` only has 2 real entries, guarded by
-  // `hasNextTerm`). Clears this term's captured audio so the next term
-  // starts clean.
-  function handleContinue() {
-    if (audioUrl) URL.revokeObjectURL(audioUrl)
-    if (firstAttemptAudioUrl) URL.revokeObjectURL(firstAttemptAudioUrl)
-    setAudioUrl(null)
-    setFirstAttemptAudioUrl(null)
+    setFirstAttemptText(null)
     setIsPlaying(false)
     setIsPlayingFirstAttempt(false)
     setIsRetry(false)
     setTypedAnswer('')
-    setTermIndex((i) => i + 1)
+  }
+
+  // SPEC.md: tap Redo → back to `idle` (re-record) — restarts the term from
+  // scratch, so a later first-attempt recording doesn't resolve as a re-attempt.
+  function handleRedo() {
+    resetAttempt()
     setSubState('idle')
+  }
+
+  // SPEC.md: tap "Send" → `processing`. A re-attempt (after Hinted1's "Try
+  // again") goes to `hinted2Processing` instead, which keeps the first
+  // attempt's history on screen.
+  function handleSend() {
+    stopCapture()
+    setSubState(isRetry ? 'hinted2Processing' : 'processing')
+  }
+
+  // Ends a run: the first run's Summary, or the review run's own (which
+  // reads "all recalled" only if every reviewed term really was).
+  function finishRun() {
+    finishFirstRun()
+    router.push(isReview ? '/summary?variant=review' : '/summary')
+  }
+
+  // SPEC.md: every result's "Continue" advances to the next term's `idle`;
+  // the last term's goes to Summary instead.
+  // The next term opens in the current input mode.
+  function handleContinue(mode: 'voice' | 'text' = inputMode) {
+    if (!hasNextTerm) {
+      finishRun()
+      return
+    }
+    resetAttempt()
+    setPos((p) => p + 1)
+    setSubState(mode === 'text' ? 'typeInput' : 'idle')
+  }
+
+  // Mia, 2026-09-21: top-right "Skip" is a Skipped term, live only before an
+  // attempt (`idle`, or the typing screen), in a review run too.
+  function handleSkip() {
+    if (isReview) recordReviewResult(termIndex, 'Skipped')
+    else recordResult(termIndex, 'Skipped')
+    handleContinue()
+  }
+
+  // Mia, 2026-09-21: "I don't know" is a Revealed term, from `idle` or from a
+  // Hinted result, in a review run too.
+  function handleDontKnow() {
+    setSubState('resultRevealed')
   }
 
   // Revokes on unmount only (e.g. navigating away mid-session via
   // Close) — reads through refs rather than depending on the state
   // values directly, since `audioUrl`/`firstAttemptAudioUrl` both need
-  // to survive being reassigned while the other one stays alive (see
-  // `handleStopRecording`'s own comment above).
+  // to survive being reassigned while the other one stays alive.
   const audioUrlRef = useRef<string | null>(null)
   const firstAttemptAudioUrlRef = useRef<string | null>(null)
   useEffect(() => {
@@ -432,66 +518,43 @@ function SessionContent() {
     return () => {
       if (audioUrlRef.current) URL.revokeObjectURL(audioUrlRef.current)
       if (firstAttemptAudioUrlRef.current) URL.revokeObjectURL(firstAttemptAudioUrlRef.current)
+      const recorder = recorderRef.current
+      if (recorder && recorder.state !== 'inactive') recorder.stop()
+      streamRef.current?.getTracks().forEach((track) => track.stop())
     }
   }, [])
 
-  // SPEC.md's real ~2-3s auto-advance timer, branching by which
-  // processing screen this is. `processing` only ever means a first
-  // attempt now (`handleSend` routes retries to `hinted2Processing`
-  // instead), so it resolves by this term's scripted outcome alone.
-  // `hinted2Processing` always resolves to `resultHinted1Recalled`,
-  // scripted to always succeed per SPEC.md.
-  //
-  // Term 4's canned path is the cold "I don't know" tap on its own
-  // `idle` (`Learning-skipped`, below), never through `recording` at
-  // all — but the mic button there is still mechanically live, so an
-  // actual attempt has to resolve to *something*. No distinct
-  // post-attempt result frame exists for term 4 in Figma (unlike
-  // Recalled/Hinted1/Revealed) — its own connectors go straight
-  // `Learning-skipped -> Summary` with nothing in between — so an
-  // attempted `Skipped` outcome routes there too, the same terminal
-  // destination as the cold tap, rather than inventing a result screen
-  // Figma doesn't have.
+  // SPEC.md's real ~2-3s auto-advance timer, branching by which processing
+  // screen this is and by the term's outcome. `processing`/`typeProcessing`
+  // are first attempts; the retry versions always succeed, per SPEC.md.
   useEffect(() => {
-    if (subState === 'processing') {
-      if (isReview) {
-        const unaided = (['topic2ResultUnaided', 'topic3ResultUnaided', 'topic4ResultUnaided'] as const)[termIndex - 1]
-        const timer = setTimeout(() => setSubState(unaided), 1500)
-        return () => clearTimeout(timer)
-      }
-      if (term.outcome === 'Skipped') {
-        const timer = setTimeout(() => router.push('/summary'), 1500)
-        return () => clearTimeout(timer)
-      }
-      const nextSubState = term.outcome === 'Hinted' ? 'resultHinted1' : term.outcome === 'Revealed' ? 'resultRevealed' : 'resultRecalled'
-      const timer = setTimeout(() => setSubState(nextSubState), 1500)
-      return () => clearTimeout(timer)
+    const next: Partial<Record<SubState, SubState>> = {
+      processing: outcome === 'Hinted' ? 'resultHinted1' : outcome === 'Revealed' ? 'resultRevealed' : 'resultRecalled',
+      hinted2Processing: 'resultHinted1Recalled',
+      typeProcessing: outcome === 'Hinted' ? 'typeResultHinted' : outcome === 'Revealed' ? 'typeResultRevealed' : 'typeResultRecalled',
+      typeRetryProcessing: 'typeResultHinted1Recalled',
     }
-    if (subState === 'hinted2Processing') {
-      const timer = setTimeout(() => setSubState('resultHinted1Recalled'), 1500)
-      return () => clearTimeout(timer)
-    }
-    // Text path's own wait state. Only `term.outcome === 'Recalled'` has
-    // a built `typeResult` destination so far (`typeResultRecalled`) —
-    // the Hinted/Revealed/Skipped equivalents aren't built yet, so this
-    // intentionally no-ops (stays on `typeProcessing` indefinitely) for
-    // those, same "don't advance into a screen that doesn't exist"
-    // treatment as every other not-yet-built destination in this file.
-    if (subState === 'typeProcessing' && term.outcome === 'Recalled') {
-      const timer = setTimeout(() => setSubState('typeResultRecalled'), 1500)
-      return () => clearTimeout(timer)
-    }
-  }, [subState, term.outcome, router, isReview, termIndex])
+    const target = next[subState]
+    if (!target) return
+    const timer = setTimeout(() => setSubState(target), 1500)
+    return () => clearTimeout(timer)
+  }, [subState, outcome])
 
-  // Shared between `hinted2Processing` and `resultHinted1Recalled` —
-  // both live frames (13727:15363, 13673:13893 — corrected 2026-09-17,
-  // per Mia, from this doc's earlier 13713:14750, the separate hidden
-  // two-hint `Learning-result-Hinted2-succeed`) show the identical
-  // history stack (prompt, first attempt's `AudioScrubber`, the Hint 1
-  // header collapsed to plain text, second attempt's `AudioScrubber`)
-  // before diverging on the final row (thinking+Loading vs. the full
-  // mascot+Success bubble) and bottom content (Processing vs. Continue).
-  const hintedHistory = (
+  // One row of a term's history: a recording plays back, typed text echoes as
+  // the `Input` bubble `typeResultRecalled` already uses.
+  const firstAttemptRow =
+    firstAttemptText !== null ? (
+      <SpeechBubble state="Input" message={firstAttemptText} className="w-full" />
+    ) : (
+      <AudioScrubber state={isPlayingFirstAttempt ? 'Playing' : 'Default'} onClick={handleToggleFirstAttemptPlayback} />
+    )
+
+  // The history stack shared by every Hinted retry screen (`hinted2Processing`,
+  // `resultHinted1Recalled`, and their typed twins): the prompt, the first
+  // attempt, the Hint 1 header collapsed to plain text, and — once the second
+  // attempt exists — that attempt's row. Live frames 13727:15363 and
+  // 13673:13893 for the voice version.
+  const hintedHistoryTop = (isTextRetry: boolean) => (
     <>
       <p
         className="w-full"
@@ -505,10 +568,10 @@ function SessionContent() {
           color: 'var(--semantic-color-text-primary)',
         }}
       >
-        {term.prompt}
+        {isTextRetry ? textPrompt : term.prompt}
       </p>
 
-      <AudioScrubber data-hotspot state={isPlayingFirstAttempt ? 'Playing' : 'Default'} onClick={handleToggleFirstAttemptPlayback} />
+      {firstAttemptRow}
 
       <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-100)' }}>
         <div className="flex w-full flex-col items-start" style={{ gap: 2 }}>
@@ -549,16 +612,44 @@ function SessionContent() {
           No worries. Think about the very first step, before you start narrowing down to your favourite idea.
         </p>
       </div>
-
-      <AudioScrubber data-hotspot state={isPlaying ? 'Playing' : 'Default'} onClick={handleTogglePlayback} />
     </>
   )
 
-  // `Learning-result-Hinted1` (node 13622:17189) and
+  const secondAttemptRow = (isTextRetry: boolean) =>
+    isTextRetry ? (
+      <SpeechBubble state="Input" message={typedAnswer} className="w-full" />
+    ) : (
+      <AudioScrubber state={isPlaying ? 'Playing' : 'Default'} onClick={handleTogglePlayback} />
+    )
+
+  // `Learning-topic 2-result-Hinted1-processing` and `-recalled` (and the
+  // typed twins) only diverge on the final row: bare `thinking` pose +
+  // `SpeechBubble state="Loading"` while processing, vs. the full `MascotSlot`
+  // + `SpeechBubble state="Success"` once resolved. `subtitle="Hint 1 of 2"`
+  // — this term only ever needs one hint. Terminal — single "Continue".
+  const hintedRetryResult = (isTextRetry: boolean, isProcessing: boolean) => (
+    <div className="flex w-full flex-col items-end" style={{ gap: 'var(--size-space-400)' }}>
+      {hintedHistoryTop(isTextRetry)}
+      {secondAttemptRow(isTextRetry)}
+
+      {isProcessing ? (
+        <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
+          <Image src="/images/thinking.svg" alt="" width={70} height={70} style={{ flexShrink: 0 }} />
+          <SpeechBubble state="Loading" className="flex-1" />
+        </div>
+      ) : (
+        <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
+          <MascotSlot size="XL" pose="approving" />
+          <SpeechBubble state="Success" title="Nice!" subtitle="Hint 1 of 2" message={term.recalledMessage} className="flex-1" />
+        </div>
+      )}
+    </div>
+  )
+
+  // `Learning-topic 2-result-Hinted1` (node 13622:17189) and
   // `Learning-topic 2-result-Hinted1-recording` (node 13728:15704) share this
-  // identical row — the full mascot + `SpeechBubble state="Warning"`,
-  // not the collapsed-to-plain-text treatment `hintedHistory` above
-  // uses once a second attempt has actually started.
+  // identical row — the full mascot + `SpeechBubble state="Warning"`, not the
+  // collapsed-to-plain-text treatment the retry history uses.
   const hintedWarningRow = (
     <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
       <MascotSlot size="XL" pose="approving" />
@@ -570,6 +661,74 @@ function SessionContent() {
         className="flex-1"
       />
     </div>
+  )
+
+  // The typing surface `typeInput` and `typeRetryInput` share: `TextField`
+  // chrome with a native `<input>` layered over its own field box (same
+  // background/border/radius/type scale, so it reads as one continuous pill)
+  // to actually capture keystrokes. `showCaption={false}` because the live
+  // caption binds `text/tertiary`, not the `text/secondary` `TextField`'s own
+  // caption slot always uses — hand-built as its own paragraph instead.
+  const typeField = (
+    <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-050)' }}>
+      <div className="relative w-full">
+        <TextField variant="Placeholder" showTitle={false} showCaption={false} showLeadingIcon={false} placeholder="Type a short answer..." />
+        <input
+          type="text"
+          value={typedAnswer}
+          onChange={(event) => setTypedAnswer(event.target.value)}
+          placeholder="Type a short answer..."
+          aria-label="Type a short answer"
+          className="absolute inset-0 w-full placeholder:text-(--semantic-color-text-secondary)"
+          style={{
+            boxSizing: 'border-box',
+            padding: 'var(--size-space-300)',
+            borderRadius: 'var(--size-radius-400)',
+            background: 'var(--semantic-color-background-input)',
+            border: '1px solid var(--semantic-color-border-default)',
+            outline: 'none',
+            fontFamily: "'Inter Variable', sans-serif",
+            fontWeight: 'var(--type-scale-headline-xxs-bold-font-weight)' as unknown as number,
+            fontSize: 14,
+            lineHeight: 'var(--type-scale-headline-xxs-bold-line-height)',
+            letterSpacing: 'var(--type-scale-headline-xxs-bold-letter-spacing)',
+            color: 'var(--semantic-color-text-primary)',
+          }}
+        />
+      </div>
+      <p
+        className="w-full"
+        style={{
+          margin: 0,
+          fontFamily: 'var(--type-scale-caption-m-regular-font-family)',
+          fontWeight: 'var(--type-scale-caption-m-regular-font-weight)',
+          fontSize: 'var(--type-scale-caption-m-regular-font-size)',
+          lineHeight: 'var(--type-scale-caption-m-regular-line-height)',
+          letterSpacing: 'var(--type-scale-caption-m-regular-letter-spacing)',
+          color: 'var(--semantic-color-text-tertiary)',
+        }}
+      >
+        A couple of sentences is enough, you don&apos;t need to retype the full explanation.
+      </p>
+    </div>
+  )
+
+  // The plain-text prompt every result-shaped frame drops to.
+  const promptText = (text: string) => (
+    <p
+      className="w-full"
+      style={{
+        margin: 0,
+        fontFamily: 'var(--type-scale-headline-xs-regular-font-family)',
+        fontWeight: 'var(--type-scale-headline-xs-regular-font-weight)',
+        fontSize: 'var(--type-scale-headline-xs-regular-font-size)',
+        lineHeight: 'var(--type-scale-headline-xs-regular-line-height)',
+        letterSpacing: 'var(--type-scale-headline-xs-regular-letter-spacing)',
+        color: 'var(--semantic-color-text-primary)',
+      }}
+    >
+      {text}
+    </p>
   )
 
   return (
@@ -603,120 +762,77 @@ function SessionContent() {
           />
         )}
 
-        <div data-hotspot-within style={{ display: 'contents' }}>
-          <AppBar variant="leftIconButtonOnly" leftIcon={CLOSE_ICON} leftLabel="Close" onLeftClick={() => router.push('/')}>
-            <div className="flex h-full w-full items-center" style={{ gap: 'var(--size-space-200)', padding: '10px 0' }}>
-              <div className="flex-1">
-                {/* Caps at 75%, not 100%, once on term 4 — confirmed by
-                    comparing the live fill fractions across screens rather
-                    than assuming a straight `(termIndex+1)*25`: Learning-idle
-                    (term 1) is 25%, Learning-result-Hinted1 (term 2) is 50%,
-                    Learning-result-Revealed (term 3) is 75%, and
-                    Learning-skipped (term 4's own idle) is *also* 75%, not
-                    100% — matching design-system.md's own note that 100 has
-                    no real example anywhere; that value is reserved for
-                    Summary once the whole session is actually done.
-                    `topic4ResultUnaided` is the one confirmed exception: its
-                    own live frame (node 13737:17501) really does show a
-                    full 100% bar, not 75% — this alternate "everything
-                    recalled" demo path treats reaching term 4's unaided
-                    result as the session's own real end point (it feeds
-                    Summary-all recalled next), unlike the main script's
-                    term 4, which still caps at 75%. Reproduced as its own
-                    real value, not forced to match the main script's
-                    formula. */}
-                <ProgressIndicator
-                  variant="Primary"
-                  thickness="16"
-                  progress={
-                    (subState === 'topic4ResultUnaided' ? '100' : String(Math.min(termIndex + 1, 3) * 25)) as ProgressIndicatorProgress
-                  }
-                  label="Topic progress"
-                />
-              </div>
-              <div
-                className="inline-flex shrink-0 items-center"
-                style={{ gap: 'var(--size-space-100)', padding: '0 var(--size-space-100)' }}
-              >
-                <span style={{ width: 17.934, height: 22, display: 'inline-flex' }}>
-                  <LightningIcon />
-                </span>
-                <span
-                  style={{
-                    fontFamily: 'var(--type-scale-headline-xs-bold-font-family)',
-                    fontWeight: 'var(--type-scale-headline-xs-bold-font-weight)',
-                    fontSize: 'var(--type-scale-headline-xs-bold-font-size)',
-                    lineHeight: 'var(--type-scale-headline-xs-bold-line-height)',
-                    letterSpacing: 'var(--type-scale-headline-xs-bold-letter-spacing)',
-                    color: 'var(--semantic-color-accent-blue-on-subtle)',
-                  }}
-                >
-                  {xpGoal}
-                </span>
-              </div>
+        <AppBar variant="leftIconButtonOnly" leftIcon={CLOSE_ICON} leftLabel="Close" onLeftClick={() => router.push('/')}>
+          <div className="flex h-full w-full items-center" style={{ gap: 'var(--size-space-200)', padding: '10px 0' }}>
+            <div className="flex-1">
+              {/* Caps at 75%, not 100%, once on term 4 — confirmed by
+                  comparing the live fill fractions across screens rather
+                  than assuming a straight `(termIndex+1)*25`: term 1 is 25%,
+                  term 2 50%, term 3 75%, and term 4 is *also* 75%, since
+                  100 is reserved for the end of a run. The one exception
+                  is a review run's last result (live frame `Learning-topic
+                  4-result-unaided`, node 13737:17501), which shows a full
+                  100% bar — that run ends on Summary-all recalled. */}
+              <ProgressIndicator
+                variant="Primary"
+                thickness="16"
+                progress={(isFinalReviewResult ? '100' : String(Math.min(termIndex + 1, 3) * 25)) as ProgressIndicatorProgress}
+                label="Topic progress"
+              />
             </div>
-          </AppBar>
+            <div
+              className="inline-flex shrink-0 items-center"
+              style={{ gap: 'var(--size-space-100)', padding: '0 var(--size-space-100)' }}
+            >
+              <span style={{ width: 17.934, height: 22, display: 'inline-flex' }}>
+                <LightningIcon />
+              </span>
+              <span
+                style={{
+                  fontFamily: 'var(--type-scale-headline-xs-bold-font-family)',
+                  fontWeight: 'var(--type-scale-headline-xs-bold-font-weight)',
+                  fontSize: 'var(--type-scale-headline-xs-bold-font-size)',
+                  lineHeight: 'var(--type-scale-headline-xs-bold-line-height)',
+                  letterSpacing: 'var(--type-scale-headline-xs-bold-letter-spacing)',
+                  color: 'var(--semantic-color-accent-blue-on-subtle)',
+                }}
+              >
+                {xpGoal}
+              </span>
+            </div>
+          </div>
+        </AppBar>
+
+        {/* Mia, 2026-09-21: the status bar, appBar, `Steps` row and the bottom
+            content stay put and only the middle scrolls, so a long history
+            never pushes the buttons out of the 390 x 844 frame. `Steps` is 48px
+            tall and sits flush under the appBar; the content below starts
+            16px under it on every frame, 24px on Learning-topic 1-result
+            (synced 2026-09-19). */}
+        {/* `Steps` (Figma node 13764:16058): "Topics N of M" + Skip. Skip is
+            live only before an attempt, on `idle` and `typeInput` (Mia,
+            2026-09-21); everywhere else it is in Button's Disabled state. */}
+        <div className="w-full shrink-0" style={{ padding: '0 var(--size-space-400)' }}>
+          <Steps
+            current={pos + 1}
+            total={runTermCount}
+            onSkip={isBeforeAttempt ? handleSkip : undefined}
+            skipDisabled={!isBeforeAttempt}
+          />
         </div>
 
-        {/* Steps is 48px tall and sits flush under the appBar; the content
-            below starts 16px under it on every frame, 24px on
-            Learning-topic 1-result (synced 2026-09-19 — before Steps the
-            row was 16px tall, 8px under the appBar, with 24px below it). */}
-        <main className="flex flex-1 flex-col items-center" style={{ padding: '0 var(--size-space-400)' }}>
-          <div
-            className="flex w-full flex-col items-center"
-            style={{ gap: subState === 'resultRecalled' ? 'var(--size-space-600)' : 'var(--size-space-400)' }}
-          >
-            {/* `Steps` (Figma node 13764:16058): "Topics N of 4" + Skip. Skip
-                is the tappable skip on term 4's idle (straight to
-                `/summary`, corrected 2026-09-18, per Mia); terms 1-3 show it
-                to match the frame but leave it inert. */}
-            <Steps
-              current={isReview ? termIndex : termIndex + 1}
-              total={runTermCount}
-              onSkip={subState === 'idle' && !hasNextTerm && !isReview ? () => router.push('/summary') : undefined}
-              skipHotspot={subState === 'idle' && !hasNextTerm && !isReview}
-            />
-
+        <main
+          ref={scrollRef}
+          className="flex min-h-0 flex-1 flex-col items-center overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          style={{
+            padding: `${subState === 'resultRecalled' ? 'var(--size-space-600)' : 'var(--size-space-400)'} var(--size-space-400) var(--size-space-400)`,
+          }}
+        >
+          <div className="flex w-full flex-col items-center">
             {subState === 'hinted2Processing' || subState === 'resultHinted1Recalled' ? (
-              // `Learning-topic 2-result-Hinted1-processing` (node
-              // 13727:15363) and `Learning-topic 2-result-Hinted1-recalled`
-              // (node 13673:13893 — corrected 2026-09-17, per Mia: this is
-              // the real name/identity of the frame this doc and
-              // component-gaps.md previously misattributed to
-              // `Learning-result-Hinted2-succeed`, node 13713:14750, a
-              // separate two-hint success flow that's now hidden in Figma
-              // and out of scope, confirmed by Mia) share the identical
-              // history stack above — see `hintedHistory` above — and only
-              // diverge on the final row: bare `thinking` pose +
-              // `SpeechBubble state="Loading"` while processing (matching
-              // `processing`'s own bare-thinking treatment), vs. the full
-              // `MascotSlot` + `SpeechBubble state="Success"` once
-              // resolved. `subtitle="Hint 1 of 2"` (not "2 of 2" as this
-              // screen previously read) — this term only ever needed one
-              // hint before succeeding. Terminal — single "Continue," no
-              // further retry.
-              <div className="flex w-full flex-col items-end" style={{ gap: 'var(--size-space-400)' }}>
-                {hintedHistory}
-
-                {subState === 'hinted2Processing' ? (
-                  <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
-                    <Image src="/images/thinking.svg" alt="" width={70} height={70} style={{ flexShrink: 0 }} />
-                    <SpeechBubble state="Loading" className="flex-1" />
-                  </div>
-                ) : (
-                  <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
-                    <MascotSlot size="XL" pose="approving" />
-                    <SpeechBubble
-                      state="Success"
-                      title="Nice!"
-                      subtitle="Hint 1 of 2"
-                      message="Divergent thinking is generating as many different ideas as possible before narrowing down to one."
-                      className="flex-1"
-                    />
-                  </div>
-                )}
-              </div>
+              hintedRetryResult(false, subState === 'hinted2Processing')
+            ) : subState === 'typeRetryProcessing' || subState === 'typeResultHinted1Recalled' ? (
+              hintedRetryResult(true, subState === 'typeRetryProcessing')
             ) : subState === 'processing' ||
               subState === 'resultRecalled' ||
               subState === 'resultHinted1' ||
@@ -762,11 +878,9 @@ function SessionContent() {
                   // the wrong clip — confirmed from the live frame,
                   // which has its own separate second `AudioScrubber`
                   // for that one, down in `bottomContent` below.
-                  <AudioScrubber
-                    data-hotspot
-                    state={isPlayingFirstAttempt ? 'Playing' : 'Default'}
-                    onClick={handleToggleFirstAttemptPlayback}
-                  />
+                  // A typed first attempt shows as the `Input` bubble instead
+                  // (`firstAttemptRow`).
+                  firstAttemptRow
                 ) : subState === 'resultRevealed' ? (
                   // `Learning-result-Revealed`'s own live frame (node
                   // 13669:17091) has no `AudioScrubber` at all — term 3's
@@ -775,7 +889,7 @@ function SessionContent() {
                   // in.
                   null
                 ) : (
-                  <AudioScrubber data-hotspot state={isPlaying ? 'Playing' : 'Default'} onClick={handleTogglePlayback} />
+                  <AudioScrubber state={isPlaying ? 'Playing' : 'Default'} onClick={handleTogglePlayback} />
                 )}
 
                 {subState === 'processing' ? (
@@ -807,7 +921,7 @@ function SessionContent() {
                       state="Success"
                       title="Nice!"
                       subtitle="Unaided"
-                      message="You said: 'It’s the spark that makes you want to create something'"
+                      message={term.recalledMessage}
                       className="flex-1"
                     />
                   </div>
@@ -825,7 +939,7 @@ function SessionContent() {
                       state="Error"
                       title="Here’s the answer."
                       subtitle="Revealed"
-                      message="Visual hierarchy arranges elements to guide attention and show what matters most."
+                      message={term.revealMessage}
                       className="flex-1"
                     />
                   </div>
@@ -863,48 +977,7 @@ function SessionContent() {
                   <SpeechBubble state="Prompt" message={textPrompt} className="flex-1" />
                 </div>
 
-                <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-050)' }}>
-                  <div className="relative w-full">
-                    <TextField variant="Placeholder" showTitle={false} showCaption={false} showLeadingIcon={false} placeholder="Type a short answer..." />
-                    <input
-                      data-hotspot
-                      type="text"
-                      value={typedAnswer}
-                      onChange={(event) => setTypedAnswer(event.target.value)}
-                      placeholder="Type a short answer..."
-                      aria-label="Type a short answer"
-                      className="absolute inset-0 w-full placeholder:text-(--semantic-color-text-secondary)"
-                      style={{
-                        boxSizing: 'border-box',
-                        padding: 'var(--size-space-300)',
-                        borderRadius: 'var(--size-radius-400)',
-                        background: 'var(--semantic-color-background-input)',
-                        border: '1px solid var(--semantic-color-border-default)',
-                        outline: 'none',
-                        fontFamily: "'Inter Variable', sans-serif",
-                        fontWeight: 'var(--type-scale-headline-xxs-bold-font-weight)' as unknown as number,
-                        fontSize: 14,
-                        lineHeight: 'var(--type-scale-headline-xxs-bold-line-height)',
-                        letterSpacing: 'var(--type-scale-headline-xxs-bold-letter-spacing)',
-                        color: 'var(--semantic-color-text-primary)',
-                      }}
-                    />
-                  </div>
-                  <p
-                    className="w-full"
-                    style={{
-                      margin: 0,
-                      fontFamily: 'var(--type-scale-caption-m-regular-font-family)',
-                      fontWeight: 'var(--type-scale-caption-m-regular-font-weight)',
-                      fontSize: 'var(--type-scale-caption-m-regular-font-size)',
-                      lineHeight: 'var(--type-scale-caption-m-regular-line-height)',
-                      letterSpacing: 'var(--type-scale-caption-m-regular-letter-spacing)',
-                      color: 'var(--semantic-color-text-tertiary)',
-                    }}
-                  >
-                    A couple of sentences is enough, you don&apos;t need to retype the full explanation.
-                  </p>
-                </div>
+                {typeField}
               </div>
             ) : subState === 'typeProcessing' ? (
               // `Learning-topic 1-typeProcessing` (node 13673:13599).
@@ -1055,134 +1128,34 @@ function SessionContent() {
                     state="Success"
                     title="Nice!"
                     subtitle="Unaided"
-                    message="You said: 'It’s the spark that makes you want to create something'"
+                    message={term.recalledMessage}
                     className="flex-1"
                   />
                 </div>
               </div>
-            ) : subState === 'topic2ResultUnaided' ? (
-              // `Learning-topic 2-result-unaided` (node 13737:17173).
-              // Deliberately unreachable — see the `SubState` type's own
-              // doc comment above and component-gaps.md for why. Same
-              // real shape as the voice path's own `resultRecalled`
-              // (plain-text prompt, `AudioScrubber` `state="Default"`,
-              // mascot + `SpeechBubble state="Success"`), just for term 2
-              // instead of term 1 — `term.prompt`/the message below both
-              // already read "Divergent thinking" once `termIndex` is 1,
-              // so no term-2-specific literals were needed beyond the
-              // message text itself. This frame's own `middleContent`
-              // gap is a real 24px (`--size-space-600`), not the 16px
-              // (`--size-space-400`) every other result-shaped branch
-              // above uses — reproduced as the live value, not
-              // normalized to match its siblings.
-              <div className="flex w-full flex-col items-end" style={{ gap: 'var(--size-space-600)' }}>
-                <p
-                  className="w-full"
-                  style={{
-                    margin: 0,
-                    fontFamily: 'var(--type-scale-headline-xs-regular-font-family)',
-                    fontWeight: 'var(--type-scale-headline-xs-regular-font-weight)',
-                    fontSize: 'var(--type-scale-headline-xs-regular-font-size)',
-                    lineHeight: 'var(--type-scale-headline-xs-regular-line-height)',
-                    letterSpacing: 'var(--type-scale-headline-xs-regular-letter-spacing)',
-                    color: 'var(--semantic-color-text-primary)',
-                  }}
-                >
-                  {term.prompt}
-                </p>
-
-                <AudioScrubber state="Default" />
-
-                <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
-                  <MascotSlot size="XL" pose="approving" />
-                  <SpeechBubble
-                    state="Success"
-                    title="Nice!"
-                    subtitle="Unaided"
-                    message="Divergent thinking is generating as many different ideas as possible before narrowing down to one."
-                    className="flex-1"
-                  />
-                </div>
+            ) : subState === 'typeResultHinted' ? (
+              // Mia, 2026-09-21: no Figma frame. `Learning-topic 2-result-Hinted1`
+              // with the typed answer in place of the scrubber — see
+              // the voice screen's layout.
+              <div className="flex w-full flex-col items-end" style={{ gap: 'var(--size-space-400)' }}>
+                {promptText(textPrompt)}
+                <SpeechBubble state="Input" message={typedAnswer} className="w-full" />
+                {hintedWarningRow}
               </div>
-            ) : subState === 'topic3ResultUnaided' ? (
-              // `Learning-topic 3-result-unaided` (node 13737:17370).
-              // Deliberately unreachable, same reasoning as
-              // `topic2ResultUnaided` immediately above — see the
-              // `SubState` type's own doc comment and component-gaps.md.
-              // Identical shape: plain-text prompt, `AudioScrubber`
-              // `state="Default"`, mascot + `SpeechBubble
-              // state="Success"`, just for term 3 — `term.prompt`/the
-              // message below both read "Visual hierarchy" once
-              // `termIndex` is 2. Same real 24px (`--size-space-600`)
-              // middleContent gap as its sibling, confirmed independently
-              // on this frame rather than assumed to carry over.
-              <div className="flex w-full flex-col items-end" style={{ gap: 'var(--size-space-600)' }}>
-                <p
-                  className="w-full"
-                  style={{
-                    margin: 0,
-                    fontFamily: 'var(--type-scale-headline-xs-regular-font-family)',
-                    fontWeight: 'var(--type-scale-headline-xs-regular-font-weight)',
-                    fontSize: 'var(--type-scale-headline-xs-regular-font-size)',
-                    lineHeight: 'var(--type-scale-headline-xs-regular-line-height)',
-                    letterSpacing: 'var(--type-scale-headline-xs-regular-letter-spacing)',
-                    color: 'var(--semantic-color-text-primary)',
-                  }}
-                >
-                  {term.prompt}
-                </p>
-
-                <AudioScrubber state="Default" />
-
-                <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
-                  <MascotSlot size="XL" pose="approving" />
-                  <SpeechBubble
-                    state="Success"
-                    title="Nice!"
-                    subtitle="Unaided"
-                    message="Visual hierarchy arranges elements to guide attention and show what matters most."
-                    className="flex-1"
-                  />
-                </div>
+            ) : subState === 'typeRetryInput' ? (
+              // The hint retry by typing (preview frames 2 and 5): history, then the field.
+              <div className="flex w-full flex-col items-end" style={{ gap: 'var(--size-space-400)' }}>
+                {hintedHistoryTop(true)}
+                {typeField}
               </div>
-            ) : subState === 'topic4ResultUnaided' ? (
-              // `Learning-topic 4-result-unaided` (node 13737:17501).
-              // Deliberately unreachable, same reasoning as
-              // `topic2ResultUnaided`/`topic3ResultUnaided` above — see
-              // the `SubState` type's own doc comment and
-              // component-gaps.md. Identical shape, just for term 4 —
-              // `term.prompt`/the message below both read "Visual
-              // research" once `termIndex` is 3. Same real 24px
-              // (`--size-space-600`) middleContent gap as its siblings,
-              // confirmed independently on this frame rather than
-              // assumed to carry over.
-              <div className="flex w-full flex-col items-end" style={{ gap: 'var(--size-space-600)' }}>
-                <p
-                  className="w-full"
-                  style={{
-                    margin: 0,
-                    fontFamily: 'var(--type-scale-headline-xs-regular-font-family)',
-                    fontWeight: 'var(--type-scale-headline-xs-regular-font-weight)',
-                    fontSize: 'var(--type-scale-headline-xs-regular-font-size)',
-                    lineHeight: 'var(--type-scale-headline-xs-regular-line-height)',
-                    letterSpacing: 'var(--type-scale-headline-xs-regular-letter-spacing)',
-                    color: 'var(--semantic-color-text-primary)',
-                  }}
-                >
-                  {term.prompt}
-                </p>
-
-                <AudioScrubber state="Default" />
-
+            ) : subState === 'typeResultRevealed' ? (
+              // `Learning-topic 3-result-Revealed` plus the typed answer (preview frame 6).
+              <div className="flex w-full flex-col items-end" style={{ gap: 'var(--size-space-400)' }}>
+                {promptText(textPrompt)}
+                <SpeechBubble state="Input" message={typedAnswer} className="w-full" />
                 <div className="flex w-full items-center" style={{ gap: 'var(--size-space-200)' }}>
                   <MascotSlot size="XL" pose="approving" />
-                  <SpeechBubble
-                    state="Success"
-                    title="Nice!"
-                    subtitle="Unaided"
-                    message="Visual research is the use of images and other visual media to collect, analyze, and present research data."
-                    className="flex-1"
-                  />
+                  <SpeechBubble state="Error" title="Here’s the answer." subtitle="Revealed" message={term.revealMessage} className="flex-1" />
                 </div>
               </div>
             ) : (
@@ -1207,52 +1180,36 @@ function SessionContent() {
           <div className="pointer-events-none absolute inset-0" style={{ background: 'var(--semantic-color-background-scrim)' }} />
         )}
 
-        <div className="relative flex w-full flex-col items-center" style={{ gap: 'var(--size-space-400)', padding: 'var(--size-space-700)' }}>
+        <div className="relative flex w-full shrink-0 flex-col items-center" style={{ gap: 'var(--size-space-400)', padding: 'var(--size-space-700)' }}>
           {subState === 'idle' && (
             <>
-              {/* Corrected 2026-09-17, per Mia: on terms 3-4 (Revealed/
-                  Skipped), this screen's own scripted path is the cold
-                  "I don't know" tap alone — Mic and "Type instead"
-                  shouldn't actually be tappable here, even though they're
-                  still shown (matching the live frame's own visual,
-                  which carries no Disabled styling on either). Previously
-                  both were left live on every term, reasoning that "an
-                  actual attempt still resolves correctly via processing's
-                  own outcome branch" — technically true, but not what
-                  Mia wants: terms 1-2 (Recalled/Hinted) still need a real
-                  attempt, but 3-4 are cold-skip only. */}
-              <MicButton data-hotspot={canAttempt || undefined} data-hotspot-pad="200" state="Idle" showLabel onClick={canAttempt ? handleMicTap : undefined} />
+              {/* Mia, 2026-09-21: every term can be answered by voice or by
+                  typing, and "I don't know" (a Revealed term) works on any
+                  term of a first run. A review run is always correct, so its
+                  "I don't know" stays inert. */}
+              <MicButton state="Idle" showLabel onClick={handleMicTap} />
               <div className="flex items-start" style={{ gap: 'var(--size-space-600)' }}>
                 <Button
                   variant="Tertiary"
                   size="S"
                   cta="Type instead"
-                  data-hotspot={canType || undefined}
-                  onClick={canType ? () => setSubState('typeInput') : undefined}
+                  onClick={() => {
+                    setInputMode('text')
+                    setSubState('typeInput')
+                  }}
                 />
-                {/* SPEC.md (2026-09-16 Figma pass): `Learning-topic 3-I don't
-                    know` is a real, distinct connector — term 3 no longer
-                    requires a full attempt before Revealed; its cold "I
-                    don't know" tap goes straight to `Learning-topic
-                    3-result-Revealed`, matching term 4's `Learning-topic
-                    4-skipped` shape exactly (visually identical `idle`
-                    content, just named for its scripted outcome). Terms
-                    1-2's cold-skip stays unwired: no real destination
-                    exists for giving up on Recalled/Hinted before ever
-                    attempting. */}
                 <Button
                   variant="Tertiary"
                   size="S"
                   cta="I don’t know"
-                  data-hotspot={(!isReview && term.outcome === 'Revealed') || undefined}
-                  onClick={!isReview && term.outcome === 'Revealed' ? () => setSubState('resultRevealed') : undefined}
+                  onClick={handleDontKnow}
                 />
               </div>
             </>
           )}
 
           {(subState === 'recording' || subState === 'hinted2Recording') && (
-            <MicButton data-hotspot data-hotspot-pad="200" state="Recording" onClick={handleStopRecording} />
+            <MicButton state="Recording" onClick={handleStopRecording} />
           )}
 
           {(subState === 'readyToSend' || subState === 'hinted2ReadyToSend') && (
@@ -1265,7 +1222,7 @@ function SessionContent() {
             // assumed — its only real difference from the generic screen
             // is the extra history kept in `middleContent` above.
             <>
-              <AudioScrubber data-hotspot state={isPlaying ? 'Playing' : 'Default'} onClick={handleTogglePlayback} />
+              <AudioScrubber state={isPlaying ? 'Playing' : 'Default'} onClick={handleTogglePlayback} />
               <StatusIndicator status="Ready" />
               <div className="flex items-start" style={{ gap: 'var(--size-space-400)' }}>
                 <div className="flex flex-col items-center" style={{ gap: 'var(--size-space-400)' }}>
@@ -1280,7 +1237,6 @@ function SessionContent() {
                   <button
                     type="button"
                     aria-label="Redo"
-                    data-hotspot
                     onClick={handleRedo}
                     className="relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full"
                     style={{ width: 56, height: 56, background: 'var(--semantic-color-feedback-error-on-bold)' }}
@@ -1309,7 +1265,7 @@ function SessionContent() {
                 </div>
 
                 <div className="flex flex-col items-center" style={{ gap: 'var(--size-space-400)' }}>
-                  <ButtonIcon data-hotspot variant="Primary" size="L" icon={<CheckIcon />} label="Send" onClick={handleSend} />
+                  <ButtonIcon variant="Primary" size="L" icon={<CheckIcon />} label="Send" onClick={handleSend} />
                   <span
                     style={{
                       fontFamily: 'var(--type-scale-headline-xxs-bold-font-family)',
@@ -1325,7 +1281,7 @@ function SessionContent() {
                 </div>
 
                 <div className="flex flex-col items-center" style={{ gap: 'var(--size-space-400)' }}>
-                  <ButtonIcon variant="Secondary" size="L" icon={<PlayPauseIcon />} label="Resume" />
+                  <ButtonIcon variant="Secondary" size="L" icon={<PlayPauseIcon />} label="Resume" onClick={handleResume} />
                   <span
                     style={{
                       fontFamily: 'var(--type-scale-headline-xxs-bold-font-family)',
@@ -1347,97 +1303,78 @@ function SessionContent() {
 
           {subState === 'hinted2Processing' && <MicButton state="Processing" showLabel />}
 
-          {subState === 'resultRecalled' && (
-            // SPEC.md: Recalled's bottom content is a single full-width
-            // `Button` `variant="Primary"` `cta="Continue"` — matches
-            // exactly. Wired to advance to the next term's `idle` when
-            // one exists (`hasNextTerm`) — the last term's "Continue"
-            // going to `/summary` instead still isn't reachable,
-            // `TERMS` only has 2 entries so far.
-            <Button
-              variant="Primary"
-              size="L"
-              cta="Continue"
-              className="w-full"
-              data-hotspot={hasNextTerm || undefined}
-              onClick={hasNextTerm ? handleContinue : undefined}
-            />
+          {/* Every result's bottom content is a single full-width "Continue"
+              (SPEC.md), which moves to the next term's `idle`, or to Summary
+              after the run's last term. */}
+          {(subState === 'resultRecalled' ||
+            subState === 'resultHinted1Recalled' ||
+            subState === 'resultRevealed' ||
+            subState === 'typeResultHinted1Recalled' ||
+            subState === 'typeResultRevealed') && (
+            <Button variant="Primary" size="L" cta="Continue" className="w-full" onClick={() => handleContinue()} />
           )}
 
-          {subState === 'resultHinted1' && (
+          {subState === 'typeResultHinted' && inputMode === 'text' && (
             <>
-              {/* SPEC.md: "MicButton state=Idle (real precedent for a
-                  re-attempt entry point here)... Re-attempt loops back
-                  through recording → readyToSend → processing, then
-                  resolves to the Hinted-success result." Now wired: real
-                  caption "Try again" (via MicButton's `label` override)
-                  starts a real second recording via `handleRetry`,
-                  looping back through `recording` → `readyToSend` →
-                  `processing`, which now resolves to
-                  `resultHinted1Recalled` instead of looping back here. */}
-              <MicButton data-hotspot data-hotspot-pad="200" state="Idle" showLabel label="Try again" onClick={handleRetry} />
+              {/* Mia, 2026-09-21: the second attempt follows the input mode, so
+                  after a typed first attempt the retry is typing, not the mic.
+                  Same shape as the voice screen below with the roles swapped: a
+                  Primary "Try again" opens the typed retry, "Switch to voice"
+                  puts the mic back, "I don't know" gives up on the hint. No
+                  Figma frame. */}
+              <Button variant="Primary" size="L" cta="Try again" className="w-full" onClick={handleTypeRetry} />
               <div className="flex items-start" style={{ gap: 'var(--size-space-600)' }}>
-                <Button variant="Tertiary" size="S" cta="Type instead" />
-                <Button variant="Tertiary" size="S" cta="I don’t know" />
+                <Button variant="Tertiary" size="S" cta="Switch to voice" onClick={() => setInputMode('voice')} />
+                <Button variant="Tertiary" size="S" cta="I don’t know" onClick={handleDontKnow} />
               </div>
             </>
           )}
 
-          {subState === 'resultHinted1Recalled' && (
-            // SPEC.md: "Terminal, single 'Continue,' no further retry."
-            // Same `hasNextTerm` guard as Recalled's — now real: term 3
-            // ("Visual hierarchy," Revealed) is built, so this Continue
-            // really does advance once term 2 resolves.
-            <Button
-              variant="Primary"
-              size="L"
-              cta="Continue"
-              className="w-full"
-              data-hotspot={hasNextTerm || undefined}
-              onClick={hasNextTerm ? handleContinue : undefined}
-            />
-          )}
-
-          {subState === 'resultRevealed' && (
-            // SPEC.md: "Revealed... Button variant="Primary" cta="Continue"."
-            // Same `hasNextTerm` guard — term 4 ("Visual research,"
-            // Skipped) isn't built yet, so this no-ops past term 3 until
-            // `TERMS` gains a fourth entry.
-            <Button
-              variant="Primary"
-              size="L"
-              cta="Continue"
-              className="w-full"
-              data-hotspot={hasNextTerm || undefined}
-              onClick={hasNextTerm ? handleContinue : undefined}
-            />
+          {(subState === 'resultHinted1' || (subState === 'typeResultHinted' && inputMode === 'voice')) && (
+            <>
+              {/* SPEC.md: "MicButton state=Idle (real precedent for a
+                  re-attempt entry point here)." Caption "Try again" (via
+                  MicButton's `label` override) starts a real second
+                  recording. Mia, 2026-09-21: "Type instead" retries by
+                  typing, and "I don't know" gives up on the hint, a
+                  Revealed term. */}
+              <MicButton state="Idle" showLabel label="Try again" onClick={handleRetry} />
+              <div className="flex items-start" style={{ gap: 'var(--size-space-600)' }}>
+                <Button variant="Tertiary" size="S" cta="Type instead" onClick={handleTypeRetry} />
+                <Button variant="Tertiary" size="S" cta="I don’t know" onClick={handleDontKnow} />
+              </div>
+            </>
           )}
 
           {subState === 'typeInput' && (
             // SPEC.md: "tap 'Submit' → typeProcessing. Tap 'Switch to
             // voice' → idle (voice mode, same term)." The live frame's
             // own `buttonGroup` (node 13702:14138) pairs a filled Submit
-            // with "Switch to voice" — `Primary` + `Secondary` since the
-            // 2026-09-18 Figma update (was `Tertiary`), exactly
+            // with "Switch to voice" — `Primary` + `Secondary`, exactly
             // `ButtonGroup`'s own `Vertical` shape.
-            <div data-hotspot-within style={{ display: 'contents' }}>
-              <ButtonGroup
-                variant="Vertical"
-                size="L"
-                primary={{ cta: 'Submit', onClick: handleSubmitTyped }}
-                secondary={{ cta: 'Switch to voice', onClick: handleSwitchToVoice }}
-              />
-            </div>
+            <ButtonGroup
+              variant="Vertical"
+              size="L"
+              primary={{ cta: 'Submit', onClick: handleSubmitTyped }}
+              secondary={{ cta: 'Switch to voice', onClick: handleSwitchToVoice }}
+            />
           )}
 
-          {subState === 'typeProcessing' && (
+          {subState === 'typeRetryInput' && (
+            <ButtonGroup
+              variant="Vertical"
+              size="L"
+              primary={{ cta: 'Submit', onClick: handleSubmitTypedRetry }}
+              secondary={{ cta: 'Switch to voice', onClick: handleSwitchToVoiceFromRetry }}
+            />
+          )}
+
+          {(subState === 'typeProcessing' || subState === 'typeRetryProcessing') && (
             // `Learning-topic 1-typeProcessing`'s own designer note:
             // "Submit and Switch to voice are dimmed to read as disabled
             // during the wait" — real `Button` `state="Disabled"` on both,
-            // matching the voice path's own `processing` (SPEC.md: "Button
-            // state=Disabled on whichever CTAs are present"). Genuinely
-            // inert, not just visually dimmed — no `onClick` on either,
-            // same as `processing`'s own disabled buttons.
+            // genuinely inert (no `onClick`), same as the voice path's
+            // own `processing`.
             <ButtonGroup
               variant="Vertical"
               size="L"
@@ -1448,52 +1385,16 @@ function SessionContent() {
 
           {subState === 'typeResultRecalled' && (
             // Live frame's own bottomContent (node 13622:18567) keeps
-            // both "Continue" (Primary/L, wired same as the voice path's
-            // own resultRecalled) and a second, real "Switch to voice"
-            // (Tertiary/L) — the designer note's own "Switch to voice
-            // stays available even after a correct answer." Shown to
-            // match the frame, left unwired rather than routed to
-            // `handleSwitchToVoice`: that destination resets this term
-            // back to a cold `idle`, which would discard an outcome
-            // that's already resolved Recalled — a real regression, not
-            // just an unbuilt destination. SPEC.md gives no explicit
-            // behavior for this button once a result already exists, so
-            // flagged rather than guessed either way.
+            // both "Continue" (Primary/L) and a second, real "Switch to
+            // voice" (Secondary/L) — the designer note's own "Switch to
+            // voice stays available even after a correct answer." Now
+            // wired (Mia, 2026-09-21: typing sticks until switched): it
+            // moves on to the next term's voice `idle`, rather than
+            // resetting this term, whose outcome is already resolved.
             <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-200)' }}>
-              <Button variant="Primary" size="L" cta="Continue" className="w-full" data-hotspot={hasNextTerm || undefined} onClick={hasNextTerm ? handleContinue : undefined} />
-              <Button variant="Secondary" size="L" cta="Switch to voice" className="w-full" />
+              <Button variant="Primary" size="L" cta="Continue" className="w-full" onClick={() => handleContinue()} />
+              <Button variant="Secondary" size="L" cta="Switch to voice" className="w-full" onClick={() => handleContinue('voice')} />
             </div>
-          )}
-
-          {subState === 'topic2ResultUnaided' && (
-            // Live frame's own bottomContent (node 13737:17209) has only
-            // the single "Continue" button — no second "Switch to voice"
-            // here, unlike `typeResultRecalled`'s own frame. Reached only
-            // by a `?review=1` run; advances to term 3's `idle`.
-            <Button variant="Primary" size="L" cta="Continue" className="w-full" data-hotspot onClick={handleContinue} />
-          )}
-
-          {subState === 'topic3ResultUnaided' && (
-            // Live frame's own bottomContent (node 13737:17387), same
-            // single-"Continue" shape as `topic2ResultUnaided`'s sibling
-            // frame — confirmed independently, not assumed to carry
-            // over. Advances to term 4's `idle`.
-            <Button variant="Primary" size="L" cta="Continue" className="w-full" data-hotspot onClick={handleContinue} />
-          )}
-
-          {subState === 'topic4ResultUnaided' && (
-            // Live frame's own bottomContent (node 13737:17518), same
-            // single-"Continue" shape as its siblings — confirmed
-            // independently, not assumed to carry over. The end of the
-            // review run: `Summary-all recalled`.
-            <Button
-              variant="Primary"
-              size="L"
-              cta="Continue"
-              className="w-full"
-              data-hotspot
-              onClick={() => router.push('/summary?variant=all-recalled')}
-            />
           )}
         </div>
       </div>
@@ -1502,9 +1403,8 @@ function SessionContent() {
 }
 
 export default function Session() {
-  return (
-    <Suspense fallback={null}>
-      <SessionContent />
-    </Suspense>
-  )
+  // The run list and the recorded results come from sessionStorage, so render
+  // only once mounted on the client.
+  const mounted = useMounted()
+  return <Suspense fallback={null}>{mounted ? <SessionContent /> : null}</Suspense>
 }

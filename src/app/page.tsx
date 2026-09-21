@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense } from 'react'
+import { Suspense, useEffect } from 'react'
 import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { AppBar } from '@/components/AppBar/AppBar'
@@ -10,6 +10,7 @@ import { IconSlot } from '@/components/IconSlot/IconSlot'
 import { MascotSlot } from '@/components/MascotSlot/MascotSlot'
 import { StatusBar } from '@/components/StatusBar/StatusBar'
 import { TopicNode } from '@/components/TopicNode/TopicNode'
+import { recalledTerms, resetStore, studyPlanState, useMounted, useRecallStore } from '@/lib/recall-session'
 
 // AppBar's own confirmed "Real Usage Study Plan" story content (see
 // AppBar.stories.tsx / Storybook docs) — the kebab-menu icon, already
@@ -193,18 +194,33 @@ function SectionDivider({ label }: { label: string }) {
 }
 
 // SPEC.md: the 3 study-plan-entry states are "derived from a local
-// recall-session record, not fetched." Session doesn't persist one, so
-// the state comes from `?state=` instead, set by the screen that leads
-// here (Summary's "Continue" → `inProgress`, Summary-all recalled's
-// "Continue" → `finish`, per Figma's own arrows); a bare `/` is
-// `notStarted`.
+// recall-session record, not fetched." Session now records one (see
+// `@/lib/recall-session`): none recalled is `notStarted`, 1-3 of the 4 terms
+// recalled is `inProgress` with that count, all 4 is `finish`. Closing the
+// session early lands here with whatever was recalled so far. `?state=` still
+// overrides it, so a screen can be opened directly (and `?state=notStarted`
+// clears the record).
 
 function StudyPlanEntryContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const studyPlanState = searchParams.get('state')
-  const isInProgress = studyPlanState === 'inProgress'
-  const isFinished = studyPlanState === 'finish'
+  const store = useRecallStore()
+  const stateParam = searchParams.get('state')
+  const state =
+    stateParam === 'notStarted' || stateParam === 'inProgress' || stateParam === 'finish' ? stateParam : studyPlanState(store)
+  const isInProgress = state === 'inProgress'
+  const isFinished = state === 'finish'
+  // The progress row counts terms recalled so far; opened by URL with nothing
+  // recorded it shows Figma's own 1 of 4.
+  const recalledCount = isFinished ? 4 : Math.min(Math.max(recalledTerms(store).length, 1), 3)
+  // Mia, 2026-09-21: after closing the session early, nothing has been missed
+  // yet, so the button reads "Continue" instead of "Review". Both lead to the
+  // same run over the terms not recalled yet.
+  const closedEarly = isInProgress && store.results.some((r) => r !== null) && !store.firstRunDone
+
+  useEffect(() => {
+    if (stateParam === 'notStarted') resetStore()
+  }, [stateParam])
 
   return (
     <div className="flex min-h-screen items-center justify-center" style={{ background: 'var(--semantic-color-background-page)' }}>
@@ -294,26 +310,32 @@ function StudyPlanEntryContent() {
             <TopicNode label="Choosing Subjects" active icon={<AiQuizIcon />} />
 
             <div className="relative w-full">
-              {/* Figma's own updated instance (2026-09-16) clips the mascot's
-                  own cell to a fixed, short box sitting directly above the
-                  card — the card visually "cuts off" the mascot's lower
-                  half because the mascot's own container clips there, not
-                  because the card paints over it. Reproduced the same way:
-                  a fixed-height `overflow: hidden` box, not a taller
-                  unclipped mascot. */}
-              <div className="absolute overflow-hidden" style={{ left: 32, top: 0, width: 52, height: 40 }}>
-                <div className="absolute" style={{ left: -6, top: 0, width: 64, height: 64 }}>
-                  <MascotSlot size="XL" pose="standby" />
-                </div>
+              {/* Mia, 2026-09-21: the mascot peeks out from behind the card, its
+                  lower half hidden, as in Figma, but no longer clipped on the
+                  left. Figma clips it with a 69 x 45 box (mascot 86px, offset
+                  -9 / -8), which shows about half of it and cuts its left
+                  edge; here the card simply paints over the mascot's lower
+                  half (the card is positioned and comes later, so it sits on
+                  top), leaving 46 of its 64px showing. */}
+              <div className="absolute" style={{ left: 26, top: 0, width: 64, height: 64 }}>
+                <MascotSlot size="XL" pose="standby" />
               </div>
 
               <div
-                className="flex w-full flex-col items-start"
+                className="relative flex w-full flex-col items-start"
                 style={{
-                  marginTop: 45,
+                  marginTop: 46,
                   padding: 'var(--size-space-300)',
                   borderRadius: 'var(--size-radius-600)',
                   background: 'var(--semantic-color-background-surface)',
+                  // Mia, 2026-09-21: a 2px `pro/bold` outline marks the card while
+                  // its button is the next step (Speak, Continue, Review) and goes
+                  // away at `finish`, where that button is the secondary Redo.
+                  // Drawn inside the box, as Figma's inside stroke is, so the
+                  // layout doesn't move.
+                  boxShadow: isFinished
+                    ? undefined
+                    : 'inset 0 0 0 var(--size-stroke-heavy-border) var(--semantic-color-pro-bold)',
                 }}
               >
                 {/* Non-interactive label (Mia, 2026-09-20). `Chips` always renders a
@@ -371,7 +393,6 @@ function StudyPlanEntryContent() {
                         background: 'var(--semantic-color-interactive-secondary)',
                         boxShadow: 'inset 0 -2px 0 0 rgba(0,0,0,0.15)',
                       }}
-                      data-hotspot
                       onClick={() => router.push('/session')}
                     >
                       <span className="inline-flex items-center" style={{ gap: 'var(--size-space-150)', paddingBottom: 2 }}>
@@ -395,8 +416,7 @@ function StudyPlanEntryContent() {
                     <Button
                       variant="Primary"
                       size="S"
-                      cta={isInProgress ? 'Review' : 'Speak'}
-                      data-hotspot
+                      cta={isInProgress ? (closedEarly ? 'Continue' : 'Review') : 'Speak'}
                       showRightIcon
                       rightIcon={ARROW_FORWARD_ICON}
                       onClick={() => router.push(isInProgress ? '/session?review=1' : '/primer')}
@@ -437,7 +457,7 @@ function StudyPlanEntryContent() {
                     >
                       <div
                         style={{
-                          width: isFinished ? '100%' : '25%',
+                          width: `${(recalledCount / 4) * 100}%`,
                           height: 'var(--size-space-200)',
                           borderRadius: 'var(--size-radius-full)',
                           background: isFinished
@@ -457,7 +477,7 @@ function StudyPlanEntryContent() {
                         whiteSpace: 'nowrap',
                       }}
                     >
-                      {isFinished ? '4 OF 4' : '1 OF 4'}
+                      {recalledCount} OF 4
                     </span>
                   </div>
                 )}
@@ -507,9 +527,8 @@ function StudyPlanEntryContent() {
 }
 
 export default function StudyPlanEntry() {
-  return (
-    <Suspense fallback={null}>
-      <StudyPlanEntryContent />
-    </Suspense>
-  )
+  // The state comes from the recorded session in sessionStorage, so render
+  // once mounted on the client.
+  const mounted = useMounted()
+  return <Suspense fallback={null}>{mounted ? <StudyPlanEntryContent /> : null}</Suspense>
 }

@@ -28,12 +28,12 @@ import { TableCell, type TableCellStatus } from '../TableCell/TableCell'
  * explicit call, not a Figma-modeled property. This also resolves most
  * of `tableCell`'s own status/divider coupling in practice: since
  * Skipped is always sorted last, its divider-less variant naturally
- * lands on the true last row whenever a Skipped row exists. **One edge
- * case remains, not silently patched:** if `rows` has no Skipped entry
- * at all, the true last row is Revealed, whose `tableCell` variant still
- * carries its own bottom divider (see that component's doc comment), so
- * a stray trailing divider shows below the table. Still `tableCell`'s
- * gap to resolve, not something this sort order can fix on its own.
+ * lands on the true last row whenever a Skipped row exists. When there is
+ * no Skipped entry the true last row is Revealed, Hinted or Recalled, whose
+ * `tableCell` variant carries a bottom divider (see that component's doc
+ * comment); `Table` clears the last row's divider itself (Mia's rule of
+ * 2026-09-18: the divider follows position), so no stray trailing line
+ * shows. `tableCell` still keys its own divider to status.
  *
  * The outer frame's 16px corner radius is an unbound literal in Figma
  * (numerically equal to `radius/400`, but Figma's own reference code
@@ -85,7 +85,15 @@ export function Table({ rows = DEFAULT_ROWS, className, style }: TableProps) {
       }}
     >
       {sortedRows.map((row, index) => (
-        <TableCell key={index} label={row.label} status={row.status} />
+        <TableCell
+          key={index}
+          label={row.label}
+          status={row.status}
+          // Mia, 2026-09-18: the divider follows row position, so the last row
+          // never has one, whatever its status. TableCell still keys its own
+          // divider to status, so the last row's is cleared here.
+          style={index === sortedRows.length - 1 ? { borderBottom: 'none' } : undefined}
+        />
       ))}
     </div>
   )

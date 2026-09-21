@@ -3,7 +3,7 @@
   "counts": {
     "src/app/page.tsx": {
       "color-fn": 1,
-      "px-token": 29
+      "px-token": 27
     },
     "src/app/primer/page.tsx": {
       "px-token": 5
@@ -15,7 +15,7 @@
     },
     "src/app/summary/page.tsx": {
       "font-stretch": 1,
-      "px-token": 8
+      "px-token": 7
     },
     "src/components/AppBar/AppBar.tsx": {
       "px-token": 6

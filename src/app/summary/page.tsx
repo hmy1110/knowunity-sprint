@@ -10,77 +10,45 @@ import { ScoreBreakdown } from '@/components/ScoreBreakdown/ScoreBreakdown'
 import { ArrowLeftIcon } from '@/components/shared/icons'
 import { StatusBar } from '@/components/StatusBar/StatusBar'
 import { Table } from '@/components/Table/Table'
-import { TableCell } from '@/components/TableCell/TableCell'
 import { TermResultList, type TermResultRow } from '@/components/TermResultList/TermResultList'
 import type { TagStatus } from '@/components/Tag/Tag'
 
-// `Summary-all recalled` (node 13669:17569) — the second real Summary
-// instance, shown at the end of the review run (`/session?review=1`),
-// which covers terms 2-4 only. Live Figma (2026-09-20) counts just those
-// three: SCORE 3/3, XP 6, three rows, no Inspiration (term 1 is never
-// attempted in the run, so it can't claim a Recalled tag or its 2 XP).
-// The main run's fixed script never reaches it; it's also gated behind
-// `?variant=all-recalled` so it stays previewable by URL.
-const ALL_RECALLED_RESULTS: TermResultRow[] = [
-  {
-    term: 'Divergent thinking',
-    status: 'Recalled',
-    reflection: 'many possible ideas before narrowing to one.',
-  },
-  {
-    term: 'Visual hierarchy',
-    status: 'Recalled',
-    reflection: 'arranging elements to guide attention and show what matters most.',
-  },
-  {
-    term: 'Visual research',
-    status: 'Recalled',
-    reflection: 'uses visual media (images, video, diagrams) as data for research.',
-  },
-]
+import {
+  SAMPLE_RESULTS,
+  STATUS_NOTE,
+  TERMS,
+  XP_PER_RECALLED,
+  paceLabel,
+  useMounted,
+  useRecallStore,
+  type Status,
+} from '@/lib/recall-session'
 
-// Mia, 2026-09-19: 2 XP for every term recalled on its own, so the
-// review run's 3 of 3 is 6 XP. A Hinted, Revealed or Skipped term earns none (the live mixed
-// Summary reads 2 XP for its one Recalled term).
-const XP_PER_RECALLED = 2
 
-const ALL_RECALLED_XP = String(XP_PER_RECALLED * countByStatus(ALL_RECALLED_RESULTS).Recalled)
-const ALL_RECALLED_SCORE = `${countByStatus(ALL_RECALLED_RESULTS).Recalled}/${ALL_RECALLED_RESULTS.length}`
-const ALL_RECALLED_PACE = '2:09'
+// Summary reads the session the mocked recall just recorded. A first-run
+// Summary lists all four terms; a review run's Summary (`?variant=review`)
+// lists only the terms that run covered, with the status each really ended
+// on. When every one was recalled it is the live frame `Summary-all recalled`
+// (node 13669:17569); otherwise it reads like the mixed Summary. Opened cold,
+// with nothing recorded, each shows the Figma frame's own sample
+// (`?variant=all-recalled` is the older name for the review Summary).
+const DEFAULT_REVIEW_TERMS = [1, 2, 3]
 
-// SPEC.md's fixed script: term 1 Recalled, term 2 Hinted, term 3
-// Revealed, term 4 Skipped, every session. Hardcoded here per SPEC.md's
-// own build-order note ("Build Summary against a hardcoded sample
-// result array first; wire it to Session's real output last") — Session
-// doesn't exist yet.
-const TERM_RESULTS: TermResultRow[] = [
-  {
-    term: 'Inspiration',
-    status: 'Recalled',
-    reflection: 'personal experience and the world around you.',
-  },
-  {
-    term: 'Divergent thinking',
-    status: 'Hinted',
-    reflection: 'many possible ideas before narrowing to one.',
-  },
-  {
-    term: 'Visual hierarchy',
-    status: 'Revealed',
-    reflection: 'arranging elements to guide attention and show what matters most.',
-    note: "Answer shown after you said you didn't know it, worth a real attempt next time it comes up.",
-  },
-  {
-    term: 'Visual research',
-    status: 'Skipped',
-    reflection: 'uses visual media (images, video, diagrams) as data for research.',
-    note: 'No attempt this time, worth a first pass before it comes up again.',
-  },
-]
+// Good-to-bad, the order `Table` displays; the explanations below follow it.
+const STATUS_RANK: Record<Status, number> = { Recalled: 0, Hinted: 1, Revealed: 2, Skipped: 3 }
 
-// Live Figma mixed Summary (checked 2026-09-19): BLAZING 1:09. The pace
-// is not derivable from the term results, so it stays a constant.
-const SESSION_PACE = '1:09'
+function buildRows(termIds: number[], statuses: Status[]): TermResultRow[] {
+  return termIds
+    .map((id, i) => ({
+      term: TERMS[id].name,
+      status: statuses[i],
+      reflection: TERMS[id].reflection,
+      note: STATUS_NOTE[statuses[i]],
+    }))
+    .sort((a, b) => STATUS_RANK[a.status] - STATUS_RANK[b.status])
+}
+
+
 
 // `sessionStats` (Summary's XP/Score/time row) — design-system.md §1
 // documents this as a hand-built, non-componentized pattern (same
@@ -244,6 +212,7 @@ function StatBox({ label, value, boldVar, onBoldVar, icon, iconWidth, iconHeight
   )
 }
 
+
 function countByStatus(rows: TermResultRow[]): Record<TagStatus, number> {
   return {
     Recalled: rows.filter((row) => row.status === 'Recalled').length,
@@ -254,13 +223,8 @@ function countByStatus(rows: TermResultRow[]): Record<TagStatus, number> {
 }
 
 // Only a Recalled term counts toward the score and the headline percent;
-// Hinted does not. Live Figma (checked 2026-09-19): mixed run 1 of 4 =
-// 25% and 1/4, review run 3 of 3 = 100% and 3/3 (2026-09-20) — both fit
-// Recalled ÷ total. Replaces the earlier 50% / 2/4, which counted Hinted.
-const SESSION_COUNTS = countByStatus(TERM_RESULTS)
-const SESSION_XP = String(XP_PER_RECALLED * SESSION_COUNTS.Recalled)
-const SESSION_SCORE = `${SESSION_COUNTS.Recalled}/${TERM_RESULTS.length}`
-const SESSION_PERCENT = Math.round((SESSION_COUNTS.Recalled / TERM_RESULTS.length) * 100)
+// Hinted does not (Recalled ÷ total; live Figma, checked 2026-09-19 and
+// 2026-09-20).
 
 const HEADLINE_TEXT_STYLE = {
   margin: 0,
@@ -275,21 +239,42 @@ const HEADLINE_TEXT_STYLE = {
 function SummaryContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const isAllRecalled = searchParams.get('variant') === 'all-recalled'
+  const store = useRecallStore()
+  const variant = searchParams.get('variant')
+  const isReviewSummary = variant === 'review' || variant === 'all-recalled'
+
+  const allTerms = TERMS.map((_, i) => i)
+  const hasFirstRun = store.results.some((r) => r !== null)
+  const reviewTerms = store.lastReview.length > 0 ? store.lastReview : DEFAULT_REVIEW_TERMS
+  const rows = isReviewSummary
+    ? buildRows(
+        reviewTerms,
+        reviewTerms.map((t): Status => (store.lastReview.length > 0 ? (store.reviewResults[t] ?? 'Skipped') : 'Recalled')),
+      )
+    : buildRows(allTerms, hasFirstRun ? store.results.map((r): Status => r ?? 'Skipped') : SAMPLE_RESULTS)
+  const counts = countByStatus(rows)
+  const total = rows.length
+  const allRecalled = counts.Recalled === total
+  const percent = Math.round((counts.Recalled / total) * 100)
+  const hasRecord = isReviewSummary ? store.lastReview.length > 0 : hasFirstRun
+  // With a real session recorded the study plan derives its own state; opened
+  // cold, Continue goes where Figma's arrows do.
+  const continueHref = hasRecord ? '/' : isReviewSummary ? '/?state=finish' : '/?state=inProgress'
 
   return (
-    <div className="flex min-h-screen justify-center" style={{ background: 'var(--semantic-color-background-page)' }}>
-      <div className="flex w-full max-w-[390px] flex-col">
+    <div className="flex min-h-screen items-center justify-center" style={{ background: 'var(--semantic-color-background-page)' }}>
+      {/* Mia, 2026-09-21: the same fixed 390 x 844 frame as /session — status
+          bar, appBar and the bottom buttons stay put, and the headline, stats,
+          table and explanations between them scroll. */}
+      <div className="flex w-full max-w-[390px] flex-col overflow-hidden" style={{ height: 844 }}>
         <StatusBar />
 
-        <div className="flex w-full flex-col" style={{ gap: 'var(--size-space-100)' }}>
-          <div data-hotspot-within style={{ display: 'contents' }}>
-            <AppBar variant="leftIconButtonOnly" leftIcon={<ArrowLeftIcon />} leftLabel="Back" onLeftClick={() => router.push('/')} />
-          </div>
+        <div className="flex w-full shrink-0 flex-col" style={{ gap: 'var(--size-space-100)' }}>
+          <AppBar variant="leftIconButtonOnly" leftIcon={<ArrowLeftIcon />} leftLabel="Back" onLeftClick={() => router.push('/')} />
         </div>
 
         <main
-          className="flex flex-col items-center"
+          className="flex min-h-0 flex-1 flex-col items-center overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           style={{ gap: 'var(--size-space-400)', padding: '0 var(--size-space-400) var(--size-space-400)' }}
         >
           <div className="flex w-full flex-col items-center" style={{ gap: 32 }}>
@@ -307,24 +292,20 @@ function SummaryContent() {
               <MascotSlot size="2XL" pose="standby" />
             </div>
 
-            {/* Only the mixed-outcome and all-recalled headlines are
-                confirmed — SPEC.md flags the other 2 dominant-outcome
-                tiers (mostly-hinted/mostly-revealed/mostly-skipped) as
-                shipping unverified, with no real copy anywhere to build
-                them from. Real copy confirmed from the live
-                Summary-all recalled instance (node 13669:17569, 2026-09-17):
-                "Nice work, Mia!", not "Good session, Mia." — a genuinely
-                different headline per outcome, not a stale copy of the
-                mixed one. */}
+            {/* Mia, 2026-09-21: nothing recalled reads "Let’s go again, Mia."
+                (the Review button sits right under it). Real copy for the
+                other two confirmed from live Figma: "Good session, Mia." on
+                the mixed frame, "Nice work, Mia!" on Summary-all recalled;
+                SPEC.md flags any further tier as unverified. */}
             <p className="w-full text-center" style={HEADLINE_TEXT_STYLE}>
-              {isAllRecalled ? 'Nice work, Mia!' : 'Good session, Mia.'}
+              {allRecalled ? 'Nice work, Mia!' : counts.Recalled === 0 ? 'Let’s go again, Mia.' : 'Good session, Mia.'}
             </p>
           </div>
 
           <div className="flex w-full items-start justify-center" style={{ gap: 16 }}>
             <StatBox
               label="XP"
-              value={isAllRecalled ? ALL_RECALLED_XP : SESSION_XP}
+              value={String(XP_PER_RECALLED * counts.Recalled)}
               boldVar="--semantic-color-accent-blue-bold"
               onBoldVar="--semantic-color-accent-blue-on-bold"
               icon={<LightningIcon />}
@@ -333,7 +314,7 @@ function SummaryContent() {
             />
             <StatBox
               label="SCORE"
-              value={isAllRecalled ? ALL_RECALLED_SCORE : SESSION_SCORE}
+              value={`${counts.Recalled}/${total}`}
               boldVar="--semantic-color-accent-green-bold"
               onBoldVar="--semantic-color-accent-green-on-bold"
               icon={<ScoreIcon />}
@@ -342,7 +323,7 @@ function SummaryContent() {
             />
             <StatBox
               label="BLAZING"
-              value={isAllRecalled ? ALL_RECALLED_PACE : SESSION_PACE}
+              value={paceLabel(rows.map((r) => r.status), isReviewSummary)}
               boldVar="--semantic-color-accent-brand-bold"
               onBoldVar="--semantic-color-accent-brand-on-bold"
               icon={<BlazingIcon />}
@@ -351,46 +332,20 @@ function SummaryContent() {
             />
           </div>
 
-          {isAllRecalled ? (
+          <ScoreBreakdown percent={percent} counts={counts} style={{ width: '100%' }} />
+
+          <Table rows={rows.map((row) => ({ label: row.term, status: row.status }))} style={{ width: '100%' }} />
+
+          {isReviewSummary && allRecalled ? (
             <>
-              {/* Legend counted from the rows so it can't disagree with the table.
-                  Live Figma reads "3 Recalled / 0 / 0 / 0" (Mia updated it
-                  2026-09-20; it read "4 Recalled" before). */}
-              <ScoreBreakdown percent={100} counts={countByStatus(ALL_RECALLED_RESULTS)} style={{ width: '100%' }} />
-
-              {/* `Table`/`TableCell`'s own status-driven divider (see
-                  TableCell.tsx's doc comment: Skipped alone omits the
-                  bottom divider, a known status/position-coupling gap)
-                  would leave a stray divider under the true last row
-                  here, since none of these 4 rows is Skipped. The live
-                  frame's own last row (`Visual research`) explicitly has
-                  no divider — reproduced by rendering `TableCell`
-                  directly instead of the `Table` wrapper (which has no
-                  per-row style override), stripping just the last row's
-                  border. */}
-              <div
-                className="flex w-full flex-col overflow-hidden"
-                style={{ borderRadius: 16, background: 'var(--semantic-color-background-surface)' }}
-              >
-                {ALL_RECALLED_RESULTS.map((row, index) => (
-                  <TableCell
-                    key={row.term}
-                    label={row.term}
-                    status={row.status}
-                    style={index === ALL_RECALLED_RESULTS.length - 1 ? { borderBottom: 'none' } : undefined}
-                  />
-                ))}
-              </div>
-
               {/* The live frame shows one "Recalled on your own" title
-                  followed by all 3 reflection sentences, not 3 repeated
-                  identical titles the way `TermResultList` renders when
-                  every row shares one status — that component always
-                  pairs a title with each row (see its own doc comment),
-                  which is correct for the mixed case but wrong here.
-                  Built inline rather than adding an unrequested
-                  "collapse repeated titles" mode to a component that
-                  only has this one real caller for it so far. */}
+                  followed by every reflection sentence, not a repeated
+                  identical title per row the way `TermResultList` renders when
+                  every row shares one status — that component always pairs a
+                  title with each row (see its own doc comment), which is
+                  right for the mixed case but wrong here. Built inline rather
+                  than adding an unrequested "collapse repeated titles" mode
+                  to a component with only this one caller for it. */}
               <div className="flex w-full flex-col" style={{ gap: 'var(--size-space-200)' }}>
                 <p
                   className="m-0"
@@ -405,7 +360,7 @@ function SummaryContent() {
                 >
                   Recalled on your own
                 </p>
-                {ALL_RECALLED_RESULTS.map((row) => (
+                {rows.map((row) => (
                   <p
                     key={row.term}
                     className="m-0"
@@ -431,32 +386,22 @@ function SummaryContent() {
               </div>
             </>
           ) : (
-            <>
-              <ScoreBreakdown percent={SESSION_PERCENT} counts={SESSION_COUNTS} style={{ width: '100%' }} />
-
-              <Table style={{ width: '100%' }} />
-
-              <TermResultList rows={TERM_RESULTS} style={{ width: '100%' }} />
-            </>
+            <TermResultList rows={rows} style={{ width: '100%' }} />
           )}
         </main>
 
-        <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-300)', padding: 'var(--size-space-700)' }}>
-          {isAllRecalled ? (
-            // Live frame's own bottomContent has only a single "Continue"
-            // — no "Review what you missed" pairing, since nothing was
-            // missed. Wired to the same destination as the mixed
-            // variant's own secondary button.
-            <Button variant="Primary" size="L" cta="Continue" className="w-full" data-hotspot onClick={() => router.push('/?state=finish')} />
+        <div className="flex w-full shrink-0 flex-col items-start" style={{ gap: 'var(--size-space-300)', padding: 'var(--size-space-700)' }}>
+          {allRecalled ? (
+            // Live frame's own bottomContent has only a single "Continue" —
+            // no "Review what you missed" pairing, since nothing was missed.
+            <Button variant="Primary" size="L" cta="Continue" className="w-full" onClick={() => router.push(continueHref)} />
           ) : (
-            <div data-hotspot-within style={{ display: 'contents' }}>
             <ButtonGroup
               variant="Vertical"
               size="L"
               primary={{ cta: 'Review what you missed', onClick: () => router.push('/session?review=1') }}
-              secondary={{ cta: 'Continue', onClick: () => router.push('/?state=inProgress') }}
+              secondary={{ cta: 'Continue', onClick: () => router.push(continueHref) }}
             />
-            </div>
           )}
         </div>
       </div>
@@ -465,9 +410,7 @@ function SummaryContent() {
 }
 
 export default function Summary() {
-  return (
-    <Suspense fallback={null}>
-      <SummaryContent />
-    </Suspense>
-  )
+  // Reads the recorded session from sessionStorage, so render once mounted.
+  const mounted = useMounted()
+  return <Suspense fallback={null}>{mounted ? <SummaryContent /> : null}</Suspense>
 }

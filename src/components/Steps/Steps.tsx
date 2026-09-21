@@ -37,9 +37,10 @@ import { Button } from '../Button/Button'
  * - Figma's Skip has no `onClick` — the flow only wires it on the last
  *   term (see SPEC.md). `onSkip` is optional; without it Skip renders
  *   like the frame shows it and does nothing.
- * - `skipHotspot` is a prototype-layer flag (see HotspotHints.tsx), not
- *   part of the Figma component: it marks Skip as a live destination so
- *   the tap-feedback outline finds it.
+ * - `skipDisabled` shows Skip in `Button`'s own Disabled state (Mia,
+ *   2026-09-21) wherever skipping isn't available: every state after an
+ *   attempt has started. Figma draws Skip enabled on every frame; this is
+ *   the button's real Disabled variant, not a new look.
  */
 
 export interface StepsProps {
@@ -49,13 +50,13 @@ export interface StepsProps {
   total?: number
   /** Called when Skip is tapped. Without it Skip is inert, as on terms 1-3 of the prototype. */
   onSkip?: () => void
-  /** Prototype-layer: marks Skip as a live tap target for the hotspot hint. Not part of the Figma component. */
-  skipHotspot?: boolean
+  /** Shows Skip in Button's Disabled state, for screens where skipping isn't available. */
+  skipDisabled?: boolean
   className?: string
   style?: CSSProperties
 }
 
-export function Steps({ current = 1, total = 4, onSkip, skipHotspot, className, style }: StepsProps) {
+export function Steps({ current = 1, total = 4, onSkip, skipDisabled, className, style }: StepsProps) {
   return (
     <div
       className={`flex items-center justify-between ${className ?? ''}`}
@@ -82,9 +83,8 @@ export function Steps({ current = 1, total = 4, onSkip, skipHotspot, className, 
           variant="Tertiary"
           size="S"
           cta="Skip"
-          onClick={onSkip}
-          data-hotspot={skipHotspot || undefined}
-          data-hotspot-pad={skipHotspot ? '200' : undefined}
+          state={skipDisabled ? 'Disabled' : 'Default'}
+          onClick={skipDisabled ? undefined : onSkip}
         />
       </span>
     </div>

@@ -10,7 +10,9 @@ const DESCRIPTION = `**What it is:** the header row of a recall-loop screen: the
 
 **Reuses Button** for Skip (Tertiary / S / Default, cta "Skip"). The count is a bound Caption M Bold in \`text/primary\`. Figma's text is a fixed string, so \`current\` and \`total\` set it here.
 
-**Gaps:** width is fixed at 358px in Figma and fills its column here. \`skipHotspot\` is a prototype-layer flag, not part of the Figma component.`
+**Disabled Skip:** \`skipDisabled\` renders Skip in Button's Disabled state, used on every screen after an attempt has started.
+
+**Gaps:** width is fixed at 358px in Figma and fills its column here.`
 
 const meta = {
   title: 'Components/Steps',
@@ -39,6 +41,17 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   tags: ['ai-generated'],
   args: { current: 1, total: 4 },
+}
+
+export const SkipDisabled: Story = {
+  tags: ['ai-generated'],
+  args: { current: 2, total: 4, skipDisabled: true, onSkip: fn() },
+  play: async ({ canvas, args }) => {
+    const skip = canvas.getByRole('button', { name: 'Skip' })
+    await expect(skip).toBeDisabled()
+    await userEvent.click(skip)
+    await expect(args.onSkip).not.toHaveBeenCalled()
+  },
 }
 
 export const LastTopic: Story = {
