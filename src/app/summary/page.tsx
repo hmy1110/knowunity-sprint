@@ -274,7 +274,7 @@ function SummaryContent() {
         </div>
 
         <main
-          className="flex min-h-0 flex-1 flex-col items-center overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex min-h-0 flex-1 flex-col items-center overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [&>*]:shrink-0"
           style={{ gap: 'var(--size-space-400)', padding: '0 var(--size-space-400) var(--size-space-400)' }}
         >
           <div className="flex w-full flex-col items-center" style={{ gap: 32 }}>
