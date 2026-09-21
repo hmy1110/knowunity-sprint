@@ -25,17 +25,17 @@ const ALL_RECALLED_RESULTS: TermResultRow[] = [
   {
     term: 'Divergent thinking',
     status: 'Recalled',
-    reflection: 'many possible ideas before narrowing to one, in your own words, first try.',
+    reflection: 'many possible ideas before narrowing to one.',
   },
   {
     term: 'Visual hierarchy',
     status: 'Recalled',
-    reflection: 'arranging elements to guide attention and show what matters most, in your own words, first try.',
+    reflection: 'arranging elements to guide attention and show what matters most.',
   },
   {
     term: 'Visual research',
     status: 'Recalled',
-    reflection: 'uses visual media (images, video, diagrams) as data for research, in your own words, first try.',
+    reflection: 'uses visual media (images, video, diagrams) as data for research.',
   },
 ]
 
@@ -57,22 +57,24 @@ const TERM_RESULTS: TermResultRow[] = [
   {
     term: 'Inspiration',
     status: 'Recalled',
-    reflection: 'personal experience and the world around you, in your own words, first try.',
+    reflection: 'personal experience and the world around you.',
   },
   {
     term: 'Divergent thinking',
     status: 'Hinted',
-    reflection: 'got there after a nudge toward "many ideas before narrowing."',
+    reflection: 'many possible ideas before narrowing to one.',
   },
   {
     term: 'Visual hierarchy',
     status: 'Revealed',
-    reflection: "answer shown after you said you didn't know it, worth a real attempt next time it comes up.",
+    reflection: 'arranging elements to guide attention and show what matters most.',
+    note: "Answer shown after you said you didn't know it, worth a real attempt next time it comes up.",
   },
   {
     term: 'Visual research',
     status: 'Skipped',
-    reflection: 'no attempt this time, worth a first pass before it comes up again.',
+    reflection: 'uses visual media (images, video, diagrams) as data for research.',
+    note: 'No attempt this time, worth a first pass before it comes up again.',
   },
 ]
 
@@ -389,7 +391,7 @@ function SummaryContent() {
                   Built inline rather than adding an unrequested
                   "collapse repeated titles" mode to a component that
                   only has this one real caller for it so far. */}
-              <div className="flex w-full flex-col" style={{ gap: 'var(--size-space-100)' }}>
+              <div className="flex w-full flex-col" style={{ gap: 'var(--size-space-200)' }}>
                 <p
                   className="m-0"
                   style={{

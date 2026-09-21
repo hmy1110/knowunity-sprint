@@ -53,6 +53,8 @@ export interface TermResultRow {
   status: TagStatus
   /** The rest of the sentence, following "{term}, " — real per-term copy, not derivable from status. */
   reflection: string
+  /** Optional second line under the sentence, in the same regular style — Revealed and Skipped carry one on the live Summary. */
+  note?: string
 }
 
 export interface TermResultListProps {
@@ -108,6 +110,12 @@ export function TermResultList({ rows, className, style }: TermResultListProps) 
           <p className="m-0" style={{ ...REFLECTION_TEXT_STYLE, color: 'var(--semantic-color-text-primary)' }}>
             <span style={TERM_TEXT_STYLE}>{row.term}</span>
             {`, ${row.reflection}`}
+            {row.note && (
+              <>
+                <br />
+                {row.note}
+              </>
+            )}
           </p>
         </div>
       ))}

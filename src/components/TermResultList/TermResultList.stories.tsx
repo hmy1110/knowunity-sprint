@@ -33,10 +33,10 @@ type Story = StoryObj<typeof meta>
 // The one real instance this component was extracted from — Figma's
 // own default content, reproduced as this component's default rows.
 const DEFAULT_ROWS: TermResultRow[] = [
-  { term: 'Inspiration', status: 'Recalled', reflection: 'personal experience and the world around you, in your own words, first try.' },
-  { term: 'Divergent thinking', status: 'Hinted', reflection: 'got there after a nudge toward "many ideas before narrowing."' },
-  { term: 'Visual hierarchy', status: 'Revealed', reflection: "answer shown after you said you didn't know it, worth a real attempt next time it comes up." },
-  { term: 'Visual research', status: 'Skipped', reflection: 'no attempt this time, worth a first pass before it comes up again.' },
+  { term: 'Inspiration', status: 'Recalled', reflection: 'personal experience and the world around you.' },
+  { term: 'Divergent thinking', status: 'Hinted', reflection: 'many possible ideas before narrowing to one.' },
+  { term: 'Visual hierarchy', status: 'Revealed', reflection: 'arranging elements to guide attention and show what matters most.', note: "Answer shown after you said you didn't know it, worth a real attempt next time it comes up." },
+  { term: 'Visual research', status: 'Skipped', reflection: 'uses visual media (images, video, diagrams) as data for research.', note: 'No attempt this time, worth a first pass before it comes up again.' },
 ]
 
 export const Default: Story = {

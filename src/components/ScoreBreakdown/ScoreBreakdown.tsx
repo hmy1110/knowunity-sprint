@@ -50,7 +50,7 @@ import type { TagStatus } from '../Tag/Tag'
  * **Layout**: the outer card (padding, gap, corner radius, and its
  * `background/surface` fill) is fully bound to real tokens and is
  * bound here too. The bar's own full-pill corner radius binds
- * `radius/Full`. The legend row's 16px gap and the bar/legend's own
+ * `radius/Full`. The legend row spreads its items with space-between, no fixed gap, and the bar/legend's own
  * item spacing inside the outer card are unbound literals in Figma
  * (`itemSpacing`, no bound variable) even where they numerically match
  * `space/400` — reproduced as literals, the same "don't bind by
@@ -156,7 +156,11 @@ export function ScoreBreakdown({
         })}
       </div>
 
-      <div className="flex w-full flex-wrap items-center" style={{ gap: 'var(--size-space-400)' }}>
+      {/* Figma spreads the four items with space-between, no fixed gap
+          (checked 2026-09-20): a 16px gap pushed "0 Skipped" onto a
+          second line on the review-run frame, whose "0" counts are wider
+          than the mixed frame's "1"s. wrap stays as a safety net. */}
+      <div className="flex w-full flex-wrap items-center justify-between" style={{ rowGap: 'var(--size-space-200)' }}>
         {STATUS_ORDER.map((status) => (
           <div key={status} className="flex items-center" style={{ gap: 'var(--size-space-100)' }}>
             <div style={{ width: 8, height: 8, borderRadius: 9999, background: `var(${STATUS_COLOR_VAR[status]})`, flexShrink: 0 }} />
