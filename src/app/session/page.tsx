@@ -592,7 +592,11 @@ function SessionContent() {
           </div>
           <p
             className="w-full"
-            style={{ margin: 0, color: 'var(--semantic-color-text-secondary)', fontFamily: 'Inter, sans-serif', fontWeight: 400, fontSize: 12, lineHeight: 'normal' }}
+            // Mia, 2026-09-21: `SpeechBubble.tsx`'s own subtitle binds to
+            // `text/primary` (confirmed in its own source), not
+            // `text/secondary` — this hand-copied block had drifted from
+            // it. Corrected to match.
+            style={{ margin: 0, color: 'var(--semantic-color-text-primary)', fontFamily: 'Inter, sans-serif', fontWeight: 400, fontSize: 12, lineHeight: 'normal' }}
           >
             Hint 1 of 2
           </p>
@@ -1128,7 +1132,15 @@ function SessionContent() {
                     state="Success"
                     title="Nice!"
                     subtitle="Unaided"
-                    message={term.recalledMessage}
+                    // Mia, 2026-09-21: `term.recalledMessage` is voice-flavored
+                    // for term 1 ("You said: '...'", a live-frame quote copied
+                    // verbatim per the comment above) — wrong on a typed
+                    // answer, since nothing was said. `revealMessage` is
+                    // already identical to `recalledMessage` for every other
+                    // term (2-4), so this only changes term 1's typed result,
+                    // to the same plain definition sentence the other three
+                    // terms already show here. No new copy invented.
+                    message={term.revealMessage}
                     className="flex-1"
                   />
                 </div>

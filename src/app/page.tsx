@@ -387,6 +387,7 @@ function StudyPlanEntryContent() {
                       type="button"
                       className="inline-flex items-center justify-center"
                       style={{
+                        position: 'relative',
                         height: 32,
                         paddingInline: 'var(--size-space-300)',
                         borderRadius: 'var(--size-radius-full)',
@@ -411,6 +412,25 @@ function StudyPlanEntryContent() {
                         </span>
                         <IconSlot size="200" icon={REDO_ICON} />
                       </span>
+                      {/* Same 48px outer tap area as every other S-size `Button`
+                          (`Button.tsx`'s `hasOuterTapArea`, Mia 2026-09-20's "every
+                          S button" commit) — this instance is hand-built (no
+                          `Button` variant produces its fill, see the comment
+                          above), so it never inherited that span. Added here to
+                          match, visible size unchanged. Literal, not a token,
+                          same as `Button.tsx`'s own copy of this span.
+                          [gap:home-redo-tap-area] */}
+                      <span
+                        aria-hidden
+                        style={{
+                          position: 'absolute',
+                          top: '50%',
+                          left: '50%',
+                          width: 'max(100%, 48px)', // [gap:home-redo-tap-area]
+                          height: 48, // [gap:home-redo-tap-area]
+                          transform: 'translate(-50%, -50%)',
+                        }}
+                      />
                     </button>
                   ) : (
                     <Button
