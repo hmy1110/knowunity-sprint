@@ -1,0 +1,30 @@
+- paragraph: 09:41
+- img
+- img
+- img
+- button "Back":
+  - img
+- main:
+  - paragraph: Good session, Mia.
+  - text: XP
+  - img
+  - text: 2 SCORE
+  - img
+  - text: 1/3 BLAZING
+  - img
+  - text: 1:02 33% recalled in this review 1 Recalled 0 Hinted 1 Revealed 1 Skipped
+  - paragraph: Divergent thinking
+  - text: Recalled
+  - paragraph: Visual hierarchy
+  - text: Revealed
+  - paragraph: Visual research
+  - text: Skipped
+  - paragraph: Recalled on review
+  - paragraph: Divergent thinking, many possible ideas before narrowing to one.
+  - paragraph: Revealed
+  - paragraph: Visual hierarchy, arranging elements to guide attention and show what matters most. Answer shown after you said you didn't know it, worth a real attempt next time it comes up.
+  - paragraph: Skipped
+  - paragraph: Visual research, uses visual media (images, video, diagrams) as data for research. No attempt this time, worth a first pass before it comes up again.
+- button "Review what you missed"
+- button "Continue"
+- alert

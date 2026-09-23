@@ -1,0 +1,317 @@
+{
+ "url": "/primer",
+ "scroll": {
+  "scrollWidth": 390,
+  "clientWidth": 390,
+  "scrollHeight": 844,
+  "clientHeight": 844,
+  "horizontalScroll": false,
+  "scrollY": 0
+ },
+ "bodyText": "09:41 | 8 | Microphone access is off | One tap in Settings, and you're back to speaking. Nothing else changes. | Turn on my microphone | Continue with text",
+ "interactive": [
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Close",
+   "ariaLabel": "Close",
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": false,
+   "offscreen": false,
+   "ownRect": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   },
+   "unionRect": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   },
+   "effectiveHit": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   }
+  },
+  {
+   "tag": "div",
+   "role": "progressbar",
+   "name": "Topic progress",
+   "ariaLabel": "Topic progress",
+   "native": false,
+   "disabled": false,
+   "hasOnClick": false,
+   "hotspotMarked": false,
+   "offscreen": false,
+   "ownRect": {
+    "x": 56,
+    "y": 64,
+    "w": 268.5,
+    "h": 16
+   },
+   "unionRect": {
+    "x": 56,
+    "y": 64,
+    "w": 268.5,
+    "h": 16
+   },
+   "effectiveHit": {
+    "x": 56,
+    "y": 64,
+    "w": 270,
+    "h": 16
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Turn on my microphone",
+   "ariaLabel": null,
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": false,
+   "offscreen": false,
+   "ownRect": {
+    "x": 28,
+    "y": 696,
+    "w": 334,
+    "h": 56
+   },
+   "unionRect": {
+    "x": 28,
+    "y": 696,
+    "w": 334,
+    "h": 56
+   },
+   "effectiveHit": {
+    "x": 28,
+    "y": 696,
+    "w": 334,
+    "h": 56
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Continue with text",
+   "ariaLabel": null,
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": false,
+   "offscreen": false,
+   "ownRect": {
+    "x": 28,
+    "y": 760,
+    "w": 334,
+    "h": 56
+   },
+   "unionRect": {
+    "x": 28,
+    "y": 760,
+    "w": 334,
+    "h": 56
+   },
+   "effectiveHit": {
+    "x": 28,
+    "y": 760,
+    "w": 334,
+    "h": 56
+   }
+  }
+ ],
+ "texts": [
+  {
+   "text": "09:41",
+   "tag": "p",
+   "fontSize": 15,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 30.234375,
+     "y": 17,
+     "w": 39.515625,
+     "h": 18
+    }
+   ]
+  },
+  {
+   "text": "8",
+   "tag": "span",
+   "fontSize": 18,
+   "fontWeight": "600",
+   "color": "rgb(123, 168, 242)",
+   "nominalRatio": 8.1,
+   "nominalFg": [
+    123,
+    168,
+    242
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": true,
+   "rect": [
+    {
+     "x": 358.46875,
+     "y": 60,
+     "w": 11.53125,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Microphone access is off",
+   "tag": "p",
+   "fontSize": 20,
+   "fontWeight": "700",
+   "color": "rgb(252, 211, 77)",
+   "nominalRatio": 13.52,
+   "nominalFg": [
+    252,
+    211,
+    77
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 99.703125,
+     "y": 268,
+     "w": 218.578125,
+     "h": 24
+    }
+   ]
+  },
+  {
+   "text": "One tap in Settings, and you're back to speaking. Nothing else changes.",
+   "tag": "p",
+   "fontSize": 32,
+   "fontWeight": "700",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 31.96875,
+     "y": 306,
+     "w": 326.046875,
+     "h": 39
+    },
+    {
+     "x": 29.265625,
+     "y": 342,
+     "w": 331.46875,
+     "h": 39
+    },
+    {
+     "x": 43.921875,
+     "y": 378,
+     "w": 302.140625,
+     "h": 39
+    }
+   ]
+  },
+  {
+   "text": "Turn on my microphone",
+   "tag": "span",
+   "fontSize": 20,
+   "fontWeight": "700",
+   "color": "rgb(9, 12, 24)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    9,
+    12,
+    24
+   ],
+   "nominalBg": [
+    244,
+    242,
+    255
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 91.234375,
+     "y": 710,
+     "w": 207.53125,
+     "h": 24
+    }
+   ]
+  },
+  {
+   "text": "Continue with text",
+   "tag": "span",
+   "fontSize": 20,
+   "fontWeight": "700",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 13.95,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 113.484375,
+     "y": 774,
+     "w": 163.03125,
+     "h": 24
+    }
+   ]
+  }
+ ],
+ "animations": [],
+ "tabOrder": [
+  {
+   "tag": "button",
+   "name": "Continue with text",
+   "y": 760,
+   "x": 28,
+   "outline": "rgb(0, 95, 204) auto 1px",
+   "boxShadow": "rgba(0, 0, 0, 0.15) 0px -4px 0px 0px inset"
+  }
+ ]
+}

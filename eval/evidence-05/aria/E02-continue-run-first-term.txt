@@ -1,0 +1,19 @@
+- alert
+- paragraph: 09:41
+- img
+- img
+- img
+- button "Close":
+  - img
+- progressbar "Topic progress"
+- img
+- text: 6 Topics 1 of 3
+- button "Skip"
+- main:
+  - img
+  - paragraph: Explain the term “Divergent thinking” out loud, in your own words.
+- button "Tap to speak":
+  - img
+  - paragraph: Tap to speak
+- button "Type instead"
+- button "I don’t know"

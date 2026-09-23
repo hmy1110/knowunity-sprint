@@ -1,0 +1,984 @@
+{
+ "url": "/summary?variant=review",
+ "scroll": {
+  "scrollWidth": 390,
+  "clientWidth": 390,
+  "scrollHeight": 844,
+  "clientHeight": 844,
+  "horizontalScroll": false,
+  "scrollY": 0
+ },
+ "bodyText": "09:41 | Nice work, Mia! | XP | 6 | SCORE | 3/3 | BLAZING | 2:09 | 100% | recalled in this review | 3 Recalled | 0 Hinted | 0 Revealed | 0 Skipped | Divergent thinking | Recalled | Visual hierarchy | Recalled | Visual research | Recalled | Recalled on review | Divergent thinking, many possible ideas before narrowing to one. | Visual hierarchy, arranging elements to guide attention and show what matters most. | Visual research, uses visual media (images, video, diagrams) as data for research. | Continue",
+ "interactive": [
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Back",
+   "ariaLabel": "Back",
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": false,
+   "offscreen": false,
+   "ownRect": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   },
+   "unionRect": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   },
+   "effectiveHit": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Continue",
+   "ariaLabel": null,
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": false,
+   "offscreen": false,
+   "ownRect": {
+    "x": 28,
+    "y": 760,
+    "w": 334,
+    "h": 56
+   },
+   "unionRect": {
+    "x": 28,
+    "y": 760,
+    "w": 334,
+    "h": 56
+   },
+   "effectiveHit": {
+    "x": 28,
+    "y": 760,
+    "w": 334,
+    "h": 56
+   }
+  }
+ ],
+ "texts": [
+  {
+   "text": "09:41",
+   "tag": "p",
+   "fontSize": 15,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 30.234375,
+     "y": 17,
+     "w": 39.515625,
+     "h": 18
+    }
+   ]
+  },
+  {
+   "text": "Nice work, Mia!",
+   "tag": "p",
+   "fontSize": 32,
+   "fontWeight": "700",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 91.375,
+     "y": 130,
+     "w": 207.25,
+     "h": 39
+    }
+   ]
+  },
+  {
+   "text": "XP",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(6, 23, 59)",
+   "nominalRatio": 6.64,
+   "nominalFg": [
+    6,
+    23,
+    59
+   ],
+   "nominalBg": [
+    95,
+    160,
+    252
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 60.90625,
+     "y": 185,
+     "w": 18.84375,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "6",
+   "tag": "span",
+   "fontSize": 24,
+   "fontWeight": "700",
+   "color": "rgb(95, 160, 252)",
+   "nominalRatio": 7.35,
+   "nominalFg": [
+    95,
+    160,
+    252
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 79.109375,
+     "y": 215.484375,
+     "w": 12.046875,
+     "h": 29
+    }
+   ]
+  },
+  {
+   "text": "SCORE",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(10, 31, 24)",
+   "nominalRatio": 7.49,
+   "nominalFg": [
+    10,
+    31,
+    24
+   ],
+   "nominalBg": [
+    0,
+    195,
+    134
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 170.21875,
+     "y": 185,
+     "w": 49.546875,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "3/3",
+   "tag": "span",
+   "fontSize": 24,
+   "fontWeight": "700",
+   "color": "rgb(0, 195, 134)",
+   "nominalRatio": 8.49,
+   "nominalFg": [
+    0,
+    195,
+    134
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 199.015625,
+     "y": 215.5,
+     "w": 29.46875,
+     "h": 29
+    }
+   ]
+  },
+  {
+   "text": "BLAZING",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(14, 10, 24)",
+   "nominalRatio": 5.61,
+   "nominalFg": [
+    14,
+    10,
+    24
+   ],
+   "nominalBg": [
+    145,
+    120,
+    230
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 287.875,
+     "y": 185,
+     "w": 63.578125,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "2:09",
+   "tag": "span",
+   "fontSize": 24,
+   "fontWeight": "700",
+   "color": "rgb(145, 120, 230)",
+   "nominalRatio": 5.6,
+   "nominalFg": [
+    145,
+    120,
+    230
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 316.4375,
+     "y": 215.40625,
+     "w": 41.265625,
+     "h": 29
+    }
+   ]
+  },
+  {
+   "text": "100",
+   "tag": "span",
+   "fontSize": 44,
+   "fontWeight": "700",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 13.95,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 32,
+     "y": 284.015625,
+     "w": 74.609375,
+     "h": 54
+    }
+   ]
+  },
+  {
+   "text": "%",
+   "tag": "span",
+   "fontSize": 44,
+   "fontWeight": "700",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 13.95,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 106.609375,
+     "y": 284.015625,
+     "w": 41.921875,
+     "h": 54
+    }
+   ]
+  },
+  {
+   "text": "recalled in this review",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "400",
+   "color": "rgba(245, 243, 255, 0.68)",
+   "nominalRatio": 7.26,
+   "nominalFg": [
+    177,
+    177,
+    188
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 156.53125,
+     "y": 311.015625,
+     "w": 146.453125,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "3",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "400",
+   "color": "rgba(245, 243, 255, 0.68)",
+   "nominalRatio": 7.26,
+   "nominalFg": [
+    177,
+    177,
+    188
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 44,
+     "y": 373.015625,
+     "w": 7.703125,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "Recalled",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "400",
+   "color": "rgba(245, 243, 255, 0.68)",
+   "nominalRatio": 7.26,
+   "nominalFg": [
+    177,
+    177,
+    188
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 55.09375,
+     "y": 373.015625,
+     "w": 50.171875,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "0",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "400",
+   "color": "rgba(245, 243, 255, 0.68)",
+   "nominalRatio": 7.26,
+   "nominalFg": [
+    177,
+    177,
+    188
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 130.953125,
+     "y": 373.015625,
+     "w": 8.09375,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "Hinted",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "400",
+   "color": "rgba(245, 243, 255, 0.68)",
+   "nominalRatio": 7.26,
+   "nominalFg": [
+    177,
+    177,
+    188
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 142.4375,
+     "y": 373.015625,
+     "w": 39.578125,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "0",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "400",
+   "color": "rgba(245, 243, 255, 0.68)",
+   "nominalRatio": 7.26,
+   "nominalFg": [
+    177,
+    177,
+    188
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 207.703125,
+     "y": 373.015625,
+     "w": 8.09375,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "Revealed",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "400",
+   "color": "rgba(245, 243, 255, 0.68)",
+   "nominalRatio": 7.26,
+   "nominalFg": [
+    177,
+    177,
+    188
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 219.1875,
+     "y": 373.015625,
+     "w": 53.34375,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "0",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "400",
+   "color": "rgba(245, 243, 255, 0.68)",
+   "nominalRatio": 7.26,
+   "nominalFg": [
+    177,
+    177,
+    188
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 298.21875,
+     "y": 373.015625,
+     "w": 8.09375,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "Skipped",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "400",
+   "color": "rgba(245, 243, 255, 0.68)",
+   "nominalRatio": 7.26,
+   "nominalFg": [
+    177,
+    177,
+    188
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 309.703125,
+     "y": 373.015625,
+     "w": 48.296875,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "Divergent thinking",
+   "tag": "p",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 13.95,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 32,
+     "y": 435.515625,
+     "w": 129.875,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Recalled",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(10, 31, 24)",
+   "nominalRatio": 7.49,
+   "nominalFg": [
+    10,
+    31,
+    24
+   ],
+   "nominalBg": [
+    0,
+    195,
+    134
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 301.421875,
+     "y": 437.015625,
+     "w": 44.578125,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "Visual hierarchy",
+   "tag": "p",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 13.95,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 32,
+     "y": 483.515625,
+     "w": 114.046875,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Recalled",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(10, 31, 24)",
+   "nominalRatio": 7.49,
+   "nominalFg": [
+    10,
+    31,
+    24
+   ],
+   "nominalBg": [
+    0,
+    195,
+    134
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 301.421875,
+     "y": 485.015625,
+     "w": 44.578125,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "Visual research",
+   "tag": "p",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 13.95,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 32,
+     "y": 531.515625,
+     "w": 109.15625,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Recalled",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(10, 31, 24)",
+   "nominalRatio": 7.49,
+   "nominalFg": [
+    10,
+    31,
+    24
+   ],
+   "nominalBg": [
+    0,
+    195,
+    134
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 301.421875,
+     "y": 533.015625,
+     "w": 44.578125,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "Recalled on review",
+   "tag": "p",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(0, 195, 134)",
+   "nominalRatio": 8.49,
+   "nominalFg": [
+    0,
+    195,
+    134
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 16,
+     "y": 579.015625,
+     "w": 130.546875,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Divergent thinking",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 16,
+     "y": 603.015625,
+     "w": 129.875,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": ", many possible ideas before narrowing to one.",
+   "tag": "p",
+   "fontSize": 14,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 145.875,
+     "y": 603.015625,
+     "w": 190.46875,
+     "h": 17
+    },
+    {
+     "x": 16,
+     "y": 619.015625,
+     "w": 117.390625,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Visual hierarchy",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 16,
+     "y": 643.015625,
+     "w": 114.046875,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": ", arranging elements to guide attention and show what matters most.",
+   "tag": "p",
+   "fontSize": 14,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 130.046875,
+     "y": 643.015625,
+     "w": 195.109375,
+     "h": 17
+    },
+    {
+     "x": 16,
+     "y": 659.015625,
+     "w": 265.5625,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Visual research",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 16,
+     "y": 683.015625,
+     "w": 109.15625,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": ", uses visual media (images, video, diagrams) as data for research.",
+   "tag": "p",
+   "fontSize": 14,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 125.15625,
+     "y": 683.015625,
+     "w": 227.578125,
+     "h": 17
+    },
+    {
+     "x": 16,
+     "y": 699.015625,
+     "w": 208.703125,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Continue",
+   "tag": "span",
+   "fontSize": 20,
+   "fontWeight": "700",
+   "color": "rgb(9, 12, 24)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    9,
+    12,
+    24
+   ],
+   "nominalBg": [
+    244,
+    242,
+    255
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 153.75,
+     "y": 774,
+     "w": 82.484375,
+     "h": 24
+    }
+   ]
+  }
+ ],
+ "animations": []
+}

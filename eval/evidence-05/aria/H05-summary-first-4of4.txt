@@ -1,0 +1,33 @@
+- paragraph: 09:41
+- img
+- img
+- img
+- button "Back":
+  - img
+- main:
+  - paragraph: Nice work, Mia!
+  - text: XP
+  - img
+  - text: 8 SCORE
+  - img
+  - text: 4/4 BLAZING
+  - img
+  - text: 1:20 100% recalled this session 4 Recalled 0 Hinted 0 Revealed 0 Skipped
+  - paragraph: Inspiration
+  - text: Recalled
+  - paragraph: Divergent thinking
+  - text: Recalled
+  - paragraph: Visual hierarchy
+  - text: Recalled
+  - paragraph: Visual research
+  - text: Recalled
+  - paragraph: Recalled on your own
+  - paragraph: Inspiration, personal experience and the world around you.
+  - paragraph: Recalled on your own
+  - paragraph: Divergent thinking, many possible ideas before narrowing to one.
+  - paragraph: Recalled on your own
+  - paragraph: Visual hierarchy, arranging elements to guide attention and show what matters most.
+  - paragraph: Recalled on your own
+  - paragraph: Visual research, uses visual media (images, video, diagrams) as data for research.
+- button "Continue"
+- alert

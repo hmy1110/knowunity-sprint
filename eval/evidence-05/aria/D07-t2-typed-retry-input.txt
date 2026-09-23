@@ -1,0 +1,25 @@
+- alert
+- paragraph: 09:41
+- img
+- img
+- img
+- button "Close":
+  - img
+- progressbar "Topic progress"
+- img
+- text: 8 Topics 2 of 4
+- button "Skip" [disabled]
+- main:
+  - paragraph: Explain the term “Divergent thinking”, in your own words.
+  - paragraph: You typed
+  - paragraph: a short answer I typed
+  - img
+  - paragraph: Not quite yet.
+  - paragraph: Hint 1 of 2
+  - paragraph: No worries. Think about the very first step, before you start narrowing down to your favourite idea.
+  - paragraph: Type a short answer...
+  - textbox "Type a short answer":
+    - /placeholder: Type a short answer...
+  - paragraph: A couple of sentences is enough, you don't need to retype the full explanation.
+- button "Submit" [disabled]
+- button "Switch to voice"

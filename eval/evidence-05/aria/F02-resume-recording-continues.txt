@@ -1,0 +1,17 @@
+- paragraph: 09:41
+- img
+- img
+- img
+- button "Close":
+  - img
+- progressbar "Topic progress"
+- img
+- text: 8 Topics 1 of 4
+- button "Skip" [disabled]
+- main:
+  - img
+  - paragraph: Let’s start. Explain the term “Inspiration” out loud, in your own words.
+- button "Tap to stop":
+  - paragraph: Recording…
+  - paragraph: Tap to stop
+- alert

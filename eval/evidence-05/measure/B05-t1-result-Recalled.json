@@ -1,0 +1,504 @@
+{
+ "url": "/session",
+ "scroll": {
+  "scrollWidth": 390,
+  "clientWidth": 390,
+  "scrollHeight": 844,
+  "clientHeight": 844,
+  "horizontalScroll": false,
+  "scrollY": 0
+ },
+ "bodyText": "09:41 | 8 | Topics 1 of 4 | Skip | Let’s start. Explain the term “Inspiration” out loud, in your own words. | Nice! | Unaided | You said: 'It’s the spark that makes you want to create something' | Continue",
+ "interactive": [
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Close",
+   "ariaLabel": "Close",
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": false,
+   "offscreen": false,
+   "ownRect": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   },
+   "unionRect": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   },
+   "effectiveHit": {
+    "x": 4,
+    "y": 48,
+    "w": 48,
+    "h": 48
+   }
+  },
+  {
+   "tag": "div",
+   "role": "progressbar",
+   "name": "Topic progress",
+   "ariaLabel": "Topic progress",
+   "native": false,
+   "disabled": false,
+   "hasOnClick": false,
+   "hotspotMarked": false,
+   "offscreen": false,
+   "ownRect": {
+    "x": 56,
+    "y": 64,
+    "w": 268.5,
+    "h": 16
+   },
+   "unionRect": {
+    "x": 56,
+    "y": 64,
+    "w": 268.5,
+    "h": 16
+   },
+   "effectiveHit": {
+    "x": 56,
+    "y": 64,
+    "w": 270,
+    "h": 16
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Skip",
+   "ariaLabel": null,
+   "native": true,
+   "disabled": true,
+   "hasOnClick": false,
+   "hotspotMarked": false,
+   "offscreen": false,
+   "ownRect": {
+    "x": 318.8,
+    "y": 112,
+    "w": 55.2,
+    "h": 32
+   },
+   "unionRect": {
+    "x": 318.8,
+    "y": 104,
+    "w": 55.2,
+    "h": 48
+   },
+   "effectiveHit": {
+    "x": 318,
+    "y": 104,
+    "w": 56,
+    "h": 48
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Play recording",
+   "ariaLabel": "Play recording",
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": false,
+   "offscreen": false,
+   "ownRect": {
+    "x": 111.5,
+    "y": 232,
+    "w": 262.5,
+    "h": 44
+   },
+   "unionRect": {
+    "x": 111.5,
+    "y": 232,
+    "w": 262.5,
+    "h": 44
+   },
+   "effectiveHit": {
+    "x": 112,
+    "y": 232,
+    "w": 262,
+    "h": 44
+   }
+  },
+  {
+   "tag": "button",
+   "role": null,
+   "name": "Continue",
+   "ariaLabel": null,
+   "native": true,
+   "disabled": false,
+   "hasOnClick": true,
+   "hotspotMarked": false,
+   "offscreen": false,
+   "ownRect": {
+    "x": 28,
+    "y": 760,
+    "w": 334,
+    "h": 56
+   },
+   "unionRect": {
+    "x": 28,
+    "y": 760,
+    "w": 334,
+    "h": 56
+   },
+   "effectiveHit": {
+    "x": 28,
+    "y": 760,
+    "w": 334,
+    "h": 56
+   }
+  }
+ ],
+ "texts": [
+  {
+   "text": "09:41",
+   "tag": "p",
+   "fontSize": 15,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 30.234375,
+     "y": 17,
+     "w": 39.515625,
+     "h": 18
+    }
+   ]
+  },
+  {
+   "text": "8",
+   "tag": "span",
+   "fontSize": 18,
+   "fontWeight": "600",
+   "color": "rgb(123, 168, 242)",
+   "nominalRatio": 8.1,
+   "nominalFg": [
+    123,
+    168,
+    242
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": true,
+   "rect": [
+    {
+     "x": 358.46875,
+     "y": 60,
+     "w": 11.53125,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Topics",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 16,
+     "y": 120,
+     "w": 42.90625,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "1",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 58.90625,
+     "y": 120,
+     "w": 6.1875,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "of",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 65.09375,
+     "y": 120,
+     "w": 19.609375,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "4",
+   "tag": "span",
+   "fontSize": 12,
+   "fontWeight": "600",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 84.703125,
+     "y": 120,
+     "w": 8.0625,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "Skip",
+   "tag": "span",
+   "fontSize": 14,
+   "fontWeight": "600",
+   "color": "rgba(255, 255, 255, 0.4)",
+   "nominalRatio": 3.79,
+   "nominalFg": [
+    107,
+    109,
+    116
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 330.78125,
+     "y": 118,
+     "w": 31.21875,
+     "h": 17
+    }
+   ]
+  },
+  {
+   "text": "Let’s start. Explain the term “Inspiration” out loud, in your own words.",
+   "tag": "p",
+   "fontSize": 18,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    9,
+    12,
+    24
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 16,
+     "y": 174,
+     "w": 337.40625,
+     "h": 23
+    },
+    {
+     "x": 16,
+     "y": 194,
+     "w": 234.484375,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Nice!",
+   "tag": "p",
+   "fontSize": 20,
+   "fontWeight": "700",
+   "color": "rgb(0, 195, 134)",
+   "nominalRatio": 6.72,
+   "nominalFg": [
+    0,
+    195,
+    134
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 145,
+     "y": 308,
+     "w": 45.96875,
+     "h": 24
+    }
+   ]
+  },
+  {
+   "text": "Unaided",
+   "tag": "p",
+   "fontSize": 12,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 13.95,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 117,
+     "y": 334,
+     "w": 47.359375,
+     "h": 15
+    }
+   ]
+  },
+  {
+   "text": "You said: 'It’s the spark that makes you want to create something'",
+   "tag": "p",
+   "fontSize": 18,
+   "fontWeight": "400",
+   "color": "rgb(244, 242, 255)",
+   "nominalRatio": 13.95,
+   "nominalFg": [
+    244,
+    242,
+    255
+   ],
+   "nominalBg": [
+    34,
+    36,
+    47
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 117,
+     "y": 353,
+     "w": 230.625,
+     "h": 23
+    },
+    {
+     "x": 117,
+     "y": 377,
+     "w": 214.828125,
+     "h": 23
+    },
+    {
+     "x": 117,
+     "y": 401,
+     "w": 92.546875,
+     "h": 23
+    }
+   ]
+  },
+  {
+   "text": "Continue",
+   "tag": "span",
+   "fontSize": 20,
+   "fontWeight": "700",
+   "color": "rgb(9, 12, 24)",
+   "nominalRatio": 17.63,
+   "nominalFg": [
+    9,
+    12,
+    24
+   ],
+   "nominalBg": [
+    244,
+    242,
+    255
+   ],
+   "bgUnknown": false,
+   "rect": [
+    {
+     "x": 153.75,
+     "y": 774,
+     "w": 82.484375,
+     "h": 24
+    }
+   ]
+  }
+ ],
+ "animations": []
+}

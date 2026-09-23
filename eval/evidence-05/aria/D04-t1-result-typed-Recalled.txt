@@ -1,0 +1,22 @@
+- alert
+- paragraph: 09:41
+- img
+- img
+- img
+- button "Close":
+  - img
+- progressbar "Topic progress"
+- img
+- text: 8 Topics 1 of 4
+- button "Skip" [disabled]
+- main:
+  - paragraph: Let’s start. Explain the term “Inspiration”, in your own words.
+  - paragraph: You typed
+  - paragraph: a short answer I typed
+  - img
+  - img
+  - paragraph: Nice!
+  - paragraph: Unaided
+  - paragraph: Inspiration is personal experience and the world around you.
+- button "Continue"
+- button "Switch to voice"

@@ -1,0 +1,19 @@
+- alert
+- paragraph: 09:41
+- img
+- img
+- img
+- button "Close":
+  - img
+- progressbar "Topic progress"
+- img
+- text: 8 Topics 1 of 4
+- button "Skip" [disabled]
+- main:
+  - paragraph: Let’s start. Explain the term “Inspiration”, in your own words.
+  - paragraph: You typed
+  - paragraph: a short answer I typed
+  - paragraph: A couple of sentences is enough, you don't need to retype the full explanation.
+  - img
+- button "Submit" [disabled]
+- button "Switch to voice" [disabled]

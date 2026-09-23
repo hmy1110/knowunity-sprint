@@ -1,0 +1,27 @@
+- alert
+- paragraph: 09:41
+- img
+- img
+- img
+- button "Back":
+  - img
+- main:
+  - paragraph: Nice work, Mia!
+  - text: XP
+  - img
+  - text: 6 SCORE
+  - img
+  - text: 3/3 BLAZING
+  - img
+  - text: 2:09 100% recalled in this review 3 Recalled 0 Hinted 0 Revealed 0 Skipped
+  - paragraph: Divergent thinking
+  - text: Recalled
+  - paragraph: Visual hierarchy
+  - text: Recalled
+  - paragraph: Visual research
+  - text: Recalled
+  - paragraph: Recalled on review
+  - paragraph: Divergent thinking, many possible ideas before narrowing to one.
+  - paragraph: Visual hierarchy, arranging elements to guide attention and show what matters most.
+  - paragraph: Visual research, uses visual media (images, video, diagrams) as data for research.
+- button "Continue"

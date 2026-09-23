@@ -1,0 +1,17 @@
+- alert
+- paragraph: 09:41
+- img
+- img
+- img
+- button "Back":
+  - img
+- main:
+  - paragraph: Explain it to Knowie
+  - img
+  - text: Explain 4 topics from section 1
+  - img
+  - text: Stuck? Knowie guides you
+  - img
+  - text: Explain out loud helps you score up to 20% higher on exams
+- button "Start learning"
+- button "I can't talk right now"

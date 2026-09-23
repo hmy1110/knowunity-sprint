@@ -1,0 +1,422 @@
+[
+ {
+  "state": "B02-t1-recording",
+  "text": "09:41",
+  "nominalRatio": 17.63,
+  "pixelRatio": 4.89,
+  "fontPx": 15,
+  "fontWeight": "600",
+  "box": {
+   "x": 30.234375,
+   "y": 17,
+   "w": 39.515625,
+   "h": 18
+  }
+ },
+ {
+  "state": "B02-t1-recording",
+  "text": "8",
+  "nominalRatio": 8.1,
+  "pixelRatio": 2.77,
+  "fontPx": 18,
+  "fontWeight": "600",
+  "box": {
+   "x": 358.46875,
+   "y": 60,
+   "w": 11.53125,
+   "h": 23
+  }
+ },
+ {
+  "state": "B02-t1-recording",
+  "text": "Topics",
+  "nominalRatio": 17.63,
+  "pixelRatio": 4.89,
+  "fontPx": 12,
+  "fontWeight": "600",
+  "box": {
+   "x": 16,
+   "y": 120,
+   "w": 42.90625,
+   "h": 15
+  }
+ },
+ {
+  "state": "B02-t1-recording",
+  "text": "of",
+  "nominalRatio": 17.63,
+  "pixelRatio": 4.89,
+  "fontPx": 12,
+  "fontWeight": "600",
+  "box": {
+   "x": 65.09375,
+   "y": 120,
+   "w": 19.609375,
+   "h": 15
+  }
+ },
+ {
+  "state": "B02-t1-recording",
+  "text": "4",
+  "nominalRatio": 17.63,
+  "pixelRatio": 4.89,
+  "fontPx": 12,
+  "fontWeight": "600",
+  "box": {
+   "x": 84.703125,
+   "y": 120,
+   "w": 8.0625,
+   "h": 15
+  }
+ },
+ {
+  "state": "B02-t1-recording",
+  "text": "Skip",
+  "nominalRatio": 3.79,
+  "pixelRatio": 1.76,
+  "fontPx": 14,
+  "fontWeight": "600",
+  "box": {
+   "x": 330.78125,
+   "y": 118,
+   "w": 31.21875,
+   "h": 17
+  }
+ },
+ {
+  "state": "B02-t1-recording",
+  "text": "Let’s start. Explain the term “Inspiration” ",
+  "nominalRatio": 13.95,
+  "pixelRatio": 4.45,
+  "fontPx": 18,
+  "fontWeight": "400",
+  "box": {
+   "x": 117,
+   "y": 182,
+   "w": 230.59375,
+   "h": 23
+  }
+ },
+ {
+  "state": "B02-t1-recording",
+  "text": "Recording…",
+  "nominalRatio": 7.02,
+  "pixelRatio": 7.09,
+  "fontPx": 14,
+  "fontWeight": "600",
+  "box": {
+   "x": 162.359375,
+   "y": 703,
+   "w": 82.28125,
+   "h": 17
+  }
+ },
+ {
+  "state": "B02-t1-recording",
+  "text": "Tap to stop",
+  "nominalRatio": 8.4,
+  "pixelRatio": 8.34,
+  "fontPx": 14,
+  "fontWeight": "600",
+  "box": {
+   "x": 156.125,
+   "y": 799,
+   "w": 77.734375,
+   "h": 17
+  }
+ },
+ {
+  "state": "B08-t2-hint-recording",
+  "text": "09:41",
+  "nominalRatio": 17.63,
+  "pixelRatio": 4.89,
+  "fontPx": 15,
+  "fontWeight": "600",
+  "box": {
+   "x": 30.234375,
+   "y": 17,
+   "w": 39.515625,
+   "h": 18
+  }
+ },
+ {
+  "state": "B08-t2-hint-recording",
+  "text": "8",
+  "nominalRatio": 8.1,
+  "pixelRatio": 2.77,
+  "fontPx": 18,
+  "fontWeight": "600",
+  "box": {
+   "x": 358.46875,
+   "y": 60,
+   "w": 11.53125,
+   "h": 23
+  }
+ },
+ {
+  "state": "B08-t2-hint-recording",
+  "text": "Topics",
+  "nominalRatio": 17.63,
+  "pixelRatio": 4.89,
+  "fontPx": 12,
+  "fontWeight": "600",
+  "box": {
+   "x": 16,
+   "y": 120,
+   "w": 42.90625,
+   "h": 15
+  }
+ },
+ {
+  "state": "B08-t2-hint-recording",
+  "text": "of",
+  "nominalRatio": 17.63,
+  "pixelRatio": 4.89,
+  "fontPx": 12,
+  "fontWeight": "600",
+  "box": {
+   "x": 66.640625,
+   "y": 120,
+   "w": 19.609375,
+   "h": 15
+  }
+ },
+ {
+  "state": "B08-t2-hint-recording",
+  "text": "4",
+  "nominalRatio": 17.63,
+  "pixelRatio": 4.89,
+  "fontPx": 12,
+  "fontWeight": "600",
+  "box": {
+   "x": 86.25,
+   "y": 120,
+   "w": 8.0625,
+   "h": 15
+  }
+ },
+ {
+  "state": "B08-t2-hint-recording",
+  "text": "Skip",
+  "nominalRatio": 3.79,
+  "pixelRatio": 1.76,
+  "fontPx": 14,
+  "fontWeight": "600",
+  "box": {
+   "x": 330.78125,
+   "y": 118,
+   "w": 31.21875,
+   "h": 17
+  }
+ },
+ {
+  "state": "B08-t2-hint-recording",
+  "text": "Explain the term “Divergent thinking” out lo",
+  "nominalRatio": 17.63,
+  "pixelRatio": 4.89,
+  "fontPx": 18,
+  "fontWeight": "400",
+  "box": {
+   "x": 16,
+   "y": 166,
+   "w": 341.625,
+   "h": 23
+  }
+ },
+ {
+  "state": "B08-t2-hint-recording",
+  "text": "Not quite yet.",
+  "nominalRatio": 10.7,
+  "pixelRatio": 3.61,
+  "fontPx": 20,
+  "fontWeight": "700",
+  "box": {
+   "x": 145,
+   "y": 300,
+   "w": 119.0625,
+   "h": 24
+  }
+ },
+ {
+  "state": "B08-t2-hint-recording",
+  "text": "Hint 1 of 2",
+  "nominalRatio": 13.95,
+  "pixelRatio": 4.45,
+  "fontPx": 12,
+  "fontWeight": "400",
+  "box": {
+   "x": 117,
+   "y": 326,
+   "w": 56.8125,
+   "h": 15
+  }
+ },
+ {
+  "state": "B08-t2-hint-recording",
+  "text": "No worries. Think about the very first step,",
+  "nominalRatio": 13.95,
+  "pixelRatio": 4.45,
+  "fontPx": 18,
+  "fontWeight": "400",
+  "box": {
+   "x": 117,
+   "y": 343,
+   "w": 231.65625,
+   "h": 23
+  }
+ },
+ {
+  "state": "B08-t2-hint-recording",
+  "text": "Recording…",
+  "nominalRatio": 7.02,
+  "pixelRatio": 7.09,
+  "fontPx": 14,
+  "fontWeight": "600",
+  "box": {
+   "x": 162.359375,
+   "y": 703,
+   "w": 82.28125,
+   "h": 17
+  }
+ },
+ {
+  "state": "B08-t2-hint-recording",
+  "text": "Tap to stop",
+  "nominalRatio": 8.4,
+  "pixelRatio": 8.34,
+  "fontPx": 14,
+  "fontWeight": "600",
+  "box": {
+   "x": 156.125,
+   "y": 799,
+   "w": 77.734375,
+   "h": 17
+  }
+ },
+ {
+  "state": "I03-recording-reducedMotion",
+  "text": "09:41",
+  "nominalRatio": 17.63,
+  "pixelRatio": 4.89,
+  "fontPx": 15,
+  "fontWeight": "600",
+  "box": {
+   "x": 30.234375,
+   "y": 17,
+   "w": 39.515625,
+   "h": 18
+  }
+ },
+ {
+  "state": "I03-recording-reducedMotion",
+  "text": "8",
+  "nominalRatio": 8.1,
+  "pixelRatio": 2.77,
+  "fontPx": 18,
+  "fontWeight": "600",
+  "box": {
+   "x": 358.46875,
+   "y": 60,
+   "w": 11.53125,
+   "h": 23
+  }
+ },
+ {
+  "state": "I03-recording-reducedMotion",
+  "text": "Topics",
+  "nominalRatio": 17.63,
+  "pixelRatio": 4.89,
+  "fontPx": 12,
+  "fontWeight": "600",
+  "box": {
+   "x": 16,
+   "y": 120,
+   "w": 42.90625,
+   "h": 15
+  }
+ },
+ {
+  "state": "I03-recording-reducedMotion",
+  "text": "of",
+  "nominalRatio": 17.63,
+  "pixelRatio": 4.89,
+  "fontPx": 12,
+  "fontWeight": "600",
+  "box": {
+   "x": 65.09375,
+   "y": 120,
+   "w": 19.609375,
+   "h": 15
+  }
+ },
+ {
+  "state": "I03-recording-reducedMotion",
+  "text": "4",
+  "nominalRatio": 17.63,
+  "pixelRatio": 4.89,
+  "fontPx": 12,
+  "fontWeight": "600",
+  "box": {
+   "x": 84.703125,
+   "y": 120,
+   "w": 8.0625,
+   "h": 15
+  }
+ },
+ {
+  "state": "I03-recording-reducedMotion",
+  "text": "Skip",
+  "nominalRatio": 3.79,
+  "pixelRatio": 1.76,
+  "fontPx": 14,
+  "fontWeight": "600",
+  "box": {
+   "x": 330.78125,
+   "y": 118,
+   "w": 31.21875,
+   "h": 17
+  }
+ },
+ {
+  "state": "I03-recording-reducedMotion",
+  "text": "Let’s start. Explain the term “Inspiration” ",
+  "nominalRatio": 13.95,
+  "pixelRatio": 4.45,
+  "fontPx": 18,
+  "fontWeight": "400",
+  "box": {
+   "x": 117,
+   "y": 182,
+   "w": 230.59375,
+   "h": 23
+  }
+ },
+ {
+  "state": "I03-recording-reducedMotion",
+  "text": "Recording…",
+  "nominalRatio": 7.02,
+  "pixelRatio": 7.09,
+  "fontPx": 14,
+  "fontWeight": "600",
+  "box": {
+   "x": 162.359375,
+   "y": 703,
+   "w": 82.28125,
+   "h": 17
+  }
+ },
+ {
+  "state": "I03-recording-reducedMotion",
+  "text": "Tap to stop",
+  "nominalRatio": 8.4,
+  "pixelRatio": 8.34,
+  "fontPx": 14,
+  "fontWeight": "600",
+  "box": {
+   "x": 156.125,
+   "y": 799,
+   "w": 77.734375,
+   "h": 17
+  }
+ }
+]

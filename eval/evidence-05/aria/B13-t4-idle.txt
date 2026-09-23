@@ -1,0 +1,19 @@
+- paragraph: 09:41
+- img
+- img
+- img
+- button "Close":
+  - img
+- progressbar "Topic progress"
+- img
+- text: 8 Topics 4 of 4
+- button "Skip"
+- main:
+  - img
+  - paragraph: Explain the term “Visual research” out loud, in your own words.
+- button "Tap to speak":
+  - img
+  - paragraph: Tap to speak
+- button "Type instead"
+- button "I don’t know"
+- alert
