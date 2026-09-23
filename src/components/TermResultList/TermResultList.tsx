@@ -16,6 +16,16 @@ import type { TagStatus } from '../Tag/Tag'
  * Reproduced here as a `status → title` map rather than a title prop,
  * so a caller can't accidentally pair the wrong title with a status.
  *
+ * **`run` picks which map** (Mia, 2026-09-23). In a review Summary every
+ * listed term had already failed to come back on its own in the first
+ * run — it was hinted, revealed or skipped — so "Recalled on your own"
+ * claims something that didn't happen. `run="review"` titles those rows
+ * "Recalled on review" instead. Still derived, not free text: the caller
+ * says which run these rows come from, never what the title should read.
+ * The other three titles are as true in a review as in a first run and
+ * don't change. Figma has no review-run variant of this list — see
+ * `component-gaps.md` (`[gap:review-recalled-title]`).
+ *
  * **The sentence is real rich text, not a single flat string** —
  * confirmed via `getStyledTextSegments`: the leading term name renders
  * SemiBold (600) and binds "Greed/Headline XXS Bold"
@@ -57,8 +67,12 @@ export interface TermResultRow {
   note?: string
 }
 
+export type TermResultRun = 'first' | 'review'
+
 export interface TermResultListProps {
   rows: TermResultRow[]
+  /** Which run these rows come from — picks the Recalled title, see doc comment above. Defaults to `'first'`. */
+  run?: TermResultRun
   className?: string
   style?: CSSProperties
 }
@@ -70,6 +84,14 @@ const STATUS_TITLE: Record<TagStatus, string> = {
   Hinted: 'Needed a hint',
   Revealed: 'Revealed',
   Skipped: 'Skipped',
+}
+
+// The same map for a review run: only Recalled differs, since a reviewed
+// term was never recalled on its own. [gap:review-recalled-title]
+export const REVIEW_RECALLED_TITLE = 'Recalled on review'
+const REVIEW_STATUS_TITLE: Record<TagStatus, string> = {
+  ...STATUS_TITLE,
+  Recalled: REVIEW_RECALLED_TITLE,
 }
 
 // Status-tinted title color per Mia's explicit call — the real node
@@ -99,13 +121,14 @@ const REFLECTION_TEXT_STYLE: CSSProperties = {
   letterSpacing: 'var(--type-scale-headline-xxs-regular-letter-spacing)',
 }
 
-export function TermResultList({ rows, className, style }: TermResultListProps) {
+export function TermResultList({ rows, run = 'first', className, style }: TermResultListProps) {
+  const titles = run === 'review' ? REVIEW_STATUS_TITLE : STATUS_TITLE
   return (
     <div className={`flex flex-col ${className ?? ''}`} style={{ gap: 'var(--size-space-400)', ...style }}>
       {rows.map((row, index) => (
         <div key={index} className="flex flex-col" style={{ gap: 'var(--size-space-100)' }}>
           <p className="m-0" style={{ ...TITLE_TEXT_STYLE, color: `var(${STATUS_TITLE_COLOR_VAR[row.status]})` }}>
-            {STATUS_TITLE[row.status]}
+            {titles[row.status]}
           </p>
           <p className="m-0" style={{ ...REFLECTION_TEXT_STYLE, color: 'var(--semantic-color-text-primary)' }}>
             <span style={TERM_TEXT_STYLE}>{row.term}</span>

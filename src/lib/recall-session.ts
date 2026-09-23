@@ -68,6 +68,32 @@ export const STATUS_NOTE: Partial<Record<Status, string>> = {
 // Mia, 2026-09-19: 2 XP for every term recalled on its own.
 export const XP_PER_RECALLED = 2
 
+// Summary's headline, derived from how many of the terms it lists were
+// recalled. Two tiers are live Figma copy: "Nice work, Mia!" on
+// `Summary-all recalled`, "Good session, Mia." on the mixed frame (1 of
+// 4). The other two have no Figma frame of their own: "Let’s go again,
+// Mia." is Mia's 2026-09-21 call for the nothing-recalled case, and
+// "Almost there, Mia." is her 2026-09-23 call, added so 3 of 4 stops
+// reading exactly like 1 of 4. Both confirmed-from-Figma pairings are
+// untouched: 4 of 4 and 1 of 4 still say what the frames say.
+// [gap:summary-headline-tiers]
+export function summaryHeadline(recalled: number, total: number): string {
+  if (total > 0 && recalled === total) return 'Nice work, Mia!'
+  if (recalled === 0) return 'Let’s go again, Mia.'
+  // More than half, but not all.
+  if (recalled * 2 > total) return 'Almost there, Mia.'
+  return 'Good session, Mia.'
+}
+
+// `ScoreBreakdown`'s caption. Figma's own string on both Summary frames
+// is "recalled this session", which is true of a first run but overstates
+// a review Summary: that one lists only the terms the review covered, so
+// its percent is out of that subset, not out of the session. Mia,
+// 2026-09-23: keep the subset numbers, say out loud what they count.
+// [gap:review-summary-percent-label]
+export const PERCENT_LABEL_FIRST_RUN = 'recalled this session'
+export const PERCENT_LABEL_REVIEW = 'recalled in this review'
+
 // BLAZING is derived, not measured: the prototype's timing depends on how long
 // the person demoing it talks, so each status costs a fixed number of seconds.
 // Chosen so the two live Summary frames still read exactly as designed:

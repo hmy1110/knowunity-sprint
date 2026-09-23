@@ -10,15 +10,18 @@ import { ScoreBreakdown } from '@/components/ScoreBreakdown/ScoreBreakdown'
 import { ArrowLeftIcon } from '@/components/shared/icons'
 import { StatusBar } from '@/components/StatusBar/StatusBar'
 import { Table } from '@/components/Table/Table'
-import { TermResultList, type TermResultRow } from '@/components/TermResultList/TermResultList'
+import { REVIEW_RECALLED_TITLE, TermResultList, type TermResultRow } from '@/components/TermResultList/TermResultList'
 import type { TagStatus } from '@/components/Tag/Tag'
 
 import {
+  PERCENT_LABEL_FIRST_RUN,
+  PERCENT_LABEL_REVIEW,
   SAMPLE_RESULTS,
   STATUS_NOTE,
   TERMS,
   XP_PER_RECALLED,
   paceLabel,
+  summaryHeadline,
   useMounted,
   useRecallStore,
   type Status,
@@ -292,13 +295,11 @@ function SummaryContent() {
               <MascotSlot size="2XL" pose="standby" />
             </div>
 
-            {/* Mia, 2026-09-21: nothing recalled reads "Let’s go again, Mia."
-                (the Review button sits right under it). Real copy for the
-                other two confirmed from live Figma: "Good session, Mia." on
-                the mixed frame, "Nice work, Mia!" on Summary-all recalled;
-                SPEC.md flags any further tier as unverified. */}
+            {/* Four tiers now, keyed to how many of the listed terms came
+                back — see `summaryHeadline` for which two are live Figma
+                copy and which two are Mia's own calls. */}
             <p className="w-full text-center" style={HEADLINE_TEXT_STYLE}>
-              {allRecalled ? 'Nice work, Mia!' : counts.Recalled === 0 ? 'Let’s go again, Mia.' : 'Good session, Mia.'}
+              {summaryHeadline(counts.Recalled, total)}
             </p>
           </div>
 
@@ -332,7 +333,15 @@ function SummaryContent() {
             />
           </div>
 
-          <ScoreBreakdown percent={percent} counts={counts} style={{ width: '100%' }} />
+          {/* A review Summary's percent is out of the terms that run covered,
+              not out of the session, so it says so rather than reusing
+              Figma's "recalled this session". */}
+          <ScoreBreakdown
+            percent={percent}
+            percentLabel={isReviewSummary ? PERCENT_LABEL_REVIEW : PERCENT_LABEL_FIRST_RUN}
+            counts={counts}
+            style={{ width: '100%' }}
+          />
 
           <Table rows={rows.map((row) => ({ label: row.term, status: row.status }))} style={{ width: '100%' }} />
 
@@ -358,7 +367,7 @@ function SummaryContent() {
                     color: 'var(--semantic-color-accent-green-bold)',
                   }}
                 >
-                  Recalled on your own
+                  {REVIEW_RECALLED_TITLE}
                 </p>
                 {rows.map((row) => (
                   <p
@@ -386,7 +395,7 @@ function SummaryContent() {
               </div>
             </>
           ) : (
-            <TermResultList rows={rows} style={{ width: '100%' }} />
+            <TermResultList rows={rows} run={isReviewSummary ? 'review' : 'first'} style={{ width: '100%' }} />
           )}
         </main>
 
