@@ -125,6 +125,8 @@ export interface AppBarProps {
   /** Accessible label for `rightIcon`. */
   rightLabel?: string
   onRightClick?: () => void
+  /** Render `rightIcon` as decoration, not a control: same box, same 40px circle, same glyph, but a `<span aria-hidden>` instead of a `<button>`, so it can't be focused and isn't announced. For an icon Figma draws but gives nowhere to go. */
+  rightDecorative?: boolean
   /** Second right icon-button content — leftAndTwoRightIconButtons only. */
   rightIcon2?: ReactNode
   /** Accessible label for `rightIcon2`. */
@@ -158,16 +160,23 @@ function AppBarIconButton({
   icon,
   label,
   onClick,
+  decorative,
 }: {
   icon?: ReactNode
   label?: string
   onClick?: () => void
+  decorative?: boolean
 }) {
+  // Decorative keeps the box and the glyph and takes the button semantics
+  // off: no focus stop, nothing announced. Everything visual below is
+  // shared with the real button, so the two can't drift apart.
+  const Box = decorative ? 'span' : 'button'
+  const boxProps = decorative
+    ? ({ 'aria-hidden': true } as const)
+    : ({ type: 'button' as const, 'aria-label': label, onClick })
   return (
-    <button
-      type="button"
-      aria-label={label}
-      onClick={onClick}
+    <Box
+      {...boxProps}
       className="inline-flex shrink-0 items-center justify-center"
       style={{ width: 48, height: 48 }} // Not bound to a token in Figma — see doc comment above.
     >
@@ -182,7 +191,7 @@ function AppBarIconButton({
       >
         <IconSlot size="300" icon={icon} />
       </span>
-    </button>
+    </Box>
   )
 }
 
@@ -225,6 +234,7 @@ export function AppBar({
   rightIcon,
   rightLabel,
   onRightClick,
+  rightDecorative,
   rightIcon2,
   rightLabel2,
   onRightClick2,
@@ -256,10 +266,10 @@ export function AppBar({
         <div className="h-full min-w-0 flex-1">{children}</div>
 
         {variant === 'rightIconButtonOnly' && (
-          <AppBarIconButton icon={rightIcon} label={rightLabel} onClick={onRightClick} />
+          <AppBarIconButton icon={rightIcon} label={rightLabel} onClick={onRightClick} decorative={rightDecorative} />
         )}
         {variant === 'leftAndRightIconButton' && (
-          <AppBarIconButton icon={rightIcon} label={rightLabel} onClick={onRightClick} />
+          <AppBarIconButton icon={rightIcon} label={rightLabel} onClick={onRightClick} decorative={rightDecorative} />
         )}
         {variant === 'leftAndRightButton' && (
           <div className="flex h-full shrink-0 items-center" style={{ paddingLeft: 'var(--size-space-300)' }}>
@@ -268,7 +278,7 @@ export function AppBar({
         )}
         {variant === 'leftAndTwoRightIconButtons' && (
           <div className="flex shrink-0 items-center">
-            <AppBarIconButton icon={rightIcon} label={rightLabel} onClick={onRightClick} />
+            <AppBarIconButton icon={rightIcon} label={rightLabel} onClick={onRightClick} decorative={rightDecorative} />
             <AppBarIconButton icon={rightIcon2} label={rightLabel2} onClick={onRightClick2} />
           </div>
         )}
@@ -277,7 +287,7 @@ export function AppBar({
             className="flex shrink-0 items-center"
             style={{ paddingRight: 'var(--size-space-100)' }}
           >
-            <AppBarIconButton icon={rightIcon} label={rightLabel} onClick={onRightClick} />
+            <AppBarIconButton icon={rightIcon} label={rightLabel} onClick={onRightClick} decorative={rightDecorative} />
             {rightText && <AppBarTextButton text={rightText} onClick={onRightTextClick} />}
           </div>
         )}

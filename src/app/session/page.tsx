@@ -9,6 +9,7 @@ import { Button } from '@/components/Button/Button'
 import { ButtonGroup } from '@/components/ButtonGroup/ButtonGroup'
 import { ButtonIcon } from '@/components/ButtonIcon/ButtonIcon'
 import { IconSlot } from '@/components/IconSlot/IconSlot'
+import { InlineAlert } from '@/components/InlineAlert/InlineAlert'
 import { MascotSlot } from '@/components/MascotSlot/MascotSlot'
 import { MicButton } from '@/components/MicButton/MicButton'
 import { ProgressIndicator, type ProgressIndicatorProgress } from '@/components/ProgressIndicator/ProgressIndicator'
@@ -69,6 +70,9 @@ type SubState =
   | 'typeRetryProcessing'
   | 'typeResultHinted1Recalled'
   | 'typeResultRevealed'
+  // Permission refused on a mic tap inside the run. Not a Figma frame of its
+  // own: it reuses Primer-micDenied's content inside this route's own chrome.
+  | 'micDenied'
 
 // Real "x-close" asset (component 3248:81244), confirmed via
 // `get_design_context` on the live Learning-idle frame — this screen
@@ -284,6 +288,32 @@ function SessionContent() {
   // reaches Session. Shared by the first attempt (`handleMicTap`, → the
   // generic `recording`) and Hinted1's re-attempt (`handleRetry`, → the real
   // `Learning-topic 2-result-Hinted1-recording` frame instead).
+  // The subState the mic was tapped from, so `micDenied` can return to it.
+  const deniedFromRef = useRef<SubState>('idle')
+
+  // "Turn on my microphone": ask again. Granted puts the student back on the
+  // screen they tapped from rather than starting a take for them — the
+  // permission sheet is a modal interruption, and a recording that began
+  // while they were looking at it would be a surprise. Refused again stays
+  // here, which is what Primer's own retry does too.
+  async function retryMicPermission() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      stream.getTracks().forEach((track) => track.stop())
+      setSubState(deniedFromRef.current)
+    } catch {
+      // Still refused: the screen already says so.
+    }
+  }
+
+  // "Continue with text": the same switch "Type instead" makes, so the typed
+  // path picks up this term where the voice path stalled and stays typed for
+  // the terms after it (the input mode sticks, Mia 2026-09-21).
+  function continueWithText() {
+    setInputMode('text')
+    setSubState('typeInput')
+  }
+
   async function startRecording(isRetryAttempt: boolean) {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
@@ -304,7 +334,13 @@ function SessionContent() {
       }
       setSubState(isRetryAttempt ? 'hinted2Recording' : 'recording')
     } catch {
-      // Denied mid-session isn't handled yet — no built destination for it.
+      // Permission refused on a mic tap inside the run (revoked in Settings,
+      // another app holding the device, a second device that never saw the
+      // Primer). Before 2026-09-23 this was swallowed and the tap did
+      // nothing at all. Remember where the tap came from so granting can
+      // put the student back on the exact screen they left.
+      deniedFromRef.current = subState
+      setSubState('micDenied')
     }
   }
 
@@ -675,7 +711,18 @@ function SessionContent() {
   // caption slot always uses — hand-built as its own paragraph instead.
   const typeField = (
     <div className="flex w-full flex-col items-start" style={{ gap: 'var(--size-space-050)' }}>
-      <div className="relative w-full">
+      {/* `TextField` has no height of its own — 12px of padding plus a 16px
+          line-height and the border add up to 42, two under the 44 floor a
+          touch target has to clear, on the one control a student who can't
+          speak has to use. Floored at 48 here (Mia, 2026-09-23), the size
+          Figma gives most controls and the size every other tap area in this
+          build already clears. A literal, not a token, for the same reason
+          `Button.tsx`'s own 48 isn't one: Figma leaves this frame unbound.
+          The overlaid input carries its own fill, border and radius, so it
+          is what you see — growing the box grows the visible field with it,
+          and `TextField` behind it stays exactly as the system draws it.
+          [gap:type-field-height] */}
+      <div className="relative w-full" style={{ minHeight: 48 }}>
         <TextField variant="Placeholder" showTitle={false} showCaption={false} showLeadingIcon={false} placeholder="Type a short answer..." />
         <input
           type="text"
@@ -816,6 +863,71 @@ function SessionContent() {
         {/* `Steps` (Figma node 13764:16058): "Topics N of M" + Skip. Skip is
             live only before an attempt, on `idle` and `typeInput` (Mia,
             2026-09-21); everywhere else it is in Button's Disabled state. */}
+        {subState === 'micDenied' ? (
+          /* Permission refused on a mic tap inside the run. Mia, 2026-09-23:
+             reuse Primer-micDenied whole rather than tucking an alert above
+             the mic, so the student meets a screen they have already seen and
+             no new layout has to be designed. Figma has no session-route
+             version of this frame, so the content below is Primer's own,
+             verbatim, inside this route's chrome: the appBar above keeps THIS
+             run's real progress and XP instead of Primer's hardcoded 25 / 8,
+             and the `Steps` row is dropped because Primer-micDenied has none.
+             Skip is unreachable here by the same token; the two buttons below
+             are the whole screen. See component-gaps.md. */
+          <>
+            <main
+              className="flex min-h-0 flex-1 flex-col items-center overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              style={{ gap: 'var(--size-space-400)', padding: 'var(--size-space-700) var(--size-space-400) 0' }}
+            >
+              {/* Primer's own mascot box and plinth, reproduced verbatim so the
+                  two screens cannot drift apart. Left unbound for the same
+                  reason Primer's and Summary's own copies are — these are
+                  illustration sizes Figma leaves unbound, not spacing roles.
+                  [gap:session-mic-denied] */}
+              <div className="relative flex shrink-0 items-end justify-center" style={{ width: 120, height: 120 }}>
+                {/* [gap:session-mic-denied] */}
+                <div
+                  className="absolute"
+                  style={{
+                    bottom: 0,
+                    width: 105,
+                    height: 19,
+                    borderRadius: 'var(--size-radius-full)',
+                    background: 'var(--semantic-color-background-stacking)',
+                  }}
+                />
+                <MascotSlot size="2XL" pose="standby" />
+              </div>
+
+              <InlineAlert variant="Warning" showDescriptor={false} title="Microphone access is off" />
+
+              <p
+                style={{
+                  width: '100%',
+                  textAlign: 'center',
+                  fontFamily: 'var(--type-scale-headline-l-font-family)',
+                  fontWeight: 'var(--type-scale-headline-l-font-weight)',
+                  fontSize: 'var(--type-scale-headline-l-font-size)',
+                  lineHeight: 'var(--type-scale-headline-l-line-height)',
+                  letterSpacing: 'var(--type-scale-headline-l-letter-spacing)',
+                  color: 'var(--semantic-color-text-primary)',
+                }}
+              >
+                One tap in Settings, and you&apos;re back to speaking. Nothing else changes.
+              </p>
+            </main>
+
+            <div className="flex w-full shrink-0 flex-col items-start" style={{ gap: 'var(--size-space-200)', padding: 'var(--size-space-700)' }}>
+              <ButtonGroup
+                variant="Vertical"
+                size="L"
+                primary={{ cta: 'Turn on my microphone', onClick: retryMicPermission }}
+                secondary={{ cta: 'Continue with text', onClick: continueWithText }}
+              />
+            </div>
+          </>
+        ) : (
+          <>
         <div className="w-full shrink-0" style={{ padding: '0 var(--size-space-400)' }}>
           <Steps
             current={pos + 1}
@@ -1418,6 +1530,8 @@ function SessionContent() {
             </div>
           )}
         </div>
+          </>
+        )}
       </div>
     </div>
   )

@@ -130,6 +130,19 @@ export const RightIconButtonOnly = variantStory('rightIconButtonOnly', {
   rightLabel: 'More options',
 })
 
+// The same row with `rightDecorative` (Mia, 2026-09-23). Pixel-identical
+// to the story above — same 48px box, same 40px circle, same glyph — but
+// the icon renders as `<span aria-hidden>` rather than `<button>`, so it
+// is not a focus stop and is not announced. This is what the study plan
+// at `/` uses: Figma draws the kebab on all three StudyPlan frames and
+// gives it no menu to open, so announcing it as a control would promise
+// a screen that doesn't exist. Compare the two side by side to confirm
+// nothing visual changed.
+export const RightIconDecorative = variantStory('rightIconButtonOnly', {
+  rightIcon: menuIcon,
+  rightDecorative: true,
+})
+
 // Real usage per design-system.md and ProgressIndicator's own
 // description: leftIconButtonOnly (X close) with a ProgressIndicator,
 // showText false, in the stretchable slot — the top row of every

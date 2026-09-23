@@ -227,7 +227,13 @@ function StudyPlanEntryContent() {
       <div className="flex w-full max-w-[390px] flex-col overflow-hidden" style={{ height: 844 }}>
         <StatusBar />
 
-        <AppBar variant="rightIconButtonOnly" rightIcon={KEBAB_ICON} rightLabel="More options" />
+        {/* Figma draws this kebab on all three StudyPlan frames and gives it
+            nowhere to go — no menu frame, no outgoing arrow. Rendered as
+            decoration rather than a control (Mia, 2026-09-23): the row looks
+            exactly as Figma draws it, but the icon is no longer a focus stop
+            announced as "More options, button" that does nothing when tapped.
+            It is host-app chrome, not a control of the recall loop. */}
+        <AppBar variant="rightIconButtonOnly" rightIcon={KEBAB_ICON} rightDecorative />
 
         {/* Figma's own frame is a fixed 390×844 device size (see "Screen/S -
             Pixel 2" component description: "Default mobile screen size")
