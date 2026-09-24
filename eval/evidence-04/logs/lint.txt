@@ -1,0 +1,17 @@
+
+> knowunity-sprint@0.1.0 lint
+> eslint
+
+
+/Users/mengyahao/Desktop/knowunity-sprint/eval/evidence-03/addendum-g4-component-states/diff.mjs
+  18:7  warning  'rows' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/mengyahao/Desktop/knowunity-sprint/eval/evidence-04/capture/capture.mjs
+    4:40  warning  'BASE' is defined but never used                                       @typescript-eslint/no-unused-vars
+   25:7   warning  'settle' is assigned a value but never used                            @typescript-eslint/no-unused-vars
+   82:9   warning  'b' is assigned a value but never used                                 @typescript-eslint/no-unused-vars
+  204:37  warning  Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+
+✖ 5 problems (0 errors, 5 warnings)
+
+EXIT=0

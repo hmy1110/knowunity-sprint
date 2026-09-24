@@ -1,0 +1,89 @@
+[
+ {
+  "scenario": "B voice first run",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+  "state": "B03-t1-readyToSend"
+ },
+ {
+  "scenario": "D typed run",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+  "state": "D02-t1-typeInput-filled"
+ },
+ {
+  "scenario": "E close early",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio."
+ },
+ {
+  "scenario": "F denied on hint retry, then granted",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio."
+ },
+ {
+  "scenario": "G 664 viewport",
+  "type": "warning",
+  "text": "Image with src \"/images/standby.svg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading",
+  "state": "G02-session-idle-664"
+ },
+ {
+  "scenario": "H summary copy tiers",
+  "type": "warning",
+  "text": "Image with src \"/images/standby.svg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading"
+ },
+ {
+  "scenario": "H summary copy tiers",
+  "type": "warning",
+  "text": "Image with src \"/images/standby.svg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading",
+  "state": "H01-summary-first-1of4-scrolled"
+ },
+ {
+  "scenario": "H summary copy tiers",
+  "type": "warning",
+  "text": "Image with src \"/images/standby.svg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading",
+  "state": "H02-summary-first-2of4-scrolled"
+ },
+ {
+  "scenario": "H summary copy tiers",
+  "type": "warning",
+  "text": "Image with src \"/images/standby.svg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading",
+  "state": "H03-summary-first-3of4-scrolled"
+ },
+ {
+  "scenario": "H summary copy tiers",
+  "type": "warning",
+  "text": "Image with src \"/images/standby.svg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading",
+  "state": "H04-summary-first-0of4-scrolled"
+ },
+ {
+  "scenario": "H summary copy tiers",
+  "type": "warning",
+  "text": "Image with src \"/images/standby.svg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading",
+  "state": "H05-summary-first-4of4-scrolled"
+ },
+ {
+  "scenario": "H summary copy tiers",
+  "type": "warning",
+  "text": "Image with src \"/images/standby.svg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading",
+  "state": "H06-summary-review-allRecalled-scrolled"
+ },
+ {
+  "scenario": "H summary copy tiers",
+  "type": "warning",
+  "text": "Image with src \"/images/standby.svg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading",
+  "state": "H07-summary-review-mixed-scrolled"
+ },
+ {
+  "scenario": "H summary copy tiers",
+  "type": "warning",
+  "text": "Image with src \"/images/standby.svg\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/app/api-reference/components/image#loading",
+  "state": "H08-summary-cold-mixed-FIGMA-SAMPLE-scrolled"
+ },
+ {
+  "scenario": "I reduced motion",
+  "type": "warning",
+  "text": "Image with src \"http://localhost:3000/images/thinking.svg\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+  "state": "I03-recording-reducedMotion"
+ }
+]

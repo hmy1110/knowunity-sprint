@@ -1,0 +1,24 @@
+- paragraph: 09:41
+- img
+- img
+- img
+- main:
+  - text: 🎨 Art & Design
+  - img
+  - img
+  - text: In 1 day
+  - img
+  - text: "Grade Goal: A Section 1: Finding Ideas"
+  - img
+  - text: Finding Ideas
+  - img
+  - text: Choosing Subjects
+  - note: 🔥 +20% exam score
+  - text: Explain it to Knowie
+  - button "Speak":
+    - text: Speak
+    - img
+  - text: "Section 2: Mixed Media"
+  - img
+  - text: Artwork Planning
+- alert

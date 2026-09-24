@@ -1,0 +1,16 @@
+- paragraph: 09:41
+- img
+- img
+- img
+- button "Close":
+  - img
+- progressbar "Topic progress"
+- img
+- text: "8"
+- main:
+  - img
+  - paragraph: Microphone access is off
+  - paragraph: One tap in Settings, and you're back to speaking. Nothing else changes.
+- button "Turn on my microphone"
+- button "Continue with text"
+- alert
