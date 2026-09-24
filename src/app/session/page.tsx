@@ -23,6 +23,7 @@ import {
   finishFirstRun,
   missedTerms,
   readStore,
+  recordInputMode,
   recordResult,
   recordReviewResult,
   resetStore,
@@ -199,14 +200,23 @@ function SessionContent() {
   // Mia, 2026-09-21: the input mode sticks. Typing on one term means the next
   // term opens on the typing screen too, until the person switches to voice
   // (or records). Set by "Type instead" / "Switch to voice" / a recording.
-  const [inputMode, setInputMode] = useState<'voice' | 'text'>(() => (searchParams.get('entry') === 'text' ? 'text' : 'voice'))
+  // A review re-entry (Summary/study plan, no `?entry` of its own) isn't a
+  // switch either, so it picks up the mode last recorded in the store rather
+  // than defaulting back to voice.
+  const [inputMode, setInputMode] = useState<'voice' | 'text'>(() => {
+    if (searchParams.get('entry') === 'text') return 'text'
+    if (isReview) return readStore().inputMode
+    return 'voice'
+  })
   // SPEC.md: "Tap 'I can't talk right now' (on Primer-intro) → /session
   // (term 1, text mode), bypassing the mic-permission prompt entirely."
   // Same landing for micDenied's own "Continue with text." Primer links
   // here with `?entry=text`.
-  const [subState, setSubState] = useState<SubState>(() =>
-    searchParams.get('entry') === 'text' ? 'typeInput' : 'idle',
-  )
+  const [subState, setSubState] = useState<SubState>(() => {
+    if (searchParams.get('entry') === 'text') return 'typeInput'
+    if (isReview && readStore().inputMode === 'text') return 'typeInput'
+    return 'idle'
+  })
   // Live Figma (2026-09-20): the review frames read "Topics 1 of 3" / "2 of 3"
   // / "3 of 3" and carry a "6" badge, since the run skips term 1 — the count
   // states its own scope, and the XP goal is 2 per term the run covers (Mia,
@@ -279,6 +289,12 @@ function SessionContent() {
     if (isReview) recordReviewResult(termIndex, status)
     else recordResult(termIndex, status)
   }, [subState, termIndex, isReview])
+
+  // Mirrors the mode into the store as it changes, so a later reopen (Summary's
+  // "Review what you missed", the study plan) can pick up where this run left off.
+  useEffect(() => {
+    recordInputMode(inputMode)
+  }, [inputMode])
 
   // SPEC.md: "The mic really requests OS permission via getUserMedia
   // and really records; AudioScrubber plays back that real audio."

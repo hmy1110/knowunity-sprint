@@ -118,9 +118,17 @@ export interface RecallStore {
   firstRunDone: boolean
   /** The terms the latest review run covers, for its Summary. */
   lastReview: number[]
+  /** The input mode the person last left off in, so reopening a review picks up where they left off. */
+  inputMode: 'voice' | 'text'
 }
 
-const EMPTY: RecallStore = { results: [null, null, null, null], reviewResults: [null, null, null, null], firstRunDone: false, lastReview: [] }
+const EMPTY: RecallStore = {
+  results: [null, null, null, null],
+  reviewResults: [null, null, null, null],
+  firstRunDone: false,
+  lastReview: [],
+  inputMode: 'voice',
+}
 const KEY = 'recall-session'
 
 // The review run before anything is recorded: terms 2-4, the frames Figma draws.
@@ -205,6 +213,12 @@ export function recordReviewResult(term: number, status: Status) {
   const reviewResults = [...store.reviewResults]
   reviewResults[term] = status
   write({ ...store, reviewResults })
+}
+
+export function recordInputMode(mode: 'voice' | 'text') {
+  const store = readStore()
+  if (store.inputMode === mode) return
+  write({ ...store, inputMode: mode })
 }
 
 export function startReview(terms: number[]) {
